@@ -21,7 +21,7 @@ let package = Package(
         // Önceden build ettiğiniz XCFramework
         .binaryTarget(
             name: "IdentifySDKBinary",
-            url: "https://github.com/<org>/<repo>/releases/download/2.4.2/IdentifySDK.xcframework.zip",
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.4.3/IdentifySDK.xcframework.zip",
             checksum: "2681e8daf97024bdf1065e2e17948489797411cbbf91463c24672841702a1067"
         ),
 
