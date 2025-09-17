@@ -17,14 +17,14 @@ let package = Package(
     ],
     targets: [
         .binaryTarget(
-            name: "IdentifySDKBinary",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.4.5/IdentifySDK.xcframework.zip",
+            name: "IdentifySDK",
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.4.6/IdentifySDK.xcframework.zip",
             checksum: "2681e8daf97024bdf1065e2e17948489797411cbbf91463c24672841702a1067"
         ),
         .target(
             name: "IdentifySDK",
             dependencies: [
-                "IdentifySDKBinary",
+                "IdentifySDK",
                 "OpenSSL",
                 .product(name: "Starscream", package: "Starscream"),
                 .product(name: "WebRTC", package: "WebRTC")
