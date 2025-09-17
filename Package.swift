@@ -32,7 +32,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IdentifySDK",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.3.9/IdentifySDK.xcframework.zip",
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.4.1/IdentifySDK.xcframework.zip",
             checksum: "2681e8daf97024bdf1065e2e17948489797411cbbf91463c24672841702a1067"
         )
     ]
