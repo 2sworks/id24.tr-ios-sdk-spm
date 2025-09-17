@@ -5,7 +5,8 @@ let package = Package(
     name: "IdentifySDK",
     platforms: [.iOS(.v14)],
     products: [
-        .library(name: "IdentifySDK", targets: ["IdentifySDK"])
+        // Kullanıcı sadece import IdentifySDK diyecek
+        .library(name: "IdentifySDK", targets: ["IdentifySDKWrapper"])
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/OpenSSL.git",
@@ -16,13 +17,16 @@ let package = Package(
                  .upToNextMajor(from: "94.0.0"))
     ],
     targets: [
+        // Asıl prebuilt XCFramework (modül adı IdentifySDK)
         .binaryTarget(
             name: "IdentifySDK",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.4.6/IdentifySDK.xcframework.zip",
-            checksum: "2681e8daf97024bdf1065e2e17948489797411cbbf91463c24672841702a1067"
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.5.0/IdentifySDK.xcframework.zip",
+            checksum: "abe569ce5e53f9b5590c1f99ace91a97c3171563c997113c1fedce93f64bee58"
         ),
+
+        // Wrapper: bağımlılıkları çözer, IdentifySDK’yı re-export eder
         .target(
-            name: "IdentifySDK",
+            name: "IdentifySDKWrapper",
             dependencies: [
                 "IdentifySDK",
                 "OpenSSL",

@@ -14,7 +14,7 @@
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/Info.plist</key>
 		<data>
-		zcwCBdrMYtJ0N97JjUcRJWD65zc=
+		xRq+I86Rg8zMb7e8TiUG8Boyq2Y=
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Info.plist</key>
 		<data>
-		6dTwHbLCRKIwXkl4eeLHTyRwXp8=
+		okvd9ZH2fyPrBwGdqQxkUB6O13Q=
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -121,11 +121,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zcwCBdrMYtJ0N97JjUcRJWD65zc=
+			xRq+I86Rg8zMb7e8TiUG8Boyq2Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			ofVJX5uKTTtqiuUJkKhzdBvzL3xSxtuNcp9JsU2L0aM=
+			Il/YKnnYAVjg30CdwnKmdqIshdBalsbNdLoKLd+LcyU=
 			</data>
 		</dict>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
@@ -220,11 +220,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6dTwHbLCRKIwXkl4eeLHTyRwXp8=
+			okvd9ZH2fyPrBwGdqQxkUB6O13Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			CSXCD35r+mVXo2uSyG7Y5wK/y1eE12i4jRPjXiGxuS4=
+			8ZyjN2rYP4oGL1ePvRukZQVV6AP+jdLzbldMZIvrJQY=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>

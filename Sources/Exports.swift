@@ -1,3 +1,3 @@
-@_exported import IdentifySDKBinary
+@_exported import IdentifySDK
 
 public enum _IdentifySDKMarker {}
