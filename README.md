@@ -8,7 +8,6 @@ In Xcode go to Project -> Your Project Name -> `Package Dependencies` -> Tap *Pl
 https://github.com/2sworks/id24.tr-ios-sdk-spm
 ```
 
-Next, choose the permissions you need. But don't add all of them, because apple will reject app.
 Or adding it to the `dependencies` of your `Package.swift`:
 
 ```swift
