@@ -5,6 +5,8 @@
 import CoreImage.CIFilterBuiltins
 import Combine
 import CommonCrypto
+import Compression
+import CoreData
 import CoreImage
 import CoreNFC
 import CryptoKit
@@ -696,12 +698,13 @@ public enum AppQuitType : Swift.String {
     get
   }
 }
-public enum SDKLogLevel : Swift.String {
-  case noLog
+public enum SDKLogLevel {
   case all
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
+  case online
+  case noLog
+  public static func == (a: IdentifySDK.SDKLogLevel, b: IdentifySDK.SDKLogLevel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
 }
@@ -2073,10 +2076,16 @@ extension IdentifySDK.PassiveAuthenticationError : Foundation.LocalizedError {
   public func uploadAddressInfo(image: Swift.String, addressText: Swift.String, callback: @escaping (_ results: IdentifySDK.BoolResponse) -> Swift.Void)
   public func uploadAddressInfoWithPdf(pdf: Swift.String, addressText: Swift.String, callback: @escaping (_ results: IdentifySDK.BoolResponse) -> Swift.Void)
   public func uploadVideo(videoData: Foundation.Data, type: Swift.String? = nil, fileName: Swift.String? = nil, callback: @escaping (_ results: IdentifySDK.BoolResponse?, _ errors: IdentifySDK.SDKWebError?) -> Swift.Void)
+  public func sendLogsBatch(_ logs: [[Swift.String : Swift.String]], _ completion: @escaping (Swift.Bool) -> Swift.Void)
   public func showAlert(msg: Swift.String)
   public func webLogger(url: Swift.String, sendingData: Any, log: Foundation.Data? = nil, webErr: (any Swift.Error)? = nil, secs: Swift.String? = "")
   public func firstReq(url: Swift.String, sendingData: Any)
+  public func postLogs(items: [IdentifySDK.LogItem], _ completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc deinit
+}
+public struct LogItem : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 extension Swift.Encodable {
   public func asDictionary() -> [Swift.String : Any]
@@ -3587,7 +3596,7 @@ public class IdentifyManager {
   public var trackingEventType: IdentifySDK.TrackingEventType?
   public var trackingDelegate: (any IdentifySDK.IdentifyTrackingListener)?
   public func setSDKLang(lang: IdentifySDK.SDKLang? = .eng)
-  public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [.idCard, .passport, .oldSchool], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnUser: Swift.String? = "", turnPassw: Swift.String? = "", turnKey: Swift.String? = "", showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
+  public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [.idCard, .passport, .oldSchool], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", stunServers: [Swift.String]? = nil, stunUser: Swift.String? = nil, stunPass: Swift.String? = nil, bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnUser: Swift.String? = "", turnPassw: Swift.String? = "", turnKey: Swift.String? = "", showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
   public func startSpeedTest(repeatCount: Swift.Int? = 1, callBack: @escaping (_ connectionStatus: IdentifySDK.SDKNetworkStatus, _ kbPerSec: CoreFoundation.CGFloat) -> Swift.Void)
   public func resetLivenessTest()
   public func getNextLivenessTest(callBack: @escaping (_ nextStep: IdentifySDK.LivenessTestStep?, _ completed: Swift.Bool?) -> ())
@@ -3619,6 +3628,9 @@ public class IdentifyManager {
   public func myCam() -> UIKit.UIView
   public func sendStep()
   public func speechCompleted()
+  public func flushLogsNow()
+  public func startReachabilityForLogs()
+  public func stopReachabilityForLogs()
   public func forceQuitSDK()
 }
 extension IdentifySDK.IdentifyManager : Starscream.WebSocketDelegate {
@@ -3921,7 +3933,6 @@ extension IdentifySDK.AppQuitType : Swift.Hashable {}
 extension IdentifySDK.AppQuitType : Swift.RawRepresentable {}
 extension IdentifySDK.SDKLogLevel : Swift.Equatable {}
 extension IdentifySDK.SDKLogLevel : Swift.Hashable {}
-extension IdentifySDK.SDKLogLevel : Swift.RawRepresentable {}
 extension IdentifySDK.VerificationCardType : Swift.Equatable {}
 extension IdentifySDK.VerificationCardType : Swift.Hashable {}
 extension IdentifySDK.VerificationCardType : Swift.RawRepresentable {}

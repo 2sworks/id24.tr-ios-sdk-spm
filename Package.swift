@@ -20,8 +20,8 @@ let package = Package(
         // Asıl prebuilt XCFramework (modül adı IdentifySDK)
         .binaryTarget(
             name: "IdentifySDK",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.3.9/IdentifySDK.xcframework.zip",
-            checksum: "838557f58a381055799c6df16813dbefaaf0dc1a0bee4e80eb09c54d1770d997"
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.3.11/IdentifySDK.xcframework.zip",
+            checksum: "c6ba8fd8814aa9ea57c1963713a17c04ae0c3ac3533d9ec849bab4b558773ffe"
         ),
 
         // Wrapper: bağımlılıkları çözer, IdentifySDK’yı re-export eder
