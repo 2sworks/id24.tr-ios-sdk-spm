@@ -12,6 +12,6 @@ Or adding it to the `dependencies` of your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/2sworks/id24.tr-ios-sdk-spm", .upToNextMajor(from: "2.3.9"))
+    .package(url: "https://github.com/2sworks/id24.tr-ios-sdk-spm", .upToNextMajor(from: "2.3.11"))
 ]
 ```
