@@ -739,6 +739,18 @@ public enum CardType : Swift.String {
     get
   }
 }
+public enum CardOrientation {
+  case up
+  case rotate90CW
+  case rotate180
+  case rotate90CCW
+  case unknown
+  public static func == (a: IdentifySDK.CardOrientation, b: IdentifySDK.CardOrientation) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public enum LivenessTestStep : Swift.String {
   case turnLeft
   case turnRight
@@ -771,6 +783,7 @@ public enum SDKCallActions {
   case networkQuality(Swift.String)
   case missedCall
   case editNfcProcess
+  case disableEndCallButton
   case connectionErr
   case wrongSocketActionErr(Swift.String)
 }
@@ -921,6 +934,7 @@ public protocol IdentifyListenerDelegate : AnyObject {
   func subscribed()
   func openNfcRemote(birthDate: Swift.String, expireDate: Swift.String, serialNumber: Swift.String)
   func missedCall()
+  func disableEndCallButton()
 }
 public protocol PopUpProtocol {
   func handlePopUpAction(action: Swift.Bool)
@@ -1861,6 +1875,7 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   public var selfie_comparison_count: Swift.Int?
   public var nfc_comparison_count: Swift.Int?
   public var ocr_comparison_count: Swift.Int?
+  public var active_comparison_result_skip_module: Swift.String?
   public var ws_url: Swift.String?
   public var ws_secret_key: Swift.String?
   public var liveness_recording: Swift.String?
@@ -3588,6 +3603,7 @@ public class IdentifyManager {
   public var tryedSelfieComparisonCount: Swift.Int
   public var tryedNfcComparisonCount: Swift.Int
   public var tryedOcrComparisonCount: Swift.Int
+  public var activeComparisonResultSkipModule: Swift.String
   final public let maxAddressPDFFileSize: Swift.Int
   public var livenessRecordingEnabled: Swift.Bool
   public var requestMaxBodySize: Swift.Int
@@ -3596,7 +3612,7 @@ public class IdentifyManager {
   public var trackingEventType: IdentifySDK.TrackingEventType?
   public var trackingDelegate: (any IdentifySDK.IdentifyTrackingListener)?
   public func setSDKLang(lang: IdentifySDK.SDKLang? = .eng)
-  public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [.idCard, .passport, .oldSchool], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", stunServers: [Swift.String]? = nil, stunUser: Swift.String? = nil, stunPass: Swift.String? = nil, bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnUser: Swift.String? = "", turnPassw: Swift.String? = "", turnKey: Swift.String? = "", showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
+  public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [.idCard, .passport, .oldSchool], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", stunServers: [Swift.String]? = nil, stunUser: Swift.String? = nil, stunPass: Swift.String? = nil, bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnUser: Swift.String? = "", turnPassw: Swift.String? = "", turnKey: Swift.String? = "", showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
   public func startSpeedTest(repeatCount: Swift.Int? = 1, callBack: @escaping (_ connectionStatus: IdentifySDK.SDKNetworkStatus, _ kbPerSec: CoreFoundation.CGFloat) -> Swift.Void)
   public func resetLivenessTest()
   public func getNextLivenessTest(callBack: @escaping (_ nextStep: IdentifySDK.LivenessTestStep?, _ completed: Swift.Bool?) -> ())
@@ -3942,6 +3958,8 @@ extension IdentifySDK.SDKLang : Swift.RawRepresentable {}
 extension IdentifySDK.CardType : Swift.Equatable {}
 extension IdentifySDK.CardType : Swift.Hashable {}
 extension IdentifySDK.CardType : Swift.RawRepresentable {}
+extension IdentifySDK.CardOrientation : Swift.Equatable {}
+extension IdentifySDK.CardOrientation : Swift.Hashable {}
 extension IdentifySDK.LivenessTestStep : Swift.Equatable {}
 extension IdentifySDK.LivenessTestStep : Swift.Hashable {}
 extension IdentifySDK.LivenessTestStep : Swift.RawRepresentable {}
