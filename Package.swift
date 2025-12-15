@@ -5,7 +5,6 @@ let package = Package(
     name: "IdentifySDK",
     platforms: [.iOS(.v14)],
     products: [
-        // Kullanıcı sadece import IdentifySDK diyecek
         .library(name: "IdentifySDK", targets: ["IdentifySDKWrapper"])
     ],
     dependencies: [
@@ -17,14 +16,11 @@ let package = Package(
                  .upToNextMajor(from: "94.0.0"))
     ],
     targets: [
-        // Asıl prebuilt XCFramework (modül adı IdentifySDK)
         .binaryTarget(
             name: "IdentifySDK",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.3.14/IdentifySDK.xcframework.zip",
-            checksum: "f1867b6fbe3948be9b9ccb09f4011d14c4d29ed02879a9033ad74ed004ab006c"
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.3.15/IdentifySDK.xcframework.zip",
+            checksum: "7db1cdd3adf4de6e70545fece9c937a07bc3327e87430c09d2970f0c2ea5fb97"
         ),
-
-        // Wrapper: bağımlılıkları çözer, IdentifySDK’yı re-export eder
         .target(
             name: "IdentifySDKWrapper",
             dependencies: [
