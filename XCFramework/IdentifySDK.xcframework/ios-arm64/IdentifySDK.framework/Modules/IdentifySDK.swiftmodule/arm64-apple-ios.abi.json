@@ -1545,6 +1545,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -6427,6 +6434,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -12310,6 +12324,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -19345,13 +19366,55 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.SDKCallActions.Type) -> IdentifySDK.SDKCallActions",
+                "printedName": "(IdentifySDK.SDKCallActions.Type) -> (Swift.String?, Swift.String?) -> IdentifySDK.SDKCallActions",
                 "children": [
                   {
-                    "kind": "TypeNominal",
-                    "name": "SDKCallActions",
-                    "printedName": "IdentifySDK.SDKCallActions",
-                    "usr": "s:11IdentifySDK14SDKCallActionsO"
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String?, Swift.String?) -> IdentifySDK.SDKCallActions",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKCallActions",
+                        "printedName": "IdentifySDK.SDKCallActions",
+                        "usr": "s:11IdentifySDK14SDKCallActionsO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(Swift.String?, Swift.String?)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Optional",
+                            "printedName": "Swift.String?",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sq"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "kind": "TypeNominal",
@@ -19370,8 +19433,8 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:11IdentifySDK14SDKCallActionsO13terminateCallyA2CmF",
-            "mangledName": "$s11IdentifySDK14SDKCallActionsO13terminateCallyA2CmF",
+            "usr": "s:11IdentifySDK14SDKCallActionsO13terminateCallyACSSSg_AEtcACmF",
+            "mangledName": "$s11IdentifySDK14SDKCallActionsO13terminateCallyACSSSg_AEtcACmF",
             "moduleName": "IdentifySDK"
           },
           {
@@ -23762,6 +23825,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -23999,17 +24069,45 @@
           {
             "kind": "Function",
             "name": "terminateCall",
-            "printedName": "terminateCall()",
+            "printedName": "terminateCall(terminateReason:statusSummaryType:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK0A16ListenerDelegateP13terminateCallyyF",
-            "mangledName": "$s11IdentifySDK0A16ListenerDelegateP13terminateCallyyF",
+            "usr": "s:11IdentifySDK0A16ListenerDelegateP13terminateCall0E6Reason17statusSummaryTypeySSSg_AGtF",
+            "mangledName": "$s11IdentifySDK0A16ListenerDelegateP13terminateCall0E6Reason17statusSummaryTypeySSSg_AGtF",
             "moduleName": "IdentifySDK",
             "genericSig": "<τ_0_0 where τ_0_0 : IdentifySDK.IdentifyListenerDelegate>",
             "sugared_genericSig": "<Self where Self : IdentifySDK.IdentifyListenerDelegate>",
@@ -34975,6 +35073,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -44707,6 +44812,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "EmptyResponse",
             "printedName": "EmptyResponse",
             "usr": "s:11IdentifySDK13EmptyResponseP",
@@ -51668,6 +51780,226 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK9FirstRoomC16agent_view_scaleSiSgvM",
                 "mangledName": "$s11IdentifySDK9FirstRoomC16agent_view_scaleSiSgvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "short_term_usage",
+            "printedName": "short_term_usage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK9FirstRoomC16short_term_usageSSSgvp",
+            "mangledName": "$s11IdentifySDK9FirstRoomC16short_term_usageSSSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC16short_term_usageSSSgvg",
+                "mangledName": "$s11IdentifySDK9FirstRoomC16short_term_usageSSSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC16short_term_usageSSSgvs",
+                "mangledName": "$s11IdentifySDK9FirstRoomC16short_term_usageSSSgvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC16short_term_usageSSSgvM",
+                "mangledName": "$s11IdentifySDK9FirstRoomC16short_term_usageSSSgvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "encrypted_turn_credential",
+            "printedName": "encrypted_turn_credential",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvp",
+            "mangledName": "$s11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvg",
+                "mangledName": "$s11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvs",
+                "mangledName": "$s11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvM",
+                "mangledName": "$s11IdentifySDK9FirstRoomC25encrypted_turn_credentialSSSgvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -58890,6 +59222,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "LocalizedError",
             "printedName": "LocalizedError",
             "usr": "s:10Foundation14LocalizedErrorP",
@@ -59404,6 +59743,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "LocalizedError",
             "printedName": "LocalizedError",
             "usr": "s:10Foundation14LocalizedErrorP",
@@ -59661,6 +60007,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -60337,7 +60690,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.BoolResponse) -> ()",
+                "printedName": "(IdentifySDK.NewBoolResponse) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -60346,16 +60699,16 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "BoolResponse",
-                    "printedName": "IdentifySDK.BoolResponse",
-                    "usr": "s:11IdentifySDK12BoolResponseC"
+                    "name": "NewBoolResponse",
+                    "printedName": "IdentifySDK.NewBoolResponse",
+                    "usr": "s:11IdentifySDK15NewBoolResponseC"
                   }
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK10SDKNetworkC17uploadAddressInfo5image11addressText8callbackySS_SSyAA12BoolResponseCctF",
-            "mangledName": "$s11IdentifySDK10SDKNetworkC17uploadAddressInfo5image11addressText8callbackySS_SSyAA12BoolResponseCctF",
+            "usr": "s:11IdentifySDK10SDKNetworkC17uploadAddressInfo5image11addressText8callbackySS_SSyAA15NewBoolResponseCctF",
+            "mangledName": "$s11IdentifySDK10SDKNetworkC17uploadAddressInfo5image11addressText8callbackySS_SSyAA15NewBoolResponseCctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -60387,7 +60740,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.BoolResponse) -> ()",
+                "printedName": "(IdentifySDK.NewBoolResponse) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -60396,16 +60749,16 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "BoolResponse",
-                    "printedName": "IdentifySDK.BoolResponse",
-                    "usr": "s:11IdentifySDK12BoolResponseC"
+                    "name": "NewBoolResponse",
+                    "printedName": "IdentifySDK.NewBoolResponse",
+                    "usr": "s:11IdentifySDK15NewBoolResponseC"
                   }
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK10SDKNetworkC24uploadAddressInfoWithPdf3pdf11addressText8callbackySS_SSyAA12BoolResponseCctF",
-            "mangledName": "$s11IdentifySDK10SDKNetworkC24uploadAddressInfoWithPdf3pdf11addressText8callbackySS_SSyAA12BoolResponseCctF",
+            "usr": "s:11IdentifySDK10SDKNetworkC24uploadAddressInfoWithPdf3pdf11addressText8callbackySS_SSyAA15NewBoolResponseCctF",
+            "mangledName": "$s11IdentifySDK10SDKNetworkC24uploadAddressInfoWithPdf3pdf11addressText8callbackySS_SSyAA15NewBoolResponseCctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -60461,7 +60814,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?) -> ()",
+                "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -60471,18 +60824,18 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?)",
+                    "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "Optional",
-                        "printedName": "IdentifySDK.BoolResponse?",
+                        "printedName": "IdentifySDK.NewBoolResponse?",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "BoolResponse",
-                            "printedName": "IdentifySDK.BoolResponse",
-                            "usr": "s:11IdentifySDK12BoolResponseC"
+                            "name": "NewBoolResponse",
+                            "printedName": "IdentifySDK.NewBoolResponse",
+                            "usr": "s:11IdentifySDK15NewBoolResponseC"
                           }
                         ],
                         "usr": "s:Sq"
@@ -60507,8 +60860,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK10SDKNetworkC11uploadVideo9videoData4type8fileName8callbacky10Foundation0G0V_SSSgALyAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
-            "mangledName": "$s11IdentifySDK10SDKNetworkC11uploadVideo9videoData4type8fileName8callbacky10Foundation0G0V_SSSgALyAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "usr": "s:11IdentifySDK10SDKNetworkC11uploadVideo9videoData4type8fileName8callbacky10Foundation0G0V_SSSgALyAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "mangledName": "$s11IdentifySDK10SDKNetworkC11uploadVideo9videoData4type8fileName8callbacky10Foundation0G0V_SSSgALyAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -64841,6 +65194,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -67001,6 +67361,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -68832,6 +69199,13 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "SendableMetatype",
+                "printedName": "SendableMetatype",
+                "usr": "s:s16SendableMetatypeP",
+                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -122807,7 +123181,7 @@
           {
             "kind": "Function",
             "name": "setupSDK",
-            "printedName": "setupSDK(identId:baseApiUrl:networkOptions:kpsData:identCardType:signLangSupport:nfcMaxErrorCount:logLevel:logOnlineSecretKey:stunServers:stunUser:stunPass:bigCustomerCam:selectedModules:idCardLang:needCertForNfc:turnUser:turnPassw:turnKey:showThankYouPage:showNFCNotFoundPage:supportU18:AESKey:enableAutoRotateOCR:callback:)",
+            "printedName": "setupSDK(identId:baseApiUrl:networkOptions:kpsData:identCardType:signLangSupport:nfcMaxErrorCount:logLevel:logOnlineSecretKey:bigCustomerCam:selectedModules:idCardLang:needCertForNfc:turnKey:showThankYouPage:showNFCNotFoundPage:supportU18:AESKey:enableAutoRotateOCR:callback:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -122914,59 +123288,6 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "[Swift.String]?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[Swift.String]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
                 "printedName": "Swift.Bool?",
                 "children": [
                   {
@@ -123026,48 +123347,9 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               },
               {
                 "kind": "TypeNominal",
@@ -123199,8 +123481,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK0A7ManagerC05setupB07identId10baseApiUrl14networkOptions7kpsData0E8CardType15signLangSupport16nfcMaxErrorCount8logLevel0W15OnlineSecretKey11stunServers8stunUser8stunPass14bigCustomerCam15selectedModules02idnQ014needCertForNfc8turnUser9turnPassw7turnKey16showThankYouPage19showNFCNotFoundPage10supportU186AESKey19enableAutoRotateOCR8callbackySS_SSAA010SDKNetworkK0CAA06SDKKpsM0CSgSayAA0nO0OGSgSbSiAA06SDKLogX0OSgSSSgSaySSGSgA14_A14_SbSgSayAA10SdkModulesOGAA6IDLangOSgA17_A14_A14_A14_A17_A17_A17_A14_A17_y10Starscream9WebSocketCSg_AA12RoomResponseCAA06SDKWebU0CSgtctF",
-            "mangledName": "$s11IdentifySDK0A7ManagerC05setupB07identId10baseApiUrl14networkOptions7kpsData0E8CardType15signLangSupport16nfcMaxErrorCount8logLevel0W15OnlineSecretKey11stunServers8stunUser8stunPass14bigCustomerCam15selectedModules02idnQ014needCertForNfc8turnUser9turnPassw7turnKey16showThankYouPage19showNFCNotFoundPage10supportU186AESKey19enableAutoRotateOCR8callbackySS_SSAA010SDKNetworkK0CAA06SDKKpsM0CSgSayAA0nO0OGSgSbSiAA06SDKLogX0OSgSSSgSaySSGSgA14_A14_SbSgSayAA10SdkModulesOGAA6IDLangOSgA17_A14_A14_A14_A17_A17_A17_A14_A17_y10Starscream9WebSocketCSg_AA12RoomResponseCAA06SDKWebU0CSgtctF",
+            "usr": "s:11IdentifySDK0A7ManagerC05setupB07identId10baseApiUrl14networkOptions7kpsData0E8CardType15signLangSupport16nfcMaxErrorCount8logLevel0W15OnlineSecretKey14bigCustomerCam15selectedModules02idnQ014needCertForNfc7turnKey16showThankYouPage19showNFCNotFoundPage10supportU186AESKey19enableAutoRotateOCR8callbackySS_SSAA010SDKNetworkK0CAA06SDKKpsM0CSgSayAA0nO0OGSgSbSiAA06SDKLogX0OSgSSSgSbSgSayAA10SdkModulesOGAA6IDLangOSgA10_SSA10_A10_A10_A9_A10_y10Starscream9WebSocketCSg_AA12RoomResponseCAA06SDKWebU0CSgtctF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC05setupB07identId10baseApiUrl14networkOptions7kpsData0E8CardType15signLangSupport16nfcMaxErrorCount8logLevel0W15OnlineSecretKey14bigCustomerCam15selectedModules02idnQ014needCertForNfc7turnKey16showThankYouPage19showNFCNotFoundPage10supportU186AESKey19enableAutoRotateOCR8callbackySS_SSAA010SDKNetworkK0CAA06SDKKpsM0CSgSayAA0nO0OGSgSbSiAA06SDKLogX0OSgSSSgSbSgSayAA10SdkModulesOGAA6IDLangOSgA10_SSA10_A10_A10_A9_A10_y10Starscream9WebSocketCSg_AA12RoomResponseCAA06SDKWebU0CSgtctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -123599,7 +123881,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.IdentifyCard?, IdentifySDK.AutoIdentStatus, IdentifySDK.BoolResponse, (any Swift.Error)?) -> ()",
+                "printedName": "(IdentifySDK.IdentifyCard?, IdentifySDK.AutoIdentStatus, IdentifySDK.NewBoolResponse, (any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -123609,7 +123891,7 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(IdentifySDK.IdentifyCard?, IdentifySDK.AutoIdentStatus, IdentifySDK.BoolResponse, (any Swift.Error)?)",
+                    "printedName": "(IdentifySDK.IdentifyCard?, IdentifySDK.AutoIdentStatus, IdentifySDK.NewBoolResponse, (any Swift.Error)?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
@@ -123633,9 +123915,9 @@
                       },
                       {
                         "kind": "TypeNominal",
-                        "name": "BoolResponse",
-                        "printedName": "IdentifySDK.BoolResponse",
-                        "usr": "s:11IdentifySDK12BoolResponseC"
+                        "name": "NewBoolResponse",
+                        "printedName": "IdentifySDK.NewBoolResponse",
+                        "usr": "s:11IdentifySDK15NewBoolResponseC"
                       },
                       {
                         "kind": "TypeNominal",
@@ -123657,8 +123939,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK0A7ManagerC8startNFC8callbackyyAA0A4CardCSg_AA15AutoIdentStatusCAA12BoolResponseCs5Error_pSgtc_tF",
-            "mangledName": "$s11IdentifySDK0A7ManagerC8startNFC8callbackyyAA0A4CardCSg_AA15AutoIdentStatusCAA12BoolResponseCs5Error_pSgtc_tF",
+            "usr": "s:11IdentifySDK0A7ManagerC8startNFC8callbackyyAA0A4CardCSg_AA15AutoIdentStatusCAA15NewBoolResponseCs5Error_pSgtc_tF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC8startNFC8callbackyyAA0A4CardCSg_AA15AutoIdentStatusCAA15NewBoolResponseCs5Error_pSgtc_tF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -124290,7 +124572,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?) -> ()",
+                "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -124300,18 +124582,18 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?)",
+                    "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "Optional",
-                        "printedName": "IdentifySDK.BoolResponse?",
+                        "printedName": "IdentifySDK.NewBoolResponse?",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "BoolResponse",
-                            "printedName": "IdentifySDK.BoolResponse",
-                            "usr": "s:11IdentifySDK12BoolResponseC"
+                            "name": "NewBoolResponse",
+                            "printedName": "IdentifySDK.NewBoolResponse",
+                            "usr": "s:11IdentifySDK15NewBoolResponseC"
                           }
                         ],
                         "usr": "s:Sq"
@@ -124336,8 +124618,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK0A7ManagerC15upload5SecVideo9videoData8callbacky10Foundation0H0V_yAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
-            "mangledName": "$s11IdentifySDK0A7ManagerC15upload5SecVideo9videoData8callbacky10Foundation0H0V_yAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "usr": "s:11IdentifySDK0A7ManagerC15upload5SecVideo9videoData8callbacky10Foundation0H0V_yAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC15upload5SecVideo9videoData8callbacky10Foundation0H0V_yAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -124363,7 +124645,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?) -> ()",
+                "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -124373,18 +124655,18 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(IdentifySDK.BoolResponse?, IdentifySDK.SDKWebError?)",
+                    "printedName": "(IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "Optional",
-                        "printedName": "IdentifySDK.BoolResponse?",
+                        "printedName": "IdentifySDK.NewBoolResponse?",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "BoolResponse",
-                            "printedName": "IdentifySDK.BoolResponse",
-                            "usr": "s:11IdentifySDK12BoolResponseC"
+                            "name": "NewBoolResponse",
+                            "printedName": "IdentifySDK.NewBoolResponse",
+                            "usr": "s:11IdentifySDK15NewBoolResponseC"
                           }
                         ],
                         "usr": "s:Sq"
@@ -124409,8 +124691,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:11IdentifySDK0A7ManagerC19uploadLivenessVideo9videoData8callbacky10Foundation0H0V_yAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
-            "mangledName": "$s11IdentifySDK0A7ManagerC19uploadLivenessVideo9videoData8callbacky10Foundation0H0V_yAA12BoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "usr": "s:11IdentifySDK0A7ManagerC19uploadLivenessVideo9videoData8callbacky10Foundation0H0V_yAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC19uploadLivenessVideo9videoData8callbacky10Foundation0H0V_yAA15NewBoolResponseCSg_AA11SDKWebErrorCSgtctF",
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
@@ -124715,6 +124997,55 @@
             "declAttributes": [
               "AccessControl",
               "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sdkLog",
+            "printedName": "sdkLog(logMsg:type:isSlient:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC6sdkLog6logMsg4type8isSlientySSSg_SSSbtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC6sdkLog6logMsg4type8isSlientySSSg_SSSbtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -129175,6 +129506,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -131868,6 +132206,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -132462,6 +132807,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Encodable",
             "printedName": "Encodable",
             "usr": "s:SE",
@@ -132480,35 +132832,6 @@
             "printedName": "_HasContiguousBytes",
             "usr": "s:s19_HasContiguousBytesP",
             "mangledName": "$ss19_HasContiguousBytesP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_ObjectiveCBridgeable",
-            "printedName": "_ObjectiveCBridgeable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "_ObjectiveCType",
-                "printedName": "_ObjectiveCType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSArray",
-                    "printedName": "Foundation.NSArray",
-                    "usr": "c:objc(cs)NSArray"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s21_ObjectiveCBridgeableP",
-            "mangledName": "$ss21_ObjectiveCBridgeableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
@@ -132606,6 +132929,49 @@
           },
           {
             "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSArray",
+                    "printedName": "Foundation.NSArray",
+                    "usr": "c:objc(cs)NSArray"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Content",
+            "printedName": "Content",
+            "usr": "s:So17CMSampleBufferRefa9CoreMediaE7ContentP",
+            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE7ContentP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ContentWithFormatDescription",
+            "printedName": "ContentWithFormatDescription",
+            "usr": "s:So17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP",
+            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP"
+          },
+          {
+            "kind": "Conformance",
             "name": "AccelerateMutableBuffer",
             "printedName": "AccelerateMutableBuffer",
             "usr": "s:10Accelerate0A13MutableBufferP",
@@ -132631,6 +132997,27 @@
             ],
             "usr": "s:10Accelerate0A6BufferP",
             "mangledName": "$s10Accelerate0A6BufferP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "OperationParameter",
+            "printedName": "OperationParameter",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:10Accelerate9BNNSGraphO7BuilderV18OperationParameterP",
+            "mangledName": "$s10Accelerate9BNNSGraphO7BuilderV18OperationParameterP"
           }
         ]
       },
@@ -133123,6 +133510,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",
@@ -133327,6 +133721,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133519,6 +133920,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "AlamofireExtended",
             "printedName": "AlamofireExtended",
             "children": [
@@ -133671,6 +134079,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -134120,6 +134535,35 @@
             "printedName": "CVarArg",
             "usr": "s:s7CVarArgP",
             "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Transferable",
+            "printedName": "Transferable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Representation",
+                "printedName": "Representation",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some CoreTransferable.TransferRepresentation",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TransferRepresentation",
+                        "printedName": "CoreTransferable.TransferRepresentation",
+                        "usr": "s:16CoreTransferable22TransferRepresentationP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usr": "s:16CoreTransferable0B0P",
+            "mangledName": "$s16CoreTransferable0B0P"
           }
         ]
       },
@@ -134189,6 +134633,13 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -134296,6 +134747,35 @@
             "printedName": "_ExpressibleByFileReferenceLiteral",
             "usr": "s:s34_ExpressibleByFileReferenceLiteralP",
             "mangledName": "$ss34_ExpressibleByFileReferenceLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Transferable",
+            "printedName": "Transferable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Representation",
+                "printedName": "Representation",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some CoreTransferable.TransferRepresentation",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TransferRepresentation",
+                        "printedName": "CoreTransferable.TransferRepresentation",
+                        "usr": "s:16CoreTransferable22TransferRepresentationP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usr": "s:16CoreTransferable0B0P",
+            "mangledName": "$s16CoreTransferable0B0P"
           }
         ]
       },
@@ -134365,6 +134845,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -134690,6 +135177,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -134744,6 +135238,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "TopLevelDecoder",
             "printedName": "TopLevelDecoder",
             "children": [
@@ -134763,6 +135264,13 @@
             ],
             "usr": "s:7Combine15TopLevelDecoderP",
             "mangledName": "$s7Combine15TopLevelDecoderP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "NetworkDecoder",
+            "printedName": "NetworkDecoder",
+            "usr": "s:7Network0A7DecoderP",
+            "mangledName": "$s7Network0A7DecoderP"
           }
         ]
       },
@@ -134817,6 +135325,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "TopLevelDecoder",
             "printedName": "TopLevelDecoder",
             "children": [
@@ -134836,6 +135351,13 @@
             ],
             "usr": "s:7Combine15TopLevelDecoderP",
             "mangledName": "$s7Combine15TopLevelDecoderP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "NetworkDecoder",
+            "printedName": "NetworkDecoder",
+            "usr": "s:7Network0A7DecoderP",
+            "mangledName": "$s7Network0A7DecoderP"
           }
         ]
       },
@@ -134917,6 +135439,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -135236,6 +135765,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "_ExpressibleByImageLiteral",
             "printedName": "_ExpressibleByImageLiteral",
             "usr": "s:s26_ExpressibleByImageLiteralP",
@@ -135335,6 +135871,13 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -135515,6 +136058,8 @@
         "moduleName": "Security",
         "declAttributes": [
           "SynthesizedProtocol",
+          "SynthesizedProtocol",
+          "Sendable",
           "ObjC",
           "Dynamic"
         ],
@@ -135543,10 +136088,24 @@
           },
           {
             "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Hashable",
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -135837,6 +136396,13 @@
           },
           {
             "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
             "name": "SIMDScalar",
             "printedName": "SIMDScalar",
             "children": [
@@ -135988,6 +136554,57 @@
           },
           {
             "kind": "Conformance",
+            "name": "_FormatSpecifiable",
+            "printedName": "_FormatSpecifiable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_Arg",
+                "printedName": "_Arg",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int32",
+                    "printedName": "Swift.Int32",
+                    "usr": "s:s5Int32V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7SwiftUI18_FormatSpecifiableP",
+            "mangledName": "$s7SwiftUI18_FormatSpecifiableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "NetworkFixedWidthInteger",
+            "printedName": "NetworkFixedWidthInteger",
+            "usr": "s:7Network0A17FixedWidthIntegerP",
+            "mangledName": "$s7Network0A17FixedWidthIntegerP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "AtomicRepresentable",
+            "printedName": "AtomicRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AtomicRepresentation",
+                "printedName": "AtomicRepresentation",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "_Atomic32BitStorage",
+                    "printedName": "Synchronization._Atomic32BitStorage",
+                    "usr": "s:15Synchronization19_Atomic32BitStorageV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:15Synchronization19AtomicRepresentableP",
+            "mangledName": "$s15Synchronization19AtomicRepresentableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "vDSP_IntegerConvertable",
             "printedName": "vDSP_IntegerConvertable",
             "usr": "s:10Accelerate23vDSP_IntegerConvertableP",
@@ -136090,6 +136707,13 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -136201,6 +136825,20 @@
           },
           {
             "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
             "name": "Equatable",
             "printedName": "Equatable",
             "usr": "s:SQ",
@@ -136247,6 +136885,141 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "RTCIceConnectionState",
+        "printedName": "RTCIceConnectionState",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "description",
+            "printedName": "description",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So21RTCIceConnectionStateV11IdentifySDKE11descriptionSSvp",
+            "mangledName": "$sSo21RTCIceConnectionStateV11IdentifySDKE11descriptionSSvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So21RTCIceConnectionStateV11IdentifySDKE11descriptionSSvg",
+                "mangledName": "$sSo21RTCIceConnectionStateV11IdentifySDKE11descriptionSSvg",
+                "moduleName": "IdentifySDK",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@E@RTCIceConnectionState",
+        "moduleName": "WebRTC",
+        "objc_name": "RTCIceConnectionState",
+        "declAttributes": [
+          "SynthesizedProtocol",
+          "ObjC",
+          "SynthesizedProtocol",
+          "Sendable",
+          "Dynamic"
+        ],
+        "enumRawTypeName": "Int",
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
           }
         ]
       },
@@ -136401,6 +137174,13 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -137357,7 +138137,7 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "IntegerLiteral",
-      "offset": 4299,
+      "offset": 4317,
       "length": 1,
       "value": "0"
     },
@@ -138729,84 +139509,98 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "IntegerLiteral",
-      "offset": 2293,
+      "offset": 2463,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 2344,
+      "offset": 2514,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "IntegerLiteral",
-      "offset": 2540,
+      "offset": 2710,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6627,
+      "offset": 2741,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6667,
+      "offset": 2782,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6704,
+      "offset": 6986,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6743,
+      "offset": 7026,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6786,
+      "offset": 7063,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6826,
+      "offset": 7102,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6899,
+      "offset": 7145,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 6984,
+      "offset": 7185,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
+      "kind": "StringLiteral",
+      "offset": 7258,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
+      "kind": "StringLiteral",
+      "offset": 7343,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "Dictionary",
-      "offset": 8251,
+      "offset": 8610,
       "length": 3,
       "value": "[]"
     },
@@ -138974,7 +139768,7 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 20231,
+      "offset": 20410,
       "length": 2,
       "value": "\"\""
     },
@@ -139639,217 +140433,224 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 176,
+      "offset": 168,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 210,
+      "offset": 198,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 246,
+      "offset": 230,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 277,
+      "offset": 257,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 307,
+      "offset": 283,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 341,
+      "offset": 313,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 377,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
-      "kind": "IntegerLiteral",
-      "offset": 405,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
-      "kind": "StringLiteral",
-      "offset": 464,
+      "offset": 345,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "IntegerLiteral",
-      "offset": 483,
+      "offset": 369,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 494,
+      "offset": 424,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
+      "kind": "IntegerLiteral",
+      "offset": 443,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
+      "kind": "StringLiteral",
+      "offset": 454,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 528,
+      "offset": 484,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "IntegerLiteral",
-      "offset": 558,
+      "offset": 510,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "IntegerLiteral",
-      "offset": 592,
+      "offset": 540,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "IntegerLiteral",
-      "offset": 626,
+      "offset": 570,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 661,
+      "offset": 601,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "Array",
-      "offset": 705,
+      "offset": 641,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 749,
+      "offset": 681,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 788,
+      "offset": 716,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
+      "kind": "StringLiteral",
+      "offset": 754,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4542,
+      "offset": 4184,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4585,
+      "offset": 4223,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4627,
+      "offset": 4261,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4668,
+      "offset": 4298,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4708,
+      "offset": 4334,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4752,
+      "offset": 4374,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4793,
+      "offset": 4411,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4834,
+      "offset": 4448,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4876,
+      "offset": 4486,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 4930,
+      "offset": 4532,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4975,
+      "offset": 4573,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 5023,
+      "offset": 4617,
       "length": 5,
       "value": "false"
     },
@@ -140367,14 +141168,14 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 2748,
+      "offset": 3059,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 2785,
+      "offset": 3096,
       "length": 3,
       "value": "[]"
     },
@@ -140480,545 +141281,538 @@
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
       "offset": 398,
-      "length": 8,
-      "value": "\"2.3.15\""
+      "length": 7,
+      "value": "\"2.4.2\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 437,
+      "offset": 436,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 540,
+      "offset": 539,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 764,
+      "offset": 763,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 846,
+      "offset": 845,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1255,
+      "offset": 1254,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1304,
+      "offset": 1303,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1359,
+      "offset": 1358,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1565,
+      "offset": 1564,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1589,
+      "offset": 1588,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1697,
+      "offset": 1696,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1729,
+      "offset": 1728,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1971,
+      "offset": 1970,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 2012,
+      "offset": 2011,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 2063,
+      "offset": 2062,
       "length": 8,
       "value": "[\"\", \"\"]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2095,
+      "offset": 2094,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2121,
+      "offset": 2120,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2147,
+      "offset": 2146,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 2471,
+      "offset": 2481,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3382,
+      "offset": 3392,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3413,
+      "offset": 3423,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3442,
+      "offset": 3452,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3475,
+      "offset": 3485,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3675,
+      "offset": 3685,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3722,
+      "offset": 3732,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3768,
+      "offset": 3778,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3802,
+      "offset": 3812,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3922,
+      "offset": 3932,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3956,
+      "offset": 3966,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3999,
+      "offset": 4009,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4059,
+      "offset": 4069,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4212,
+      "offset": 4233,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4250,
+      "offset": 4271,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4381,
+      "offset": 4402,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4436,
+      "offset": 4457,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 4478,
+      "offset": 4499,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 4523,
+      "offset": 4544,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4575,
+      "offset": 4596,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4721,
+      "offset": 4742,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4835,
+      "offset": 4856,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4880,
+      "offset": 4901,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4918,
+      "offset": 4939,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4956,
+      "offset": 4977,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5007,
+      "offset": 5028,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5050,
+      "offset": 5071,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5093,
+      "offset": 5114,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5150,
+      "offset": 5171,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5300,
+      "offset": 5321,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5445,
+      "offset": 5466,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5554,
+      "offset": 5575,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5583,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "BooleanLiteral",
-      "offset": 5616,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "StringLiteral",
-      "offset": 5645,
+      "offset": 5604,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5668,
+      "offset": 5641,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "StringLiteral",
+      "offset": 5669,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6075,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "BooleanLiteral",
-      "offset": 6119,
+      "offset": 5702,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 7651,
+      "offset": 5731,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "StringLiteral",
+      "offset": 5754,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7758,
+      "offset": 6161,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6205,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "StringLiteral",
+      "offset": 7856,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7891,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 7797,
+      "offset": 7938,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7852,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "StringLiteral",
-      "offset": 7879,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "StringLiteral",
-      "offset": 7904,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "StringLiteral",
-      "offset": 7927,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "BooleanLiteral",
-      "offset": 7957,
+      "offset": 8009,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7993,
+      "offset": 8075,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8020,
+      "offset": 8119,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8154,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 8045,
+      "offset": 8187,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8078,
+      "offset": 8228,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 12338,
+      "offset": 10792,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 12357,
+      "offset": 10811,
       "length": 10,
       "value": "\"ident_id\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 14030,
+      "offset": 12484,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 88027,
+      "offset": 87208,
       "length": 19,
       "value": "\"log msg not found\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 88063,
+      "offset": 87244,
       "length": 9,
       "value": "\"general\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 88091,
+      "offset": 87272,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 106305,
+      "offset": 105635,
       "length": 29,
       "value": "\"IdentifySDK.LogProcessQueue\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 106367,
+      "offset": 105697,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 106474,
+      "offset": 105804,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 107935,
+      "offset": 107265,
       "length": 9,
       "value": "\"general\""
     },
@@ -141325,57 +142119,106 @@
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "BooleanLiteral",
+      "offset": 18037,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18122,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18140,
+      "length": 2,
+      "value": "50"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "BooleanLiteral",
+      "offset": 18164,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "FloatLiteral",
+      "offset": 18373,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "BooleanLiteral",
+      "offset": 18398,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
+      "kind": "BooleanLiteral",
+      "offset": 18437,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 28787,
+      "offset": 38649,
       "length": 65,
       "value": "\"kernel vec4 thresholdFilter(__sample image, __sample threshold)\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 28859,
+      "offset": 38721,
       "length": 3,
       "value": "\"{\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 28869,
+      "offset": 38731,
       "length": 68,
       "value": "\"   float imageLuma = dot(image.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 28944,
+      "offset": 38806,
       "length": 76,
       "value": "\"   float thresholdLuma = dot(threshold.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 29028,
+      "offset": 38890,
       "length": 60,
       "value": "\"   return vec4(vec3(step(imageLuma, thresholdLuma)), 1.0);\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 29095,
+      "offset": 38957,
       "length": 3,
       "value": "\"}\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 29873,
+      "offset": 39735,
       "length": 11,
       "value": "\"CIBoxBlur\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 29966,
+      "offset": 39828,
       "length": 1,
       "value": "9"
     },
