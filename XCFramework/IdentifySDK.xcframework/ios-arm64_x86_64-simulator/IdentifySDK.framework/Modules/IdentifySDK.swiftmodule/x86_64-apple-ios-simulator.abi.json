@@ -350,6 +350,141 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "sslPinningBundles",
+            "printedName": "sslPinningBundles",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Foundation.Bundle]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.Bundle]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bundle",
+                        "printedName": "Foundation.Bundle",
+                        "usr": "c:objc(cs)NSBundle"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvp",
+            "mangledName": "$s11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Foundation.Bundle]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Foundation.Bundle]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bundle",
+                            "printedName": "Foundation.Bundle",
+                            "usr": "c:objc(cs)NSBundle"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvg",
+                "mangledName": "$s11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Foundation.Bundle]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Foundation.Bundle]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Bundle",
+                            "printedName": "Foundation.Bundle",
+                            "usr": "c:objc(cs)NSBundle"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvs",
+                "mangledName": "$s11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvM",
+                "mangledName": "$s11IdentifySDK17SDKNetworkOptionsC17sslPinningBundlesSaySo8NSBundleCGSgvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(timeoutIntervalForRequest:timeoutIntervalForResource:useSslPinning:)",
@@ -409,6 +544,92 @@
             "moduleName": "IdentifySDK",
             "declAttributes": [
               "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(timeoutIntervalForRequest:timeoutIntervalForResource:useSslPinning:sslPinningBundles:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SDKNetworkOptions",
+                "printedName": "IdentifySDK.SDKNetworkOptions",
+                "usr": "s:11IdentifySDK17SDKNetworkOptionsC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Foundation.Bundle]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.Bundle]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bundle",
+                        "printedName": "Foundation.Bundle",
+                        "usr": "c:objc(cs)NSBundle"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK17SDKNetworkOptionsC25timeoutIntervalForRequest0efG8Resource13useSslPinning03sslL7BundlesACSiSg_AHSbSgSaySo8NSBundleCGSgtcfc",
+            "mangledName": "$s11IdentifySDK17SDKNetworkOptionsC25timeoutIntervalForRequest0efG8Resource13useSslPinning03sslL7BundlesACSiSg_AHSbSgSaySo8NSBundleCGSgtcfc",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
             ],
             "init_kind": "Designated"
           }
@@ -1545,13 +1766,6 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "SendableMetatype",
-                "printedName": "SendableMetatype",
-                "usr": "s:s16SendableMetatypeP",
-                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -6434,13 +6648,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -12324,13 +12531,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -14926,6 +15126,43 @@
           },
           {
             "kind": "Var",
+            "name": "frontIdOvd",
+            "printedName": "frontIdOvd",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.OCRType.Type) -> IdentifySDK.OCRType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OCRType",
+                    "printedName": "IdentifySDK.OCRType",
+                    "usr": "s:11IdentifySDK7OCRTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.OCRType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OCRType",
+                        "printedName": "IdentifySDK.OCRType",
+                        "usr": "s:11IdentifySDK7OCRTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK7OCRTypeO10frontIdOvdyA2CmF",
+            "mangledName": "$s11IdentifySDK7OCRTypeO10frontIdOvdyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
             "name": "backId",
             "printedName": "backId",
             "children": [
@@ -16426,6 +16663,43 @@
           },
           {
             "kind": "Var",
+            "name": "idcard_w_ovd",
+            "printedName": "idcard_w_ovd",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SdkModules.Type) -> IdentifySDK.SdkModules",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SdkModules",
+                    "printedName": "IdentifySDK.SdkModules",
+                    "usr": "s:11IdentifySDK10SdkModulesO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SdkModules.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SdkModules",
+                        "printedName": "IdentifySDK.SdkModules",
+                        "usr": "s:11IdentifySDK10SdkModulesO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK10SdkModulesO12idcard_w_ovdyA2CmF",
+            "mangledName": "$s11IdentifySDK10SdkModulesO12idcard_w_ovdyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
             "name": "signature",
             "printedName": "signature",
             "children": [
@@ -16945,6 +17219,43 @@
             "declKind": "EnumElement",
             "usr": "s:11IdentifySDK11SelfieTypesO7frontIdyA2CmF",
             "mangledName": "$s11IdentifySDK11SelfieTypesO7frontIdyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "frontIdOVD",
+            "printedName": "frontIdOVD",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SelfieTypes.Type) -> IdentifySDK.SelfieTypes",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SelfieTypes",
+                    "printedName": "IdentifySDK.SelfieTypes",
+                    "usr": "s:11IdentifySDK11SelfieTypesO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SelfieTypes.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SelfieTypes",
+                        "printedName": "IdentifySDK.SelfieTypes",
+                        "usr": "s:11IdentifySDK11SelfieTypesO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK11SelfieTypesO10frontIdOVDyA2CmF",
+            "mangledName": "$s11IdentifySDK11SelfieTypesO10frontIdOVDyA2CmF",
             "moduleName": "IdentifySDK"
           },
           {
@@ -20381,6 +20692,154 @@
             "declKind": "EnumElement",
             "usr": "s:11IdentifySDK17TrackingEventTypeO19idCardModuleSkippedyA2CmF",
             "mangledName": "$s11IdentifySDK17TrackingEventTypeO19idCardModuleSkippedyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "idCardOVDModulePresented",
+            "printedName": "idCardOVDModulePresented",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.TrackingEventType.Type) -> IdentifySDK.TrackingEventType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TrackingEventType",
+                    "printedName": "IdentifySDK.TrackingEventType",
+                    "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.TrackingEventType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TrackingEventType",
+                        "printedName": "IdentifySDK.TrackingEventType",
+                        "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK17TrackingEventTypeO24idCardOVDModulePresentedyA2CmF",
+            "mangledName": "$s11IdentifySDK17TrackingEventTypeO24idCardOVDModulePresentedyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "idCardOVDModuleFailed",
+            "printedName": "idCardOVDModuleFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.TrackingEventType.Type) -> IdentifySDK.TrackingEventType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TrackingEventType",
+                    "printedName": "IdentifySDK.TrackingEventType",
+                    "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.TrackingEventType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TrackingEventType",
+                        "printedName": "IdentifySDK.TrackingEventType",
+                        "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK17TrackingEventTypeO21idCardOVDModuleFailedyA2CmF",
+            "mangledName": "$s11IdentifySDK17TrackingEventTypeO21idCardOVDModuleFailedyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "idCardOVDModuleCompleted",
+            "printedName": "idCardOVDModuleCompleted",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.TrackingEventType.Type) -> IdentifySDK.TrackingEventType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TrackingEventType",
+                    "printedName": "IdentifySDK.TrackingEventType",
+                    "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.TrackingEventType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TrackingEventType",
+                        "printedName": "IdentifySDK.TrackingEventType",
+                        "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK17TrackingEventTypeO24idCardOVDModuleCompletedyA2CmF",
+            "mangledName": "$s11IdentifySDK17TrackingEventTypeO24idCardOVDModuleCompletedyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "idCardOVDModuleSkipped",
+            "printedName": "idCardOVDModuleSkipped",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.TrackingEventType.Type) -> IdentifySDK.TrackingEventType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "TrackingEventType",
+                    "printedName": "IdentifySDK.TrackingEventType",
+                    "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.TrackingEventType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TrackingEventType",
+                        "printedName": "IdentifySDK.TrackingEventType",
+                        "usr": "s:11IdentifySDK17TrackingEventTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK17TrackingEventTypeO22idCardOVDModuleSkippedyA2CmF",
+            "mangledName": "$s11IdentifySDK17TrackingEventTypeO22idCardOVDModuleSkippedyA2CmF",
             "moduleName": "IdentifySDK"
           },
           {
@@ -23825,13 +24284,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -35073,13 +35525,6 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "SendableMetatype",
-                "printedName": "SendableMetatype",
-                "usr": "s:s16SendableMetatypeP",
-                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -44809,13 +45254,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -59222,13 +59660,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "LocalizedError",
             "printedName": "LocalizedError",
             "usr": "s:10Foundation14LocalizedErrorP",
@@ -59743,13 +60174,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "LocalizedError",
             "printedName": "LocalizedError",
             "usr": "s:10Foundation14LocalizedErrorP",
@@ -60007,13 +60431,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -60398,6 +60815,117 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK10SDKNetworkC13useSSLPinningSbvM",
                 "mangledName": "$s11IdentifySDK10SDKNetworkC13useSSLPinningSbvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sslPinningBundles",
+            "printedName": "sslPinningBundles",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Foundation.Bundle]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvp",
+            "mangledName": "$s11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.Bundle]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bundle",
+                        "printedName": "Foundation.Bundle",
+                        "usr": "c:objc(cs)NSBundle"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvg",
+                "mangledName": "$s11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Foundation.Bundle]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bundle",
+                        "printedName": "Foundation.Bundle",
+                        "usr": "c:objc(cs)NSBundle"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvs",
+                "mangledName": "$s11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvM",
+                "mangledName": "$s11IdentifySDK10SDKNetworkC17sslPinningBundlesSaySo8NSBundleCGvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -65194,13 +65722,6 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "SendableMetatype",
-                "printedName": "SendableMetatype",
-                "usr": "s:s16SendableMetatypeP",
-                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -67361,13 +67882,6 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "SendableMetatype",
-                "printedName": "SendableMetatype",
-                "usr": "s:s16SendableMetatypeP",
-                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -69199,13 +69713,6 @@
                 "printedName": "Sendable",
                 "usr": "s:s8SendableP",
                 "mangledName": "$ss8SendableP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "SendableMetatype",
-                "printedName": "SendableMetatype",
-                "usr": "s:s16SendableMetatypeP",
-                "mangledName": "$ss16SendableMetatypeP"
               }
             ]
           },
@@ -91111,6 +91618,116 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK5StepsC7idFrontSbSgvM",
                 "mangledName": "$s11IdentifySDK5StepsC7idFrontSbSgvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "idFrontOvd",
+            "printedName": "idFrontOvd",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Bool?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK5StepsC10idFrontOvdSbSgvp",
+            "mangledName": "$s11IdentifySDK5StepsC10idFrontOvdSbSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK5StepsC10idFrontOvdSbSgvg",
+                "mangledName": "$s11IdentifySDK5StepsC10idFrontOvdSbSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Bool?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bool",
+                        "printedName": "Swift.Bool",
+                        "usr": "s:Sb"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK5StepsC10idFrontOvdSbSgvs",
+                "mangledName": "$s11IdentifySDK5StepsC10idFrontOvdSbSgvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK5StepsC10idFrontOvdSbSgvM",
+                "mangledName": "$s11IdentifySDK5StepsC10idFrontOvdSbSgvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -116561,13 +117178,24 @@
       },
       {
         "kind": "Import",
+        "name": "CoreImage",
+        "printedName": "CoreImage",
+        "declKind": "Import",
+        "moduleName": "IdentifySDK"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreImage.CIFilterBuiltins",
+        "printedName": "CoreImage.CIFilterBuiltins",
+        "declKind": "Import",
+        "moduleName": "IdentifySDK"
+      },
+      {
+        "kind": "Import",
         "name": "CryptoKit",
         "printedName": "CryptoKit",
         "declKind": "Import",
-        "moduleName": "IdentifySDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
+        "moduleName": "IdentifySDK"
       },
       {
         "kind": "Import",
@@ -118682,6 +119310,96 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK0A7ManagerC22idCardModuleControllerSo06UIViewG0CvM",
                 "mangledName": "$s11IdentifySDK0A7ManagerC22idCardModuleControllerSo06UIViewG0CvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "intro_iOS": "13",
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "idCardOVDModuleController",
+            "printedName": "idCardOVDModuleController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvp",
+            "mangledName": "$s11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvg",
+                "mangledName": "$s11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIViewController",
+                    "printedName": "UIKit.UIViewController",
+                    "usr": "c:objc(cs)UIViewController"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvs",
+                "mangledName": "$s11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0Cvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0CvM",
+                "mangledName": "$s11IdentifySDK0A7ManagerC25idCardOVDModuleControllerSo06UIViewG0CvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "intro_iOS": "13",
@@ -125071,6 +125789,611 @@
           },
           {
             "kind": "Function",
+            "name": "detectQuadSync",
+            "printedName": "detectQuadSync(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "IdentifySDK.Quadrilateral?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Quadrilateral",
+                    "printedName": "IdentifySDK.Quadrilateral",
+                    "usr": "s:11IdentifySDK13QuadrilateralV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC14detectQuadSync2inAA13QuadrilateralVSgSo7CIImageC_tF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC14detectQuadSync2inAA13QuadrilateralVSgSo7CIImageC_tF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "perspectiveCorrect",
+            "printedName": "perspectiveCorrect(image:quad:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "CoreImage.CIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CIImage",
+                    "printedName": "CoreImage.CIImage",
+                    "usr": "c:objc(cs)CIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Quadrilateral",
+                "printedName": "IdentifySDK.Quadrilateral",
+                "usr": "s:11IdentifySDK13QuadrilateralV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC18perspectiveCorrect5image4quadSo7CIImageCSgAH_AA13QuadrilateralVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC18perspectiveCorrect5image4quadSo7CIImageCSgAH_AA13QuadrilateralVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "perspectiveCorrect",
+            "printedName": "perspectiveCorrect(image:rect:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "CoreImage.CIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CIImage",
+                    "printedName": "CoreImage.CIImage",
+                    "usr": "c:objc(cs)CIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VNRectangleObservation",
+                "printedName": "Vision.VNRectangleObservation",
+                "usr": "c:objc(cs)VNRectangleObservation"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC18perspectiveCorrect5image4rectSo7CIImageCSgAH_So22VNRectangleObservationCtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC18perspectiveCorrect5image4rectSo7CIImageCSgAH_So22VNRectangleObservationCtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "forceLandscape",
+            "printedName": "forceLandscape(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC14forceLandscapeySo7CIImageCAFF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC14forceLandscapeySo7CIImageCAFF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "makeUIImage",
+            "printedName": "makeUIImage(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC11makeUIImage4fromSo0E0CSgSo7CIImageC_tF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC11makeUIImage4fromSo0E0CSgSo7CIImageC_tF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sideLengths",
+            "printedName": "sideLengths(of:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(w: CoreGraphics.CGFloat, h: CoreGraphics.CGFloat)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VNRectangleObservation",
+                "printedName": "Vision.VNRectangleObservation",
+                "usr": "c:objc(cs)VNRectangleObservation"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC11sideLengths2of14CoreFoundation7CGFloatV1w_AH1htSo22VNRectangleObservationC_tF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC11sideLengths2of12CoreGraphics7CGFloatV1w_AH1htSo22VNRectangleObservationC_tF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toImageRect",
+            "printedName": "toImageRect(observation:imageRect:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VNRectangleObservation",
+                "printedName": "Vision.VNRectangleObservation",
+                "usr": "c:objc(cs)VNRectangleObservation"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC11toImageRect11observation05imageF0So6CGRectVSo22VNRectangleObservationC_AHtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC11toImageRect11observation05imageF0So6CGRectVSo22VNRectangleObservationC_AHtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "probeMRZPresence",
+            "printedName": "probeMRZPresence(in:roi:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Bool) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC16probeMRZPresence2in3roi10completionySo7CIImageC_So6CGRectVySbctF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC16probeMRZPresence2in3roi10completionySo7CIImageC_So6CGRectVySbctF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "processCaptured",
+            "printedName": "processCaptured(_:roiInImage:step:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC15processCaptured_10roiInImage4stepSo7CIImageCAH_So6CGRectVSStF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC15processCaptured_10roiInImage4stepSo7CIImageCAH_So6CGRectVSStF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdGlareScore",
+            "printedName": "ovdGlareScore(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC13ovdGlareScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC13ovdGlareScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdTextureMean",
+            "printedName": "ovdTextureMean(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC14ovdTextureMean7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC14ovdTextureMean7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdColorMetrics",
+            "printedName": "ovdColorMetrics(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(brightness: Swift.Float, chroma: Swift.Float, whiteOut: Swift.Bool)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC15ovdColorMetrics7ciImage3roiSf10brightness_Sf6chromaSb8whiteOuttSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC15ovdColorMetrics7ciImage3roiSf10brightness_Sf6chromaSb8whiteOuttSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdRainbowScoreDetailed",
+            "printedName": "ovdRainbowScoreDetailed(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(score: Swift.Float, binsPresent: Swift.Int, coverage: Swift.Float)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC23ovdRainbowScoreDetailed7ciImage3roiSf5score_Si11binsPresentSf8coveragetSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC23ovdRainbowScoreDetailed7ciImage3roiSf5score_Si11binsPresentSf8coveragetSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdRainbowScore",
+            "printedName": "ovdRainbowScore(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC15ovdRainbowScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC15ovdRainbowScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "ovdRainbowMaxScoreDetailed",
+            "printedName": "ovdRainbowMaxScoreDetailed(in:baseROI:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(score: Swift.Float, bins: Swift.Int)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC26ovdRainbowMaxScoreDetailed2in7baseROISf5score_Si4binstSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC26ovdRainbowMaxScoreDetailed2in7baseROISf5score_Si4binstSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "websocketDidConnect",
             "printedName": "websocketDidConnect(socket:)",
             "children": [
@@ -125592,18 +126915,782 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "IdentifySDK"
+        "kind": "TypeDecl",
+        "name": "OVDAnalyzer",
+        "printedName": "OVDAnalyzer",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OVDAnalyzer",
+                "printedName": "IdentifySDK.OVDAnalyzer",
+                "usr": "s:11IdentifySDK11OVDAnalyzerC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK11OVDAnalyzerCACycfc",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerCACycfc",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "glareScore",
+            "printedName": "glareScore(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK11OVDAnalyzerC10glareScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerC10glareScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "textureMean",
+            "printedName": "textureMean(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK11OVDAnalyzerC11textureMean7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerC11textureMean7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "colorMetrics",
+            "printedName": "colorMetrics(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(brightness: Swift.Float, chroma: Swift.Float, whiteOut: Swift.Bool)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK11OVDAnalyzerC12colorMetrics7ciImage3roiSf10brightness_Sf6chromaSb8whiteOuttSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerC12colorMetrics7ciImage3roiSf10brightness_Sf6chromaSb8whiteOuttSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "rainbowScoreDetailed",
+            "printedName": "rainbowScoreDetailed(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(score: Swift.Float, binsPresent: Swift.Int, coverage: Swift.Float)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK11OVDAnalyzerC20rainbowScoreDetailed7ciImage3roiSf5score_Si11binsPresentSf8coveragetSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerC20rainbowScoreDetailed7ciImage3roiSf5score_Si11binsPresentSf8coveragetSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "rainbowScore",
+            "printedName": "rainbowScore(ciImage:roi:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CIImage",
+                "printedName": "CoreImage.CIImage",
+                "usr": "c:objc(cs)CIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK11OVDAnalyzerC12rainbowScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "mangledName": "$s11IdentifySDK11OVDAnalyzerC12rainbowScore7ciImage3roiSfSo7CIImageC_So6CGRectVtF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:11IdentifySDK11OVDAnalyzerC",
+        "mangledName": "$s11IdentifySDK11OVDAnalyzerC",
+        "moduleName": "IdentifySDK",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
-        "kind": "Import",
-        "name": "CryptoKit",
-        "printedName": "CryptoKit",
-        "declKind": "Import",
-        "moduleName": "IdentifySDK"
+        "kind": "TypeDecl",
+        "name": "Quadrilateral",
+        "printedName": "Quadrilateral",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "topLeft",
+            "printedName": "topLeft",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvp",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvg",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvs",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvM",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV7topLeftSo7CGPointVvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "topRight",
+            "printedName": "topRight",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvp",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvg",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvs",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvM",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV8topRightSo7CGPointVvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bottomRight",
+            "printedName": "bottomRight",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvp",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvg",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvs",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvM",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV11bottomRightSo7CGPointVvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bottomLeft",
+            "printedName": "bottomLeft",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvp",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvg",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvs",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvM",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV10bottomLeftSo7CGPointVvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(topLeft:topRight:bottomRight:bottomLeft:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Quadrilateral",
+                "printedName": "IdentifySDK.Quadrilateral",
+                "usr": "s:11IdentifySDK13QuadrilateralV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK13QuadrilateralV7topLeft0D5Right06bottomF00gE0ACSo7CGPointV_A3Itcfc",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV7topLeft0D5Right06bottomF00gE0ACSo7CGPointV_A3Itcfc",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rectangleObservation:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Quadrilateral",
+                "printedName": "IdentifySDK.Quadrilateral",
+                "usr": "s:11IdentifySDK13QuadrilateralV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VNRectangleObservation",
+                "printedName": "Vision.VNRectangleObservation",
+                "usr": "c:objc(cs)VNRectangleObservation"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK13QuadrilateralV20rectangleObservationACSo011VNRectangleE0C_tcfc",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV20rectangleObservationACSo011VNRectangleE0C_tcfc",
+            "moduleName": "IdentifySDK",
+            "intro_iOS": "11.0",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "perimeter",
+            "printedName": "perimeter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK13QuadrilateralV9perimeterSdvp",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV9perimeterSdvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK13QuadrilateralV9perimeterSdvg",
+                "mangledName": "$s11IdentifySDK13QuadrilateralV9perimeterSdvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "applying",
+            "printedName": "applying(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Quadrilateral",
+                "printedName": "IdentifySDK.Quadrilateral",
+                "usr": "s:11IdentifySDK13QuadrilateralV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGAffineTransform",
+                "printedName": "CoreFoundation.CGAffineTransform",
+                "usr": "c:@S@CGAffineTransform"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK13QuadrilateralV8applyingyACSo17CGAffineTransformVF",
+            "mangledName": "$s11IdentifySDK13QuadrilateralV8applyingyACSo17CGAffineTransformVF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:11IdentifySDK13QuadrilateralV",
+        "mangledName": "$s11IdentifySDK13QuadrilateralV",
+        "moduleName": "IdentifySDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -129506,13 +131593,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -132206,13 +134286,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -132256,6 +134329,38 @@
             ],
             "isFromExtension": true,
             "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "biggest",
+            "printedName": "biggest()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "IdentifySDK.Quadrilateral?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Quadrilateral",
+                    "printedName": "IdentifySDK.Quadrilateral",
+                    "usr": "s:11IdentifySDK13QuadrilateralV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:Sa11IdentifySDKAA13QuadrilateralVRszlE7biggestACSgyF",
+            "mangledName": "$sSa11IdentifySDKAA13QuadrilateralVRszlE7biggestACSgyF",
+            "moduleName": "IdentifySDK",
+            "genericSig": "<τ_0_0 where τ_0_0 == IdentifySDK.Quadrilateral>",
+            "sugared_genericSig": "<Element where Element == IdentifySDK.Quadrilateral>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
             "funcSelfKind": "NonMutating"
           }
         ],
@@ -132807,13 +134912,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Encodable",
             "printedName": "Encodable",
             "usr": "s:SE",
@@ -132832,6 +134930,35 @@
             "printedName": "_HasContiguousBytes",
             "usr": "s:s19_HasContiguousBytesP",
             "mangledName": "$ss19_HasContiguousBytesP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSArray",
+                    "printedName": "Foundation.NSArray",
+                    "usr": "c:objc(cs)NSArray"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
           },
           {
             "kind": "Conformance",
@@ -132929,49 +135056,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "_ObjectiveCBridgeable",
-            "printedName": "_ObjectiveCBridgeable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "_ObjectiveCType",
-                "printedName": "_ObjectiveCType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSArray",
-                    "printedName": "Foundation.NSArray",
-                    "usr": "c:objc(cs)NSArray"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s21_ObjectiveCBridgeableP",
-            "mangledName": "$ss21_ObjectiveCBridgeableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Content",
-            "printedName": "Content",
-            "usr": "s:So17CMSampleBufferRefa9CoreMediaE7ContentP",
-            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE7ContentP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "ContentWithFormatDescription",
-            "printedName": "ContentWithFormatDescription",
-            "usr": "s:So17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP",
-            "mangledName": "$sSo17CMSampleBufferRefa9CoreMediaE28ContentWithFormatDescriptionP"
-          },
-          {
-            "kind": "Conformance",
             "name": "AccelerateMutableBuffer",
             "printedName": "AccelerateMutableBuffer",
             "usr": "s:10Accelerate0A13MutableBufferP",
@@ -132997,27 +135081,6 @@
             ],
             "usr": "s:10Accelerate0A6BufferP",
             "mangledName": "$s10Accelerate0A6BufferP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "OperationParameter",
-            "printedName": "OperationParameter",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Element",
-                "printedName": "Element",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "τ_0_0"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:10Accelerate9BNNSGraphO7BuilderV18OperationParameterP",
-            "mangledName": "$s10Accelerate9BNNSGraphO7BuilderV18OperationParameterP"
           }
         ]
       },
@@ -133510,13 +135573,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Copyable",
             "printedName": "Copyable",
             "usr": "s:s8CopyableP",
@@ -133721,13 +135777,6 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -133920,13 +135969,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "AlamofireExtended",
             "printedName": "AlamofireExtended",
             "children": [
@@ -134079,13 +136121,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -134535,35 +136570,6 @@
             "printedName": "CVarArg",
             "usr": "s:s7CVarArgP",
             "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Transferable",
-            "printedName": "Transferable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Representation",
-                "printedName": "Representation",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OpaqueTypeArchetype",
-                    "printedName": "some CoreTransferable.TransferRepresentation",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "TransferRepresentation",
-                        "printedName": "CoreTransferable.TransferRepresentation",
-                        "usr": "s:16CoreTransferable22TransferRepresentationP"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "usr": "s:16CoreTransferable0B0P",
-            "mangledName": "$s16CoreTransferable0B0P"
           }
         ]
       },
@@ -134633,13 +136639,6 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -134747,35 +136746,6 @@
             "printedName": "_ExpressibleByFileReferenceLiteral",
             "usr": "s:s34_ExpressibleByFileReferenceLiteralP",
             "mangledName": "$ss34_ExpressibleByFileReferenceLiteralP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Transferable",
-            "printedName": "Transferable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Representation",
-                "printedName": "Representation",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OpaqueTypeArchetype",
-                    "printedName": "some CoreTransferable.TransferRepresentation",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "TransferRepresentation",
-                        "printedName": "CoreTransferable.TransferRepresentation",
-                        "usr": "s:16CoreTransferable22TransferRepresentationP"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "usr": "s:16CoreTransferable0B0P",
-            "mangledName": "$s16CoreTransferable0B0P"
           }
         ]
       },
@@ -134845,13 +136815,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -135177,13 +137140,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -135238,13 +137194,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "TopLevelDecoder",
             "printedName": "TopLevelDecoder",
             "children": [
@@ -135264,13 +137213,6 @@
             ],
             "usr": "s:7Combine15TopLevelDecoderP",
             "mangledName": "$s7Combine15TopLevelDecoderP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "NetworkDecoder",
-            "printedName": "NetworkDecoder",
-            "usr": "s:7Network0A7DecoderP",
-            "mangledName": "$s7Network0A7DecoderP"
           }
         ]
       },
@@ -135325,13 +137267,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "TopLevelDecoder",
             "printedName": "TopLevelDecoder",
             "children": [
@@ -135351,13 +137286,6 @@
             ],
             "usr": "s:7Combine15TopLevelDecoderP",
             "mangledName": "$s7Combine15TopLevelDecoderP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "NetworkDecoder",
-            "printedName": "NetworkDecoder",
-            "usr": "s:7Network0A7DecoderP",
-            "mangledName": "$s7Network0A7DecoderP"
           }
         ]
       },
@@ -135439,13 +137367,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -135765,13 +137686,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "_ExpressibleByImageLiteral",
             "printedName": "_ExpressibleByImageLiteral",
             "usr": "s:s26_ExpressibleByImageLiteralP",
@@ -135871,13 +137785,6 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -136058,8 +137965,6 @@
         "moduleName": "Security",
         "declAttributes": [
           "SynthesizedProtocol",
-          "SynthesizedProtocol",
-          "Sendable",
           "ObjC",
           "Dynamic"
         ],
@@ -136088,24 +137993,10 @@
           },
           {
             "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "Hashable",
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -136396,13 +138287,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "SIMDScalar",
             "printedName": "SIMDScalar",
             "children": [
@@ -136554,57 +138438,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "_FormatSpecifiable",
-            "printedName": "_FormatSpecifiable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "_Arg",
-                "printedName": "_Arg",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int32",
-                    "printedName": "Swift.Int32",
-                    "usr": "s:s5Int32V"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:7SwiftUI18_FormatSpecifiableP",
-            "mangledName": "$s7SwiftUI18_FormatSpecifiableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "NetworkFixedWidthInteger",
-            "printedName": "NetworkFixedWidthInteger",
-            "usr": "s:7Network0A17FixedWidthIntegerP",
-            "mangledName": "$s7Network0A17FixedWidthIntegerP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "AtomicRepresentable",
-            "printedName": "AtomicRepresentable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "AtomicRepresentation",
-                "printedName": "AtomicRepresentation",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "_Atomic32BitStorage",
-                    "printedName": "Synchronization._Atomic32BitStorage",
-                    "usr": "s:15Synchronization19_Atomic32BitStorageV"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:15Synchronization19AtomicRepresentableP",
-            "mangledName": "$s15Synchronization19AtomicRepresentableP"
-          },
-          {
-            "kind": "Conformance",
             "name": "vDSP_IntegerConvertable",
             "printedName": "vDSP_IntegerConvertable",
             "usr": "s:10Accelerate23vDSP_IntegerConvertableP",
@@ -136710,13 +138543,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "AlamofireExtended",
             "printedName": "AlamofireExtended",
             "children": [
@@ -136809,20 +138635,6 @@
           "ObjectiveC.NSObject"
         ],
         "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Copyable",
-            "printedName": "Copyable",
-            "usr": "s:s8CopyableP",
-            "mangledName": "$ss8CopyableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Escapable",
-            "printedName": "Escapable",
-            "usr": "s:s9EscapableP",
-            "mangledName": "$ss9EscapableP"
-          },
           {
             "kind": "Conformance",
             "name": "Copyable",
@@ -137009,13 +138821,6 @@
           },
           {
             "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
-          },
-          {
-            "kind": "Conformance",
             "name": "CustomStringConvertible",
             "printedName": "CustomStringConvertible",
             "usr": "s:s23CustomStringConvertibleP",
@@ -137174,13 +138979,6 @@
             "printedName": "Sendable",
             "usr": "s:s8SendableP",
             "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "SendableMetatype",
-            "printedName": "SendableMetatype",
-            "usr": "s:s16SendableMetatypeP",
-            "mangledName": "$ss16SendableMetatypeP"
           },
           {
             "kind": "Conformance",
@@ -137892,252 +139690,273 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 512,
+      "offset": 516,
+      "length": 12,
+      "value": "\"idFrontOvd\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "StringLiteral",
+      "offset": 547,
       "length": 8,
       "value": "\"idBack\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 541,
+      "offset": 576,
       "length": 10,
       "value": "\"passport\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 572,
+      "offset": 607,
       "length": 10,
       "value": "\"document\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 601,
+      "offset": 636,
       "length": 8,
       "value": "\"selfie\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 631,
+      "offset": 666,
       "length": 11,
       "value": "\"signature\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 663,
+      "offset": 698,
       "length": 10,
       "value": "\"blinking\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 693,
+      "offset": 728,
       "length": 9,
       "value": "\"smiling\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 726,
+      "offset": 761,
       "length": 13,
       "value": "\"headToRight\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 762,
+      "offset": 797,
       "length": 12,
       "value": "\"headToLeft\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 797,
+      "offset": 832,
       "length": 12,
       "value": "\"idPortrait\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 871,
+      "offset": 906,
       "length": 5,
       "value": "\"SDK\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 896,
+      "offset": 931,
       "length": 10,
       "value": "\"Demo App\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "IntegerLiteral",
-      "offset": 972,
+      "offset": 1007,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "IntegerLiteral",
-      "offset": 1000,
+      "offset": 1035,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "IntegerLiteral",
-      "offset": 1028,
+      "offset": 1063,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1095,
+      "offset": 1130,
       "length": 13,
       "value": "\"Identify Tr\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1127,
+      "offset": 1162,
       "length": 8,
       "value": "\"Custom\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1208,
+      "offset": 1243,
       "length": 14,
       "value": "\"Login Screen\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1249,
+      "offset": 1284,
       "length": 18,
       "value": "\"Mrz & Nfc Screen\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1303,
+      "offset": 1338,
       "length": 20,
       "value": "\"Liveness Detection\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1350,
+      "offset": 1385,
       "length": 18,
       "value": "\"Call Wait Screen\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1395,
+      "offset": 1430,
       "length": 8,
       "value": "\"Selfie\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1430,
+      "offset": 1465,
       "length": 16,
       "value": "\"Video Recorder\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1473,
+      "offset": 1508,
       "length": 9,
       "value": "\"Id Card\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1509,
+      "offset": 1544,
+      "length": 13,
+      "value": "\"Id Card OVD\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "StringLiteral",
+      "offset": 1584,
       "length": 11,
       "value": "\"Signature\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1547,
+      "offset": 1622,
       "length": 20,
       "value": "\"Speech Recognition\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1594,
+      "offset": 1669,
       "length": 17,
       "value": "\"Address Confirm\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1638,
+      "offset": 1713,
       "length": 11,
       "value": "\"Thank You\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 1676,
+      "offset": 1751,
       "length": 9,
       "value": "\"Prepare\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2583,
+      "offset": 2725,
       "length": 8,
       "value": "\"selfie\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2618,
+      "offset": 2760,
       "length": 14,
       "value": "\"oldPhoneFace\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2659,
+      "offset": 2801,
       "length": 7,
       "value": "\"video\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2693,
+      "offset": 2835,
       "length": 8,
       "value": "\"idBack\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2728,
+      "offset": 2870,
       "length": 9,
       "value": "\"idFront\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "StringLiteral",
-      "offset": 2764,
+      "offset": 2906,
+      "length": 12,
+      "value": "\"idFrontOVD\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "StringLiteral",
+      "offset": 2945,
       "length": 11,
       "value": "\"signature\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
       "kind": "IntegerLiteral",
-      "offset": 4317,
+      "offset": 4498,
       "length": 1,
       "value": "0"
     },
@@ -139641,134 +141460,141 @@
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
+      "kind": "Array",
+      "offset": 515,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "Dictionary",
-      "offset": 527,
+      "offset": 702,
       "length": 36,
       "value": "[(\"Content-Type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "Array",
-      "offset": 610,
+      "offset": 785,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 830,
+      "offset": 1005,
       "length": 26,
       "value": "\"IdentifySDK.LogSendQueue\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "BooleanLiteral",
-      "offset": 890,
+      "offset": 1065,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "Array",
-      "offset": 942,
+      "offset": 1117,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "Array",
-      "offset": 1000,
+      "offset": 1175,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "FloatLiteral",
-      "offset": 1104,
+      "offset": 1279,
       "length": 4,
       "value": "0.35"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "Dictionary",
-      "offset": 1196,
+      "offset": 1371,
       "length": 50,
       "value": "[(\"Content-Type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 1615,
+      "offset": 1790,
       "length": 13,
       "value": "\"ssl pinning\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 1761,
+      "offset": 1936,
       "length": 17,
       "value": "\"not ssl pinning\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 3801,
+      "offset": 6460,
       "length": 71,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 3813,
+      "offset": 6472,
       "length": 6,
       "value": "\"mobile\/getIdentDetails\/\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 3871,
+      "offset": 6530,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 4726,
+      "offset": 7385,
       "length": 25,
       "value": "\"Sunucu hatası alındı\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "BooleanLiteral",
-      "offset": 4804,
+      "offset": 7463,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 4907,
+      "offset": 7566,
       "length": 25,
       "value": "\"Sunucu hatası alındı\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 5645,
+      "offset": 8304,
       "length": 34,
       "value": "\"İstek zaman aşımına uğradı\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 5905,
+      "offset": 8564,
       "length": 34,
       "value": "\"İstek zaman aşımına uğradı\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKNetwork.swift",
       "kind": "StringLiteral",
-      "offset": 20410,
+      "offset": 23069,
       "length": 2,
       "value": "\"\""
     },
@@ -140594,63 +142420,70 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4298,
+      "offset": 4302,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4334,
+      "offset": 4339,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4374,
+      "offset": 4375,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4411,
+      "offset": 4415,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4448,
+      "offset": 4452,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4486,
+      "offset": 4489,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4527,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "StringLiteral",
-      "offset": 4532,
+      "offset": 4573,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4573,
+      "offset": 4614,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Signals.swift",
       "kind": "BooleanLiteral",
-      "offset": 4617,
+      "offset": 4658,
       "length": 5,
       "value": "false"
     },
@@ -141154,28 +142987,28 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 1797,
+      "offset": 3659,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 1829,
+      "offset": 3691,
       "length": 35,
       "value": "[(\"Content-Type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 3059,
+      "offset": 4921,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/NetworkService.swift",
       "kind": "Dictionary",
-      "offset": 3096,
+      "offset": 4958,
       "length": 3,
       "value": "[]"
     },
@@ -141280,541 +143113,1108 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 398,
+      "offset": 400,
       "length": 7,
-      "value": "\"2.4.2\""
+      "value": "\"2.5.0\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 436,
+      "offset": 438,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 539,
+      "offset": 541,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 763,
+      "offset": 765,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 845,
+      "offset": 847,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1254,
+      "offset": 1256,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1303,
+      "offset": 1305,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1358,
+      "offset": 1360,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1564,
+      "offset": 1566,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1588,
+      "offset": 1590,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1696,
+      "offset": 1698,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1728,
+      "offset": 1730,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1970,
+      "offset": 1972,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 2011,
+      "offset": 2013,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 2062,
+      "offset": 2064,
       "length": 8,
       "value": "[\"\", \"\"]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2094,
+      "offset": 2096,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2120,
+      "offset": 2122,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2146,
+      "offset": 2148,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 2481,
+      "offset": 2483,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3392,
+      "offset": 3456,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3423,
+      "offset": 3487,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3452,
+      "offset": 3516,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3485,
+      "offset": 3549,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3685,
+      "offset": 3749,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3732,
+      "offset": 3796,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3778,
+      "offset": 3842,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3812,
+      "offset": 3876,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3932,
+      "offset": 3996,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 3966,
+      "offset": 4030,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4009,
+      "offset": 4073,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4069,
+      "offset": 4133,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4233,
+      "offset": 4297,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4271,
+      "offset": 4335,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4402,
+      "offset": 4466,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4457,
+      "offset": 4521,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 4499,
+      "offset": 4563,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 4544,
+      "offset": 4608,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4596,
+      "offset": 4660,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4742,
+      "offset": 4806,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4856,
+      "offset": 4920,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4901,
+      "offset": 4965,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4939,
+      "offset": 5003,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4977,
+      "offset": 5041,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5028,
+      "offset": 5092,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5071,
+      "offset": 5135,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5114,
+      "offset": 5178,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5171,
+      "offset": 5235,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5321,
+      "offset": 5385,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5466,
+      "offset": 5530,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5575,
+      "offset": 5639,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5604,
+      "offset": 5668,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5641,
+      "offset": 5705,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5669,
+      "offset": 5733,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5702,
+      "offset": 5766,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5731,
+      "offset": 5795,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5754,
+      "offset": 5818,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6161,
+      "offset": 6225,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6205,
+      "offset": 6269,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 7856,
+      "offset": 7920,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7891,
+      "offset": 7955,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 7938,
+      "offset": 8002,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8009,
+      "offset": 8073,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8075,
+      "offset": 8139,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8119,
+      "offset": 8183,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8154,
+      "offset": 8218,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 8187,
+      "offset": 8251,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 8228,
+      "offset": 8292,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 10792,
+      "offset": 10938,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 10811,
+      "offset": 10957,
       "length": 10,
       "value": "\"ident_id\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 12484,
+      "offset": 12630,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 87208,
+      "offset": 88452,
       "length": 19,
       "value": "\"log msg not found\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 87244,
+      "offset": 88488,
       "length": 9,
       "value": "\"general\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 87272,
+      "offset": 88516,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 105635,
+      "offset": 116619,
       "length": 29,
       "value": "\"IdentifySDK.LogProcessQueue\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 105697,
+      "offset": 116681,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 105804,
+      "offset": 116788,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 107265,
+      "offset": 118249,
       "length": 9,
       "value": "\"general\""
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 126021,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129039,
+      "length": 2,
+      "value": "48"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129047,
+      "length": 2,
+      "value": "48"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129134,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129148,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129236,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129288,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129492,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129498,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129559,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129569,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129591,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129610,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129654,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129656,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 129662,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129700,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129702,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 129708,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129746,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129748,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 129754,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129902,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 129906,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 129950,
+      "length": 3,
+      "value": "0.6"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 129961,
+      "length": 3,
+      "value": "0.3"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130037,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130063,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130074,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130121,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130147,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130195,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130217,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130252,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130274,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130305,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130317,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130403,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130407,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130411,
+      "length": 3,
+      "value": "330"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130417,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130428,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130451,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130456,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130476,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130499,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130504,
+      "length": 3,
+      "value": "150"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130524,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130547,
+      "length": 3,
+      "value": "150"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130553,
+      "length": 3,
+      "value": "210"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130572,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130595,
+      "length": 3,
+      "value": "210"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130601,
+      "length": 3,
+      "value": "270"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130620,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130668,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130717,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130743,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 130810,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 130917,
+      "length": 3,
+      "value": "6.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131344,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131350,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131360,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131371,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131479,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131489,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131539,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131550,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131571,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131587,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131694,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131700,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131710,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131721,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131752,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 131756,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131774,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 131778,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131796,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 131800,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 131818,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "FloatLiteral",
+      "offset": 131822,
+      "length": 5,
+      "value": "255.0"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/ManualNFC\/NFCPassportReader\/PassportReader.swift",
