@@ -3482,6 +3482,7 @@ public class IdentifyManager {
   public var sdkFrontInfo: IdentifySDK.FrontIdInfo
   public var sdkBackInfo: IdentifySDK.BackIdInfo
   public var sdkNfcInfo: IdentifySDK.IdentifyCard
+  public var enableDebugPrint: Swift.Bool
   public var webRTCClient: IdentifySDK.WebRTCClient!
   public var sdkSocketActions: IdentifySDK.SDKCallActions?
   public var socket: Starscream.WebSocket!
@@ -3538,6 +3539,7 @@ public class IdentifyManager {
   public var requestMaxBodySize: Swift.Int
   @objc deinit
   public func getVersion() -> Swift.String
+  public static func debugPrint(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
   public var trackingEventType: IdentifySDK.TrackingEventType?
   public var trackingDelegate: (any IdentifySDK.IdentifyTrackingListener)?
   public func setSDKLang(lang: IdentifySDK.SDKLang? = .eng)
