@@ -143256,7 +143256,7 @@
       "kind": "StringLiteral",
       "offset": 400,
       "length": 7,
-      "value": "\"2.5.1\""
+      "value": "\"2.5.2\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
@@ -144682,105 +144682,105 @@
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 18037,
+      "offset": 19409,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 18122,
+      "offset": 19494,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 18140,
+      "offset": 19512,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 18164,
+      "offset": 19536,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "FloatLiteral",
-      "offset": 18373,
+      "offset": 19745,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 18398,
+      "offset": 19770,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 18437,
+      "offset": 19809,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38649,
+      "offset": 40021,
       "length": 65,
       "value": "\"kernel vec4 thresholdFilter(__sample image, __sample threshold)\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38721,
+      "offset": 40093,
       "length": 3,
       "value": "\"{\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38731,
+      "offset": 40103,
       "length": 68,
       "value": "\"   float imageLuma = dot(image.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38806,
+      "offset": 40178,
       "length": 76,
       "value": "\"   float thresholdLuma = dot(threshold.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38890,
+      "offset": 40262,
       "length": 60,
       "value": "\"   return vec4(vec3(step(imageLuma, thresholdLuma)), 1.0);\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 38957,
+      "offset": 40329,
       "length": 3,
       "value": "\"}\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 39735,
+      "offset": 41107,
       "length": 11,
       "value": "\"CIBoxBlur\""
     },
     {
       "filePath": "\/Users\/can\/Documents\/GitHub\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 39828,
+      "offset": 41200,
       "length": 1,
       "value": "9"
     },

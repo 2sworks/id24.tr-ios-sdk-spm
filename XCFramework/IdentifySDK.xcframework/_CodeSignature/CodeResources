@@ -10,15 +10,15 @@
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/IdentifySDK</key>
 		<data>
-		5C3J7d4J+nRjrE8YWsrNiVs6RjA=
+		EOML7kXDjHl+BBK6PfOmC6uDXEo=
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/Info.plist</key>
 		<data>
-		WZGphZudTjlGenzdFeTkeMl1Z7Y=
+		C+3xyYw8WaCErP9wMh0PsY6Be4E=
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		2+F4DRspFNXsvxuLfuOBITDdOqA=
+		zdnx8970dq2frGVfXec99/sauMM=
 		</data>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -46,15 +46,15 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/IdentifySDK</key>
 		<data>
-		xi+ZYhjFwH8egsyNx+wf9X72Vfs=
+		nhImaoepUnxlUWu81pA85inGdqA=
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Info.plist</key>
 		<data>
-		tNDVdbG5hSuNnnfkRWC2ytmWnYk=
+		jHdoTE8RWNmOr7lsMNaB580QUog=
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		2+F4DRspFNXsvxuLfuOBITDdOqA=
+		zdnx8970dq2frGVfXec99/sauMM=
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		2+F4DRspFNXsvxuLfuOBITDdOqA=
+		zdnx8970dq2frGVfXec99/sauMM=
 		</data>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -110,33 +110,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5C3J7d4J+nRjrE8YWsrNiVs6RjA=
+			EOML7kXDjHl+BBK6PfOmC6uDXEo=
 			</data>
 			<key>hash2</key>
 			<data>
-			0XwqITl1WxiJvrT0zXRK1VduYg3ZtF8NAuvg9HKFBBw=
+			axXBHiggCdeDiGTh2wyGEBUrtGxmMqW4o9iAZQc6okQ=
 			</data>
 		</dict>
 		<key>ios-arm64/IdentifySDK.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WZGphZudTjlGenzdFeTkeMl1Z7Y=
+			C+3xyYw8WaCErP9wMh0PsY6Be4E=
 			</data>
 			<key>hash2</key>
 			<data>
-			eqzaRD8SnUfKA5iODRheXnjFZJg+6h5FBoRvGK0Gttw=
+			+E4uWWG5X2Qx8oEVeDe9NyFe6bSRKWgbPHr3NXOejgY=
 			</data>
 		</dict>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2+F4DRspFNXsvxuLfuOBITDdOqA=
+			zdnx8970dq2frGVfXec99/sauMM=
 			</data>
 			<key>hash2</key>
 			<data>
-			RwWUuljgxX/TdE9nzyD1dDuMxlSvPAlANncubc27Q3k=
+			F8J/dfAMohsTrGVsIg6/cnYnSuVrozRqqw4JDwb26vk=
 			</data>
 		</dict>
 		<key>ios-arm64/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -209,33 +209,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xi+ZYhjFwH8egsyNx+wf9X72Vfs=
+			nhImaoepUnxlUWu81pA85inGdqA=
 			</data>
 			<key>hash2</key>
 			<data>
-			n/5dsBMOzjdAdZ67nCEnSbK2etsKsRu94fg5OSqXxcI=
+			4XeInuSD3aBcyncjS7Xlf10pLMTp9FR9nh07YARVlbE=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tNDVdbG5hSuNnnfkRWC2ytmWnYk=
+			jHdoTE8RWNmOr7lsMNaB580QUog=
 			</data>
 			<key>hash2</key>
 			<data>
-			9sFM+x9sHnXlQe1NEiaFQ0ITo02QQXMFmxfTCep+5jA=
+			4diB0xTPb6qizJRwCsMOARHgisCXlY/eESeGxC2Mgb0=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2+F4DRspFNXsvxuLfuOBITDdOqA=
+			zdnx8970dq2frGVfXec99/sauMM=
 			</data>
 			<key>hash2</key>
 			<data>
-			RwWUuljgxX/TdE9nzyD1dDuMxlSvPAlANncubc27Q3k=
+			F8J/dfAMohsTrGVsIg6/cnYnSuVrozRqqw4JDwb26vk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -275,11 +275,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2+F4DRspFNXsvxuLfuOBITDdOqA=
+			zdnx8970dq2frGVfXec99/sauMM=
 			</data>
 			<key>hash2</key>
 			<data>
-			RwWUuljgxX/TdE9nzyD1dDuMxlSvPAlANncubc27Q3k=
+			F8J/dfAMohsTrGVsIg6/cnYnSuVrozRqqw4JDwb26vk=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/IdentifySDK.framework/Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
