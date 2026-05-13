@@ -2989,8 +2989,20 @@ public class IdentifyCard : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
+public class SDKNFCReadKeys : Swift.Codable {
+  public var identId: Swift.String?
+  public var serialNo: Swift.String?
+  public var birthDate: Swift.String?
+  public var expireDate: Swift.String?
+  public init(identId: Swift.String? = nil, serialNo: Swift.String? = nil, birthDate: Swift.String? = nil, expireDate: Swift.String? = nil)
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
 public class FrontIdInfo : Swift.Codable {
   public var idTcknOcr: Swift.String?, idSurnameOcr: Swift.String?, idNameOcr: Swift.String?, idBirthDateOcr: Swift.String?, idSerialNoOcr: Swift.String?, idValidUntilOcr: Swift.String?, fullMrzKey: Swift.String?
+  public var lowConfidenceFields: [Swift.String]?
+  public var rejectedFields: [Swift.String]?
   public init()
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
@@ -2998,6 +3010,8 @@ public class FrontIdInfo : Swift.Codable {
 }
 public class BackIdInfo : Swift.Codable {
   public var idSurnameMRZ: Swift.String?, idNameMRZ: Swift.String?, idMotherNameOcr: Swift.String?, idFatherNameOcr: Swift.String?, idIssuedByOcr: Swift.String?, fullMrzKey: Swift.String?, idTcknMRZ: Swift.String?, idDocumentNumberMRZ: Swift.String?, idBirthDateMRZ: Swift.String?, idValidDateMRZ: Swift.String?, idTypeMRZ: Swift.String?, idGenderMRZ: Swift.String?, bulkData: Swift.String?
+  public var lowConfidenceFields: [Swift.String]?
+  public var rejectedFields: [Swift.String]?
   public init()
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
@@ -3657,6 +3671,7 @@ public class IdentifyManager {
   public func reconnectToSocket(callback: @escaping (Starscream.WebSocket) -> (), statusCallback: @escaping (IdentifySDK.StatusSummary?) -> ())
   public func startRemoteNFC(birthDate: Swift.String, validDate: Swift.String, docNo: Swift.String)
   public func startNFC(callback: @escaping (IdentifySDK.IdentifyCard?, IdentifySDK.AutoIdentStatus, IdentifySDK.NewBoolResponse, (any Swift.Error)?) -> ())
+  public func updateReadNFCKeys(serialNo: Swift.String?, birthDate: Swift.String?, expireDate: Swift.String?, completion: @escaping (_ success: Swift.Bool, _ errorMessage: Swift.String?) -> Swift.Void)
   public func sendSpeechStatus(isCompleted: Swift.Bool?)
   public func sendPreparetatus(isCompleted: Swift.Bool?)
   public func twoFacesCompare(callback: @escaping (Swift.Double, Swift.Bool, [UIKit.UIImage], (any Swift.Error)?) -> ())
