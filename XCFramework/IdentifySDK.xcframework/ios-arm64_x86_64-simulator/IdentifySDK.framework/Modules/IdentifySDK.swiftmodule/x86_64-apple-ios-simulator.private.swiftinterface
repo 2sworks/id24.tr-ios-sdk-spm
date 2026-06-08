@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
-// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import CoreImage.CIFilterBuiltins
 import Combine
 import CommonCrypto
@@ -674,6 +674,7 @@ public enum SdkModules : Swift.String, Swift.Codable {
   case addressConf
   case thankU
   case prepare
+  case selfieWithLiveness
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -841,6 +842,10 @@ public enum TrackingEventType {
   case videoCallModuleFailed
   case videoCallModuleCompleted
   case videoCallModuleSkipped
+  case selfieWithLivenessModulePresented
+  case selfieWithLivenessModuleFailed
+  case selfieWithLivenessModuleCompleted
+  case selfieWithLivenessModuleSkipped
   case HTTP_RESPONSE_TRACKING_EVENT
   case HTTP_REQUEST_TRACKING_EVENT
   public static func == (a: IdentifySDK.TrackingEventType, b: IdentifySDK.TrackingEventType) -> Swift.Bool
@@ -1897,6 +1902,8 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   public var encrypted_turn_credential: Swift.String?
   public var sdk_log_api_url: Swift.String?
   public var socket_auth: Swift.String?
+  public var liveness_report: Swift.Int?
+  public var liveness_report_interval: Swift.Int?
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -3614,6 +3621,7 @@ public class IdentifyManager {
   public var callWaitModuleController: UIKit.UIViewController
   public var thankYouViewController: UIKit.UIViewController
   public var prepareViewController: UIKit.UIViewController
+  public var selfieWithLivenessViewController: UIKit.UIViewController
   public var modulesControllersArray: [UIKit.UIViewController]
   public var manipulatedModulesControllersArray: [UIKit.UIViewController]
   public var moduleStepOrder: Swift.Int
@@ -3648,6 +3656,8 @@ public class IdentifyManager {
   public var activeComparisonResultSkipModule: Swift.String
   final public let maxAddressPDFFileSize: Swift.Int
   public var livenessRecordingEnabled: Swift.Bool
+  public var livenessReportEnabled: Swift.Bool
+  public var livenessReportInterval: Swift.Int
   public var requestMaxBodySize: Swift.Int
   @objc deinit
   public func getVersion() -> Swift.String
@@ -3682,7 +3692,7 @@ public class IdentifyManager {
   public func detectHumanFace(comingPhoto: UIKit.UIImage, callback: @escaping (Swift.Bool) -> ())
   public func uploadAddressInfo(invoicePhoto: UIKit.UIImage, addressText: Swift.String, callback: @escaping (Swift.Bool, IdentifySDK.SDKWebError?) -> ())
   public func uploadAddressInfoWithPdf(pdfData: Foundation.Data, addressText: Swift.String, callback: @escaping (Swift.Bool, IdentifySDK.SDKWebError?) -> ())
-  public func uploadIdPhoto(idPhoto: UIKit.UIImage, selfieType: IdentifySDK.OCRType = .frontId, callback: @escaping (IdentifySDK.NewBoolResponse) -> ())
+  public func uploadIdPhoto(idPhoto: UIKit.UIImage, selfieType: IdentifySDK.OCRType = .frontId, withLiveness: Swift.Bool = false, callback: @escaping (IdentifySDK.NewBoolResponse) -> ())
   public func upload5SecVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
   public func uploadLivenessVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
   public func acceptCall(callback: @escaping (_ connected: Swift.Bool?, _ errMsg: IdentifySDK.SDKError?, _ sdpOk: Swift.Bool?) -> ())
@@ -3696,6 +3706,7 @@ public class IdentifyManager {
   public func startReachabilityForLogs()
   public func stopReachabilityForLogs()
   public func sdkLog(logMsg: Swift.String? = "log msg not found", type: Swift.String = "general", isSlient: Swift.Bool = false)
+  public func sendLivenessReport(metrics: [Swift.String : Swift.Double], detectedActions: [Swift.String] = [])
   public func forceQuitSDK()
   public func detectQuadSync(in image: CoreImage.CIImage) -> IdentifySDK.Quadrilateral?
   public func perspectiveCorrect(image: CoreImage.CIImage, quad: IdentifySDK.Quadrilateral) -> CoreImage.CIImage?
@@ -3837,6 +3848,8 @@ extension IdentifySDK.DownloadResponse {
   public var isConnected: Swift.Bool {
     get
   }
+  public var onSwitchedToBackCamera: (() -> Swift.Void)?
+  public var onARKitRestartNeeded: (() -> Swift.Void)?
   public func localVideoView() -> UIKit.UIView
   public func remoteVideoView() -> UIKit.UIView
   @objc deinit
@@ -3844,6 +3857,9 @@ extension IdentifySDK.DownloadResponse {
   public func setupRemoteViewFrame(frame: CoreFoundation.CGRect)
   public func switchCameraPosition()
   public func changeFlash(on: Swift.Bool)
+  public func captureCurrentFrame(sampleBuffer: CoreMedia.CMSampleBuffer)
+  public func captureCurrentFrame(sampleBuffer: CoreVideo.CVPixelBuffer)
+  public func switchToARKitCapture()
 }
 extension IdentifySDK.WebRTCClient {
   @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didChange stateChanged: WebRTC.RTCSignalingState)
