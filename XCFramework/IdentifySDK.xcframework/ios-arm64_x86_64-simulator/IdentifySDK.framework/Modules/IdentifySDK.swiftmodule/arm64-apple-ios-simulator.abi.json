@@ -129880,6 +129880,27 @@
           },
           {
             "kind": "Function",
+            "name": "replayPendingQueueStats",
+            "printedName": "replayPendingQueueStats()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11IdentifySDK0A7ManagerC23replayPendingQueueStatsyyF",
+            "mangledName": "$s11IdentifySDK0A7ManagerC23replayPendingQueueStatsyyF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "websocketDidReceiveData",
             "printedName": "websocketDidReceiveData(socket:data:)",
             "children": [
@@ -147722,352 +147743,261 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 130812,
+      "offset": 131166,
       "length": 29,
       "value": "\"IdentifySDK.LogProcessQueue\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 130874,
+      "offset": 131228,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 130912,
+      "offset": 131266,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 131019,
+      "offset": 131373,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131118,
+      "offset": 131472,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131161,
+      "offset": 131515,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131295,
+      "offset": 131649,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131300,
+      "offset": 131654,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 132728,
+      "offset": 133082,
       "length": 9,
       "value": "\"general\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 143133,
+      "offset": 143487,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146151,
+      "offset": 146505,
       "length": 2,
       "value": "48"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146159,
+      "offset": 146513,
       "length": 2,
       "value": "48"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146246,
+      "offset": 146600,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146260,
+      "offset": 146614,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146348,
+      "offset": 146702,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146400,
+      "offset": 146754,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146604,
+      "offset": 146958,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146610,
+      "offset": 146964,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146671,
+      "offset": 147025,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146681,
+      "offset": 147035,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146703,
+      "offset": 147057,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146722,
+      "offset": 147076,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146766,
+      "offset": 147120,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146768,
+      "offset": 147122,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 146774,
+      "offset": 147128,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146812,
+      "offset": 147166,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146814,
+      "offset": 147168,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 146820,
+      "offset": 147174,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146858,
+      "offset": 147212,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146860,
+      "offset": 147214,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 146866,
+      "offset": 147220,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147014,
+      "offset": 147368,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147018,
+      "offset": 147372,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147062,
+      "offset": 147416,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147073,
+      "offset": 147427,
       "length": 3,
       "value": "0.3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147149,
+      "offset": 147503,
       "length": 1,
       "value": "0"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147175,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147186,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147233,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147259,
-      "length": 1,
-      "value": "6"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147307,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147329,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147364,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147386,
-      "length": 1,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147417,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147429,
-      "length": 3,
-      "value": "360"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147515,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147519,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
-      "kind": "IntegerLiteral",
-      "offset": 147523,
-      "length": 3,
-      "value": "330"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
       "offset": 147529,
-      "length": 3,
-      "value": "360"
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
@@ -148079,273 +148009,364 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147563,
+      "offset": 147587,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147613,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147661,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147683,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147718,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147740,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147771,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147783,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147869,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147873,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147568,
+      "offset": 147877,
+      "length": 3,
+      "value": "330"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147883,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147894,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147917,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 147922,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147588,
+      "offset": 147942,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147611,
+      "offset": 147965,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147616,
+      "offset": 147970,
       "length": 3,
       "value": "150"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147636,
+      "offset": 147990,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147659,
+      "offset": 148013,
       "length": 3,
       "value": "150"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147665,
+      "offset": 148019,
       "length": 3,
       "value": "210"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147684,
+      "offset": 148038,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147707,
+      "offset": 148061,
       "length": 3,
       "value": "210"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147713,
+      "offset": 148067,
       "length": 3,
       "value": "270"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147732,
+      "offset": 148086,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147780,
+      "offset": 148134,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147829,
+      "offset": 148183,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147855,
+      "offset": 148209,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147922,
+      "offset": 148276,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148029,
+      "offset": 148383,
       "length": 3,
       "value": "6.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148456,
+      "offset": 148810,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148462,
+      "offset": 148816,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148472,
+      "offset": 148826,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148483,
+      "offset": 148837,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148591,
+      "offset": 148945,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148601,
+      "offset": 148955,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148651,
+      "offset": 149005,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148662,
+      "offset": 149016,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148683,
+      "offset": 149037,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148699,
+      "offset": 149053,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148806,
+      "offset": 149160,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148812,
+      "offset": 149166,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148822,
+      "offset": 149176,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148833,
+      "offset": 149187,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148864,
+      "offset": 149218,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148868,
+      "offset": 149222,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148886,
+      "offset": 149240,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148890,
+      "offset": 149244,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148908,
+      "offset": 149262,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148912,
+      "offset": 149266,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148930,
+      "offset": 149284,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148934,
+      "offset": 149288,
       "length": 5,
       "value": "255.0"
     },
@@ -148499,14 +148520,14 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 35827,
+      "offset": 36190,
       "length": 10,
       "value": "1000000000"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 35869,
+      "offset": 36232,
       "length": 1,
       "value": "0"
     },

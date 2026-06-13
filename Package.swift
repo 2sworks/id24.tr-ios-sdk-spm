@@ -18,8 +18,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "IdentifySDK",
-            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.5.6/IdentifySDK-2.5.6.xcframework.zip",
-            checksum: "461160fa8f46a2ea662d76ec6696a15092e98dc58fdeaa33accd6a51c6e79674"
+            url: "https://github.com/2sworks/id24.tr-ios-sdk-spm/releases/download/2.5.7/IdentifySDK-2.5.7.xcframework.zip",
+            checksum: "ef4ce4758789c0c27f3b4073390a42ea90f050e715fc6c21132a3a6f6c074740"
         ),
         .target(
             name: "IdentifySDKWrapper",

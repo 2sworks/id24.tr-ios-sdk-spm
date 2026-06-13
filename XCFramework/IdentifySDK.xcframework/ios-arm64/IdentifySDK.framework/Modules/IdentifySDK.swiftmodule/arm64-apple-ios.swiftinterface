@@ -3644,6 +3644,7 @@ extension IdentifySDK.IdentifyManager : Starscream.WebSocketDelegate {
   public func websocketDidDisconnect(socket: any Starscream.WebSocketClient, error: (any Swift.Error)?)
   public func getSocketLogs() -> [IdentifySDK.SocketLog]
   public func websocketDidReceiveMessage(socket: any Starscream.WebSocketClient, text: Swift.String)
+  public func replayPendingQueueStats()
   public func websocketDidReceiveData(socket: any Starscream.WebSocketClient, data: Foundation.Data)
   public func smsVerification(tan: Swift.String, callback: @escaping (Swift.Bool) -> ())
   public func sendImOnline(socket: any Starscream.WebSocketClient)
