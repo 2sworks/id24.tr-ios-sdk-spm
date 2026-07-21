@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-compiler-version: Apple Swift version 6.3.3 effective-5.10 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
 // swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
 import CoreImage.CIFilterBuiltins
 import Combine
 import CommonCrypto
@@ -851,6 +851,61 @@ public enum TrackingEventType {
   public static func == (a: IdentifySDK.TrackingEventType, b: IdentifySDK.TrackingEventType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKSocketCloseCategory : Swift.String {
+  case deliberate
+  case server
+  case network
+  case turn
+  public var logEmoji: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKSocketCloseCode : Swift.UInt16 {
+  case flowCompleted
+  case hostQuit
+  case hostExit
+  case forceQuit
+  case reconnectCycle
+  case backgroundTimeout
+  case serverNormal
+  case serverGoingAway
+  case noStatusReceived
+  case protocolError
+  case unsupportedFrame
+  case encodingError
+  case policyViolated
+  case messageTooBig
+  case unknownWsError
+  case networkUnreachable
+  case transportError
+  case unexpectedDrop
+  case turnDisconnected
+  case turnFailed
+  case turnClosed
+  public var category: IdentifySDK.SDKSocketCloseCategory {
+    get
+  }
+  public var isDeliberate: Swift.Bool {
+    get
+  }
+  public var logEmoji: Swift.String {
+    get
+  }
+  public var logDescription: Swift.String {
+    get
+  }
+  public init(standardCloseCode: Swift.UInt16)
+  public init?(rawValue: Swift.UInt16)
+  public typealias RawValue = Swift.UInt16
+  public var rawValue: Swift.UInt16 {
     get
   }
 }
@@ -1904,6 +1959,7 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   public var socket_auth: Swift.String?
   public var liveness_report: Swift.Int?
   public var liveness_report_interval: Swift.Int?
+  public var hide_call_answer_screen: Swift.Int?
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -3595,6 +3651,11 @@ public class IdentifyManager {
   public var userToken: Swift.String
   public var nfcManager: IdentifySDK.SDKNfcReader
   public var passportReader: IdentifySDK.PassportReader
+  public var lastSocketCloseCode: IdentifySDK.SDKSocketCloseCode? {
+    get
+  }
+  public var backgroundTimeoutSeconds: Swift.Double
+  public var isBackgroundTimeoutEnabled: Swift.Bool
   public var livenessInitialOrder: [Swift.Int]?
   public var livenessRandomOrder: [Swift.Int]?
   public var sdkFrontInfo: IdentifySDK.FrontIdInfo
@@ -3659,6 +3720,7 @@ public class IdentifyManager {
   public var livenessReportEnabled: Swift.Bool
   public var livenessReportInterval: Swift.Int
   public var requestMaxBodySize: Swift.Int
+  public var hideCallAnswerScreen: Swift.Bool
   @objc deinit
   public func getVersion() -> Swift.String
   public static func debugPrint(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
@@ -4076,6 +4138,12 @@ extension IdentifySDK.LivenessTestStep : Swift.Hashable {}
 extension IdentifySDK.LivenessTestStep : Swift.RawRepresentable {}
 extension IdentifySDK.TrackingEventType : Swift.Equatable {}
 extension IdentifySDK.TrackingEventType : Swift.Hashable {}
+extension IdentifySDK.SDKSocketCloseCategory : Swift.Equatable {}
+extension IdentifySDK.SDKSocketCloseCategory : Swift.Hashable {}
+extension IdentifySDK.SDKSocketCloseCategory : Swift.RawRepresentable {}
+extension IdentifySDK.SDKSocketCloseCode : Swift.Equatable {}
+extension IdentifySDK.SDKSocketCloseCode : Swift.Hashable {}
+extension IdentifySDK.SDKSocketCloseCode : Swift.RawRepresentable {}
 extension IdentifySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Equatable {}
 extension IdentifySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Hashable {}
 extension IdentifySDK.PassportAuthenticationStatus : Swift.Equatable {}

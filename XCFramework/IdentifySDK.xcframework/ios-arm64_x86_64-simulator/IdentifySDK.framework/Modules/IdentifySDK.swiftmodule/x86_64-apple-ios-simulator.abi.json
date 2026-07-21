@@ -22479,6 +22479,1516 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "SDKSocketCloseCategory",
+        "printedName": "SDKSocketCloseCategory",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "deliberate",
+            "printedName": "deliberate",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCategory.Type) -> IdentifySDK.SDKSocketCloseCategory",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCategory",
+                        "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                        "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO10deliberateyA2CmF",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO10deliberateyA2CmF",
+            "moduleName": "IdentifySDK"
+          },
+          {
+            "kind": "Var",
+            "name": "server",
+            "printedName": "server",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCategory.Type) -> IdentifySDK.SDKSocketCloseCategory",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCategory",
+                        "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                        "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO6serveryA2CmF",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO6serveryA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "network",
+            "printedName": "network",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCategory.Type) -> IdentifySDK.SDKSocketCloseCategory",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCategory",
+                        "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                        "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO7networkyA2CmF",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO7networkyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "turn",
+            "printedName": "turn",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCategory.Type) -> IdentifySDK.SDKSocketCloseCategory",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCategory",
+                        "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                        "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO4turnyA2CmF",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO4turnyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "logEmoji",
+            "printedName": "logEmoji",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO8logEmojiSSvp",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO8logEmojiSSvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO8logEmojiSSvg",
+                "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO8logEmojiSSvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "IdentifySDK.SDKSocketCloseCategory?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO8rawValueACSgSS_tcfc",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO8rawValueACSgSS_tcfc",
+            "moduleName": "IdentifySDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO8rawValueSSvp",
+            "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO8rawValueSSvp",
+            "moduleName": "IdentifySDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO8rawValueSSvg",
+                "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO8rawValueSSvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO",
+        "mangledName": "$s11IdentifySDK22SDKSocketCloseCategoryO",
+        "moduleName": "IdentifySDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SDKSocketCloseCode",
+        "printedName": "SDKSocketCloseCode",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "flowCompleted",
+            "printedName": "flowCompleted",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO13flowCompletedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO13flowCompletedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hostQuit",
+            "printedName": "hostQuit",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8hostQuityA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8hostQuityA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hostExit",
+            "printedName": "hostExit",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8hostExityA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8hostExityA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "forceQuit",
+            "printedName": "forceQuit",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO9forceQuityA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO9forceQuityA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "reconnectCycle",
+            "printedName": "reconnectCycle",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14reconnectCycleyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14reconnectCycleyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backgroundTimeout",
+            "printedName": "backgroundTimeout",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO17backgroundTimeoutyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO17backgroundTimeoutyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "serverNormal",
+            "printedName": "serverNormal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO12serverNormalyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO12serverNormalyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "serverGoingAway",
+            "printedName": "serverGoingAway",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO15serverGoingAwayyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO15serverGoingAwayyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "noStatusReceived",
+            "printedName": "noStatusReceived",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO16noStatusReceivedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO16noStatusReceivedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "protocolError",
+            "printedName": "protocolError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO13protocolErroryA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO13protocolErroryA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "unsupportedFrame",
+            "printedName": "unsupportedFrame",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO16unsupportedFrameyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO16unsupportedFrameyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "encodingError",
+            "printedName": "encodingError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO13encodingErroryA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO13encodingErroryA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "policyViolated",
+            "printedName": "policyViolated",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14policyViolatedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14policyViolatedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "messageTooBig",
+            "printedName": "messageTooBig",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO13messageTooBigyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO13messageTooBigyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "unknownWsError",
+            "printedName": "unknownWsError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14unknownWsErroryA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14unknownWsErroryA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "networkUnreachable",
+            "printedName": "networkUnreachable",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO18networkUnreachableyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO18networkUnreachableyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "transportError",
+            "printedName": "transportError",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14transportErroryA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14transportErroryA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "unexpectedDrop",
+            "printedName": "unexpectedDrop",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14unexpectedDropyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14unexpectedDropyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "turnDisconnected",
+            "printedName": "turnDisconnected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO16turnDisconnectedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO16turnDisconnectedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "turnFailed",
+            "printedName": "turnFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO10turnFailedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO10turnFailedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "turnClosed",
+            "printedName": "turnClosed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(IdentifySDK.SDKSocketCloseCode.Type) -> IdentifySDK.SDKSocketCloseCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO10turnClosedyA2CmF",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO10turnClosedyA2CmF",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "category",
+            "printedName": "category",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SDKSocketCloseCategory",
+                "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8categoryAA0cD8CategoryOvp",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8categoryAA0cD8CategoryOvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCategory",
+                    "printedName": "IdentifySDK.SDKSocketCloseCategory",
+                    "usr": "s:11IdentifySDK22SDKSocketCloseCategoryO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8categoryAA0cD8CategoryOvg",
+                "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8categoryAA0cD8CategoryOvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isDeliberate",
+            "printedName": "isDeliberate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO12isDeliberateSbvp",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO12isDeliberateSbvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO12isDeliberateSbvg",
+                "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO12isDeliberateSbvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "logEmoji",
+            "printedName": "logEmoji",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8logEmojiSSvp",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8logEmojiSSvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8logEmojiSSvg",
+                "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8logEmojiSSvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "logDescription",
+            "printedName": "logDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14logDescriptionSSvp",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14logDescriptionSSvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO14logDescriptionSSvg",
+                "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO14logDescriptionSSvg",
+                "moduleName": "IdentifySDK",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(standardCloseCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SDKSocketCloseCode",
+                "printedName": "IdentifySDK.SDKSocketCloseCode",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO08standarddE0ACs6UInt16V_tcfc",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO08standarddE0ACs6UInt16V_tcfc",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "IdentifySDK.SDKSocketCloseCode?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8rawValueACSgs6UInt16V_tcfc",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8rawValueACSgs6UInt16V_tcfc",
+            "moduleName": "IdentifySDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt16",
+                "printedName": "Swift.UInt16",
+                "usr": "s:s6UInt16V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8rawValues6UInt16Vvp",
+            "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8rawValues6UInt16Vvp",
+            "moduleName": "IdentifySDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt16",
+                    "printedName": "Swift.UInt16",
+                    "usr": "s:s6UInt16V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK18SDKSocketCloseCodeO8rawValues6UInt16Vvg",
+                "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO8rawValues6UInt16Vvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO",
+        "mangledName": "$s11IdentifySDK18SDKSocketCloseCodeO",
+        "moduleName": "IdentifySDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "UInt16",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt16",
+                    "printedName": "Swift.UInt16",
+                    "usr": "s:s6UInt16V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -53105,6 +54615,116 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK9FirstRoomC24liveness_report_intervalSiSgvM",
                 "mangledName": "$s11IdentifySDK9FirstRoomC24liveness_report_intervalSiSgvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hide_call_answer_screen",
+            "printedName": "hide_call_answer_screen",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvp",
+            "mangledName": "$s11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvg",
+                "mangledName": "$s11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvs",
+                "mangledName": "$s11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvM",
+                "mangledName": "$s11IdentifySDK9FirstRoomC23hide_call_answer_screenSiSgvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -120465,6 +122085,250 @@
           },
           {
             "kind": "Var",
+            "name": "lastSocketCloseCode",
+            "printedName": "lastSocketCloseCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "IdentifySDK.SDKSocketCloseCode?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKSocketCloseCode",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode",
+                    "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK0A7ManagerC19lastSocketCloseCodeAA09SDKSocketfG0OSgvp",
+            "mangledName": "$s11IdentifySDK0A7ManagerC19lastSocketCloseCodeAA09SDKSocketfG0OSgvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "IdentifySDK.SDKSocketCloseCode?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKSocketCloseCode",
+                        "printedName": "IdentifySDK.SDKSocketCloseCode",
+                        "usr": "s:11IdentifySDK18SDKSocketCloseCodeO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC19lastSocketCloseCodeAA09SDKSocketfG0OSgvg",
+                "mangledName": "$s11IdentifySDK0A7ManagerC19lastSocketCloseCodeAA09SDKSocketfG0OSgvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backgroundTimeoutSeconds",
+            "printedName": "backgroundTimeoutSeconds",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvp",
+            "mangledName": "$s11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvg",
+                "mangledName": "$s11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvs",
+                "mangledName": "$s11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvM",
+                "mangledName": "$s11IdentifySDK0A7ManagerC24backgroundTimeoutSecondsSdvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "intro_iOS": "13",
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isBackgroundTimeoutEnabled",
+            "printedName": "isBackgroundTimeoutEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvp",
+            "mangledName": "$s11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvg",
+                "mangledName": "$s11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvs",
+                "mangledName": "$s11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvM",
+                "mangledName": "$s11IdentifySDK0A7ManagerC26isBackgroundTimeoutEnabledSbvM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "intro_iOS": "13",
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "livenessInitialOrder",
             "printedName": "livenessInitialOrder",
             "children": [
@@ -126702,6 +128566,96 @@
                 "declKind": "Accessor",
                 "usr": "s:11IdentifySDK0A7ManagerC18requestMaxBodySizeSivM",
                 "mangledName": "$s11IdentifySDK0A7ManagerC18requestMaxBodySizeSivM",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "intro_iOS": "13",
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hideCallAnswerScreen",
+            "printedName": "hideCallAnswerScreen",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvp",
+            "mangledName": "$s11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvp",
+            "moduleName": "IdentifySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvg",
+                "mangledName": "$s11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvg",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvs",
+                "mangledName": "$s11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvs",
+                "moduleName": "IdentifySDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvM",
+                "mangledName": "$s11IdentifySDK0A7ManagerC20hideCallAnswerScreenSbvM",
                 "moduleName": "IdentifySDK",
                 "implicit": true,
                 "intro_iOS": "13",
@@ -144003,6 +145957,153 @@
       "value": "0"
     },
     {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7728,
+      "length": 4,
+      "value": "4100"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7838,
+      "length": 4,
+      "value": "4101"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7924,
+      "length": 4,
+      "value": "4102"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8034,
+      "length": 4,
+      "value": "4103"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8104,
+      "length": 4,
+      "value": "4104"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8221,
+      "length": 4,
+      "value": "4105"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8407,
+      "length": 4,
+      "value": "4110"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8460,
+      "length": 4,
+      "value": "4111"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8516,
+      "length": 4,
+      "value": "4112"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8579,
+      "length": 4,
+      "value": "4113"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8639,
+      "length": 4,
+      "value": "4114"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8707,
+      "length": 4,
+      "value": "4115"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8762,
+      "length": 4,
+      "value": "4116"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8823,
+      "length": 4,
+      "value": "4117"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8883,
+      "length": 4,
+      "value": "4118"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9014,
+      "length": 4,
+      "value": "4130"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9102,
+      "length": 4,
+      "value": "4131"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9200,
+      "length": 4,
+      "value": "4132"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9336,
+      "length": 4,
+      "value": "4140"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9421,
+      "length": 4,
+      "value": "4141"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Enums.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9501,
+      "length": 4,
+      "value": "4142"
+    },
+    {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Alamofire\/Features\/NetworkReachabilityManager.swift",
       "kind": "StringLiteral",
       "offset": 4080,
@@ -145370,112 +147471,112 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "IntegerLiteral",
-      "offset": 2810,
+      "offset": 2855,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 2869,
+      "offset": 2914,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "IntegerLiteral",
-      "offset": 3129,
+      "offset": 3174,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 3168,
+      "offset": 3213,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 3217,
+      "offset": 3262,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 3256,
+      "offset": 3301,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 3291,
+      "offset": 3336,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7586,
+      "offset": 7631,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7626,
+      "offset": 7671,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7663,
+      "offset": 7708,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7702,
+      "offset": 7747,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7745,
+      "offset": 7790,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7785,
+      "offset": 7830,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7858,
+      "offset": 7903,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "StringLiteral",
-      "offset": 7943,
+      "offset": 7988,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Responser\/Responser.swift",
       "kind": "Dictionary",
-      "offset": 9210,
+      "offset": 9255,
       "length": 3,
       "value": "[]"
     },
@@ -147203,1170 +149304,1219 @@
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1804,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1915,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2083,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2650,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2766,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1374,
+      "offset": 3010,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1423,
+      "offset": 3089,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "Array",
+      "offset": 3138,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 1478,
+      "offset": 3193,
       "length": 9,
       "value": "[0, 1, 2, 3]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1818,
+      "offset": 3533,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1846,
+      "offset": 3561,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1870,
+      "offset": 3585,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 1978,
+      "offset": 3693,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 2010,
+      "offset": 3725,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 2252,
+      "offset": 3967,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 2293,
+      "offset": 4008,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 2344,
+      "offset": 4059,
       "length": 8,
       "value": "[\"\", \"\"]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2376,
+      "offset": 4091,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2402,
+      "offset": 4117,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2428,
+      "offset": 4143,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2458,
+      "offset": 4173,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 2484,
+      "offset": 4199,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 2855,
+      "offset": 4570,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 3889,
+      "offset": 5604,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3920,
+      "offset": 5635,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3949,
+      "offset": 5664,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 3982,
+      "offset": 5697,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4182,
+      "offset": 5897,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4229,
+      "offset": 5944,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4275,
+      "offset": 5990,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4309,
+      "offset": 6024,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4429,
+      "offset": 6144,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4463,
+      "offset": 6178,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4506,
+      "offset": 6221,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4566,
+      "offset": 6281,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 4730,
+      "offset": 6445,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4768,
+      "offset": 6483,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 4974,
+      "offset": 6689,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5029,
+      "offset": 6744,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 5071,
+      "offset": 6786,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 5116,
+      "offset": 6831,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5168,
+      "offset": 6883,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5314,
+      "offset": 7029,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 5428,
+      "offset": 7143,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5473,
+      "offset": 7188,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5511,
+      "offset": 7226,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5549,
+      "offset": 7264,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5600,
+      "offset": 7315,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5643,
+      "offset": 7358,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5686,
+      "offset": 7401,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 5743,
+      "offset": 7458,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 5893,
+      "offset": 7608,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6038,
+      "offset": 7753,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6181,
+      "offset": 7896,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 6334,
+      "offset": 8049,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 6442,
+      "offset": 8157,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 6471,
+      "offset": 8186,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 6508,
+      "offset": 8223,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 6536,
+      "offset": 8251,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 6569,
+      "offset": 8303,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8339,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 6598,
+      "offset": 8368,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 6621,
+      "offset": 8391,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 7021,
+      "offset": 8791,
       "length": 3,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 7047,
+      "offset": 8817,
       "length": 4,
       "value": "\"\n\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7409,
+      "offset": 9179,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 7453,
+      "offset": 9223,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 9153,
+      "offset": 10965,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9188,
+      "offset": 11000,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 9235,
+      "offset": 11047,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9306,
+      "offset": 11118,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9408,
+      "offset": 11220,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9452,
+      "offset": 11264,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9487,
+      "offset": 11299,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 9520,
+      "offset": 11332,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 9561,
+      "offset": 11373,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 13159,
+      "offset": 14971,
       "length": 2,
       "value": "15"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 13178,
+      "offset": 14990,
       "length": 10,
       "value": "\"ident_id\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 14851,
+      "offset": 16663,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 83192,
+      "offset": 91181,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 99577,
+      "offset": 107697,
       "length": 19,
       "value": "\"log msg not found\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 99613,
+      "offset": 107733,
       "length": 9,
       "value": "\"general\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 99641,
+      "offset": 107761,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "Array",
-      "offset": 101172,
+      "offset": 109292,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 131166,
+      "offset": 142345,
       "length": 29,
       "value": "\"IdentifySDK.LogProcessQueue\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 131228,
+      "offset": 142407,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 131266,
+      "offset": 142445,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 131373,
+      "offset": 142552,
       "length": 4,
       "value": "0.25"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131472,
+      "offset": 142651,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131515,
+      "offset": 142694,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131649,
+      "offset": 142828,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 131654,
+      "offset": 142833,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "StringLiteral",
-      "offset": 133082,
+      "offset": 144261,
       "length": 9,
       "value": "\"general\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "BooleanLiteral",
-      "offset": 143487,
+      "offset": 154666,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146505,
+      "offset": 157684,
       "length": 2,
       "value": "48"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146513,
+      "offset": 157692,
       "length": 2,
       "value": "48"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146600,
+      "offset": 157779,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146614,
+      "offset": 157793,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146702,
+      "offset": 157881,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146754,
+      "offset": 157933,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146958,
+      "offset": 158137,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 146964,
+      "offset": 158143,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147025,
+      "offset": 158204,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147035,
+      "offset": 158214,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147057,
+      "offset": 158236,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147076,
+      "offset": 158255,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147120,
+      "offset": 158299,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147122,
+      "offset": 158301,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147128,
+      "offset": 158307,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147166,
+      "offset": 158345,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147168,
+      "offset": 158347,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147174,
+      "offset": 158353,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147212,
+      "offset": 158391,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147214,
+      "offset": 158393,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147220,
+      "offset": 158399,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147368,
+      "offset": 158547,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147372,
+      "offset": 158551,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147416,
+      "offset": 158595,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 147427,
+      "offset": 158606,
       "length": 3,
       "value": "0.3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147503,
+      "offset": 158682,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147529,
+      "offset": 158708,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147540,
+      "offset": 158719,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147587,
+      "offset": 158766,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147613,
+      "offset": 158792,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147661,
+      "offset": 158840,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147683,
+      "offset": 158862,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147718,
+      "offset": 158897,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147740,
+      "offset": 158919,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147771,
+      "offset": 158950,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147783,
+      "offset": 158962,
       "length": 3,
       "value": "360"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147869,
+      "offset": 159048,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147873,
+      "offset": 159052,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147877,
+      "offset": 159056,
       "length": 3,
       "value": "330"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147883,
+      "offset": 159062,
       "length": 3,
       "value": "360"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147894,
+      "offset": 159073,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147917,
+      "offset": 159096,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147922,
+      "offset": 159101,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147942,
+      "offset": 159121,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147965,
+      "offset": 159144,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147970,
+      "offset": 159149,
       "length": 3,
       "value": "150"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 147990,
+      "offset": 159169,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148013,
+      "offset": 159192,
       "length": 3,
       "value": "150"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148019,
+      "offset": 159198,
       "length": 3,
       "value": "210"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148038,
+      "offset": 159217,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148061,
+      "offset": 159240,
       "length": 3,
       "value": "210"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148067,
+      "offset": 159246,
       "length": 3,
       "value": "270"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148086,
+      "offset": 159265,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148134,
+      "offset": 159313,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148183,
+      "offset": 159362,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148209,
+      "offset": 159388,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148276,
+      "offset": 159455,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 148383,
+      "offset": 159562,
       "length": 3,
       "value": "6.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148810,
+      "offset": 159989,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148816,
+      "offset": 159995,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148826,
+      "offset": 160005,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148837,
+      "offset": 160016,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148945,
+      "offset": 160124,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 148955,
+      "offset": 160134,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149005,
+      "offset": 160184,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149016,
+      "offset": 160195,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149037,
+      "offset": 160216,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149053,
+      "offset": 160232,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149160,
+      "offset": 160339,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149166,
+      "offset": 160345,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149176,
+      "offset": 160355,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149187,
+      "offset": 160366,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149218,
+      "offset": 160397,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 149222,
+      "offset": 160401,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149240,
+      "offset": 160419,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 149244,
+      "offset": 160423,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149262,
+      "offset": 160441,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 149266,
+      "offset": 160445,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "IntegerLiteral",
-      "offset": 149284,
+      "offset": 160463,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/Identify.swift",
       "kind": "FloatLiteral",
-      "offset": 149288,
+      "offset": 160467,
       "length": 5,
       "value": "255.0"
     },
@@ -148674,105 +150824,105 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 35473,
+      "offset": 36373,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 35558,
+      "offset": 36458,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 35576,
+      "offset": 36476,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 35600,
+      "offset": 36500,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "FloatLiteral",
-      "offset": 35809,
+      "offset": 36709,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 35834,
+      "offset": 36734,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "BooleanLiteral",
-      "offset": 35873,
+      "offset": 36773,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56055,
+      "offset": 56955,
       "length": 65,
       "value": "\"kernel vec4 thresholdFilter(__sample image, __sample threshold)\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56127,
+      "offset": 57027,
       "length": 3,
       "value": "\"{\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56137,
+      "offset": 57037,
       "length": 68,
       "value": "\"   float imageLuma = dot(image.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56212,
+      "offset": 57112,
       "length": 76,
       "value": "\"   float thresholdLuma = dot(threshold.rgb, vec3(0.2126, 0.7152, 0.0722));\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56296,
+      "offset": 57196,
       "length": 60,
       "value": "\"   return vec4(vec3(step(imageLuma, thresholdLuma)), 1.0);\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 56363,
+      "offset": 57263,
       "length": 3,
       "value": "\"}\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "StringLiteral",
-      "offset": 57141,
+      "offset": 58041,
       "length": 11,
       "value": "\"CIBoxBlur\""
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk\/IdentifySDK\/SDKOcrMachine.swift",
       "kind": "IntegerLiteral",
-      "offset": 57234,
+      "offset": 58134,
       "length": 1,
       "value": "9"
     },
