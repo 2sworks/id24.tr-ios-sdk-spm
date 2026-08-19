@@ -4,29 +4,57 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AZERI.json</key>
+		<data>
+		FtPK1y4dhVFs25KeZL1fhDjqeBo=
+		</data>
+		<key>AddressConfirmTts_tr.mp3</key>
+		<data>
+		3WuVJ3H51D/PDedgJcQv7GpYMcQ=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		2qKkZs8qQZM0ryH47baEMOll2sY=
+		</data>
+		<key>ENGLISH.json</key>
+		<data>
+		xqWYiPD76KEmkLw5tJ/kbuq605o=
+		</data>
+		<key>GERMAN.json</key>
+		<data>
+		923tZ3Vuww2RNkMMNtnVwCdwalI=
+		</data>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<data>
-		w8LoM3SGSsmAv5q5F9avqITWjcw=
+		jE9WWBlmycJykkXDEmONwxkFPro=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		8baDohdAb+i8H/s5yRc6uBQRL/c=
+		3Y+xZ/K3kj2+FTM14YKz1cs/1nQ=
+		</data>
+		<key>Inter-Italic.ttf</key>
+		<data>
+		gcyhnNAdvP6jgm4CzBSR/3QjwrE=
+		</data>
+		<key>Inter.ttf</key>
+		<data>
+		7lwuIv/t3vxDPJqkx2d5u3OlxoI=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		03A6zNcpbp5YpIjJt1RYQ1vcv3c=
+		3hSIQPtpO1T0ivJM1lNBH5Ny7ww=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		5ejMnPW25ftwaSgy93OHoEwqhZ4=
+		je/RptO2s7q4YlYEUFqAdZJkjZc=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		wYfe04cyRUEFvEDpQjbH6ropfJI=
+		njhzlBCmn9cm5UW8pYrLQqeB7v0=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		iumH5PP8d89ZOsou/tnE/s6LQHM=
+		iAuLMrhRESOtsSHUIjGEy8fKjCQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -36,42 +64,99 @@
 		<data>
 		6sV58O/7/GtpuicGp7wwERbU2XQ=
 		</data>
+		<key>RUSSIAN.json</key>
+		<data>
+		Z/4kQsouewegyPXqUqgWfkFLz0Q=
+		</data>
+		<key>TURKISH.json</key>
+		<data>
+		zrXDhf1AhAQVi0g2ECnb29jWtzw=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AZERI.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IDV4+ZEiT5XRTKfthxzVktuUTOLYaD0Y7Y2Vax2OB44=
+			</data>
+		</dict>
+		<key>AddressConfirmTts_tr.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZOnUElwoDx23BlMT1zx+Le5QigyU4SyWHGGDcYCKx98=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3QluOUhVPvvuuxNxSHYNz1YZgniArswfJhrpyhpKN+g=
+			</data>
+		</dict>
+		<key>ENGLISH.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sU3KXQVWzhKBm81Bb//sfXGDc5YJaOq9BzyF8/lMjA8=
+			</data>
+		</dict>
+		<key>GERMAN.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			feQvtbp+nvwRNRlUViOPrJ9JtPe8q9DJIss8axqCRAs=
+			</data>
+		</dict>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/Z8RNmhTiio4ejH75cm7fAzsVOrJaYgLWdgVleTLemk=
+			080ppp/e9hRA0LdV1VY23tKNOPhCkBjGseEpq3etF/k=
+			</data>
+		</dict>
+		<key>Inter-Italic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YTb3M3L+3De4D9Go7D4hc0Bz/xc3bzZycY8YZ3lnLno=
+			</data>
+		</dict>
+		<key>Inter.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			C+I5nqkl8fg/+XR2R2HamGDsUHQu0ppdTB/9DFx6w6g=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YMYGgzeAhmsWGo/JFwyUyhXVFVc4ouxT7bcntwhEBiY=
+			E4MXtNPYVn2pYZRu3liN2Efn2ScUxZ8yskFLte6NrZQ=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Iz8aTV3n1r1dLyQPfmXPNXMsM7N8Ao21/DkXyWtHBOg=
+			OVBshckXGILl7+2XVysZw5GrzNpJfY9ojyPr5xhtIIY=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/YtfmYVPw/e04FCmoYKFoel7sLksnflF+npE2Dkqw8c=
+			PiVUiX8qhcYTqCtSRyNYD2vvM8a4klGRD8VxmecvAqQ=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mI7eeGDjAmod7GCoImxuxCKbgIVq9R2bGNEpAod3gv8=
+			qaAeN78495aOb4MKwthEArroc1p4eIHK3LsWxV0dzIM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -86,6 +171,20 @@
 			<key>hash2</key>
 			<data>
 			dH5ZrxMEHxUk58ZcVmzhLrdrMYc0AtCV5yg1wzS5QVg=
+			</data>
+		</dict>
+		<key>RUSSIAN.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YlalCgGI0FfmpemzMhVyy7MMvdQNLcUF+C8VyeWQGJY=
+			</data>
+		</dict>
+		<key>TURKISH.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bVYFgfAywQjd9/BFTtQ8ilNCGvo1wh3fkvl2TshWeaA=
 			</data>
 		</dict>
 	</dict>

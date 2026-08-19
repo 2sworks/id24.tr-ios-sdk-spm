@@ -349,6 +349,7 @@ extern "C" {
 @import CoreFoundation;
 @import Foundation;
 @import ObjectiveC;
+@import UIKit;
 @import WebRTC;
 #endif
 
@@ -372,9 +373,30 @@ extern "C" {
 
 #if defined(__OBJC__)
 
+/// Presents UIAlertControllers without needing a view controller reference, by walking up
+/// from the key window’s root.
+/// Used by the SDK only for low-level failures raised outside any module screen — socket
+/// errors in <code>IdentifySDK/Identify.swift</code> and request errors in <code>SDKNetwork</code>. Module screens
+/// present their own themed alerts through <code>IDAlertView</code> instead, so anything shown from
+/// here is deliberately unthemed.
 SWIFT_CLASS("_TtC11IdentifySDK16AlertViewManager")
 @interface AlertViewManager : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class NSString;
+@class NSBundle;
+@class NSCoder;
+@class UIViewController;
+/// Drop-in replacement for WeScan’s <code>ImageScannerController</code>.
+/// Powered by <code>IdentityScanner</code> inside the SDK — no external framework needed.
+SWIFT_CLASS("_TtC11IdentifySDK22ImageScannerController") SWIFT_AVAILABILITY(ios,introduced=15.0)
+@interface ImageScannerController : UINavigationController
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
+- (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController SWIFT_UNAVAILABLE;
 @end
 
 SWIFT_CLASS("_TtC11IdentifySDK14PassportReader") SWIFT_AVAILABILITY(ios,introduced=13)
@@ -396,7 +418,6 @@ SWIFT_CLASS("_TtC11IdentifySDK15SessionDelegate")
 @end
 
 @class NSURLSessionWebSocketTask;
-@class NSString;
 @class NSData;
 SWIFT_AVAILABILITY(watchos,introduced=6) SWIFT_AVAILABILITY(tvos,introduced=13) SWIFT_AVAILABILITY(ios,introduced=13) SWIFT_AVAILABILITY(macos,introduced=10.15)
 @interface SessionDelegate (SWIFT_EXTENSION(IdentifySDK)) <NSURLSessionWebSocketDelegate>
@@ -438,6 +459,12 @@ SWIFT_AVAILABILITY(watchos,introduced=6) SWIFT_AVAILABILITY(tvos,introduced=13) 
 - (void)URLSession:(NSURLSession * _Nonnull)session taskIsWaitingForConnectivity:(NSURLSessionTask * _Nonnull)task SWIFT_AVAILABILITY(watchos,introduced=4.0) SWIFT_AVAILABILITY(tvos,introduced=11.0) SWIFT_AVAILABILITY(ios,introduced=11.0) SWIFT_AVAILABILITY(macos,introduced=10.13);
 @end
 
+/// Wraps the <code>stasel/WebRTC</code> framework: peer connection, local and remote video tracks, the
+/// data channel and ICE candidates.
+/// Owned by <code>IdentifyManager</code>, which supplies the STUN/TURN credentials and relays signalling
+/// over the WebSocket. Call setup runs in a fixed order — <code>setup(...)</code> builds the tracks,
+/// <code>connect(onSuccess:)</code> produces the offer, the answer and candidates arrive over the socket
+/// — and the call ends the moment ICE reports a failure.
 SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 @interface WebRTCClient : NSObject <RTCDataChannelDelegate, RTCPeerConnectionDelegate, RTCVideoViewDelegate>
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -447,12 +474,27 @@ SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 @class RTCDataChannel;
 @class RTCDataBuffer;
 @interface WebRTCClient (SWIFT_EXTENSION(IdentifySDK))
+/// Delivers an incoming data-channel message to the delegate.
+/// \param dataChannel The channel the message arrived on.
+///
+/// \param buffer The payload; forwarded as data when binary, as text otherwise.
+///
 - (void)dataChannel:(RTCDataChannel * _Nonnull)dataChannel didReceiveMessageWithBuffer:(RTCDataBuffer * _Nonnull)buffer;
+/// Notifies the delegate once the data channel reaches the open state.
+/// \param dataChannel The channel whose state changed.
+///
 - (void)dataChannelDidChangeState:(RTCDataChannel * _Nonnull)dataChannel;
 @end
 
 @protocol RTCVideoRenderer;
 @interface WebRTCClient (SWIFT_EXTENSION(IdentifySDK))
+/// Reacts to a change in the rendered video’s natural size by relaying out that view.
+/// The remote size is only known once frames arrive, so layout has to be deferred to here
+/// rather than done at setup.
+/// \param videoView The renderer whose size changed.
+///
+/// \param size The new video size.
+///
 - (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
 
@@ -460,14 +502,63 @@ SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 @class RTCMediaStream;
 @class RTCIceCandidate;
 @interface WebRTCClient (SWIFT_EXTENSION(IdentifySDK))
+/// Reports SDP signalling state changes; logged only.
+/// \param peerConnection The connection reporting the change.
+///
+/// \param stateChanged The new signalling state.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeSignalingState:(RTCSignalingState)stateChanged;
+/// Reports ICE connection state changes and drives the connected/disconnected transition.
+/// The load-bearing delegate callback: <code>.connected</code>/<code>.completed</code> mark media as
+/// established, while <code>.disconnected</code> and <code>.failed</code> end the call at once (close codes
+/// 4140/4141). There is deliberately no recovery window — the server counts a suspended
+/// session as live, so re-subscribing comes back as “room busy”.
+/// \param peerConnection The connection reporting the change.
+///
+/// \param newState The new ICE connection state.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeIceConnectionState:(RTCIceConnectionState)newState;
+/// Attaches the agent’s incoming video track to the remote render view.
+/// \param peerConnection The connection reporting the stream.
+///
+/// \param stream The remote media stream.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didAddStream:(RTCMediaStream * _Nonnull)stream;
+/// Forwards a gathered local ICE candidate to the delegate for signalling.
+/// \param peerConnection The connection that gathered the candidate.
+///
+/// \param candidate The candidate to send to the peer.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didGenerateIceCandidate:(RTCIceCandidate * _Nonnull)candidate;
+/// Reports that a remote stream was removed; logged only.
+/// \param peerConnection The connection reporting the removal.
+///
+/// \param stream The stream that was removed.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didRemoveStream:(RTCMediaStream * _Nonnull)stream;
+/// Adopts a data channel opened by the remote peer and notifies the delegate.
+/// \param peerConnection The connection reporting the channel.
+///
+/// \param dataChannel The newly opened channel.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didOpenDataChannel:(RTCDataChannel * _Nonnull)dataChannel;
+/// Required by <code>RTCPeerConnectionDelegate</code>; removed candidates need no handling here.
+/// \param peerConnection The connection reporting the removal.
+///
+/// \param candidates The candidates that were removed.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didRemoveIceCandidates:(NSArray<RTCIceCandidate *> * _Nonnull)candidates;
+/// Required by <code>RTCPeerConnectionDelegate</code>. Renegotiation is not handled: the call has a
+/// single offer/answer exchange, driven by <code>connect(onSuccess:)</code>.
+/// \param peerConnection The connection requesting negotiation.
+///
 - (void)peerConnectionShouldNegotiate:(RTCPeerConnection * _Nonnull)peerConnection;
+/// Required by <code>RTCPeerConnectionDelegate</code>; gathering state needs no handling, since
+/// candidates are signalled individually as they arrive.
+/// \param peerConnection The connection reporting the change.
+///
+/// \param newState The new gathering state.
+///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeIceGatheringState:(RTCIceGatheringState)newState;
 @end
 

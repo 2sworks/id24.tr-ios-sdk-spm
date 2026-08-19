@@ -4,45 +4,73 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>AZERI.json</key>
+		<data>
+		FtPK1y4dhVFs25KeZL1fhDjqeBo=
+		</data>
+		<key>AddressConfirmTts_tr.mp3</key>
+		<data>
+		3WuVJ3H51D/PDedgJcQv7GpYMcQ=
+		</data>
+		<key>Assets.car</key>
+		<data>
+		2qKkZs8qQZM0ryH47baEMOll2sY=
+		</data>
+		<key>ENGLISH.json</key>
+		<data>
+		xqWYiPD76KEmkLw5tJ/kbuq605o=
+		</data>
+		<key>GERMAN.json</key>
+		<data>
+		923tZ3Vuww2RNkMMNtnVwCdwalI=
+		</data>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<data>
-		wmYwaT3vCNgEQ8o8ovfU/P/8INw=
+		m6I07u8dqM1nIdHCYbxwbF8ND10=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ynoRYUriOrr2Btm70sgnMjcGqpA=
+		IrlnU+TB2tdymfzQIJixlfs83ro=
+		</data>
+		<key>Inter-Italic.ttf</key>
+		<data>
+		gcyhnNAdvP6jgm4CzBSR/3QjwrE=
+		</data>
+		<key>Inter.ttf</key>
+		<data>
+		7lwuIv/t3vxDPJqkx2d5u3OlxoI=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		03A6zNcpbp5YpIjJt1RYQ1vcv3c=
+		Zz4NVr79W6N1484hCGOVng61iy0=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		zpaTuwKsAa3zpdjvYayZBXdX2aU=
+		x7GUb5VxQlLLlHZd7IzEZr483e8=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		NdtsPPBvkHjq9caW0jPtu6gdH1g=
+		bpbKPpYezdLfmdaqSQf1V635scE=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		TgTxA4Q8k9zxZzifXEKiJbjB9R8=
+		ZrkSZLj98ALq7RX3VJgDRnYn44E=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		03A6zNcpbp5YpIjJt1RYQ1vcv3c=
+		Zz4NVr79W6N1484hCGOVng61iy0=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		tA6dTc3lzmzLrAxNLInM4l+rP/o=
+		MhLyJSc5c7Bzm+9oD6YVM9khU8U=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		W0OSN3MTuyNM2W5DBX2GyO3GpfM=
+		5GiJKjXSCltMFIgx4PQG1x0YHQQ=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		N6EBBcBKx5tWt0xyL1a7phqSwNI=
+		UAjlFhog+UJgnKzL7JtonHEByEQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -52,70 +80,127 @@
 		<data>
 		6sV58O/7/GtpuicGp7wwERbU2XQ=
 		</data>
+		<key>RUSSIAN.json</key>
+		<data>
+		Z/4kQsouewegyPXqUqgWfkFLz0Q=
+		</data>
+		<key>TURKISH.json</key>
+		<data>
+		zrXDhf1AhAQVi0g2ECnb29jWtzw=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>AZERI.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IDV4+ZEiT5XRTKfthxzVktuUTOLYaD0Y7Y2Vax2OB44=
+			</data>
+		</dict>
+		<key>AddressConfirmTts_tr.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZOnUElwoDx23BlMT1zx+Le5QigyU4SyWHGGDcYCKx98=
+			</data>
+		</dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3QluOUhVPvvuuxNxSHYNz1YZgniArswfJhrpyhpKN+g=
+			</data>
+		</dict>
+		<key>ENGLISH.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sU3KXQVWzhKBm81Bb//sfXGDc5YJaOq9BzyF8/lMjA8=
+			</data>
+		</dict>
+		<key>GERMAN.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			feQvtbp+nvwRNRlUViOPrJ9JtPe8q9DJIss8axqCRAs=
+			</data>
+		</dict>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Inp3f7R2V9XL2iKyNQNWrVKc4+/w9IgsVl0KV0eToyQ=
+			D5xlB/iFWLKkW4aGr0be5+u+MwR3UZEQg5cN+QjuoXo=
+			</data>
+		</dict>
+		<key>Inter-Italic.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YTb3M3L+3De4D9Go7D4hc0Bz/xc3bzZycY8YZ3lnLno=
+			</data>
+		</dict>
+		<key>Inter.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			C+I5nqkl8fg/+XR2R2HamGDsUHQu0ppdTB/9DFx6w6g=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YMYGgzeAhmsWGo/JFwyUyhXVFVc4ouxT7bcntwhEBiY=
+			FMy79vLSHGpPe/m4Y/lu3g6KQaErSPZe/EAs02foYv0=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xiSyuae/sI+0utVC0GNoH8iPWlzbdEtJZa/e+d43saU=
+			AI/mvSVe2XS4qYi5MduCZOttUDPO21HZNJHkoZh2Mos=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3lbeU6y2BAMdDkEr1KKATLlzOCtD24jh1IO6QUVWYM8=
+			4MWSOq5lC0bpIfbDoUaKXe0btRyeSbUq/eqTVJm2l9s=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6WrTEHt2KJsNV6woxROZVNVKHCgzrm1OkLMTBvaDDRI=
+			Neq8dWo9mfAbYYJz8SG44EjAYOzSeqAMkNRVP11km5o=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YMYGgzeAhmsWGo/JFwyUyhXVFVc4ouxT7bcntwhEBiY=
+			FMy79vLSHGpPe/m4Y/lu3g6KQaErSPZe/EAs02foYv0=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SQf2wVjkg+7XHoqT9GEVfp1XCf3VsuXAl7niq0PAJ5M=
+			UvqbV8cK3xmoJ9UApaatzuU4nmDMhxDD1XfAj6Rj79A=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N32nawU34CWq3uTFUListZrrJWe5YPN1gveONRnUUIM=
+			IzRuJeh/hLhj/E9lv7PSvaNDNBdtllf7egI8YgkmpNU=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5iQjEK1nVkrBW/J1FH73G69fPCBUpLaApVudGS5F4Po=
+			lWo86HNjf9ufQsEn+hVpK0lWEQNfNWlymNYBGzwgwI0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -130,6 +215,20 @@
 			<key>hash2</key>
 			<data>
 			dH5ZrxMEHxUk58ZcVmzhLrdrMYc0AtCV5yg1wzS5QVg=
+			</data>
+		</dict>
+		<key>RUSSIAN.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YlalCgGI0FfmpemzMhVyy7MMvdQNLcUF+C8VyeWQGJY=
+			</data>
+		</dict>
+		<key>TURKISH.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bVYFgfAywQjd9/BFTtQ8ilNCGvo1wh3fkvl2TshWeaA=
 			</data>
 		</dict>
 	</dict>

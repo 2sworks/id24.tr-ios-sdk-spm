@@ -2,24 +2,41 @@
 // swift-compiler-version: Apple Swift version 6.3.3 effective-5.10 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
 // swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
+import ARKit
+import AVFoundation
 import AudioToolbox
 import CoreImage.CIFilterBuiltins
+import CameraPermission
 import Combine
 import CommonCrypto
 import Compression
 import CoreData
+import CoreGraphics
 import CoreHaptics
 import CoreImage
+import CoreMotion
 import CoreNFC
+import CoreText
+import CoreVideo
 import CryptoKit
 import CryptoTokenKit
+import DeveloperToolsSupport
 import Dispatch
 import Foundation
+import MicrophonePermission
 import MobileCoreServices
 import OpenSSL
+import PDFKit
+import PencilKit
+import PhotosUI
+import ReplayKit
 import Security
+import Speech
+import SpeechRecognizerPermission
 import Starscream
 import Swift
+import SwiftSignatureView
+import SwiftUI
 import SystemConfiguration
 import UIKit
 import UniformTypeIdentifiers
@@ -27,6 +44,7 @@ import Vision
 import WebRTC
 import _Concurrency
 import _CoreNFC_UIKit
+import _PhotosUI_SwiftUI
 import _StringProcessing
 import _SwiftConcurrencyShims
 import zlib
@@ -468,6 +486,16 @@ public struct HTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashab
   public init(rawValue: Swift.String)
   public typealias RawValue = Swift.String
 }
+@_hasMissingDesignatedInitializers public actor DocumentValidatorRegistry {
+  public static let shared: IdentifySDK.DocumentValidatorRegistry
+  public func register(_ validator: some DocumentValidator)
+  public func allValidators() -> [any IdentifySDK.DocumentValidator]
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
+}
 public struct HTTPHeaders {
   public init()
   public init(_ headers: [IdentifySDK.HTTPHeader])
@@ -620,6 +648,8 @@ public enum OCRType : Swift.String, Swift.Codable {
   case frontIdOvd
   case backId
   case passport
+  case passportOvd
+  case docOther
   case document
   case selfie
   case signature
@@ -662,7 +692,7 @@ public enum HostType : Swift.String, Swift.Codable {
     get
   }
 }
-public enum SdkModules : Swift.String, Swift.Codable {
+public enum SdkModules : Swift.String, Swift.Codable, Swift.CaseIterable {
   case login
   case nfc
   case livenessDetection
@@ -678,7 +708,11 @@ public enum SdkModules : Swift.String, Swift.Codable {
   case prepare
   case selfieWithLiveness
   public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SdkModules]
   public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SdkModules] {
+    get
+  }
   public var rawValue: Swift.String {
     get
   }
@@ -709,6 +743,7 @@ public enum AppQuitType : Swift.String {
 public enum SDKLogLevel {
   case all
   case online
+  case onlineSilent
   case noLog
   public static func == (a: IdentifySDK.SDKLogLevel, b: IdentifySDK.SDKLogLevel) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
@@ -731,6 +766,9 @@ public enum SDKLang : Swift.String {
   case tr
   case az
   case ru
+  public var sttLanguageCode: Swift.String {
+    get
+  }
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -741,6 +779,18 @@ public enum CardType : Swift.String {
   case idCard
   case passport
   case oldSchool
+  public var docTypeParam: Swift.String {
+    get
+  }
+  public var socketLocation: Swift.String {
+    get
+  }
+  public var isSinglePage: Swift.Bool {
+    get
+  }
+  public var uploadType: IdentifySDK.OCRType {
+    get
+  }
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -794,33 +844,6 @@ public enum SDKCallActions {
   case disableEndCallButton
   case connectionErr
   case wrongSocketActionErr(Swift.String)
-}
-public struct SDKCallHealthReport {
-  public let startedAt: Foundation.Date
-  public let endedAt: Foundation.Date
-  public let durationSeconds: Foundation.TimeInterval
-  public let endReason: Swift.String
-  public let socketDropCount: Swift.Int
-  public let socketOfflineSeconds: Foundation.TimeInterval
-  public let socketConnectedAtEnd: Swift.Bool
-  public let iceDisconnectCount: Swift.Int
-  public let iceFailedCount: Swift.Int
-  public let iceRecoveredCount: Swift.Int
-  public let iceDegradedSeconds: Foundation.TimeInterval
-  public let finalIceState: Swift.String
-  public let networkLossCount: Swift.Int
-  public let networkTransitionCount: Swift.Int
-  public let networkTypeAtEnd: Swift.String
-  public let longestSilenceSeconds: Foundation.TimeInterval
-  public var isHealthy: Swift.Bool {
-    get
-  }
-  public var durationText: Swift.String {
-    get
-  }
-  public var logText: Swift.String {
-    get
-  }
 }
 @_hasMissingDesignatedInitializers public class SDKNetworkSpeedTestResponse {
   @objc deinit
@@ -883,6 +906,33 @@ public enum TrackingEventType {
     get
   }
 }
+public struct SDKCallHealthReport {
+  public let startedAt: Foundation.Date
+  public let endedAt: Foundation.Date
+  public let durationSeconds: Foundation.TimeInterval
+  public let endReason: Swift.String
+  public let socketDropCount: Swift.Int
+  public let socketOfflineSeconds: Foundation.TimeInterval
+  public let socketConnectedAtEnd: Swift.Bool
+  public let iceDisconnectCount: Swift.Int
+  public let iceFailedCount: Swift.Int
+  public let iceRecoveredCount: Swift.Int
+  public let iceDegradedSeconds: Foundation.TimeInterval
+  public let finalIceState: Swift.String
+  public let networkLossCount: Swift.Int
+  public let networkTransitionCount: Swift.Int
+  public let networkTypeAtEnd: Swift.String
+  public let longestSilenceSeconds: Foundation.TimeInterval
+  public var isHealthy: Swift.Bool {
+    get
+  }
+  public var durationText: Swift.String {
+    get
+  }
+  public var logText: Swift.String {
+    get
+  }
+}
 public enum SDKSocketCloseCategory : Swift.String {
   case deliberate
   case server
@@ -907,6 +957,7 @@ public enum SDKSocketCloseCode : Swift.UInt16 {
   case callCompleted
   case pingTimeout
   case ringingTimeout
+  case heartbeatTimeout
   case serverNormal
   case serverGoingAway
   case noStatusReceived
@@ -917,6 +968,7 @@ public enum SDKSocketCloseCode : Swift.UInt16 {
   case messageTooBig
   case unknownWsError
   case authRejected
+  case roomOccupied
   case networkUnreachable
   case transportError
   case unexpectedDrop
@@ -928,6 +980,12 @@ public enum SDKSocketCloseCode : Swift.UInt16 {
     get
   }
   public var isDeliberate: Swift.Bool {
+    get
+  }
+  public var endsSession: Swift.Bool {
+    get
+  }
+  public var opensReconnectScreen: Swift.Bool {
     get
   }
   public var logEmoji: Swift.String {
@@ -1017,6 +1075,15 @@ extension IdentifySDK.SessionDelegate : Foundation.URLSessionDownloadDelegate {
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
   @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+}
+public protocol DocumentValidator {
+  var key: Swift.String { get }
+  func validate(_ document: inout IdentifySDK.RecognizedDocument) -> [IdentifySDK.ValidationResult]
+}
+@available(iOS 15.0, *)
+public enum DocumentScanner {
+  @_Concurrency.MainActor public static func scan(profile: IdentifySDK.DocumentProfile) async throws -> IdentifySDK.RecognizedDocument
+  @_Concurrency.MainActor public static func scan(profileID: Swift.String) async throws -> IdentifySDK.RecognizedDocument
 }
 public protocol IdentifyListenerDelegate : AnyObject {
   func incomingCall()
@@ -1195,6 +1262,9 @@ public class NFCPassportModel {
   public init(from dump: [Swift.String : Swift.String])
   public func addDataGroup(_ id: IdentifySDK.DataGroupId, dataGroup: IdentifySDK.DataGroup)
   public func getDataGroup(_ id: IdentifySDK.DataGroupId) -> IdentifySDK.DataGroup?
+  public var diagnosticSummary: Swift.String {
+    get
+  }
   public func dumpPassportData(selectedDataGroups: [IdentifySDK.DataGroupId], includeActiveAuthenticationData: Swift.Bool = false) -> [Swift.String : Swift.String]
   public func getHashesForDatagroups(hashAlgorythm: Swift.String) -> [IdentifySDK.DataGroupId : [Swift.UInt8]]
   public func verifyPassport(masterListURL: Foundation.URL?, useCMSVerification: Swift.Bool = false)
@@ -1475,6 +1545,28 @@ public struct ResponseAPDU {
   public var sw2: Swift.UInt8
   public init(data: [Swift.UInt8], sw1: Swift.UInt8, sw2: Swift.UInt8)
 }
+public enum ScanStrategy : Swift.String, Swift.Codable {
+  case visionText
+  case mrzPassport
+  case mrzTurkishID
+  case imageOnly
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct DocumentProfile : Swift.Codable {
+  public let id: Swift.String
+  public let displayName: Swift.String
+  public let strategy: IdentifySDK.ScanStrategy
+  public let fields: [IdentifySDK.FieldDescriptor]
+  public let keywordSet: IdentifySDK.DocumentKeywordSet?
+  public init(id: Swift.String, displayName: Swift.String, strategy: IdentifySDK.ScanStrategy, fields: [IdentifySDK.FieldDescriptor] = [], keywordSet: IdentifySDK.DocumentKeywordSet? = nil)
+  public init(from decoder: any Swift.Decoder) throws
+  public init(decoding data: Foundation.Data) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
 extension IdentifySDK.Request {
   public typealias ValidationResult = Swift.Result<Swift.Void, any Swift.Error>
 }
@@ -1504,6 +1596,12 @@ extension IdentifySDK.DownloadRequest {
   final public func validate<S>(contentType acceptableContentTypes: @autoclosure @escaping () -> S) -> Self where S : Swift.Sequence, S.Element == Swift.String
   @discardableResult
   final public func validate() -> Self
+}
+public struct ValidationResult {
+  public let field: Swift.String
+  public let passed: Swift.Bool
+  public let message: Swift.String?
+  public init(field: Swift.String, passed: Swift.Bool, message: Swift.String? = nil)
 }
 @available(iOS 13, *)
 public class PACEHandler {
@@ -1893,6 +1991,55 @@ public class PassportUtil {
 extension Foundation.Date {
   public func toString(format: Swift.String = "yyMMdd") -> Swift.String
 }
+public struct FieldRegion : Swift.Codable, Swift.Sendable {
+  public let x: Swift.Double
+  public let y: Swift.Double
+  public let width: Swift.Double
+  public let height: Swift.Double
+  public var cgRect: CoreFoundation.CGRect {
+    get
+  }
+  public init(x: Swift.Double, y: Swift.Double, width: Swift.Double, height: Swift.Double)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum FieldValueType : Swift.String, Swift.Codable {
+  case text
+  case number
+  case date
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct LabelAnchor : Swift.Codable, Swift.Sendable {
+  public enum Direction : Swift.String, Swift.Codable, Swift.Sendable {
+    case below, above, right, left
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let variants: [Swift.String]
+  public let direction: IdentifySDK.LabelAnchor.Direction
+  public let maxDistance: Swift.Double
+  public init(variants: [Swift.String], direction: IdentifySDK.LabelAnchor.Direction, maxDistance: Swift.Double = 0.15)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct FieldDescriptor : Swift.Codable {
+  public let key: Swift.String
+  public let pattern: Swift.String?
+  public let valueType: IdentifySDK.FieldValueType
+  public let isRequired: Swift.Bool
+  public let regionOfInterest: IdentifySDK.FieldRegion?
+  public let labelAnchor: IdentifySDK.LabelAnchor?
+  public init(key: Swift.String, pattern: Swift.String? = nil, valueType: IdentifySDK.FieldValueType = .text, isRequired: Swift.Bool = false, regionOfInterest: IdentifySDK.FieldRegion? = nil, labelAnchor: IdentifySDK.LabelAnchor? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 @available(iOS 13, macOS 10.15, *)
 public enum DocTypeEnum : Swift.String {
   case TD1
@@ -1994,6 +2141,11 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   public var liveness_report: Swift.Int?
   public var liveness_report_interval: Swift.Int?
   public var hide_call_answer_screen: Swift.Int?
+  public var video_record_speech: Swift.Int?
+  public var video_record_read_text: Swift.String?
+  public var speech_expected_sentence: Swift.String?
+  public var video_record_speech_threshold: Swift.Double?
+  public var video_record_duration: Swift.Int?
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -2007,6 +2159,13 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
+}
+public struct SpeechTranscribeResponse : Swift.Codable {
+  public let text: Swift.String?
+  public let match: Swift.Bool?
+  public let score: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers public class SDKEmptyResponse : Swift.Codable {
   @objc deinit
@@ -2050,6 +2209,15 @@ public class PACEInfo : IdentifySDK.SecurityInfo {
   public var result: Swift.Bool?
   public var messages: [Swift.String]?
   public var data: IdentifySDK.UploadDataResp?
+  public init()
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+public class SetDocTypeResponse : Swift.Codable {
+  public var result: Swift.Bool?
+  public var messages: [Swift.String]?
+  public var steps: IdentifySDK.Steps?
   public init()
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
@@ -2163,6 +2331,12 @@ extension IdentifySDK.NFCPassportReaderError : Foundation.LocalizedError {
   }
 }
 @available(iOS 13, macOS 10.15, *)
+extension IdentifySDK.NFCPassportReaderError {
+  public var logExplanation: Swift.String {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
 public enum OpenSSLError : Swift.Error {
   case UnableToGetX509CertificateFromPKCS7(Swift.String)
   case UnableToVerifyX509CertificateForSOD(Swift.String)
@@ -2199,9 +2373,11 @@ extension IdentifySDK.PassiveAuthenticationError : Foundation.LocalizedError {
   public func connectToRoom(identId: Swift.String, callback: @escaping (_ results: IdentifySDK.RoomResponse?, _ errors: IdentifySDK.SDKWebError?) -> Swift.Void)
   public func verifySms(tid: Swift.String, tan: Swift.String, callback: @escaping (_ results: IdentifySDK.SDKEmptyResponse) -> Swift.Void)
   public func sendIDCardOcrData(model: IdentifySDK.IDCardRaw, callback: @escaping (_ results: IdentifySDK.BoolResponse) -> Swift.Void)
+  public func setDocType(docType: Swift.String, callback: @escaping (_ results: IdentifySDK.SetDocTypeResponse?, _ errors: IdentifySDK.SDKWebError?) -> Swift.Void)
   public func uploadAddressInfo(image: Swift.String, addressText: Swift.String, callback: @escaping (_ results: IdentifySDK.NewBoolResponse) -> Swift.Void)
   public func uploadAddressInfoWithPdf(pdf: Swift.String, addressText: Swift.String, callback: @escaping (_ results: IdentifySDK.NewBoolResponse) -> Swift.Void)
   public func uploadVideo(videoData: Foundation.Data, type: Swift.String? = nil, fileName: Swift.String? = nil, callback: @escaping (_ results: IdentifySDK.NewBoolResponse?, _ errors: IdentifySDK.SDKWebError?) -> Swift.Void)
+  public func transcribeSpeech(mediaData: Foundation.Data, expectedText: Swift.String, threshold: Swift.Double, language: Swift.String, fileName: Swift.String = "speech.m4a", mimeType: Swift.String = "audio/mp4", callback: @escaping (_ results: IdentifySDK.SpeechTranscribeResponse?, _ errors: IdentifySDK.SDKWebError?) -> Swift.Void)
   public func sendLogsBatch(_ logs: [[Swift.String : Swift.String]], _ completion: @escaping (Swift.Bool) -> Swift.Void)
   public func showAlert(msg: Swift.String)
   public func webLogger(url: Swift.String, sendingData: Any, log: Foundation.Data? = nil, webErr: (any Swift.Error)? = nil, secs: Swift.String? = "")
@@ -2213,17 +2389,46 @@ public struct LogItem : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
+@available(iOS 15.0, *)
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func documentScanner<Overlay>(isPresented: SwiftUICore.Binding<Swift.Bool>, profile: IdentifySDK.DocumentProfile = .generic, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, @SwiftUICore.ViewBuilder navOverlay: @escaping () -> Overlay, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void) -> some SwiftUICore.View where Overlay : SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func documentScanner(isPresented: SwiftUICore.Binding<Swift.Bool>, profile: IdentifySDK.DocumentProfile = .generic, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void) -> some SwiftUICore.View
+  
+}
+public struct DocumentKeyword : Swift.Codable {
+  public let variants: [Swift.String]
+  public let weight: Swift.Float
+  public let pattern: Swift.String?
+  public init(variants: [Swift.String] = [], weight: Swift.Float = 1.0, pattern: Swift.String? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct DocumentKeywordSet : Swift.Codable {
+  public let keywords: [IdentifySDK.DocumentKeyword]
+  public let minimumScore: Swift.Float
+  public init(keywords: [IdentifySDK.DocumentKeyword], minimumScore: Swift.Float = 0.25)
+  public func score(for lines: [Swift.String]) -> Swift.Float
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 extension Swift.Encodable {
   public func asDictionary() -> [Swift.String : Any]
 }
 extension UIKit.UIImage {
   public func toBase64() -> Swift.String?
+  public func toJpegBase64(compressionQuality: CoreFoundation.CGFloat = 0.9) -> Swift.String?
 }
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
 public class SecurityInfo {
   public func getObjectIdentifier() -> Swift.String
   public func getProtocolOIDString() -> Swift.String
   @objc deinit
+}
+public struct MRZValidator : IdentifySDK.DocumentValidator {
+  public let key: Swift.String
+  public init()
+  public func validate(_ document: inout IdentifySDK.RecognizedDocument) -> [IdentifySDK.ValidationResult]
 }
 @available(iOS 13, macOS 10.15, *)
 public enum NFCViewDisplayMessage {
@@ -2589,6 +2794,17 @@ extension IdentifySDK.AlamofireExtended {
   @objc override dynamic public init()
   @objc deinit
 }
+public enum ScanningError : Foundation.LocalizedError {
+  case cameraUnavailable
+  case cameraPermissionDenied
+  case cancelled
+  case recognitionFailed(Swift.String)
+  case profileNotFound(Swift.String)
+  case timeout
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
 public protocol EventMonitor {
   var queue: Dispatch.DispatchQueue { get }
   func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: (any Swift.Error)?)
@@ -2844,6 +3060,9 @@ public enum DataGroupId : Swift.Int, Swift.CaseIterable {
   case SOD
   case Unknown
   public func getName() -> Swift.String
+  public var logName: Swift.String {
+    get
+  }
   public static func getIDFromName(name: Swift.String) -> IdentifySDK.DataGroupId
   public init?(rawValue: Swift.Int)
   @available(iOS 13, macOS 10.15, *)
@@ -3098,6 +3317,8 @@ public class SDKNFCReadKeys : Swift.Codable {
 }
 public class FrontIdInfo : Swift.Codable {
   public var idTcknOcr: Swift.String?, idSurnameOcr: Swift.String?, idNameOcr: Swift.String?, idBirthDateOcr: Swift.String?, idSerialNoOcr: Swift.String?, idValidUntilOcr: Swift.String?, fullMrzKey: Swift.String?
+  public var idNationalityOcr: Swift.String?
+  public var idGenderOcr: Swift.String?
   public var lowConfidenceFields: [Swift.String]?
   public var rejectedFields: [Swift.String]?
   public init()
@@ -3106,7 +3327,7 @@ public class FrontIdInfo : Swift.Codable {
   required public init(from decoder: any Swift.Decoder) throws
 }
 public class BackIdInfo : Swift.Codable {
-  public var idSurnameMRZ: Swift.String?, idNameMRZ: Swift.String?, idMotherNameOcr: Swift.String?, idFatherNameOcr: Swift.String?, idIssuedByOcr: Swift.String?, fullMrzKey: Swift.String?, idTcknMRZ: Swift.String?, idDocumentNumberMRZ: Swift.String?, idBirthDateMRZ: Swift.String?, idValidDateMRZ: Swift.String?, idTypeMRZ: Swift.String?, idGenderMRZ: Swift.String?, bulkData: Swift.String?
+  public var idSurnameMRZ: Swift.String?, idNameMRZ: Swift.String?, idMotherNameOcr: Swift.String?, idFatherNameOcr: Swift.String?, idIssuedByOcr: Swift.String?, fullMrzKey: Swift.String?, idTcknMRZ: Swift.String?, idDocumentNumberMRZ: Swift.String?, idBirthDateMRZ: Swift.String?, idValidDateMRZ: Swift.String?, idTypeMRZ: Swift.String?, idGenderMRZ: Swift.String?, idNationalityMRZ: Swift.String?, bulkData: Swift.String?
   public var lowConfidenceFields: [Swift.String]?
   public var rejectedFields: [Swift.String]?
   public init()
@@ -3131,6 +3352,10 @@ public class AutoIdentStatus : Swift.Codable {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
+
+
+
+
 public func binToHexRep(_ val: [Swift.UInt8], asArray: Swift.Bool = false) -> Swift.String
 public func binToHexRep(_ val: Swift.UInt8) -> Swift.String
 public func binToHex(_ val: Swift.UInt8) -> Swift.Int
@@ -3176,12 +3401,136 @@ public func calcSHA256Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
 public func calcSHA512Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
 @available(iOS 13, macOS 10.15, *)
 public func calcSHA384Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+public struct ScannerGuidanceTexts {
+  public var idle: Swift.String
+  public var focusing: Swift.String
+  public var reading: Swift.String
+  public var locked: Swift.String
+  public var tooClose: Swift.String
+  public var align: Swift.String
+  public var manualCapture: Swift.String
+  public var cancel: Swift.String
+  public var manualCaptureTitle: Swift.String
+  public var tooFar: Swift.String
+  public var centreDocument: Swift.String
+  public var orientation: Swift.String
+  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "")
+  public static var overrideDefault: IdentifySDK.ScannerGuidanceTexts?
+  public static var overrideDocument: IdentifySDK.ScannerGuidanceTexts?
+  public static var `default`: IdentifySDK.ScannerGuidanceTexts {
+    get
+  }
+  public static var overridePassport: IdentifySDK.ScannerGuidanceTexts?
+  public static var passport: IdentifySDK.ScannerGuidanceTexts {
+    get
+  }
+  public static var document: IdentifySDK.ScannerGuidanceTexts {
+    get
+  }
+}
+public struct ScannerTimingConfig {
+  public var lockThreshold: Swift.Int
+  public var focusRetriggerInterval: Foundation.TimeInterval
+  public var lensSwitchDebounce: Foundation.TimeInterval
+  public var focusSettleDelay: Foundation.TimeInterval
+  public var quadMissResetThreshold: Swift.Int
+  public var manualCaptureHintDelay: Foundation.TimeInterval
+  public var maxAutoCaptureFails: Swift.Int
+  public var minimumSharpnessScore: CoreFoundation.CGFloat
+  public var geometricStabilityThreshold: CoreFoundation.CGFloat
+  public var stabilityConfirmFrames: Swift.Int
+  public var lensSwitchStruggleDelay: Foundation.TimeInterval
+  public var lensCommitHoldDuration: Foundation.TimeInterval
+  public var captureSharpnessFloor: CoreFoundation.CGFloat
+  public init(lockThreshold: Swift.Int, focusRetriggerInterval: Foundation.TimeInterval, lensSwitchDebounce: Foundation.TimeInterval, focusSettleDelay: Foundation.TimeInterval, quadMissResetThreshold: Swift.Int, manualCaptureHintDelay: Foundation.TimeInterval, maxAutoCaptureFails: Swift.Int, minimumSharpnessScore: CoreFoundation.CGFloat, geometricStabilityThreshold: CoreFoundation.CGFloat, stabilityConfirmFrames: Swift.Int, lensSwitchStruggleDelay: Foundation.TimeInterval = 3.5, lensCommitHoldDuration: Foundation.TimeInterval = 4.0, captureSharpnessFloor: CoreFoundation.CGFloat = 90)
+  public static var `default`: IdentifySDK.ScannerTimingConfig
+  public static var passport: IdentifySDK.ScannerTimingConfig
+  public static var idBack: IdentifySDK.ScannerTimingConfig
+  public static var document: IdentifySDK.ScannerTimingConfig
+}
+public struct ScannerConfiguration {
+  public var texts: IdentifySDK.ScannerGuidanceTexts
+  public var timing: IdentifySDK.ScannerTimingConfig
+  public var frameMode: IdentifySDK.ScannerFrameMode
+  public var hapticModule: IdentifySDK.SdkModules?
+  public init(texts: IdentifySDK.ScannerGuidanceTexts, timing: IdentifySDK.ScannerTimingConfig, frameMode: IdentifySDK.ScannerFrameMode = .dynamicQuad)
+  public func withHapticModule(_ module: IdentifySDK.SdkModules?) -> IdentifySDK.ScannerConfiguration
+  public static var overrideDefault: IdentifySDK.ScannerConfiguration?
+  public static var overrideDocument: IdentifySDK.ScannerConfiguration?
+  public static var `default`: IdentifySDK.ScannerConfiguration {
+    get
+  }
+  public static var overrideIDBack: IdentifySDK.ScannerConfiguration?
+  public static var idBack: IdentifySDK.ScannerConfiguration {
+    get
+  }
+  public static var overridePassport: IdentifySDK.ScannerConfiguration?
+  public static var passport: IdentifySDK.ScannerConfiguration {
+    get
+  }
+  public static var document: IdentifySDK.ScannerConfiguration {
+    get
+  }
+}
+public struct ScannerFixedFrame : Swift.Equatable {
+  public var aspect: CoreFoundation.CGFloat
+  public var horizontalPadding: CoreFoundation.CGFloat
+  public var verticalOffset: CoreFoundation.CGFloat
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var maxHeightFraction: CoreFoundation.CGFloat
+  public var captureFitTolerance: CoreFoundation.CGFloat
+  public var overflowTolerance: CoreFoundation.CGFloat
+  public init(aspect: CoreFoundation.CGFloat, horizontalPadding: CoreFoundation.CGFloat = 15, verticalOffset: CoreFoundation.CGFloat = -24, cornerRadius: CoreFoundation.CGFloat = 16, maxHeightFraction: CoreFoundation.CGFloat = 0.72, captureFitTolerance: CoreFoundation.CGFloat = 30, overflowTolerance: CoreFoundation.CGFloat = 4)
+  public static let idCard: IdentifySDK.ScannerFixedFrame
+  public static let passport: IdentifySDK.ScannerFixedFrame
+  public static let document: IdentifySDK.ScannerFixedFrame
+  public static func == (a: IdentifySDK.ScannerFixedFrame, b: IdentifySDK.ScannerFixedFrame) -> Swift.Bool
+}
+public enum ScannerFrameMode : Swift.Equatable {
+  case dynamicQuad
+  case fixedFrame(IdentifySDK.ScannerFixedFrame)
+  public var isFixed: Swift.Bool {
+    get
+  }
+  public var fixedFrame: IdentifySDK.ScannerFixedFrame? {
+    get
+  }
+  public static var idCardDefault: IdentifySDK.ScannerFrameMode
+  public static var passportDefault: IdentifySDK.ScannerFrameMode
+  public static var documentDefault: IdentifySDK.ScannerFrameMode
+  public static func == (a: IdentifySDK.ScannerFrameMode, b: IdentifySDK.ScannerFrameMode) -> Swift.Bool
+}
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
 public class ChipAuthenticationPublicKeyInfo : IdentifySDK.SecurityInfo {
   override public func getObjectIdentifier() -> Swift.String
   override public func getProtocolOIDString() -> Swift.String
   public func getKeyId() -> Swift.Int
   @objc deinit
+}
+public struct DocumentField : Swift.Equatable {
+  public let value: Swift.String
+  public let confidence: Swift.Float
+  public init(value: Swift.String, confidence: Swift.Float)
+  public static func == (a: IdentifySDK.DocumentField, b: IdentifySDK.DocumentField) -> Swift.Bool
+}
+@available(iOS 15.0, *)
+@_Concurrency.MainActor @preconcurrency public struct IdentityScannerView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let profile: IdentifySDK.DocumentProfile
+  @_Concurrency.MainActor @preconcurrency public let style: IdentifySDK.QuadrilateralStyle
+  @_Concurrency.MainActor @preconcurrency public let configuration: IdentifySDK.ScannerConfiguration
+  @_Concurrency.MainActor @preconcurrency public let frameMode: IdentifySDK.ScannerFrameMode?
+  @_Concurrency.MainActor @preconcurrency public let debugROI: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var externalTorchOn: SwiftUICore.Binding<Swift.Bool>?
+  @_Concurrency.MainActor @preconcurrency public var onTorchAvailability: ((Swift.Bool) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public let onResult: (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public let speechKey: IdentifySDK.SDKKeyword?
+  @_Concurrency.MainActor @preconcurrency public let speechModule: IdentifySDK.SdkModules?
+  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, frameMode: IdentifySDK.ScannerFrameMode? = nil, debugROI: Swift.Bool = false, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, speechKey: IdentifySDK.SDKKeyword? = nil, speechModule: IdentifySDK.SdkModules? = nil, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 15.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK19IdentityScannerViewV4bodyQrvp", 0) __
 }
 public protocol RedirectHandler {
   func task(_ task: Foundation.URLSessionTask, willBeRedirectedTo request: Foundation.URLRequest, for response: Foundation.HTTPURLResponse, completion: @escaping (Foundation.URLRequest?) -> Swift.Void)
@@ -3233,6 +3582,16 @@ public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Sw
 public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
 @available(iOS 13, macOS 10.15, *)
 public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+extension IdentifySDK.DocumentProfile {
+  public static let generic: IdentifySDK.DocumentProfile
+  public static let turkishIDFront: IdentifySDK.DocumentProfile
+  public static let turkishIDBack: IdentifySDK.DocumentProfile
+  public static let turkishID: IdentifySDK.DocumentProfile
+  public static let passport: IdentifySDK.DocumentProfile
+  public static let turkishDrivingLicense: IdentifySDK.DocumentProfile
+  public static let bankCard: IdentifySDK.DocumentProfile
+  public static let a4Document: IdentifySDK.DocumentProfile
+}
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension IdentifySDK.Request {
   public func uploadProgress(bufferingPolicy: IdentifySDK.StreamOf<Foundation.Progress>.BufferingPolicy = .unbounded) -> IdentifySDK.StreamOf<Foundation.Progress>
@@ -3554,6 +3913,48 @@ extension IdentifySDK.RequestInterceptor where Self == IdentifySDK.Interceptor {
   public static func interceptor(adapter: any IdentifySDK.RequestAdapter, retrier: any IdentifySDK.RequestRetrier) -> IdentifySDK.Interceptor
   public static func interceptor(adapters: [any IdentifySDK.RequestAdapter] = [], retriers: [any IdentifySDK.RequestRetrier] = [], interceptors: [any IdentifySDK.RequestInterceptor] = []) -> IdentifySDK.Interceptor
 }
+public enum ScannerMode {
+  case idCard
+  case passport
+  case document
+  public static func == (a: IdentifySDK.ScannerMode, b: IdentifySDK.ScannerMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct ImageScannerScan {
+  public var image: UIKit.UIImage
+  public init(image: UIKit.UIImage)
+  public func generatePDFData(completion: @escaping (Swift.Result<Foundation.Data, any Swift.Error>) -> Swift.Void)
+}
+public struct ImageScannerResults {
+  public var originalScan: IdentifySDK.ImageScannerScan
+  public var croppedScan: IdentifySDK.ImageScannerScan
+  public var enhancedScan: IdentifySDK.ImageScannerScan?
+  public var doesUserPreferEnhancedScan: Swift.Bool
+  public var detectedRectangle: IdentifySDK.Quadrilateral
+  public init(originalScan: IdentifySDK.ImageScannerScan, croppedScan: IdentifySDK.ImageScannerScan, enhancedScan: IdentifySDK.ImageScannerScan? = nil, doesUserPreferEnhancedScan: Swift.Bool = false, detectedRectangle: IdentifySDK.Quadrilateral)
+}
+@available(iOS 15.0, *)
+public protocol ImageScannerControllerDelegate : ObjectiveC.NSObjectProtocol {
+  func imageScannerController(_ scanner: IdentifySDK.ImageScannerController, didFinishScanningWithResults results: IdentifySDK.ImageScannerResults)
+  func imageScannerControllerDidCancel(_ scanner: IdentifySDK.ImageScannerController)
+  func imageScannerController(_ scanner: IdentifySDK.ImageScannerController, didFailWithError error: any Swift.Error)
+}
+@objc @available(iOS 15.0, *)
+@_Concurrency.MainActor @preconcurrency final public class ImageScannerController : UIKit.UINavigationController {
+  @_Concurrency.MainActor @preconcurrency weak final public var imageScannerDelegate: (any IdentifySDK.ImageScannerControllerDelegate)?
+  @_Concurrency.MainActor @preconcurrency required public init(image: UIKit.UIImage? = nil, delegate: (any IdentifySDK.ImageScannerControllerDelegate)? = nil, enabledAutoCapture: Swift.Bool? = false, scannerMode: IdentifySDK.ScannerMode? = .idCard)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override final public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency final public func useImage(image: UIKit.UIImage)
+  @_Concurrency.MainActor @preconcurrency final public func resetScanner()
+  @objc deinit
+}
 public enum SDKNetworkStatus : Swift.String {
   case poor
   case good
@@ -3591,12 +3992,28 @@ public struct DataGroupHash {
   public var computedHash: Swift.String
   public var match: Swift.Bool
 }
+public struct RecognizedDocument {
+  public let croppedImage: UIKit.UIImage
+  public let fields: [Swift.String : IdentifySDK.DocumentField]
+  public let rawText: Swift.String
+  public let validationResults: [IdentifySDK.ValidationResult]
+  public var isValid: Swift.Bool {
+    get
+  }
+  public let profileID: Swift.String
+  public init(croppedImage: UIKit.UIImage, fields: [Swift.String : IdentifySDK.DocumentField], rawText: Swift.String, validationResults: [IdentifySDK.ValidationResult], profileID: Swift.String)
+}
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
 public class CardAccess {
   public var securityInfos: [IdentifySDK.SecurityInfo] {
     get
   }
   @objc deinit
+}
+public struct TCKNValidator : IdentifySDK.DocumentValidator {
+  public let key: Swift.String
+  public init()
+  public func validate(_ document: inout IdentifySDK.RecognizedDocument) -> [IdentifySDK.ValidationResult]
 }
 @available(iOS 13, *)
 public class BACHandler {
@@ -3608,6 +4025,9 @@ public class BACHandler {
   public func performBACAndGetSessionKeys(mrzKey: Swift.String, completed: @escaping (_ error: IdentifySDK.NFCPassportReaderError?) -> ())
   public func sessionKeys(data: [Swift.UInt8]) throws -> ([Swift.UInt8], [Swift.UInt8], [Swift.UInt8])
   @objc deinit
+}
+public enum IdentityScanner {
+  public static func setup()
 }
 public func IdentifyWebRequest(url: Swift.String, method: IdentifySDK.HTTPMethod = .get, parameters: IdentifySDK.Parameters = [:], headers: IdentifySDK.HTTPHeaders = ["Content-Type":"application/json"]) -> Foundation.URLRequest?
 public func IdentifyWebRequestOLD(url: Swift.String, method: IdentifySDK.HttpMethod = .get, parameters: [Swift.String : Any] = [:], headers: [Swift.String : Swift.String] = [:]) -> Foundation.URLRequest
@@ -3631,6 +4051,44 @@ extension Foundation.URLRequest {
     get
   }
   @objc deinit
+}
+public enum CornerStyle {
+  case square
+  case none
+  case custom(@Sendable (_ corner: IdentifySDK.QuadCorner, _ isLocked: Swift.Bool) -> SwiftUICore.AnyView)
+}
+public enum QuadCorner : Swift.CaseIterable {
+  case topLeft, topRight, bottomRight, bottomLeft
+  public static func == (a: IdentifySDK.QuadCorner, b: IdentifySDK.QuadCorner) -> Swift.Bool
+  public typealias AllCases = [IdentifySDK.QuadCorner]
+  nonisolated public static var allCases: [IdentifySDK.QuadCorner] {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct QuadrilateralStyle {
+  public var strokeColor: SwiftUICore.Color
+  public var lockedStrokeColor: SwiftUICore.Color
+  public var lineWidth: CoreFoundation.CGFloat
+  public var dashPattern: [CoreFoundation.CGFloat]
+  public var cornerStyle: IdentifySDK.CornerStyle
+  public static var `default`: IdentifySDK.QuadrilateralStyle {
+    get
+  }
+  public init(strokeColor: SwiftUICore.Color = .white, lockedStrokeColor: SwiftUICore.Color = .green, lineWidth: CoreFoundation.CGFloat = 2.5, dashPattern: [CoreFoundation.CGFloat] = [], cornerStyle: IdentifySDK.CornerStyle = .square)
+}
+extension SwiftUICore.EnvironmentValues {
+  public var quadrilateralStyle: IdentifySDK.QuadrilateralStyle {
+    get
+    set
+  }
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func quadrilateralStyle(_ style: IdentifySDK.QuadrilateralStyle) -> some SwiftUICore.View
+  
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
 public class DataGroup14 : IdentifySDK.DataGroup {
@@ -3678,6 +4136,7 @@ public class SimpleASN1DumpParser {
 }
 @_hasMissingDesignatedInitializers @available(iOS 13, *)
 public class IdentifyManager {
+  public var performChipAuthentication: Swift.Bool
   public var kycIsCompleted: Swift.Bool
   public var queueStatsInfo: (order: Swift.String, min: Swift.String)
   public var subRejectedStatus: Swift.Bool
@@ -3685,25 +4144,39 @@ public class IdentifyManager {
   public var userToken: Swift.String
   public var nfcManager: IdentifySDK.SDKNfcReader
   public var passportReader: IdentifySDK.PassportReader
-  public var pingMissTolerance: Swift.Int
-  public var connectionSilenceTimeout: Swift.Double
+  public var isRoomSubscribed: Swift.Bool {
+    get
+  }
+  public var reconnectTimeoutSeconds: Swift.Int
   public var isCallActive: Swift.Bool {
+    get
+  }
+  public var callMediaEstablished: Swift.Bool {
     get
   }
   public var isRinging: Swift.Bool {
     get
   }
+  public var isCallAliveWithoutSignal: Swift.Bool {
+    get
+  }
+  public var signallessCallGracePeriod: Swift.Double
   public var incomingCallRingtoneEnabled: Swift.Bool
   public var incomingCallVibrationEnabled: Swift.Bool
   public var incomingCallRingtoneInterval: Swift.Double
   public var ringingTimeout: Swift.Double
-  public var iceDisconnectGraceSeconds: Swift.Double
-  public var iceFailedGraceSeconds: Swift.Double
   public var lastCallHealthReport: IdentifySDK.SDKCallHealthReport? {
     get
   }
-  public var reconnectTimeoutSeconds: Swift.Int
+  public var isHeartbeatEnabled: Swift.Bool
+  public var heartbeatIntervalSeconds: Swift.Double
   public var lastSocketCloseCode: IdentifySDK.SDKSocketCloseCode? {
+    get
+  }
+  public var isSocketConnected: Swift.Bool {
+    get
+  }
+  public var isSessionClosed: Swift.Bool {
     get
   }
   public var backgroundTimeoutSeconds: Swift.Double
@@ -3748,10 +4221,13 @@ public class IdentifyManager {
   public var allowedComparisonErroCount: Swift.Int
   public var allowedCardType: [IdentifySDK.CardType]
   public var selectedCardType: IdentifySDK.CardType?
+  public var lastDocTypeSteps: IdentifySDK.Steps?
+  public var lastStraightenedPassportImage: UIKit.UIImage?
   public var isSelfIdent: Swift.Bool
   public var useKpsData: Swift.Bool
   public var isSelfieIdent: Swift.Bool
   public var jailBreakStatus: Swift.Bool
+  final public let modulePublisher: Combine.PassthroughSubject<IdentifySDK.SdkModules, Swift.Never>
   public var sdkLang: IdentifySDK.SDKLang?
   public var showBigCustomerCam: Swift.Bool
   public var agentViewScale: Swift.Int
@@ -3760,6 +4236,9 @@ public class IdentifyManager {
   public var timeoutIntervalForResource: Swift.Double
   public var isAlreadyShowingReConnectScreen: Swift.Bool
   public var lastStatusSummary: IdentifySDK.StatusSummary? {
+    get
+  }
+  public var lastKeyReport: IdentifySDK.SDKKeyReport? {
     get
   }
   public var needSpeedTest: Swift.Bool?
@@ -3776,25 +4255,48 @@ public class IdentifyManager {
   public var livenessReportInterval: Swift.Int
   public var requestMaxBodySize: Swift.Int
   public var hideCallAnswerScreen: Swift.Bool
+  public var videoRecordSpeechEnabled: Swift.Bool
+  public var videoRecordReadText: Swift.String
+  public var videoRecordSpeechThreshold: Swift.Double
+  public var videoRecordDurationSeconds: Swift.Double
+  public var speechExpectedSentence: Swift.String
+  public func reportSessionAbandoned(reason: Swift.String? = nil)
   @objc deinit
   public func getVersion() -> Swift.String
   public static func debugPrint(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
   public var trackingEventType: IdentifySDK.TrackingEventType?
   public var trackingDelegate: (any IdentifySDK.IdentifyTrackingListener)?
+  weak public var eventDelegate: (any IdentifySDK.SDKEventListener)?
+  public var currentSessionId: Swift.String {
+    get
+  }
+  public var lastScreen: Swift.String? {
+    get
+  }
   public func setSDKLang(lang: IdentifySDK.SDKLang? = .eng)
   public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [
             .idCard,
             .passport,
             .oldSchool
-        ], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
+        ], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, ttsEnabled: Swift.Bool? = false, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
   public func startSpeedTest(repeatCount: Swift.Int? = 1, callBack: @escaping (_ connectionStatus: IdentifySDK.SDKNetworkStatus, _ kbPerSec: CoreFoundation.CGFloat) -> Swift.Void)
   public func resetLivenessTest()
   public func getNextLivenessTest(callBack: @escaping (_ nextStep: IdentifySDK.LivenessTestStep?, _ completed: Swift.Bool?) -> ())
   public func removeAllModules()
   public func addModules(moduleList: [Swift.String])
   public func quitSDK(callback: @escaping (UIKit.UIViewController) -> ())
+  public func exitSDK()
   public func skipModule()
+  public var isFlowAtLastStep: Swift.Bool {
+    get
+  }
   public func getNextModule(callback: @escaping (UIKit.UIViewController) -> ())
+  public static let documentSelectionLocation: Swift.String
+  public static let passportOVDLocation: Swift.String
+  public func sendDocumentSelectionScreen()
+  public func sendModuleScreen(_ module: IdentifySDK.SdkModules)
+  public func sendModuleScreen(location: Swift.String)
+  public func reportBackNavigation(to module: IdentifySDK.SdkModules)
   public func disconnectSocket(reason: IdentifySDK.SDKSocketCloseCode = .reconnectCycle)
   public func reconnectToSocket(callback: @escaping (Starscream.WebSocket) -> (), statusCallback: @escaping (IdentifySDK.StatusSummary?) -> ())
   public func startRemoteNFC(birthDate: Swift.String, validDate: Swift.String, docNo: Swift.String)
@@ -3810,8 +4312,10 @@ public class IdentifyManager {
   public func detectHumanFace(comingPhoto: UIKit.UIImage, callback: @escaping (Swift.Bool) -> ())
   public func uploadAddressInfo(invoicePhoto: UIKit.UIImage, addressText: Swift.String, callback: @escaping (Swift.Bool, IdentifySDK.SDKWebError?) -> ())
   public func uploadAddressInfoWithPdf(pdfData: Foundation.Data, addressText: Swift.String, callback: @escaping (Swift.Bool, IdentifySDK.SDKWebError?) -> ())
+  public func applyDocTypeSelection(_ type: IdentifySDK.CardType, callback: ((_ errors: IdentifySDK.SDKWebError?) -> ())? = nil)
   public func uploadIdPhoto(idPhoto: UIKit.UIImage, selfieType: IdentifySDK.OCRType = .frontId, withLiveness: Swift.Bool = false, callback: @escaping (IdentifySDK.NewBoolResponse) -> ())
   public func upload5SecVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
+  public func transcribeSpeech(mediaData: Foundation.Data, expectedText: Swift.String, threshold: Swift.Double, callback: @escaping (IdentifySDK.SpeechTranscribeResponse?, IdentifySDK.SDKWebError?) -> ())
   public func uploadLivenessVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
   public func acceptCall(callback: @escaping (_ connected: Swift.Bool?, _ errMsg: IdentifySDK.SDKError?, _ sdpOk: Swift.Bool?) -> ())
   public func killSDKByUser(callback: @escaping (Swift.Bool) -> ())
@@ -3887,8 +4391,48 @@ public struct Quadrilateral {
 extension Swift.Array where Element == IdentifySDK.Quadrilateral {
   public func biggest() -> IdentifySDK.Quadrilateral?
 }
+@_hasMissingDesignatedInitializers public actor DocumentProfileRegistry {
+  public static let shared: IdentifySDK.DocumentProfileRegistry
+  public func register(_ profile: IdentifySDK.DocumentProfile)
+  public func profile(id: Swift.String) -> IdentifySDK.DocumentProfile?
+  public func allProfiles() -> [IdentifySDK.DocumentProfile]
+  @objc deinit
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  @_semantics("defaultActor") nonisolated final public var unownedExecutor: _Concurrency.UnownedSerialExecutor {
+    get
+  }
+}
+public enum NFCReadStage : Swift.String {
+  case notStarted
+  case tagConnection
+  case cardAccess
+  case pace
+  case bac
+  case dataGroupRead
+  case chipAuthentication
+  case activeAuthentication
+  case passiveAuthentication
+  case completed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @objc @available(iOS 13, *)
 public class PassportReader : ObjectiveC.NSObject {
+  public var currentlyReadingDataGroup: IdentifySDK.DataGroupId? {
+    get
+  }
+  public var successfullyReadDataGroups: [IdentifySDK.DataGroupId] {
+    get
+  }
+  public var lastReadStage: IdentifySDK.NFCReadStage {
+    get
+  }
+  public var availableRequestedDataGroups: [IdentifySDK.DataGroupId] {
+    get
+  }
   public var passiveAuthenticationUsesOpenSSL: Swift.Bool
   public init(logLevel: IdentifySDK.LogLevel = .error, masterListURL: Foundation.URL? = nil)
   public func setMasterListURL(_ masterListURL: Foundation.URL)
@@ -4041,6 +4585,51 @@ public class AuthenticationInterceptor<AuthenticatorType> : IdentifySDK.RequestI
   public func retry(_ request: IdentifySDK.Request, for session: IdentifySDK.Session, dueTo error: any Swift.Error, completion: @escaping (IdentifySDK.RetryResult) -> Swift.Void)
   @objc deinit
 }
+public enum SDKKeyStatus : Swift.String, Swift.Codable {
+  case ok
+  case notRequired
+  case missing
+  case invalidFormat
+  case rejected
+  case pending
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKKeyName {
+  public static let aes: Swift.String
+  public static let turn: Swift.String
+  public static let webSocket: Swift.String
+  public static let onlineLog: Swift.String
+}
+public struct SDKKeyCheck : Swift.Codable {
+  public let key: Swift.String
+  public let status: IdentifySDK.SDKKeyStatus
+  public let requiredBy: Swift.String
+  public let detail: Swift.String
+  public init(key: Swift.String, status: IdentifySDK.SDKKeyStatus, requiredBy: Swift.String, detail: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SDKKeyReport : Swift.Codable {
+  public let checks: [IdentifySDK.SDKKeyCheck]
+  public var hasProblem: Swift.Bool {
+    get
+  }
+  public var problemKeys: [Swift.String] {
+    get
+  }
+  public var text: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension IdentifySDK.IdentifyManager {
+  public func verifyKeysOnServer(completion: @escaping (IdentifySDK.SDKKeyReport) -> Swift.Void)
+}
 @_hasMissingDesignatedInitializers public class SocketLog {
   public var socketType: IdentifySDK.SocketMsgType?
   public var socketMsg: Swift.String?
@@ -4054,6 +4643,149 @@ public enum SocketMsgType {
   public var hashValue: Swift.Int {
     get
   }
+}
+public enum SDKLogSeverity : Swift.Int, Swift.Comparable {
+  case debug
+  case info
+  case warning
+  case error
+  public static func < (lhs: IdentifySDK.SDKLogSeverity, rhs: IdentifySDK.SDKLogSeverity) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum SDKLogCategory : Swift.String {
+  case general
+  case socket
+  case nfc
+  case ocr
+  case webrtc
+  case network
+  case liveness
+  case offer
+  case lifecycle
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKLog {
+  public static func debug(_ message: @autoclosure () -> Swift.String, _ category: IdentifySDK.SDKLogCategory = .general, silent: Swift.Bool = false)
+  public static func info(_ message: @autoclosure () -> Swift.String, _ category: IdentifySDK.SDKLogCategory = .general, silent: Swift.Bool = false)
+  public static func warning(_ message: @autoclosure () -> Swift.String, _ category: IdentifySDK.SDKLogCategory = .general, silent: Swift.Bool = false)
+  public static func error(_ message: @autoclosure () -> Swift.String, _ category: IdentifySDK.SDKLogCategory = .general, silent: Swift.Bool = false)
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class SDKDebugSettings : Foundation.ObservableObject {
+  @_Concurrency.MainActor public static let shared: IdentifySDK.SDKDebugSettings
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($scannerDiagnostics) @_Concurrency.MainActor final public var scannerDiagnostics: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $scannerDiagnostics: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($scannerROILogging) @_Concurrency.MainActor final public var scannerROILogging: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $scannerROILogging: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($ovdConsoleLog) @_Concurrency.MainActor final public var ovdConsoleLog: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $ovdConsoleLog: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($nfcVerboseLog) @_Concurrency.MainActor final public var nfcVerboseLog: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $nfcVerboseLog: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($consoleLogs) @_Concurrency.MainActor final public var consoleLogs: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $consoleLogs: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public func apply()
+  @_Concurrency.MainActor final public func resetToDefaults()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@available(iOS 13, *)
+public enum SDKNFCVerdict : Swift.String {
+  case userCanceled
+  case paceUnsupported
+  case mrzKeyMismatch
+  case readInterrupted
+  case secureChannelBroken
+  case dataSetMismatch
+  case dataIntegrityFailure
+  case certificateChain
+  case chipUnresponsive
+  case chipAuthFailure
+  case incomplete
+  case undetermined
+  public init?(rawValue: Swift.String)
+  @available(iOS 13, *)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 13, *)
+public struct SDKNFCAttempt {
+  public var index: Swift.Int
+  public var startedAt: Foundation.Date
+  public var duration: Foundation.TimeInterval?
+  public var documentType: Swift.String
+  public var keySource: Swift.String
+  public var stage: Swift.String
+  public var requestedGroups: [Swift.String]
+  public var chipGroups: [Swift.String]
+  public var readGroups: [Swift.String]
+  public var events: [Swift.String]
+  public var failure: Swift.String?
+  public var succeeded: Swift.Bool
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+final public class SDKNFCDiagnostics {
+  public static let shared: IdentifySDK.SDKNFCDiagnostics
+  final public var recordedAttempts: [IdentifySDK.SDKNFCAttempt] {
+    get
+  }
+  final public var hasPendingReport: Swift.Bool {
+    get
+  }
+  final public func reset()
+  final public func verdictLine() -> Swift.String
+  final public func reportLines(documentLabel: Swift.String) -> [Swift.String]
+  final public func lastAttemptSummary(documentLabel: Swift.String) -> Swift.String?
+  final public func buildReport(documentLabel: Swift.String) -> Swift.String
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers public class IdentifyOCRManager {
   public func setNewPhotoForOCR(image: UIKit.UIImage) -> UIKit.UIImage
@@ -4147,6 +4879,2333 @@ extension Foundation.URLRequest {
   }
   public func validate() throws
 }
+extension Foundation.Bundle {
+  public static let sdkUI: Foundation.Bundle
+}
+@_hasMissingDesignatedInitializers final public class SDKTheme {
+  public static let shared: IdentifySDK.SDKTheme
+  final public var colors: IdentifySDK.SDKColors
+  final public var fonts: IdentifySDK.SDKFonts
+  final public var icons: IdentifySDK.SDKIcons
+  final public var metrics: IdentifySDK.SDKMetrics
+  final public func setIcon(_ key: IdentifySDK.SDKIconKey, _ image: SwiftUICore.Image)
+  final public func setIcons(_ map: [IdentifySDK.SDKIconKey : SwiftUICore.Image])
+  final public func resetIcon(_ key: IdentifySDK.SDKIconKey)
+  @discardableResult
+  final public func registerFont(at url: Foundation.URL) -> Swift.Bool
+  @discardableResult
+  final public func registerFont(data: Foundation.Data) -> Swift.Bool
+  @objc deinit
+}
+public struct SDKColors {
+  public var primary: SwiftUICore.Color
+  public var primaryDark: SwiftUICore.Color
+  public var primaryLight: SwiftUICore.Color
+  public var success: SwiftUICore.Color
+  public var successAlt: SwiftUICore.Color
+  public var successBright: SwiftUICore.Color
+  public var error: SwiftUICore.Color
+  public var inkDarkest: SwiftUICore.Color
+  public var inkDark: SwiftUICore.Color
+  public var inkMid: SwiftUICore.Color
+  public var inkLight: SwiftUICore.Color
+  public var inkBorder: SwiftUICore.Color
+  public var inkBackground: SwiftUICore.Color
+  public var inkSurface: SwiftUICore.Color
+  public var inkSubtitle: SwiftUICore.Color
+  public var darkBg: SwiftUICore.Color
+  public var darkBgSecondary: SwiftUICore.Color
+  public var darkMuted: SwiftUICore.Color
+  public var divider: SwiftUICore.Color
+  public var accentPurple: SwiftUICore.Color
+  public var accentTeal: SwiftUICore.Color
+  public init()
+}
+public struct SDKFonts {
+  public var familyName: Swift.String?
+  public init()
+  public func font(size: CoreFoundation.CGFloat, weight: SwiftUICore.Font.Weight) -> SwiftUICore.Font
+}
+public struct SDKIcons {
+  public var logo: SwiftUICore.Image?
+  public var hamburger: SwiftUICore.Image?
+  public var langButton: SwiftUICore.Image?
+  public init()
+}
+public enum SDKIconKey : Swift.String, Swift.CaseIterable {
+  case logo, hamburger, langButton, back, help, close
+  case retry, checkmark, camera, trash, video, chat, calendar, sparkles, chevronRight, signLang
+  case permCamera, permMic, permSpeech, permIdCard, permAlone, permConditions
+  case incomingCall, incomingCallButton, nfcFront, nfcBack, nfcPassportFront
+  case thankYouSuccess, thankYouFail, uploadFile, lostConnection
+  case idCardFront, idCardBack
+  case successCircle, failCircle, play, pause, mic, stopRecord
+  case torchOn, torchOff, wifiGood, wifiBad
+  case idTypeChip, idTypePassport, idTypeOther
+  public var defaultImage: SwiftUICore.Image {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKIconKey]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKIconKey] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension SwiftUICore.Image {
+  public static func sdk(_ key: IdentifySDK.SDKIconKey) -> SwiftUICore.Image
+}
+public struct SDKMetrics {
+  public var spacingXS: CoreFoundation.CGFloat
+  public var spacingSM: CoreFoundation.CGFloat
+  public var spacingMD: CoreFoundation.CGFloat
+  public var spacingLG: CoreFoundation.CGFloat
+  public var spacingXL: CoreFoundation.CGFloat
+  public var spacingXXL: CoreFoundation.CGFloat
+  public var radiusSM: CoreFoundation.CGFloat
+  public var radiusMD: CoreFoundation.CGFloat
+  public var radiusLG: CoreFoundation.CGFloat
+  public var radiusXL: CoreFoundation.CGFloat
+  public var radiusCard: CoreFoundation.CGFloat
+  public var radiusPill: CoreFoundation.CGFloat
+  public var radiusCircle: CoreFoundation.CGFloat
+  public init()
+}
+public enum IDColor {
+  public static var primary: SwiftUICore.Color {
+    get
+  }
+  public static var primaryDark: SwiftUICore.Color {
+    get
+  }
+  public static var primaryLight: SwiftUICore.Color {
+    get
+  }
+  public static var success: SwiftUICore.Color {
+    get
+  }
+  public static var successAlt: SwiftUICore.Color {
+    get
+  }
+  public static var successBright: SwiftUICore.Color {
+    get
+  }
+  public static var error: SwiftUICore.Color {
+    get
+  }
+  public static var inkDarkest: SwiftUICore.Color {
+    get
+  }
+  public static var inkDark: SwiftUICore.Color {
+    get
+  }
+  public static var inkMid: SwiftUICore.Color {
+    get
+  }
+  public static var inkLight: SwiftUICore.Color {
+    get
+  }
+  public static var inkBorder: SwiftUICore.Color {
+    get
+  }
+  public static var inkBackground: SwiftUICore.Color {
+    get
+  }
+  public static var inkSurface: SwiftUICore.Color {
+    get
+  }
+  public static var inkSubtitle: SwiftUICore.Color {
+    get
+  }
+  public static var darkBg: SwiftUICore.Color {
+    get
+  }
+  public static var darkBgSecondary: SwiftUICore.Color {
+    get
+  }
+  public static var darkMuted: SwiftUICore.Color {
+    get
+  }
+  public static var divider: SwiftUICore.Color {
+    get
+  }
+  public static var accentPurple: SwiftUICore.Color {
+    get
+  }
+  public static var accentTeal: SwiftUICore.Color {
+    get
+  }
+}
+extension IdentifySDK.IDColor {
+  public static func adaptivePrimary(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func adaptiveBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func adaptiveSurface(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func adaptiveTitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func adaptiveSubtitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func adaptiveBorder(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+}
+public enum IDFont {
+  public static func displayLarge(_ weight: SwiftUICore.Font.Weight = .bold) -> SwiftUICore.Font
+  public static func displayMedium(_ weight: SwiftUICore.Font.Weight = .bold) -> SwiftUICore.Font
+  public static func displaySmall(_ weight: SwiftUICore.Font.Weight = .bold) -> SwiftUICore.Font
+  public static func bodyLarge(_ weight: SwiftUICore.Font.Weight = .semibold) -> SwiftUICore.Font
+  public static func bodyMediumPlus(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+  public static func bodyMedium(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+  public static func bodyRegular(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+  public static func bodySmall(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+  public static func caption(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+}
+public enum IDSpacing {
+  public static var xs: CoreFoundation.CGFloat {
+    get
+  }
+  public static var sm: CoreFoundation.CGFloat {
+    get
+  }
+  public static var md: CoreFoundation.CGFloat {
+    get
+  }
+  public static var lg: CoreFoundation.CGFloat {
+    get
+  }
+  public static var xl: CoreFoundation.CGFloat {
+    get
+  }
+  public static var xxl: CoreFoundation.CGFloat {
+    get
+  }
+}
+public enum IDRadius {
+  public static var sm: CoreFoundation.CGFloat {
+    get
+  }
+  public static var md: CoreFoundation.CGFloat {
+    get
+  }
+  public static var lg: CoreFoundation.CGFloat {
+    get
+  }
+  public static var xl: CoreFoundation.CGFloat {
+    get
+  }
+  public static var card: CoreFoundation.CGFloat {
+    get
+  }
+  public static var pill: CoreFoundation.CGFloat {
+    get
+  }
+  public static var circle: CoreFoundation.CGFloat {
+    get
+  }
+}
+@_Concurrency.MainActor open class SDKBaseModuleViewModel : Foundation.ObservableObject {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isLoading) @_Concurrency.MainActor public var isLoading: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor public var $isLoading: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($errorMessage) @_Concurrency.MainActor public var errorMessage: Swift.String? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor public var $errorMessage: Combine.Published<Swift.String?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<(() -> Swift.Void)?> @_projectedValueProperty($pendingAlertAction) @_Concurrency.MainActor public var pendingAlertAction: (() -> Swift.Void)? {
+    get
+  }
+  @_Concurrency.MainActor public var $pendingAlertAction: Combine.Published<(() -> Swift.Void)?>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor public init()
+  @_Concurrency.MainActor public func consumePendingAlertAction()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_Concurrency.MainActor final public class SDKFlowCoordinator : Combine.ObservableObject {
+  public enum NavDirection {
+    case forward, back
+    public static func == (a: IdentifySDK.SDKFlowCoordinator.NavDirection, b: IdentifySDK.SDKFlowCoordinator.NavDirection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @Combine.Published<[IdentifySDK.SDKModuleRoute]> @_projectedValueProperty($path) @_Concurrency.MainActor final public var path: [IdentifySDK.SDKModuleRoute] {
+    get
+  }
+  @_Concurrency.MainActor final public var $path: Combine.Published<[IdentifySDK.SDKModuleRoute]>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKFlowCoordinator.NavDirection> @_projectedValueProperty($navDirection) @_Concurrency.MainActor final public var navDirection: IdentifySDK.SDKFlowCoordinator.NavDirection {
+    get
+  }
+  @_Concurrency.MainActor final public var $navDirection: Combine.Published<IdentifySDK.SDKFlowCoordinator.NavDirection>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SdkModules?> @_projectedValueProperty($activeModule) @_Concurrency.MainActor final public var activeModule: IdentifySDK.SdkModules? {
+    get
+  }
+  @_Concurrency.MainActor final public var $activeModule: Combine.Published<IdentifySDK.SdkModules?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Int> @_projectedValueProperty($progressStep) @_Concurrency.MainActor final public var progressStep: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var $progressStep: Combine.Published<Swift.Int>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Int> @_projectedValueProperty($progressTotal) @_Concurrency.MainActor final public var progressTotal: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var $progressTotal: Combine.Published<Swift.Int>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($sdkError) @_Concurrency.MainActor final public var sdkError: Swift.String? {
+    get
+  }
+  @_Concurrency.MainActor final public var $sdkError: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($subRejected) @_Concurrency.MainActor final public var subRejected: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $subRejected: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isWaitingForRoom) @_Concurrency.MainActor final public var isWaitingForRoom: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isWaitingForRoom: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showLostConnection) @_Concurrency.MainActor final public var showLostConnection: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $showLostConnection: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Int> @_projectedValueProperty($moduleRestartToken) @_Concurrency.MainActor final public var moduleRestartToken: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var $moduleRestartToken: Combine.Published<Swift.Int>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.ThankYouStatus?> @_projectedValueProperty($pendingThankYouStatus) @_Concurrency.MainActor final public var pendingThankYouStatus: IdentifySDK.ThankYouStatus? {
+    get
+  }
+  @_Concurrency.MainActor final public var $pendingThankYouStatus: Combine.Published<IdentifySDK.ThankYouStatus?>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor public init()
+  @_Concurrency.MainActor final public func prepareForSetup()
+  @_Concurrency.MainActor final public func start()
+  @_Concurrency.MainActor final public func advanceToNextModule()
+  @_Concurrency.MainActor final public func insert(_ ids: [Swift.String], before route: IdentifySDK.SDKModuleRoute)
+  @_Concurrency.MainActor final public func insert(_ ids: [Swift.String], after route: IdentifySDK.SDKModuleRoute)
+  @_Concurrency.MainActor final public func showExternalScreen(_ id: Swift.String)
+  @_Concurrency.MainActor final public func advanceExternal()
+  @_Concurrency.MainActor final public func skipCurrentModule()
+  @_Concurrency.MainActor final public func finishFlowAsFailed()
+  @_Concurrency.MainActor final public func appendModules(_ modules: [IdentifySDK.SdkModules])
+  @_Concurrency.MainActor final public func appendModules(moduleList: [Swift.String])
+  @_Concurrency.MainActor final public func pushThankYouDirectly(status: IdentifySDK.ThankYouStatus)
+  @_Concurrency.MainActor final public func restoreSocketListener()
+  @_Concurrency.MainActor final public func restartCurrentModule()
+  @_Concurrency.MainActor final public func dismissLostConnection()
+  @_Concurrency.MainActor final public func popBack()
+  @_Concurrency.MainActor final public func resetFlow()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension IdentifySDK.SDKFlowCoordinator : IdentifySDK.SDKSocketListener {
+  @_Concurrency.MainActor final public func listenSocketMessage(message: IdentifySDK.SDKCallActions)
+}
+@_hasMissingDesignatedInitializers final public class SDKHapticConfig {
+  public static let shared: IdentifySDK.SDKHapticConfig
+  final public var isEnabled: Swift.Bool
+  final public func setEnabled(_ enabled: Swift.Bool, for module: IdentifySDK.SdkModules)
+  final public func setEnabled(_ enabled: Swift.Bool, for modules: [IdentifySDK.SdkModules])
+  final public func setEnabledForAll(_ enabled: Swift.Bool)
+  final public var slowInterval: Swift.Double
+  final public var fastInterval: Swift.Double
+  final public var minIntensity: Swift.Double
+  final public var maxIntensity: Swift.Double
+  final public var minSharpness: Swift.Double
+  final public var maxSharpness: Swift.Double
+  final public var rampStartOverride: Swift.Double?
+  final public var maxSustainDuration: Swift.Double
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class SDKCaptureHaptics {
+  public static let shared: IdentifySDK.SDKCaptureHaptics
+  final public func begin(module: IdentifySDK.SdkModules?, rampStart: Swift.Double = 0)
+  final public func update(progress: Swift.Double)
+  final public func run(duration: Foundation.TimeInterval, module: IdentifySDK.SdkModules?, rampStart: Swift.Double = 0)
+  final public func finish()
+  final public func cancel()
+  @objc deinit
+}
+extension SwiftUICore.EnvironmentValues {
+  public var sdkPreviewMode: Swift.Bool {
+    get
+    set
+  }
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func sdkPreviewMode(_ enabled: Swift.Bool = true) -> some SwiftUICore.View
+  
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKModulePreviewHost<Content> : SwiftUICore.View where Content : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(@SwiftUICore.ViewBuilder _ content: () -> Content)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK20SDKModulePreviewHostV4bodyQrvp", 0) __<Content>
+}
+public struct SDKModulePreviewEntry : Swift.Identifiable {
+  public let id: Swift.String
+  public let title: Swift.String
+  public let subtitle: Swift.String
+  public let category: Swift.String
+  public init(id: Swift.String, title: Swift.String, subtitle: Swift.String, category: Swift.String, @SwiftUICore.ViewBuilder builder: @escaping () -> some View)
+  public typealias ID = Swift.String
+}
+public enum SDKPreviewCatalog {
+  public static let categoryOrder: [Swift.String]
+  public static let entries: [IdentifySDK.SDKModulePreviewEntry]
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKPreviewGallery : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK17SDKPreviewGalleryV4bodyQrvp", 0) __
+}
+
+public enum SDKModuleRoute : Swift.Hashable {
+  case prepare
+  case selfie
+  case selfieWithLiveness
+  case idCard
+  case idCardOVD
+  case nfc
+  case liveness
+  case speech
+  case addressConfirm
+  case signature
+  case videoRecorder
+  case callScreen
+  case thankYou(IdentifySDK.ThankYouStatus?)
+  case custom(Swift.String)
+  public static func == (a: IdentifySDK.SDKModuleRoute, b: IdentifySDK.SDKModuleRoute) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKNavigationBar : SwiftUICore.View {
+  public enum Style {
+    case login
+    case module
+    case progress(steps: Swift.Int, current: Swift.Int)
+    case progressClear(steps: Swift.Int, current: Swift.Int)
+    case overlay
+  }
+  @_Concurrency.MainActor @preconcurrency public init(style: IdentifySDK.SDKNavigationBar.Style, title: Swift.String = "", subtitle: Swift.String = "", onBack: (() -> Swift.Void)? = nil, onMenu: (() -> Swift.Void)? = nil, onHelp: (() -> Swift.Void)? = nil, trailing: SwiftUICore.AnyView? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK16SDKNavigationBarV4bodyQrvp", 0) __
+}
+public enum SDKSelfieFaceCondition : Swift.Equatable {
+  case noFace
+  case multipleFaces
+  case tooDark
+  case tooBright
+  case tooClose
+  case tooFar
+  case moveUp
+  case moveDown
+  case moveLeft
+  case moveRight
+  case notFitting
+  case ok
+  public static func == (a: IdentifySDK.SDKSelfieFaceCondition, b: IdentifySDK.SDKSelfieFaceCondition) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SDKSelfieGuidanceConfig {
+  public var requiredHoldDuration: Swift.Double
+  public var okFrameThreshold: Swift.Int
+  public var badFrameThreshold: Swift.Int
+  public var warmupFrameCount: Swift.Int
+  public var darkEnterThreshold: CoreFoundation.CGFloat
+  public var darkExitThreshold: CoreFoundation.CGFloat
+  public var brightEnterThreshold: CoreFoundation.CGFloat
+  public var brightExitThreshold: CoreFoundation.CGFloat
+  public var tooFarEnterRatio: CoreFoundation.CGFloat
+  public var tooFarExitRatio: CoreFoundation.CGFloat
+  public var tooCloseEnterRatio: CoreFoundation.CGFloat
+  public var tooCloseExitRatio: CoreFoundation.CGFloat
+  public var positionEnterFraction: CoreFoundation.CGFloat
+  public var positionExitFraction: CoreFoundation.CGFloat
+  public var fitTolerance: CoreFoundation.CGFloat
+  public init()
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKSelfieViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<UIKit.UIImage?> @_projectedValueProperty($selfieImage) @_Concurrency.MainActor final public var selfieImage: UIKit.UIImage? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $selfieImage: Combine.Published<UIKit.UIImage?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($faceDetected) @_Concurrency.MainActor final public var faceDetected: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $faceDetected: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($canContinue) @_Concurrency.MainActor final public var canContinue: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $canContinue: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($resultText) @_Concurrency.MainActor final public var resultText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $resultText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKSelfieFaceCondition> @_projectedValueProperty($faceCondition) @_Concurrency.MainActor final public var faceCondition: IdentifySDK.SDKSelfieFaceCondition {
+    get
+  }
+  @_Concurrency.MainActor final public var $faceCondition: Combine.Published<IdentifySDK.SDKSelfieFaceCondition>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($guidanceText) @_Concurrency.MainActor final public var guidanceText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $guidanceText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isFaceAligned) @_Concurrency.MainActor final public var isFaceAligned: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isFaceAligned: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Double> @_projectedValueProperty($holdProgress) @_Concurrency.MainActor final public var holdProgress: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public var $holdProgress: Combine.Published<Swift.Double>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($shouldAutoCapture) @_Concurrency.MainActor final public var shouldAutoCapture: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $shouldAutoCapture: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($awaitingConfirmation) @_Concurrency.MainActor final public var awaitingConfirmation: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $awaitingConfirmation: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var isCaptureSuspended: Swift.Bool
+  @_Concurrency.MainActor override convenience public init()
+  @_Concurrency.MainActor public init(config: IdentifySDK.SDKSelfieGuidanceConfig)
+  @_Concurrency.MainActor final public func updatePreviewSize(_ size: CoreFoundation.CGSize)
+  nonisolated final public func analyzeFrame(_ pixelBuffer: CoreVideo.CVPixelBuffer, cameraPosition: AVFoundation.AVCaptureDevice.Position)
+  @_Concurrency.MainActor final public func presentCaptured(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func confirmSelfie()
+  @_Concurrency.MainActor final public func processSelfie(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func reset()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKSelfieView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKSelfieViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK13SDKSelfieViewV4bodyQrvp", 0) __
+}
+
+public enum ThankYouStatus : Swift.Hashable {
+  case completed
+  case missedCall
+  case notCompleted
+  public static func == (a: IdentifySDK.ThankYouStatus, b: IdentifySDK.ThankYouStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_Concurrency.MainActor final public class SDKThankYouViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<IdentifySDK.ThankYouStatus> @_projectedValueProperty($status) @_Concurrency.MainActor final public var status: IdentifySDK.ThankYouStatus {
+    get
+  }
+  @_Concurrency.MainActor final public var $status: Combine.Published<IdentifySDK.ThankYouStatus>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isSelfieIdentification) @_Concurrency.MainActor final public var isSelfieIdentification: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isSelfieIdentification: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($kycCompleted) @_Concurrency.MainActor final public var kycCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $kycCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor public init(status: IdentifySDK.ThankYouStatus = .completed)
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKThankYouView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(status: IdentifySDK.ThankYouStatus = .completed)
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKThankYouViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK15SDKThankYouViewV4bodyQrvp", 0) __
+}
+
+
+public enum SDKButtonStyle {
+  case primary
+  case cancel
+  case secondary
+  case success
+  public static func == (a: IdentifySDK.SDKButtonStyle, b: IdentifySDK.SDKButtonStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKButton : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(title: Swift.String, style: IdentifySDK.SDKButtonStyle = .primary, isLoading: Swift.Bool = false, isDisabled: Swift.Bool = false, action: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK9SDKButtonV4bodyQrvp", 0) __
+}
+public enum SDKComparisonKind {
+  case selfie
+  case nfc
+  case ocr
+  public static func == (a: IdentifySDK.SDKComparisonKind, b: IdentifySDK.SDKComparisonKind) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKComparisonOutcome {
+  case passed
+  case retry(message: Swift.String)
+  case exhausted(message: Swift.String, canSkip: Swift.Bool)
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class SDKDeviceOrientationMonitor : Foundation.ObservableObject {
+  @_Concurrency.MainActor public static let shared: IdentifySDK.SDKDeviceOrientationMonitor
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isSideways) @_Concurrency.MainActor final public var isSideways: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isSideways: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Double> @_projectedValueProperty($tiltDegrees) @_Concurrency.MainActor final public var tiltDegrees: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public var $tiltDegrees: Combine.Published<Swift.Double>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor public static var sidewaysEnterDegrees: Swift.Double
+  @_Concurrency.MainActor public static var sidewaysExitDegrees: Swift.Double
+  @_Concurrency.MainActor public static var enterDwellSeconds: Swift.Double
+  @_Concurrency.MainActor public static var exitDwellSeconds: Swift.Double
+  @_Concurrency.MainActor public static var flatGuard: Swift.Double
+  @_Concurrency.MainActor final public func start()
+  @_Concurrency.MainActor final public func stop()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func holdUprightWarning(isActive: Swift.Bool = true, topPadding: CoreFoundation.CGFloat = IDSpacing.lg) -> some SwiftUICore.View
+  
+}
+public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
+  case front, back, passport
+  public var id: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias ID = Swift.String
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKIdCardViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<UIKit.UIImage?> @_projectedValueProperty($frontPhoto) @_Concurrency.MainActor final public var frontPhoto: UIKit.UIImage? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $frontPhoto: Combine.Published<UIKit.UIImage?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<UIKit.UIImage?> @_projectedValueProperty($backPhoto) @_Concurrency.MainActor final public var backPhoto: UIKit.UIImage? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $backPhoto: Combine.Published<UIKit.UIImage?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<IdentifySDK.IdCardSide> @_projectedValueProperty($currentSide) @_Concurrency.MainActor final public var currentSide: IdentifySDK.IdCardSide {
+    get
+  }
+  @_Concurrency.MainActor final public var $currentSide: Combine.Published<IdentifySDK.IdCardSide>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($resultText) @_Concurrency.MainActor final public var resultText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $resultText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($canContinue) @_Concurrency.MainActor final public var canContinue: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $canContinue: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var allowedCardTypes: [IdentifySDK.CardType] {
+    get
+  }
+  @_Concurrency.MainActor final public var nfcRetryExceeded: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public func notifyDocumentSelectionShown()
+  @_Concurrency.MainActor final public func selectCardType(_ type: IdentifySDK.CardType)
+  @_Concurrency.MainActor final public func resetCapturedState()
+  @_Concurrency.MainActor final public func scanFront(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func scanBack(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func scanPassport(image: UIKit.UIImage, comingData: IdentifySDK.FrontIdInfo)
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKIdCardView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKIdCardViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK13SDKIdCardViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKAddressConfirmViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.String> @_projectedValueProperty($addressText) @_Concurrency.MainActor final public var addressText: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $addressText: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<UIKit.UIImage?> @_projectedValueProperty($docPhoto) @_Concurrency.MainActor final public var docPhoto: UIKit.UIImage? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $docPhoto: Combine.Published<UIKit.UIImage?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Foundation.Data?> @_projectedValueProperty($pdfData) @_Concurrency.MainActor final public var pdfData: Foundation.Data? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $pdfData: Combine.Published<Foundation.Data?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showDocumentOptions) @_Concurrency.MainActor final public var showDocumentOptions: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showDocumentOptions: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showScanner) @_Concurrency.MainActor final public var showScanner: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showScanner: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showPDFPicker) @_Concurrency.MainActor final public var showPDFPicker: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showPDFPicker: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var isAddressValid: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var canSubmit: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var maxPDFSizeMB: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public func openScanner()
+  @_Concurrency.MainActor final public func openPDFPicker()
+  @_Concurrency.MainActor final public func photoSelected(_ image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func pdfSelectedFromURL(_ url: Foundation.URL)
+  @_Concurrency.MainActor final public func pdfSelected(_ data: Foundation.Data, preview: UIKit.UIImage? = nil)
+  @_Concurrency.MainActor final public func submit()
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKAddressConfirmView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKAddressConfirmViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK21SDKAddressConfirmViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKSpeechRecViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.String> @_projectedValueProperty($targetWord) @_Concurrency.MainActor final public var targetWord: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $targetWord: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isRecording) @_Concurrency.MainActor final public var isRecording: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isRecording: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($recognizedText) @_Concurrency.MainActor final public var recognizedText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $recognizedText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($speechSuccess) @_Concurrency.MainActor final public var speechSuccess: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $speechSuccess: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor override public init()
+  @_Concurrency.MainActor final public func startRecording()
+  @_Concurrency.MainActor final public func stopRecording()
+  @_Concurrency.MainActor final public func confirmSpeech()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKSpeechRecView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKSpeechRecViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK16SDKSpeechRecViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKNfcViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.String> @_projectedValueProperty($serialNo) @_Concurrency.MainActor final public var serialNo: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $serialNo: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($birthDate) @_Concurrency.MainActor final public var birthDate: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $birthDate: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($validDate) @_Concurrency.MainActor final public var validDate: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $validDate: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($nfcStatus) @_Concurrency.MainActor final public var nfcStatus: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $nfcStatus: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($nfcCompleted) @_Concurrency.MainActor final public var nfcCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $nfcCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showEditScreen) @_Concurrency.MainActor final public var showEditScreen: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showEditScreen: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($canContinue) @_Concurrency.MainActor final public var canContinue: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $canContinue: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onRetryFromPreviousStep: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var isPassport: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var introTtsKey: IdentifySDK.SDKKeyword {
+    get
+  }
+  @_Concurrency.MainActor public static func isSerialValid(_ raw: Swift.String, isPassport: Swift.Bool) -> Swift.Bool
+  @_Concurrency.MainActor override public init()
+  @_Concurrency.MainActor final public func startNFC()
+  @_Concurrency.MainActor final public func saveManualDates()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKNfcView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKNfcViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK10SDKNfcViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKVideoRecorderViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Foundation.Data?> @_projectedValueProperty($videoData) @_Concurrency.MainActor final public var videoData: Foundation.Data? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $videoData: Combine.Published<Foundation.Data?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Foundation.URL?> @_projectedValueProperty($videoURL) @_Concurrency.MainActor final public var videoURL: Foundation.URL? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $videoURL: Combine.Published<Foundation.URL?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($uploadCompleted) @_Concurrency.MainActor final public var uploadCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $uploadCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Foundation.TimeInterval> @_projectedValueProperty($videoTimeLimit) @_Concurrency.MainActor final public var videoTimeLimit: Foundation.TimeInterval {
+    get
+  }
+  @_Concurrency.MainActor final public var $videoTimeLimit: Combine.Published<Foundation.TimeInterval>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var speechThreshold: Swift.Double {
+    get
+  }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($readingText) @_Concurrency.MainActor final public var readingText: Swift.String? {
+    get
+  }
+  @_Concurrency.MainActor final public var $readingText: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($recognizedText) @_Concurrency.MainActor final public var recognizedText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $recognizedText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($speechSuccess) @_Concurrency.MainActor final public var speechSuccess: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $speechSuccess: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Double> @_projectedValueProperty($speechScore) @_Concurrency.MainActor final public var speechScore: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public var $speechScore: Combine.Published<Swift.Double>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showSpeechFailSheet) @_Concurrency.MainActor final public var showSpeechFailSheet: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showSpeechFailSheet: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isTranscribing) @_Concurrency.MainActor final public var isTranscribing: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isTranscribing: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($micBlocked) @_Concurrency.MainActor final public var micBlocked: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $micBlocked: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showMicSettingsAlert) @_Concurrency.MainActor final public var showMicSettingsAlert: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showMicSettingsAlert: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public var micSettingsMessage: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var micSettingsAction: (() -> Swift.Void)? {
+    get
+  }
+  @_Concurrency.MainActor final public func updateReadingText(_ text: Swift.String)
+  @_Concurrency.MainActor final public func configureFromSDK()
+  @_Concurrency.MainActor final public func ensureMicPermissionForSpeech()
+  @_Concurrency.MainActor final public func videoSelected(url: Foundation.URL)
+  @_Concurrency.MainActor final public func deleteVideo()
+  @_Concurrency.MainActor final public func uploadVideo()
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKVideoRecorderView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(readingText: Swift.String? = nil)
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKVideoRecorderViewModel, readingText: Swift.String? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK20SDKVideoRecorderViewV4bodyQrvp", 0) __
+}
+
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKLivenessViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<IdentifySDK.LivenessTestStep?> @_projectedValueProperty($currentStep) @_Concurrency.MainActor final public var currentStep: IdentifySDK.LivenessTestStep? {
+    get
+  }
+  @_Concurrency.MainActor final public var $currentStep: Combine.Published<IdentifySDK.LivenessTestStep?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($stepInstruction) @_Concurrency.MainActor final public var stepInstruction: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $stepInstruction: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($allStepsCompleted) @_Concurrency.MainActor final public var allStepsCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $allStepsCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var isRecordingEnabled: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var maxVideoSize: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var allowBlink: Swift.Bool
+  @_Concurrency.MainActor final public var allowSmile: Swift.Bool
+  @_Concurrency.MainActor final public var allowLeft: Swift.Bool
+  @_Concurrency.MainActor final public var allowRight: Swift.Bool
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onRecordingReady: (() -> Swift.Void)?
+  @_Concurrency.MainActor override public init()
+  @_Concurrency.MainActor final public func prepareRecording()
+  @_Concurrency.MainActor final public func finishRecordingAndUpload()
+  @_Concurrency.MainActor final public func noteWillResignActive()
+  @_Concurrency.MainActor final public func noteDidBecomeActive()
+  @_Concurrency.MainActor final public func abandonRecording()
+  @_Concurrency.MainActor final public func fetchNextStep()
+  @_Concurrency.MainActor final public func uploadFrame(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func uploadVideo(videoData: Foundation.Data, attempt: Swift.Int = 0)
+  @_Concurrency.MainActor final public func resetTest()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKLivenessView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKLivenessViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK15SDKLivenessViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKSignatureViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($signatureDrawn) @_Concurrency.MainActor final public var signatureDrawn: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $signatureDrawn: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($uploadCompleted) @_Concurrency.MainActor final public var uploadCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $uploadCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public func signatureDidDraw()
+  @_Concurrency.MainActor final public func clearSignature()
+  @_Concurrency.MainActor final public func uploadSignature(image: UIKit.UIImage)
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKSignatureView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKSignatureViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK16SDKSignatureViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKPrepareViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($speedCheckDone) @_Concurrency.MainActor final public var speedCheckDone: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $speedCheckDone: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<CoreFoundation.CGFloat> @_projectedValueProperty($measuredSpeed) @_Concurrency.MainActor final public var measuredSpeed: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor final public var $measuredSpeed: Combine.Published<CoreFoundation.CGFloat>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKNetworkStatus> @_projectedValueProperty($connectionQuality) @_Concurrency.MainActor final public var connectionQuality: IdentifySDK.SDKNetworkStatus {
+    get
+  }
+  @_Concurrency.MainActor final public var $connectionQuality: Combine.Published<IdentifySDK.SDKNetworkStatus>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($cameraAuthorized) @_Concurrency.MainActor final public var cameraAuthorized: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $cameraAuthorized: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($micAuthorized) @_Concurrency.MainActor final public var micAuthorized: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $micAuthorized: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($speechAuthorized) @_Concurrency.MainActor final public var speechAuthorized: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $speechAuthorized: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showSettingsAlert) @_Concurrency.MainActor final public var showSettingsAlert: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showSettingsAlert: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public var settingsAlertMessage: Swift.String
+  @_Concurrency.MainActor final public var settingsOpenAction: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var allPermissionsGranted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var needsSpeedTest: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor override public init()
+  @_Concurrency.MainActor final public func checkCamera()
+  @_Concurrency.MainActor final public func checkMicrophone()
+  @_Concurrency.MainActor final public func checkSpeech()
+  @_Concurrency.MainActor final public func startSpeedTest()
+  @_Concurrency.MainActor final public func completePrepare()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKPrepareView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKPrepareViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK14SDKPrepareViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKSignLangViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isSignLangEnabled) @_Concurrency.MainActor final public var isSignLangEnabled: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $isSignLangEnabled: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public func continueAction(onFinish: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKSignLangView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(onFinish: @escaping () -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK15SDKSignLangViewV4bodyQrvp", 0) __
+}
+
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKLostConnectionViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isReconnecting) @_Concurrency.MainActor final public var isReconnecting: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isReconnecting: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isNetworkAvailable) @_Concurrency.MainActor final public var isNetworkAvailable: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isNetworkAvailable: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onReconnectCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onReconnectCompletedWithStatus: ((Swift.Bool, Swift.String?) -> Swift.Void)?
+  @_Concurrency.MainActor override public init()
+  @_Concurrency.MainActor final public var canReconnect: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public func reconnect()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKLostConnectionView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(onReconnectCompleted: (() -> Swift.Void)? = nil, onReconnectCompletedWithStatus: ((Swift.Bool, Swift.String?) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK21SDKLostConnectionViewV4bodyQrvp", 0) __
+}
+
+public enum SDKCallState {
+  case waiting, ringing, connected, smsVerification, nfcReading, ended
+  public static func == (a: IdentifySDK.SDKCallState, b: IdentifySDK.SDKCallState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKCallNetworkQuality {
+  case none, bad, medium, good
+  public static func == (a: IdentifySDK.SDKCallNetworkQuality, b: IdentifySDK.SDKCallNetworkQuality) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKCallScreenViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<IdentifySDK.SDKCallState> @_projectedValueProperty($callState) @_Concurrency.MainActor final public var callState: IdentifySDK.SDKCallState {
+    get
+  }
+  @_Concurrency.MainActor final public var $callState: Combine.Published<IdentifySDK.SDKCallState>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($queuePosition) @_Concurrency.MainActor final public var queuePosition: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $queuePosition: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($estimatedWait) @_Concurrency.MainActor final public var estimatedWait: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $estimatedWait: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKCallNetworkQuality> @_projectedValueProperty($networkQuality) @_Concurrency.MainActor final public var networkQuality: IdentifySDK.SDKCallNetworkQuality {
+    get
+  }
+  @_Concurrency.MainActor final public var $networkQuality: Combine.Published<IdentifySDK.SDKCallNetworkQuality>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($smsCode) @_Concurrency.MainActor final public var smsCode: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $smsCode: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($endCallEnabled) @_Concurrency.MainActor final public var endCallEnabled: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $endCallEnabled: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($callCompleted) @_Concurrency.MainActor final public var callCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $callCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($nfcStatusMessage) @_Concurrency.MainActor final public var nfcStatusMessage: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $nfcStatusMessage: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.ThankYouStatus?> @_projectedValueProperty($socketThankYouStatus) @_Concurrency.MainActor final public var socketThankYouStatus: IdentifySDK.ThankYouStatus? {
+    get
+  }
+  @_Concurrency.MainActor final public var $socketThankYouStatus: Combine.Published<IdentifySDK.ThankYouStatus?>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.ThankYouStatus?> @_projectedValueProperty($directThankYouStatus) @_Concurrency.MainActor final public var directThankYouStatus: IdentifySDK.ThankYouStatus? {
+    get
+  }
+  @_Concurrency.MainActor final public var $directThankYouStatus: Combine.Published<IdentifySDK.ThankYouStatus?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showNFCEdit) @_Concurrency.MainActor final public var showNFCEdit: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showNFCEdit: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($nfcEditSerial) @_Concurrency.MainActor final public var nfcEditSerial: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $nfcEditSerial: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($nfcEditBirth) @_Concurrency.MainActor final public var nfcEditBirth: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $nfcEditBirth: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($nfcEditValid) @_Concurrency.MainActor final public var nfcEditValid: Swift.String {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $nfcEditValid: Combine.Published<Swift.String>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @_Concurrency.MainActor final public var isPassport: Swift.Bool {
+    get
+  }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($photoTakenToast) @_Concurrency.MainActor final public var photoTakenToast: Swift.String? {
+    get
+  }
+  @_Concurrency.MainActor final public var $photoTakenToast: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showSignLangGate) @_Concurrency.MainActor final public var showSignLangGate: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showSignLangGate: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showLostConnection) @_Concurrency.MainActor final public var showLostConnection: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showLostConnection: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($lostConnectionCallCompleted) @_Concurrency.MainActor final public var lostConnectionCallCompleted: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $lostConnectionCallCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var isSMSCodeValid: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var remoteVideoView: UIKit.UIView? {
+    get
+  }
+  @_Concurrency.MainActor final public var localVideoView: UIKit.UIView? {
+    get
+  }
+  @_Concurrency.MainActor final public func checkSignLangIfNeeded()
+  @_Concurrency.MainActor final public func signLangCompleted()
+  @_Concurrency.MainActor final public func acceptCall()
+  @_Concurrency.MainActor final public func terminateCall(coordinator: IdentifySDK.SDKFlowCoordinator)
+  @_Concurrency.MainActor final public func verifySMS()
+  @_Concurrency.MainActor final public func startRemoteNFC(birthDate: Swift.String, validDate: Swift.String, docNo: Swift.String)
+  @_Concurrency.MainActor final public func saveAndRestartRemoteNFC(serial: Swift.String, birth: Swift.String, valid: Swift.String)
+  @_Concurrency.MainActor final public func handleReconnectCompleted()
+  @_Concurrency.MainActor final public func handleReconnectCompletedWithStatus(isWaitingRoom: Swift.Bool, statusType: Swift.String?, coordinator: IdentifySDK.SDKFlowCoordinator)
+  @_Concurrency.MainActor final public func finishSDKForDirectThankYou()
+  @_Concurrency.MainActor final public func cleanup()
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+extension IdentifySDK.SDKCallScreenViewModel : IdentifySDK.SDKSocketListener {
+  nonisolated final public func listenSocketMessage(message: IdentifySDK.SDKCallActions)
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKCallScreenView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKCallScreenViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK17SDKCallScreenViewV4bodyQrvp", 0) __
+}
+
+public enum SDKKeyword : Swift.String {
+  case connect
+  case connectInfo
+  case scanAgain
+  case scanInfo
+  case humanSmile
+  case humanSmileDescription
+  case callTitle
+  case callDescription
+  case enterSmsCode
+  case waitingDesc1
+  case waitingDesc2
+  case thankU
+  case board1
+  case board2
+  case board3
+  case board4
+  case board5
+  case nextPage
+  case backPage
+  case skipPage
+  case continuePage
+  case popSelfie
+  case popSmiley
+  case popVideo
+  case popMRZ
+  case popNFC
+  case popIdBackPhoto
+  case popIdFrontPhoto
+  case signatureInfo
+  case soundRecognitionInfo
+  case coreError
+  case coreSuccess
+  case wrongSMSCode
+  case coreOk
+  case newNfcFront
+  case newNfcBack
+  case newDocumentFront
+  case newDocumentBack
+  case nfcPassportScanInfo
+  case nfcIDScanInfo
+  case nfcDocumentScanInfo
+  case nfcSuccess
+  case nfcEditInfoTitle
+  case nfcEditInfoDesc
+  case coreDate
+  case coreScan
+  case coreInputError
+  case coreNfcDeviceError
+  case soundRecogOk
+  case soundRecogFail
+  case faceNotFound
+  case smilingFaceNotFound
+  case coreUploadError
+  case nfcInfoTitle
+  case nfcInfoDesc
+  case selfieInfoTitle
+  case selfieInfoDesc
+  case signatureInfoTitle
+  case signatureInfoDesc
+  case livenessInfoTitle
+  case livenessInfoDesc
+  case videoRecordInfoTitle
+  case videoRecordInfoDesc
+  case idCardInfoTitle
+  case idCardInfoDesc
+  case speechInfoTitle
+  case speechInfoText
+  case newIdCard
+  case passport
+  case otherCards
+  case scanType
+  case permissions
+  case permissionsText
+  case coreSend
+  case coreCancel
+  case coreSettings
+  case corePlsWait
+  case coreNoInternet
+  case coreNoInternetDesc
+  case coreReConnect
+  case corePermissionAlert
+  case coreUpdate
+  case coreBirthday
+  case coreValidDay
+  case coreSerialNumber
+  case livenessStep1
+  case livenessStep1Desc
+  case livenessStep2
+  case livenessStep2Desc
+  case livenessStep3
+  case livenessStep3Desc
+  case livenessStep4
+  case livenessStep4Desc
+  case coreSkipAll
+  case corePullAgain
+  case coreCityBtn
+  case coreCityDesc
+  case coreAddrDesc
+  case coreInvoicePhoto
+  case corePhotoBtn
+  case corePhotoBtnPDF
+  case coreSignLang
+  case coreDelSig
+  case selfieIdentInfo1
+  case selfieIdentInfo2
+  case selfieIdentInfo3
+  case recordVideo
+  case takePhoto
+  case idCardFrontPhoto
+  case idCardBackPhoto
+  case docFrontPhoto
+  case docBackPhoto
+  case passportPhoto
+  case anotherUserInToTheRoom
+  case loadingFirstModule
+  case waitingDesc1Live
+  case waitingDesc2Live
+  case waitingDesc3Live
+  case callScreenWaitRepresentative
+  case docType
+  case livenessLookCam
+  case nfcKeyErrTitle
+  case nfcKeyErrSubTitle
+  case nfcSerialNo
+  case nfcBirthDate
+  case nfcExpDate
+  case nfcStart
+  case coreReconnecting
+  case wrongFrontSide
+  case wrongBackSide
+  case missedCallTitle
+  case missedCallSubTitle
+  case checkMyConn
+  case idNear
+  case ownAuth
+  case lightSoundCont
+  case connectionGood
+  case connectionSpeedSuccess
+  case prepareCam
+  case prepareMic
+  case prepareSpeech
+  case scanHoldOn
+  case scanCloser
+  case scanGoAway
+  case scanPrepareList
+  case identifyFailedTitle
+  case identifyFailedDesc
+  case activeSelfieWarn
+  case activeSelfieExit
+  case activeNfcWarn
+  case activeNfcExit
+  case activeOcrWarn
+  case activeOcrExit
+  case scanErrDegree
+  case addressPdfErrorTitle
+  case addressPdfErrorMessage
+  case livenessRecordingUploading
+  case livenessRecordingRetryAction
+  case livenessRecordingPermissionsMissing
+  case livenessRecordingPermissionsMissingToast
+  case livenessRecordingFailedToStart
+  case livenessRecordingFailedToStop
+  case livenessRecordingFailedToast
+  case livenessRecordingFailedToUpload
+  case livenessRecordingSizeTooLarge
+  case livenessRecordingInterrupted
+  case ovdScanFrontSide
+  case ovdFrontAlignGuide
+  case ovdFrontRetryAlign
+  case ovdFrontRetryAlignSpeech
+  case ovdVerificationCompleted
+  case ovdVerificationCompletedSpeech
+  case ovdFlashMoveCard
+  case ovdRotateRainbowSpeech
+  case ovdSavedAlignBack
+  case ovdPhotoTaken
+  case ovdScanBackSide
+  case ovdFrontSavedAlignBack
+  case ovdRetryMoveCard
+  case ovdRotateRainbowRetrySpeech
+  case ovdFrontSaved
+  case ovdFrontChecking
+  case ovdChecking
+  case ovdBackChecking
+  case ovdFrontReadyCapturing
+  case ovdFrontAlignedHold
+  case ovdBackAlignGuide
+  case ovdBackMrzNotRead
+  case ovdBackReadyCapturing
+  case ovdBackAlignedHold
+  case ovdTooWhiteTilt
+  case ovdGlareCaptured
+  case ovdHoldSteady
+  case callConnectingInfo
+  case callEndCall
+  case nfcScanTitle
+  case nfcHoldInstruction
+  case smsCodeTitle
+  case smsCodeInstruction
+  case coreVerify
+  case mrzEditTitle
+  case mrzEditDesc
+  case mrzEditNavTitle
+  case nfcVerifyTitle
+  case nfcChipInstruction
+  case nfcChipInstructionPassport
+  case nfcHoldInstructionPassport
+  case nfcScanPassport
+  case nfcInfoNotRead
+  case nfcManualEntry
+  case selfieTitle
+  case selfieSuccessDesc
+  case selfieFrameInstruction
+  case selfieConfirmPrompt
+  case signLangTitle
+  case signLangDesc
+  case signatureTitle
+  case connectionLostTitle
+  case callReconnecting
+  case connectionLostDesc
+  case spokenWordLabel
+  case speechTestTitle
+  case speechHoldInstruction
+  case readingTestTitle
+  case readingTestDesc
+  case sentenceToReadLabel
+  case voiceVerifying
+  case youSaidLabel
+  case videoRecordedVerifying
+  case verifySuccessConfirm
+  case recordAgainSentence
+  case videoRecordedConfirmOrRetry
+  case addressFileFormats
+  case fileNotRead
+  case coreTryAgain
+  case scanYourId
+  case readingCompleted
+  case readingFailedRetry
+  case passportRead
+  case uploadSuccess
+  case comparisonFailed
+  case frontSideRead
+  case livenessCompleted
+  case nfcStarting
+  case cameraPermissionDenied
+  case micPermissionDenied
+  case speechPermissionDenied
+  case selfieUploaded
+  case signatureUploadFailed
+  case videoNotSelected
+  case videoUploadFailed
+  case readingTestFailed
+  case speechNotRecognized
+  case speechNoMatchTitle
+  case detectedTextLabel
+  case similarityLabel
+  case addressVerifyTitle
+  case addressVerifyDesc
+  case choosePhoto
+  case chooseFile
+  case coreGiveUp
+  case documentAdded
+  case uploadFile
+  case tapToChange
+  case selectFromDevice
+  case pdfMaxSizeFmt
+  case pdfUploadFailed
+  case uploadFailed
+  case callEndTitle
+  case callEndConfirm
+  case callQueuePositionFmt
+  case callEstimatedWaitFmt
+  case connectionFailed
+  case verifying
+  case idVerifyingFmt
+  case idVerifyTitle
+  case selectMethodContinue
+  case completeSteps
+  case scanTypeDesc
+  case chippedIdCard
+  case scanPassport
+  case scanIdFront
+  case scanIdBack
+  case idPhotoDesc
+  case ocrError
+  case passportError
+  case nfcScanId
+  case errorOccurred
+  case genericErrorRetry
+  case connectionErrorRetry
+  case prepareEnvSubtitle
+  case speedBannerOk
+  case permissionRequired
+  case whichDocument
+  case aloneForVerification
+  case measureSpeedContinue
+  case docAddressDesc
+  case readyChecklistDesc
+  case signatureVerifyTitle
+  case signatureVerifyDesc
+  case connecting
+  case noInternet
+  case speechVerifyDesc
+  case wordNotSaidFmt
+  case thankYouMissedTitle
+  case thankYouFailedTitle
+  case thankYouCompletedDesc
+  case thankYouMissedDesc
+  case thankYouFailedDesc
+  case resultWillBeNotified
+  case recordingReadSentence
+  case videoLimitDescFmt
+  case speechRecogFailedFmt
+  case ovdUploading
+  case ovdAlignFront
+  case ovdHologram
+  case ovdAlignBack
+  case ovdCompletedCheck
+  case ovdUploadFailed
+  case livenessStepFailed
+  case videoUploadError
+  case preparing
+  case faceTrackingUnsupported
+  case envTooDark
+  case envTooBright
+  case headUp
+  case headDown
+  case comeCloser
+  case faceDownABit
+  case faceUpABit
+  case faceLeft
+  case faceRight
+  case fitFaceInFrame
+  case stayStill
+  case verifiedCheck
+  case processFailedTitle
+  case processFailedMsg
+  case selfieRetryTips
+  case finish
+  case addDocument
+  case idScanTitle
+  case dataReadingFmt
+  case recording
+  case moveBack
+  case serialNoShort
+  case serialNoPassport
+  case nfcSerialInvalid
+  case nfcSerialInvalidPassport
+  case nfcBirthDateInvalid
+  case nfcValidDateInvalid
+  case holdPhoneUpright
+  case micAccessError
+  case cameraAccessError
+  case mediaAccessError
+  case scannerIdleId
+  case scannerFocusing
+  case scannerReadingId
+  case scannerLockedId
+  case scannerTooCloseId
+  case scannerAlignId
+  case scannerTooFarId
+  case scannerCentreId
+  case scannerManualCapture
+  case scannerManualFailTitle
+  case scannerIdleDoc
+  case scannerReadingDoc
+  case scannerLockedDoc
+  case scannerTooCloseDoc
+  case scannerAlignDoc
+  case scannerTooFarDoc
+  case scannerCentreDoc
+  case scannerCancel
+  case scannerRotatePassport
+  case scannerIdlePassport
+  case scannerReadingPassport
+  case scannerLockedPassport
+  case scannerTooClosePassport
+  case scannerAlignPassport
+  case scannerTooFarPassport
+  case scannerCentrePassport
+  case prepareTts
+  case selfieTts
+  case selfieWithLivenessTts
+  case idCardTts
+  case idCardTypeSelectTts
+  case idCardFrontTts
+  case idCardBackTts
+  case passportTts
+  case idCardOVDTts
+  case nfcTts
+  case livenessTts
+  case speechTts
+  case nfcPassportTts
+  case nfcReadingTts
+  case nfcSuccessTts
+  case nfcErrorTts
+  case livenessSmileTts
+  case livenessBlinkTts
+  case livenessTurnRightTts
+  case livenessTurnLeftTts
+  case livenessHeadDownTts
+  case livenessRaiseEyebrowsTts
+  case livenessEyesLeftTts
+  case livenessEyesRightTts
+  case livenessHeadBackTts
+  case livenessLookUpTts
+  case addressConfirmTts
+  case signatureTts
+  case videoRecorderTts
+  case videoRecorderReadingTts
+  case callScreenTts
+  case thankYouTts
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class SDKLocalization {
+  public static let shared: IdentifySDK.SDKLocalization
+  final public func translate(_ key: IdentifySDK.SDKKeyword) -> Swift.String
+  final public func translate(key: IdentifySDK.SDKKeyword) -> Swift.String
+  final public func string(forKey key: Swift.String) -> Swift.String
+  final public func registerOverrides(_ dict: [IdentifySDK.SDKLang : [Swift.String : Swift.String]])
+  final public func setOverride(key: IdentifySDK.SDKKeyword, language: IdentifySDK.SDKLang, value: Swift.String)
+  @discardableResult
+  final public func loadOverrides(from url: Foundation.URL, language: IdentifySDK.SDKLang) -> Swift.Bool
+  final public func clearOverrides()
+  final public func clearCache()
+  @objc deinit
+}
+extension IdentifySDK.SDKKeyword {
+  public var localized: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public init(_ key: IdentifySDK.SDKKeyword)
+}
+extension SwiftUICore.Text {
+  public init(_ key: IdentifySDK.SDKKeyword)
+}
+@_Concurrency.MainActor final public class SDKViewRegistry {
+  nonisolated public init()
+  @_Concurrency.MainActor final public func override<V>(_ route: IdentifySDK.SDKModuleRoute, @SwiftUICore.ViewBuilder _ builder: @escaping () -> V) where V : SwiftUICore.View
+  @_Concurrency.MainActor final public func custom<V>(_ id: Swift.String, @SwiftUICore.ViewBuilder _ builder: @escaping () -> V) where V : SwiftUICore.View
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKFlowHostView<Root> : SwiftUICore.View where Root : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(coordinator: IdentifySDK.SDKFlowCoordinator, registry: IdentifySDK.SDKViewRegistry = SDKViewRegistry(), @SwiftUICore.ViewBuilder root: @escaping () -> Root)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK15SDKFlowHostViewV4bodyQrvp", 0) __<Root>
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKExternalInfoView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(title: Swift.String, subtitle: Swift.String, systemIcon: Swift.String = "info.circle.fill", buttonTitle: Swift.String = "Devam Et")
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK19SDKExternalInfoViewV4bodyQrvp", 0) __
+}
+
+public enum OVDDocumentType {
+  case idCard
+  case passport
+  public var socketLocation: Swift.String {
+    get
+  }
+  public static func == (a: IdentifySDK.OVDDocumentType, b: IdentifySDK.OVDDocumentType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum OVDStep : Swift.Int, Swift.CaseIterable {
+  case frontAlign
+  case frontHologram
+  case backAlign
+  case completed
+  public var isCompleted: Swift.Bool {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [IdentifySDK.OVDStep]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [IdentifySDK.OVDStep] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKIdCardOVDViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  @Combine.Published<IdentifySDK.OVDStep> @_projectedValueProperty($step) @_Concurrency.MainActor final public var step: IdentifySDK.OVDStep {
+    get
+  }
+  @_Concurrency.MainActor final public var $step: Combine.Published<IdentifySDK.OVDStep>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($canContinue) @_Concurrency.MainActor final public var canContinue: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $canContinue: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isUploading) @_Concurrency.MainActor final public var isUploading: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isUploading: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Double> @_projectedValueProperty($rainbowProgress) @_Concurrency.MainActor final public var rainbowProgress: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public var $rainbowProgress: Combine.Published<Swift.Double>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($guideDetected) @_Concurrency.MainActor final public var guideDetected: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $guideDetected: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($instruction) @_Concurrency.MainActor final public var instruction: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $instruction: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var documentType: IdentifySDK.OVDDocumentType {
+    get
+    set
+  }
+  @_Concurrency.MainActor final public var requiresHologramStep: Swift.Bool
+  @_Concurrency.MainActor final public func notifyDocumentSelectionShown()
+  @_Concurrency.MainActor final public func notifyCaptureStarted()
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onRequestCapture: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onSetTorch: ((Swift.Bool) -> Swift.Void)?
+  @_Concurrency.MainActor final public var onRequestLensSwitch: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public func startMotion()
+  @_Concurrency.MainActor final public func stopMotion()
+  @_Concurrency.MainActor final public var totalSteps: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var completedSteps: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var progress: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public func ingest(ciImage ci: CoreImage.CIImage, roi: CoreFoundation.CGRect)
+  @_Concurrency.MainActor final public func handleCaptured(_ ci: CoreImage.CIImage, roi: CoreFoundation.CGRect)
+  @_Concurrency.MainActor final public func forceCapture(ciImage ci: CoreImage.CIImage, roi: CoreFoundation.CGRect)
+  @_Concurrency.MainActor final public func capture(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func advance()
+  @_Concurrency.MainActor final public func reset()
+  @_Concurrency.MainActor final public func requestSkip()
+  @_Concurrency.MainActor override public init()
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKIdCardOVDView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(documentType: IdentifySDK.OVDDocumentType)
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKIdCardOVDViewModel)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK16SDKIdCardOVDViewV4bodyQrvp", 0) __
+}
+
+@_Concurrency.MainActor @preconcurrency public struct SDKSelfieWithLivenessView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK25SDKSelfieWithLivenessViewV4bodyQrvp", 0) __
+}
+
+public enum IDAlertType {
+  case normal
+  case error
+  case info
+  case success
+  public static func == (a: IdentifySDK.IDAlertType, b: IdentifySDK.IDAlertType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum IDAlertActionStyle {
+  case primary
+  case cancel
+  case destructive
+  public static func == (a: IdentifySDK.IDAlertActionStyle, b: IdentifySDK.IDAlertActionStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct IDAlertAction : Swift.Identifiable {
+  public let id: Foundation.UUID
+  public let title: Swift.String
+  public let style: IdentifySDK.IDAlertActionStyle
+  public var action: (() -> Swift.Void)?
+  public init(title: Swift.String, style: IdentifySDK.IDAlertActionStyle = .primary, action: (() -> Swift.Void)? = nil)
+  public typealias ID = Foundation.UUID
+}
+public struct IDAlertModel : Swift.Identifiable, Swift.Equatable {
+  public let id: Foundation.UUID
+  public let type: IdentifySDK.IDAlertType
+  public let title: Swift.String
+  public let message: Swift.String
+  public let actions: [IdentifySDK.IDAlertAction]
+  public init(type: IdentifySDK.IDAlertType = .normal, title: Swift.String, message: Swift.String = "", actions: [IdentifySDK.IDAlertAction])
+  public static func == (lhs: IdentifySDK.IDAlertModel, rhs: IdentifySDK.IDAlertModel) -> Swift.Bool
+  public typealias ID = Foundation.UUID
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func idAlert(item: SwiftUICore.Binding<IdentifySDK.IDAlertModel?>) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func idAlert(isPresented: SwiftUICore.Binding<Swift.Bool>, alert: IdentifySDK.IDAlertModel) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func idErrorAlert(_ message: SwiftUICore.Binding<Swift.String?>, title: Swift.String = String(.coreError), onDismiss: (() -> Swift.Void)? = nil) -> some SwiftUICore.View
+  
+}
+
+
+
+public enum SDKEventCategory : Swift.String {
+  case session
+  case module
+  case call
+  case network
+  case error
+  case navigation
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKEventStatus : Swift.String {
+  case info
+  case presented
+  case completed
+  case failed
+  case skipped
+  case success
+  case abandoned
+  case notFound
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+final public class SDKEvent {
+  final public let name: Swift.String
+  final public let category: IdentifySDK.SDKEventCategory
+  final public let status: IdentifySDK.SDKEventStatus
+  final public let module: Swift.String?
+  final public let screen: Swift.String?
+  final public let sessionId: Swift.String
+  final public let timestampMs: Swift.Int64
+  final public let message: Swift.String?
+  final public let metadata: [Swift.String : Swift.String]
+  public init(name: Swift.String, category: IdentifySDK.SDKEventCategory, status: IdentifySDK.SDKEventStatus, module: Swift.String? = nil, screen: Swift.String? = nil, sessionId: Swift.String, timestampMs: Swift.Int64 = Int64(Date().timeIntervalSince1970 * 1000), message: Swift.String? = nil, metadata: [Swift.String : Swift.String] = [:])
+  final public func toDictionary() -> [Swift.String : Any]
+  final public func toJSONString() -> Swift.String?
+  @objc deinit
+}
+public protocol SDKEventListener : AnyObject {
+  func onSDKEvent(_ event: IdentifySDK.SDKEvent)
+}
+extension IdentifySDK.TrackingEventType {
+  public var sdkModule: IdentifySDK.SdkModules? {
+    get
+  }
+  public var sdkStatus: IdentifySDK.SDKEventStatus {
+    get
+  }
+  public var sdkCategory: IdentifySDK.SDKEventCategory {
+    get
+  }
+  public var sdkEventName: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class SDKSpeechService : Foundation.ObservableObject {
+  @_Concurrency.MainActor public static let shared: IdentifySDK.SDKSpeechService
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isSpeaking) @_Concurrency.MainActor final public var isSpeaking: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isSpeaking: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isAnnouncing) @_Concurrency.MainActor final public var isAnnouncing: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isAnnouncing: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @available(*, deprecated, message: "Ekran kilidi kaldırıldı; her zaman false döner. isSpeaking kullanın.")
+  @_Concurrency.MainActor final public var isInteractionLocked: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public func speak(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules, whenCameraReady: Swift.Bool = false)
+  @_Concurrency.MainActor final public func speak(_ key: IdentifySDK.SDKKeyword)
+  @_Concurrency.MainActor final public func speak(text: Swift.String, whenCameraReady: Swift.Bool = false)
+  @_Concurrency.MainActor final public func announce(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
+  @_Concurrency.MainActor final public func speakAfterCurrent(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
+  @_Concurrency.MainActor final public func stop()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func speakOnAppear(_ route: IdentifySDK.SDKModuleRoute) -> some SwiftUICore.View
+  
+}
+extension IdentifySDK.SDKBaseModuleViewModel {
+  @_Concurrency.MainActor public func speak(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
+  @_Concurrency.MainActor public func speak(_ key: IdentifySDK.SDKKeyword)
+  @_Concurrency.MainActor public func stopSpeech()
+}
+@_hasMissingDesignatedInitializers final public class SDKSpeechConfig {
+  public static let shared: IdentifySDK.SDKSpeechConfig
+  public enum Mode {
+    case off
+    case native
+    case customAudio
+    public static func == (a: IdentifySDK.SDKSpeechConfig.Mode, b: IdentifySDK.SDKSpeechConfig.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum InterruptPolicy {
+    @available(*, deprecated, message: "Ekran kilidi kaldırıldı; .interruptOnNext gibi davranır.")
+    case blockUntilDone
+    case interruptOnNext
+    case finishThenNext
+    public static func == (a: IdentifySDK.SDKSpeechConfig.InterruptPolicy, b: IdentifySDK.SDKSpeechConfig.InterruptPolicy) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var defaultMode: IdentifySDK.SDKSpeechConfig.Mode
+  final public var interruptPolicy: IdentifySDK.SDKSpeechConfig.InterruptPolicy
+  final public var respectVoiceOver: Swift.Bool
+  final public var speechRate: Swift.Float
+  final public var pitch: Swift.Float
+  final public var voiceIdentifier: Swift.String?
+  final public var audioBundle: Foundation.Bundle?
+  final public var audioFileExtension: Swift.String
+  final public var fallbackToNativeIfAudioMissing: Swift.Bool
+  final public func setMode(_ mode: IdentifySDK.SDKSpeechConfig.Mode, for module: IdentifySDK.SdkModules)
+  final public func setMode(_ mode: IdentifySDK.SDKSpeechConfig.Mode, for modules: [IdentifySDK.SdkModules])
+  final public func setModeForAll(_ mode: IdentifySDK.SDKSpeechConfig.Mode)
+  @objc deinit
+}
+public enum SDKSpeechMatcher {
+  public static func matches(spoken spokenRaw: Swift.String, expected expectedRaw: Swift.String, localeId: Swift.String) -> Swift.Bool
+}
+@available(iOS 15.0, *)
+@_Concurrency.MainActor @preconcurrency public struct RoiPreviewView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let profile: IdentifySDK.DocumentProfile
+  @_Concurrency.MainActor @preconcurrency public let image: UIKit.UIImage?
+  @_Concurrency.MainActor @preconcurrency public let aspectRatio: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, image: UIKit.UIImage? = nil, aspectRatio: CoreFoundation.CGFloat = 85.6 / 54.0)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 15.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK14RoiPreviewViewV4bodyQrvp", 0) __
+}
 extension IdentifySDK.Request.State : Swift.Equatable {}
 extension IdentifySDK.Request.State : Swift.Hashable {}
 extension IdentifySDK.Request.ResponseDisposition : Swift.Equatable {}
@@ -4233,6 +7292,15 @@ extension IdentifySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Equatable {}
 extension IdentifySDK.URLEncodedFormEncoder.BoolEncoding : Swift.Hashable {}
 extension IdentifySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Equatable {}
 extension IdentifySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
+extension IdentifySDK.ScanStrategy : Swift.Equatable {}
+extension IdentifySDK.ScanStrategy : Swift.Hashable {}
+extension IdentifySDK.ScanStrategy : Swift.RawRepresentable {}
+extension IdentifySDK.FieldValueType : Swift.Equatable {}
+extension IdentifySDK.FieldValueType : Swift.Hashable {}
+extension IdentifySDK.FieldValueType : Swift.RawRepresentable {}
+extension IdentifySDK.LabelAnchor.Direction : Swift.Equatable {}
+extension IdentifySDK.LabelAnchor.Direction : Swift.Hashable {}
+extension IdentifySDK.LabelAnchor.Direction : Swift.RawRepresentable {}
 @available(iOS 13, macOS 10.15, *)
 extension IdentifySDK.DocTypeEnum : Swift.Equatable {}
 @available(iOS 13, macOS 10.15, *)
@@ -4262,18 +7330,42 @@ extension IdentifySDK.DataGroupId : Swift.Equatable {}
 extension IdentifySDK.DataGroupId : Swift.Hashable {}
 @available(iOS 13, macOS 10.15, *)
 extension IdentifySDK.DataGroupId : Swift.RawRepresentable {}
+@available(iOS 15.0, *)
+extension IdentifySDK.IdentityScannerView : Swift.Sendable {}
+extension IdentifySDK.ScannerMode : Swift.Equatable {}
+extension IdentifySDK.ScannerMode : Swift.Hashable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.Equatable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.Hashable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.RawRepresentable {}
 extension IdentifySDK.HttpMethod : Swift.Equatable {}
 extension IdentifySDK.HttpMethod : Swift.Hashable {}
 extension IdentifySDK.HttpMethod : Swift.RawRepresentable {}
+extension IdentifySDK.QuadCorner : Swift.Equatable {}
+extension IdentifySDK.QuadCorner : Swift.Hashable {}
 extension IdentifySDK.IDLang : Swift.Equatable {}
 extension IdentifySDK.IDLang : Swift.Hashable {}
+extension IdentifySDK.NFCReadStage : Swift.Equatable {}
+extension IdentifySDK.NFCReadStage : Swift.Hashable {}
+extension IdentifySDK.NFCReadStage : Swift.RawRepresentable {}
 extension IdentifySDK.AuthenticationError : Swift.Equatable {}
 extension IdentifySDK.AuthenticationError : Swift.Hashable {}
+extension IdentifySDK.SDKKeyStatus : Swift.Equatable {}
+extension IdentifySDK.SDKKeyStatus : Swift.Hashable {}
+extension IdentifySDK.SDKKeyStatus : Swift.RawRepresentable {}
 extension IdentifySDK.SocketMsgType : Swift.Equatable {}
 extension IdentifySDK.SocketMsgType : Swift.Hashable {}
+extension IdentifySDK.SDKLogSeverity : Swift.Hashable {}
+extension IdentifySDK.SDKLogSeverity : Swift.RawRepresentable {}
+extension IdentifySDK.SDKLogCategory : Swift.Equatable {}
+extension IdentifySDK.SDKLogCategory : Swift.Hashable {}
+extension IdentifySDK.SDKLogCategory : Swift.RawRepresentable {}
+extension IdentifySDK.SDKDebugSettings : Swift.Sendable {}
+@available(iOS 13, *)
+extension IdentifySDK.SDKNFCVerdict : Swift.Equatable {}
+@available(iOS 13, *)
+extension IdentifySDK.SDKNFCVerdict : Swift.Hashable {}
+@available(iOS 13, *)
+extension IdentifySDK.SDKNFCVerdict : Swift.RawRepresentable {}
 @available(iOS 13, macOS 10.15, *)
 extension IdentifySDK.CertificateType : Swift.Equatable {}
 @available(iOS 13, macOS 10.15, *)
@@ -4284,3 +7376,68 @@ extension IdentifySDK.CertificateItem : Swift.Equatable {}
 extension IdentifySDK.CertificateItem : Swift.Hashable {}
 @available(iOS 13, macOS 10.15, *)
 extension IdentifySDK.CertificateItem : Swift.RawRepresentable {}
+extension IdentifySDK.SDKIconKey : Swift.Equatable {}
+extension IdentifySDK.SDKIconKey : Swift.Hashable {}
+extension IdentifySDK.SDKIconKey : Swift.RawRepresentable {}
+extension IdentifySDK.SDKBaseModuleViewModel : Swift.Sendable {}
+extension IdentifySDK.SDKFlowCoordinator : Swift.Sendable {}
+extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Equatable {}
+extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Hashable {}
+extension IdentifySDK.SDKModulePreviewHost : Swift.Sendable {}
+extension IdentifySDK.SDKPreviewGallery : Swift.Sendable {}
+extension IdentifySDK.SDKNavigationBar : Swift.Sendable {}
+extension IdentifySDK.SDKSelfieFaceCondition : Swift.Hashable {}
+extension IdentifySDK.SDKSelfieView : Swift.Sendable {}
+extension IdentifySDK.SDKThankYouView : Swift.Sendable {}
+extension IdentifySDK.SDKButtonStyle : Swift.Equatable {}
+extension IdentifySDK.SDKButtonStyle : Swift.Hashable {}
+extension IdentifySDK.SDKButton : Swift.Sendable {}
+extension IdentifySDK.SDKComparisonKind : Swift.Equatable {}
+extension IdentifySDK.SDKComparisonKind : Swift.Hashable {}
+extension IdentifySDK.SDKDeviceOrientationMonitor : Swift.Sendable {}
+extension IdentifySDK.IdCardSide : Swift.RawRepresentable {}
+extension IdentifySDK.SDKIdCardView : Swift.Sendable {}
+extension IdentifySDK.SDKAddressConfirmView : Swift.Sendable {}
+extension IdentifySDK.SDKSpeechRecView : Swift.Sendable {}
+extension IdentifySDK.SDKNfcView : Swift.Sendable {}
+extension IdentifySDK.SDKVideoRecorderView : Swift.Sendable {}
+extension IdentifySDK.SDKLivenessView : Swift.Sendable {}
+extension IdentifySDK.SDKSignatureView : Swift.Sendable {}
+extension IdentifySDK.SDKPrepareView : Swift.Sendable {}
+extension IdentifySDK.SDKSignLangView : Swift.Sendable {}
+extension IdentifySDK.SDKLostConnectionView : Swift.Sendable {}
+extension IdentifySDK.SDKCallState : Swift.Equatable {}
+extension IdentifySDK.SDKCallState : Swift.Hashable {}
+extension IdentifySDK.SDKCallNetworkQuality : Swift.Equatable {}
+extension IdentifySDK.SDKCallNetworkQuality : Swift.Hashable {}
+extension IdentifySDK.SDKCallScreenView : Swift.Sendable {}
+extension IdentifySDK.SDKKeyword : Swift.Equatable {}
+extension IdentifySDK.SDKKeyword : Swift.Hashable {}
+extension IdentifySDK.SDKKeyword : Swift.RawRepresentable {}
+extension IdentifySDK.SDKViewRegistry : Swift.Sendable {}
+extension IdentifySDK.SDKFlowHostView : Swift.Sendable {}
+extension IdentifySDK.SDKExternalInfoView : Swift.Sendable {}
+extension IdentifySDK.OVDDocumentType : Swift.Equatable {}
+extension IdentifySDK.OVDDocumentType : Swift.Hashable {}
+extension IdentifySDK.OVDStep : Swift.Equatable {}
+extension IdentifySDK.OVDStep : Swift.Hashable {}
+extension IdentifySDK.OVDStep : Swift.RawRepresentable {}
+extension IdentifySDK.SDKIdCardOVDView : Swift.Sendable {}
+extension IdentifySDK.SDKSelfieWithLivenessView : Swift.Sendable {}
+extension IdentifySDK.IDAlertType : Swift.Equatable {}
+extension IdentifySDK.IDAlertType : Swift.Hashable {}
+extension IdentifySDK.IDAlertActionStyle : Swift.Equatable {}
+extension IdentifySDK.IDAlertActionStyle : Swift.Hashable {}
+extension IdentifySDK.SDKEventCategory : Swift.Equatable {}
+extension IdentifySDK.SDKEventCategory : Swift.Hashable {}
+extension IdentifySDK.SDKEventCategory : Swift.RawRepresentable {}
+extension IdentifySDK.SDKEventStatus : Swift.Equatable {}
+extension IdentifySDK.SDKEventStatus : Swift.Hashable {}
+extension IdentifySDK.SDKEventStatus : Swift.RawRepresentable {}
+extension IdentifySDK.SDKSpeechService : Swift.Sendable {}
+extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Equatable {}
+extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Hashable {}
+extension IdentifySDK.SDKSpeechConfig.InterruptPolicy : Swift.Equatable {}
+extension IdentifySDK.SDKSpeechConfig.InterruptPolicy : Swift.Hashable {}
+@available(iOS 15.0, *)
+extension IdentifySDK.RoiPreviewView : Swift.Sendable {}
