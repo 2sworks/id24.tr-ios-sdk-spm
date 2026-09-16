@@ -365,6 +365,7 @@
   "ScannerTooCloseId": "Move the ID a bit farther",
   "ScannerAlignId": "Hold the ID flat",
   "ScannerTooFarId": "Move the ID a bit closer",
+  "ScannerGlare": "Glare detected — tilt the document slightly away from the light",
   "ScannerCentreId": "Centre the ID in the frame",
   "ScannerManualCapture": "Capture manually",
   "ScannerManualFailTitle": "Automatic capture failed",
@@ -417,5 +418,8 @@
   "LivenessEyesLeftTts": "Without moving your head, look to the left.",
   "LivenessEyesRightTts": "Without moving your head, look to the right.",
   "LivenessHeadBackTts": "Tilt your head back slightly.",
-  "LivenessLookUpTts": "Without moving your head, look up."
+  "LivenessLookUpTts": "Without moving your head, look up.",
+  "RoomOccupiedTitle": "Session busy",
+  "RoomOccupiedDesc": "This verification session is currently open on another device. Close the other session and try again.",
+  "CoreExit": "Exit"
 }

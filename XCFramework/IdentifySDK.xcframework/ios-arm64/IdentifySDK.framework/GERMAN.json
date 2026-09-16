@@ -365,6 +365,7 @@
   "ScannerTooCloseId": "Bewegen Sie den Ausweis etwas weiter weg",
   "ScannerAlignId": "Halten Sie den Ausweis flach",
   "ScannerTooFarId": "Halten Sie den Ausweis etwas näher",
+  "ScannerGlare": "Blendung erkannt – neigen Sie das Dokument leicht vom Licht weg",
   "ScannerCentreId": "Zentrieren Sie den Ausweis im Rahmen",
   "ScannerManualCapture": "Manuell aufnehmen",
   "ScannerManualFailTitle": "Automatische Erfassung fehlgeschlagen",
@@ -417,5 +418,8 @@
   "LivenessEyesLeftTts": "Schauen Sie nach links, ohne den Kopf zu bewegen.",
   "LivenessEyesRightTts": "Schauen Sie nach rechts, ohne den Kopf zu bewegen.",
   "LivenessHeadBackTts": "Neigen Sie den Kopf leicht nach hinten.",
-  "LivenessLookUpTts": "Schauen Sie nach oben, ohne den Kopf zu bewegen."
+  "LivenessLookUpTts": "Schauen Sie nach oben, ohne den Kopf zu bewegen.",
+  "RoomOccupiedTitle": "Sitzung belegt",
+  "RoomOccupiedDesc": "Diese Verifizierungssitzung ist derzeit auf einem anderen Gerät geöffnet. Schließen Sie die andere Sitzung und versuchen Sie es erneut.",
+  "CoreExit": "Beenden"
 }

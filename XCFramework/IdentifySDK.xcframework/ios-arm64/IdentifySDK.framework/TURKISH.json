@@ -365,6 +365,7 @@
   "ScannerTooCloseId": "Kimliği biraz uzaklaştırın",
   "ScannerAlignId": "Kimliği düz tutun",
   "ScannerTooFarId": "Kimliği biraz yaklaştırın",
+  "ScannerGlare": "Parlama var — belgeyi ışığa göre hafifçe eğin",
   "ScannerCentreId": "Kimliği çerçeveye ortalayın",
   "ScannerManualCapture": "Manuel Çek",
   "ScannerManualFailTitle": "Otomatik okuma başarısız oldu",
@@ -417,5 +418,8 @@
   "LivenessEyesLeftTts": "Başınızı oynatmadan gözlerinizi sola kaydırın.",
   "LivenessEyesRightTts": "Başınızı oynatmadan gözlerinizi sağa kaydırın.",
   "LivenessHeadBackTts": "Başınızı hafifçe geriye eğin.",
-  "LivenessLookUpTts": "Başınızı oynatmadan yukarı bakın."
+  "LivenessLookUpTts": "Başınızı oynatmadan yukarı bakın.",
+  "RoomOccupiedTitle": "Oturum meşgul",
+  "RoomOccupiedDesc": "Bu doğrulama oturumu şu anda başka bir cihazda açık. Diğer oturumu kapatıp tekrar deneyin.",
+  "CoreExit": "Çıkış"
 }

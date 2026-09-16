@@ -486,18 +486,6 @@ SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 - (void)dataChannelDidChangeState:(RTCDataChannel * _Nonnull)dataChannel;
 @end
 
-@protocol RTCVideoRenderer;
-@interface WebRTCClient (SWIFT_EXTENSION(IdentifySDK))
-/// Reacts to a change in the rendered video’s natural size by relaying out that view.
-/// The remote size is only known once frames arrive, so layout has to be deferred to here
-/// rather than done at setup.
-/// \param videoView The renderer whose size changed.
-///
-/// \param size The new video size.
-///
-- (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
-@end
-
 @class RTCPeerConnection;
 @class RTCMediaStream;
 @class RTCIceCandidate;
@@ -560,6 +548,20 @@ SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 /// \param newState The new gathering state.
 ///
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeIceGatheringState:(RTCIceGatheringState)newState;
+@end
+
+@protocol RTCVideoRenderer;
+@interface WebRTCClient (SWIFT_EXTENSION(IdentifySDK))
+/// Reacts to a change in the rendered video’s natural size by relaying out that view.
+/// Gelen boyut saklanır ve yerleşim tek bir yerden (<code>calculateLocalSize</code> /
+/// <code>calculateRemoteSize</code>) yapılır. Hesap eskiden burada da ayrıca yapılıyordu; kapsayıcının
+/// her <code>layoutSubviews</code>’ı bu doğru çerçeveyi sabit tahminle ezdiği için gerçek kare boyutu
+/// pratikte hiç kullanılamıyordu.
+/// \param videoView The renderer whose size changed.
+///
+/// \param size The new video size.
+///
+- (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
 
 #endif // defined(__OBJC__)

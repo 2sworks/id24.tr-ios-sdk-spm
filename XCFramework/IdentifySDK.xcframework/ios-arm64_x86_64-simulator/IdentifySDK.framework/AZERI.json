@@ -365,6 +365,7 @@
   "ScannerTooCloseId": "Şəxsiyyəti bir az uzaqlaşdırın",
   "ScannerAlignId": "Şəxsiyyəti düz tutun",
   "ScannerTooFarId": "Şəxsiyyəti bir az yaxınlaşdırın",
+  "ScannerGlare": "Parıltı var — sənədi işıqdan bir az əyin",
   "ScannerCentreId": "Şəxsiyyəti çərçivəyə mərkəzləyin",
   "ScannerManualCapture": "Əl ilə çək",
   "ScannerManualFailTitle": "Avtomatik oxuma uğursuz oldu",
@@ -417,5 +418,8 @@
   "LivenessEyesLeftTts": "Başınızı tərpətmədən gözlərinizi sola çevirin.",
   "LivenessEyesRightTts": "Başınızı tərpətmədən gözlərinizi sağa çevirin.",
   "LivenessHeadBackTts": "Başınızı bir az geriyə əyin.",
-  "LivenessLookUpTts": "Başınızı tərpətmədən yuxarı baxın."
+  "LivenessLookUpTts": "Başınızı tərpətmədən yuxarı baxın.",
+  "RoomOccupiedTitle": "Sessiya məşğuldur",
+  "RoomOccupiedDesc": "Bu doğrulama sessiyası hazırda başqa cihazda açıqdır. Digər sessiyanı bağlayıb yenidən cəhd edin.",
+  "CoreExit": "Çıxış"
 }

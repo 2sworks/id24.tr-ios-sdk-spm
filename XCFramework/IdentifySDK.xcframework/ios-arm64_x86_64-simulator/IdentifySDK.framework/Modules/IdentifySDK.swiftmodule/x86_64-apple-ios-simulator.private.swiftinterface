@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.3.3 effective-5.10 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
-// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-upcoming-feature ConciseMagicFile -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
 import ARKit
 import AVFoundation
@@ -158,7 +158,7 @@ extension Swift.Error {
   public var asAFError: IdentifySDK.AFError? {
     get
   }
-  public func asAFError(orFailWith message: @autoclosure () -> Swift.String, file: Swift.StaticString = #file, line: Swift.UInt = #line) -> IdentifySDK.AFError
+  public func asAFError(orFailWith message: @autoclosure () -> Swift.String, file: Swift.StaticString = #fileID, line: Swift.UInt = #line) -> IdentifySDK.AFError
 }
 extension IdentifySDK.AFError {
   public var isSessionDeinitializedError: Swift.Bool {
@@ -717,6 +717,30 @@ public enum SdkModules : Swift.String, Swift.Codable, Swift.CaseIterable {
     get
   }
 }
+public enum SDKFaceTrackingFallback : Swift.Equatable {
+  case selfie
+  case livenessDetection
+  case skip
+  public static func == (a: IdentifySDK.SDKFaceTrackingFallback, b: IdentifySDK.SDKFaceTrackingFallback) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKTrueDepthMode : Swift.String, Swift.CaseIterable, Swift.Equatable {
+  case automatic
+  case required
+  case disabled
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKTrueDepthMode]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKTrueDepthMode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public enum SelfieTypes : Swift.String, Swift.Codable {
   case selfie
   case oldPhoneFace
@@ -762,14 +786,18 @@ public enum VerificationCardType : Swift.String {
 }
 public enum SDKLang : Swift.String {
   case de
-  case eng
+  case en
   case tr
   case az
   case ru
+  public init?(rawValue: Swift.String)
+  @available(*, deprecated, renamed: "en", message: "İngilizce dil kodu artık .en")
+  public static var eng: IdentifySDK.SDKLang {
+    get
+  }
   public var sttLanguageCode: Swift.String {
     get
   }
-  public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -1556,16 +1584,57 @@ public enum ScanStrategy : Swift.String, Swift.Codable {
     get
   }
 }
+public struct MRZRequirement : Swift.Codable, Swift.Equatable {
+  public enum Format : Swift.String, Swift.Codable {
+    case td1
+    case td3
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Level : Swift.String, Swift.Codable {
+    case presence
+    case parsed
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let format: IdentifySDK.MRZRequirement.Format
+  public let isRequired: Swift.Bool
+  public let level: IdentifySDK.MRZRequirement.Level
+  public init(format: IdentifySDK.MRZRequirement.Format, isRequired: Swift.Bool, level: IdentifySDK.MRZRequirement.Level = .presence)
+  public static let legacyTurkishID: IdentifySDK.MRZRequirement
+  public static func == (a: IdentifySDK.MRZRequirement, b: IdentifySDK.MRZRequirement) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct DocumentProfile : Swift.Codable {
   public let id: Swift.String
   public let displayName: Swift.String
   public let strategy: IdentifySDK.ScanStrategy
   public let fields: [IdentifySDK.FieldDescriptor]
   public let keywordSet: IdentifySDK.DocumentKeywordSet?
-  public init(id: Swift.String, displayName: Swift.String, strategy: IdentifySDK.ScanStrategy, fields: [IdentifySDK.FieldDescriptor] = [], keywordSet: IdentifySDK.DocumentKeywordSet? = nil)
+  public let mrz: IdentifySDK.MRZRequirement?
+  public init(id: Swift.String, displayName: Swift.String, strategy: IdentifySDK.ScanStrategy, fields: [IdentifySDK.FieldDescriptor] = [], keywordSet: IdentifySDK.DocumentKeywordSet? = nil, mrz: IdentifySDK.MRZRequirement? = nil)
   public init(from decoder: any Swift.Decoder) throws
   public init(decoding data: Foundation.Data) throws
   public func encode(to encoder: any Swift.Encoder) throws
+}
+extension IdentifySDK.DocumentProfile {
+  public func settingRequired(_ isRequired: Swift.Bool, for keys: Swift.String...) -> IdentifySDK.DocumentProfile
+  public func settingRequired(_ isRequired: Swift.Bool, forKeys keys: [Swift.String]) -> IdentifySDK.DocumentProfile
+  public func settingMRZ(_ rule: IdentifySDK.MRZRequirement) -> IdentifySDK.DocumentProfile
+  public func settingMRZRequired(_ isRequired: Swift.Bool) -> IdentifySDK.DocumentProfile
+  public func settingField(_ field: IdentifySDK.FieldDescriptor) -> IdentifySDK.DocumentProfile
+  public func removingFields(_ keys: Swift.String...) -> IdentifySDK.DocumentProfile
+  public func settingKeywordSet(_ keywordSet: IdentifySDK.DocumentKeywordSet?) -> IdentifySDK.DocumentProfile
+}
+extension IdentifySDK.FieldDescriptor {
+  public func settingRequired(_ isRequired: Swift.Bool) -> IdentifySDK.FieldDescriptor
 }
 extension IdentifySDK.Request {
   public typealias ValidationResult = Swift.Result<Swift.Void, any Swift.Error>
@@ -3414,7 +3483,8 @@ public struct ScannerGuidanceTexts {
   public var tooFar: Swift.String
   public var centreDocument: Swift.String
   public var orientation: Swift.String
-  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "")
+  public var glare: Swift.String
+  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "", glare: Swift.String = "")
   public static var overrideDefault: IdentifySDK.ScannerGuidanceTexts?
   public static var overrideDocument: IdentifySDK.ScannerGuidanceTexts?
   public static var `default`: IdentifySDK.ScannerGuidanceTexts {
@@ -3478,9 +3548,10 @@ public struct ScannerFixedFrame : Swift.Equatable {
   public var verticalOffset: CoreFoundation.CGFloat
   public var cornerRadius: CoreFoundation.CGFloat
   public var maxHeightFraction: CoreFoundation.CGFloat
+  public var maxWidth: CoreFoundation.CGFloat
   public var captureFitTolerance: CoreFoundation.CGFloat
   public var overflowTolerance: CoreFoundation.CGFloat
-  public init(aspect: CoreFoundation.CGFloat, horizontalPadding: CoreFoundation.CGFloat = 15, verticalOffset: CoreFoundation.CGFloat = -24, cornerRadius: CoreFoundation.CGFloat = 16, maxHeightFraction: CoreFoundation.CGFloat = 0.72, captureFitTolerance: CoreFoundation.CGFloat = 30, overflowTolerance: CoreFoundation.CGFloat = 4)
+  public init(aspect: CoreFoundation.CGFloat, horizontalPadding: CoreFoundation.CGFloat = 15, verticalOffset: CoreFoundation.CGFloat = -24, cornerRadius: CoreFoundation.CGFloat = 16, maxHeightFraction: CoreFoundation.CGFloat = 0.72, maxWidth: CoreFoundation.CGFloat = 630, captureFitTolerance: CoreFoundation.CGFloat = 30, overflowTolerance: CoreFoundation.CGFloat = 4)
   public static let idCard: IdentifySDK.ScannerFixedFrame
   public static let passport: IdentifySDK.ScannerFixedFrame
   public static let document: IdentifySDK.ScannerFixedFrame
@@ -3525,7 +3596,10 @@ public struct DocumentField : Swift.Equatable {
   @_Concurrency.MainActor @preconcurrency public let onResult: (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void
   @_Concurrency.MainActor @preconcurrency public let speechKey: IdentifySDK.SDKKeyword?
   @_Concurrency.MainActor @preconcurrency public let speechModule: IdentifySDK.SdkModules?
-  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, frameMode: IdentifySDK.ScannerFrameMode? = nil, debugROI: Swift.Bool = false, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, speechKey: IdentifySDK.SDKKeyword? = nil, speechModule: IdentifySDK.SdkModules? = nil, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public let dismissesOnResult: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let keepsCameraRunning: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let scanSession: Swift.Int
+  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, frameMode: IdentifySDK.ScannerFrameMode? = nil, debugROI: Swift.Bool = false, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, speechKey: IdentifySDK.SDKKeyword? = nil, speechModule: IdentifySDK.SdkModules? = nil, dismissesOnResult: Swift.Bool = true, keepsCameraRunning: Swift.Bool = false, scanSession: Swift.Int = 0, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void)
   @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
     get
   }
@@ -4189,6 +4263,8 @@ public class IdentifyManager {
   public var enableDebugPrint: Swift.Bool
   public var webRTCClient: IdentifySDK.WebRTCClient!
   public var sdkSocketActions: IdentifySDK.SDKCallActions?
+  public var faceTrackingFallback: IdentifySDK.SDKFaceTrackingFallback
+  public var selfieWithLivenessTrueDepth: IdentifySDK.SDKTrueDepthMode
   public var socket: Starscream.WebSocket!
   public var wsSecretKey: Swift.String?
   weak public var delegate: (any IdentifySDK.IdentifyListenerDelegate)?
@@ -4265,20 +4341,26 @@ public class IdentifyManager {
   public func getVersion() -> Swift.String
   public static func debugPrint(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
   public var trackingEventType: IdentifySDK.TrackingEventType?
+  public var logHandler: ((IdentifySDK.IdentifyLogEntry) -> Swift.Void)?
   public var trackingDelegate: (any IdentifySDK.IdentifyTrackingListener)?
   weak public var eventDelegate: (any IdentifySDK.SDKEventListener)?
+  public var onFlowFinished: ((IdentifySDK.SDKFlowOutcome) -> Swift.Void)?
+  weak public var flowResultDelegate: (any IdentifySDK.IdentifyFlowResultListener)?
+  public var lastFlowOutcome: IdentifySDK.SDKFlowOutcome? {
+    get
+  }
   public var currentSessionId: Swift.String {
     get
   }
   public var lastScreen: Swift.String? {
     get
   }
-  public func setSDKLang(lang: IdentifySDK.SDKLang? = .eng)
+  public func setSDKLang(lang: IdentifySDK.SDKLang? = .en)
   public func setupSDK(identId: Swift.String, baseApiUrl: Swift.String, networkOptions: IdentifySDK.SDKNetworkOptions, kpsData: IdentifySDK.SDKKpsData?, identCardType: [IdentifySDK.CardType]? = [
             .idCard,
             .passport,
             .oldSchool
-        ], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = false, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, ttsEnabled: Swift.Bool? = false, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
+        ], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = true, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, ttsEnabled: Swift.Bool? = false, onFinished: ((IdentifySDK.SDKFlowOutcome) -> Swift.Void)? = nil, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
   public func startSpeedTest(repeatCount: Swift.Int? = 1, callBack: @escaping (_ connectionStatus: IdentifySDK.SDKNetworkStatus, _ kbPerSec: CoreFoundation.CGFloat) -> Swift.Void)
   public func resetLivenessTest()
   public func getNextLivenessTest(callBack: @escaping (_ nextStep: IdentifySDK.LivenessTestStep?, _ completed: Swift.Bool?) -> ())
@@ -4630,6 +4712,16 @@ public struct SDKKeyReport : Swift.Codable {
 extension IdentifySDK.IdentifyManager {
   public func verifyKeysOnServer(completion: @escaping (IdentifySDK.SDKKeyReport) -> Swift.Void)
 }
+public struct IdentifyLogEntry {
+  public let date: Foundation.Date
+  public let message: Swift.String
+  public let severity: IdentifySDK.SDKLogSeverity
+  public let category: IdentifySDK.SDKLogCategory
+  public let isSilent: Swift.Bool
+  public var type: Swift.String {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class SocketLog {
   public var socketType: IdentifySDK.SocketMsgType?
   public var socketMsg: Swift.String?
@@ -4726,6 +4818,16 @@ public enum SDKLog {
     set
   }
   @_Concurrency.MainActor final public var $consoleLogs: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<IdentifySDK.SDKTrueDepthMode> @_projectedValueProperty($swlTrueDepthMode) @_Concurrency.MainActor final public var swlTrueDepthMode: IdentifySDK.SDKTrueDepthMode {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $swlTrueDepthMode: Combine.Published<IdentifySDK.SDKTrueDepthMode>.Publisher {
     get
     @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
     set
@@ -4888,9 +4990,22 @@ extension Foundation.Bundle {
   final public var fonts: IdentifySDK.SDKFonts
   final public var icons: IdentifySDK.SDKIcons
   final public var metrics: IdentifySDK.SDKMetrics
+  final public var buttons: IdentifySDK.SDKButtons
+  final public var navBar: IdentifySDK.SDKNavBarAppearance
+  final public var selection: IdentifySDK.SDKSelectionAppearance
+  final public var alerts: IdentifySDK.SDKAlertAppearance
+  final public var banners: IdentifySDK.SDKBannerAppearance
+  final public var fields: IdentifySDK.SDKFieldAppearance
+  final public var sheets: IdentifySDK.SDKSheetAppearance
+  final public var capture: IdentifySDK.SDKCaptureAppearance
+  final public var controls: IdentifySDK.SDKControlAppearance
+  final public var call: IdentifySDK.SDKCallAppearance
+  final public var motion: IdentifySDK.SDKMotion
   final public func setIcon(_ key: IdentifySDK.SDKIconKey, _ image: SwiftUICore.Image)
   final public func setIcons(_ map: [IdentifySDK.SDKIconKey : SwiftUICore.Image])
   final public func resetIcon(_ key: IdentifySDK.SDKIconKey)
+  final public func setButtonCorner(_ corner: IdentifySDK.SDKButtonCorner, for style: IdentifySDK.SDKButtonStyle? = nil)
+  final public func setButtonAppearance(_ appearance: IdentifySDK.SDKButtonAppearance, for style: IdentifySDK.SDKButtonStyle? = nil)
   @discardableResult
   final public func registerFont(at url: Foundation.URL) -> Swift.Bool
   @discardableResult
@@ -4919,7 +5034,33 @@ public struct SDKColors {
   public var divider: SwiftUICore.Color
   public var accentPurple: SwiftUICore.Color
   public var accentTeal: SwiftUICore.Color
+  public var accentWarning: SwiftUICore.Color
+  public var pageBackground: IdentifySDK.SDKAdaptiveColor?
+  public var moduleBackground: IdentifySDK.SDKAdaptiveColor?
+  public var surface: IdentifySDK.SDKAdaptiveColor?
+  public var title: IdentifySDK.SDKAdaptiveColor?
+  public var subtitle: IdentifySDK.SDKAdaptiveColor?
+  public var border: IdentifySDK.SDKAdaptiveColor?
+  public var headerBackground: IdentifySDK.SDKAdaptiveColor?
+  public var headerTitle: IdentifySDK.SDKAdaptiveColor?
+  public var headerSubtitle: IdentifySDK.SDKAdaptiveColor?
+  public var headerIcon: IdentifySDK.SDKAdaptiveColor?
+  public var headerIconBackground: IdentifySDK.SDKAdaptiveColor?
+  public var headerIconBorder: IdentifySDK.SDKAdaptiveColor?
+  public var progressActive: IdentifySDK.SDKAdaptiveColor?
+  public var progressInactive: IdentifySDK.SDKAdaptiveColor?
+  public var selectedItemBackground: IdentifySDK.SDKAdaptiveColor?
+  public var selectedItemText: IdentifySDK.SDKAdaptiveColor?
+  public var unselectedItemBackground: IdentifySDK.SDKAdaptiveColor?
+  public var unselectedItemText: IdentifySDK.SDKAdaptiveColor?
   public init()
+}
+public struct SDKAdaptiveColor {
+  public var light: SwiftUICore.Color
+  public var dark: SwiftUICore.Color
+  public init(light: SwiftUICore.Color, dark: SwiftUICore.Color)
+  public init(_ both: SwiftUICore.Color)
+  public func resolve(_ scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
 }
 public struct SDKFonts {
   public var familyName: Swift.String?
@@ -4933,7 +5074,7 @@ public struct SDKIcons {
   public init()
 }
 public enum SDKIconKey : Swift.String, Swift.CaseIterable {
-  case logo, hamburger, langButton, back, help, close
+  case logo, headerLogo, hamburger, langButton, back, help, close
   case retry, checkmark, camera, trash, video, chat, calendar, sparkles, chevronRight, signLang
   case permCamera, permMic, permSpeech, permIdCard, permAlone, permConditions
   case incomingCall, incomingCallButton, nfcFront, nfcBack, nfcPassportFront
@@ -4973,6 +5114,149 @@ public struct SDKMetrics {
   public var radiusPill: CoreFoundation.CGFloat
   public var radiusCircle: CoreFoundation.CGFloat
   public init()
+}
+public enum SDKNavBarPreset : Swift.String, Swift.CaseIterable {
+  case classic
+  case centered
+  case minimal
+  case prominent
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKNavBarPreset]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKNavBarPreset] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKNavBarTitleMode : Swift.String, Swift.CaseIterable {
+  case module
+  case brand
+  case brandWithModule
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKNavBarTitleMode]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKNavBarTitleMode] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SDKNavBarAppearance {
+  public var preset: IdentifySDK.SDKNavBarPreset
+  public var titleMode: IdentifySDK.SDKNavBarTitleMode
+  public var brandTitle: Swift.String?
+  public var brandSubtitle: Swift.String?
+  public var height: CoreFoundation.CGFloat?
+  public var showsLogo: Swift.Bool?
+  public var logoSize: CoreFoundation.CGFloat?
+  public var circleButtonSize: CoreFoundation.CGFloat?
+  public var iconSize: CoreFoundation.CGFloat?
+  public var titleFont: SwiftUICore.Font?
+  public var subtitleFont: SwiftUICore.Font?
+  public var progressHeight: CoreFoundation.CGFloat?
+  public var progressSpacing: CoreFoundation.CGFloat?
+  public var progressCorner: IdentifySDK.SDKButtonCorner?
+  public var overlayGradientOpacity: Swift.Double?
+  public var showsDivider: Swift.Bool?
+  public init()
+}
+public struct SDKSelectionAppearance {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var rowMinHeight: CoreFoundation.CGFloat?
+  public var checkboxSize: CoreFoundation.CGFloat?
+  public var checkboxCornerRadius: CoreFoundation.CGFloat?
+  public var radioDotSize: CoreFoundation.CGFloat?
+  public var checkmarkColor: SwiftUICore.Color?
+  public init()
+}
+public struct SDKAlertAppearance {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var maxWidth: CoreFoundation.CGFloat?
+  public var shadowRadius: CoreFoundation.CGFloat?
+  public var shadowOffsetY: CoreFoundation.CGFloat?
+  public var scrimOpacity: Swift.Double?
+  public var iconCircleSize: CoreFoundation.CGFloat?
+  public var iconCircleOpacity: Swift.Double?
+  public var showsDivider: Swift.Bool?
+  public init()
+}
+public struct SDKBannerAppearance {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var shadowRadius: CoreFoundation.CGFloat?
+  public var shadowOffsetY: CoreFoundation.CGFloat?
+  public var iconCircleSize: CoreFoundation.CGFloat?
+  public var iconCircleOpacity: Swift.Double?
+  public init()
+}
+public struct SDKFieldAppearance {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var background: IdentifySDK.SDKAdaptiveColor?
+  public var borderColor: IdentifySDK.SDKAdaptiveColor?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public var placeholderColor: IdentifySDK.SDKAdaptiveColor?
+  public var minHeight: CoreFoundation.CGFloat?
+  public init()
+}
+public struct SDKSheetAppearance {
+  public var cornerRadius: CoreFoundation.CGFloat?
+  public var handleWidth: CoreFoundation.CGFloat?
+  public var handleHeight: CoreFoundation.CGFloat?
+  public var handleColor: IdentifySDK.SDKAdaptiveColor?
+  public var background: IdentifySDK.SDKAdaptiveColor?
+  public init()
+}
+public struct SDKCaptureAppearance {
+  public var maskOpacity: Swift.Double?
+  public var guideStrokeColor: SwiftUICore.Color?
+  public var guideLockedColor: SwiftUICore.Color?
+  public var guideLineWidth: CoreFoundation.CGFloat?
+  public var faceAlignedColor: SwiftUICore.Color?
+  public var faceIdleColor: SwiftUICore.Color?
+  public var overlayButtonFill: SwiftUICore.Color?
+  public var overlayButtonBorder: SwiftUICore.Color?
+  public init()
+}
+public struct SDKControlAppearance {
+  public var shutterSize: CoreFoundation.CGFloat?
+  public var shutterRingWidth: CoreFoundation.CGFloat?
+  public var shutterFill: SwiftUICore.Color?
+  public var shutterRingColor: SwiftUICore.Color?
+  public var recordingColor: SwiftUICore.Color?
+  public var progressRingWidth: CoreFoundation.CGFloat?
+  public init()
+}
+public struct SDKCallAppearance {
+  public var panelCornerRadius: CoreFoundation.CGFloat?
+  public var panelBackground: SwiftUICore.Color?
+  public var handleColor: SwiftUICore.Color?
+  public var controlSize: CoreFoundation.CGFloat?
+  public var remoteVideoBackground: SwiftUICore.Color?
+  public var localPreviewCornerRadius: CoreFoundation.CGFloat?
+  public init()
+}
+public struct SDKMotion {
+  public var transitionDuration: Swift.Double
+  public var overlayDuration: Swift.Double
+  public var disabled: Swift.Bool
+  public init()
+  public var transition: SwiftUICore.Animation? {
+    get
+  }
+  public var overlay: SwiftUICore.Animation? {
+    get
+  }
+}
+extension IdentifySDK.SDKTheme {
+  @discardableResult
+  final public func apply(_ config: [Swift.String : Any]) -> [Swift.String]
+  @discardableResult
+  final public func apply(json data: Foundation.Data) -> [Swift.String]
+  @discardableResult
+  final public func applyTheme(named name: Swift.String, in bundle: Foundation.Bundle = .main) -> [Swift.String]
+  final public func resetAppearance()
 }
 public enum IDColor {
   public static var primary: SwiftUICore.Color {
@@ -5038,6 +5322,9 @@ public enum IDColor {
   public static var accentTeal: SwiftUICore.Color {
     get
   }
+  public static var accentWarning: SwiftUICore.Color {
+    get
+  }
 }
 extension IdentifySDK.IDColor {
   public static func adaptivePrimary(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
@@ -5046,6 +5333,22 @@ extension IdentifySDK.IDColor {
   public static func adaptiveTitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
   public static func adaptiveSubtitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
   public static func adaptiveBorder(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+}
+extension IdentifySDK.IDColor {
+  public static func pageBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func moduleBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func headerBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color?
+  public static func headerTitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func headerSubtitle(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func headerIcon(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func headerIconBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func headerIconBorder(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func progressActive(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func progressInactive(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func selectedItemBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func selectedItemText(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func unselectedItemBackground(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
+  public static func unselectedItemText(for scheme: SwiftUICore.ColorScheme) -> SwiftUICore.Color
 }
 public enum IDFont {
   public static func displayLarge(_ weight: SwiftUICore.Font.Weight = .bold) -> SwiftUICore.Font
@@ -5057,6 +5360,7 @@ public enum IDFont {
   public static func bodyRegular(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
   public static func bodySmall(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
   public static func caption(_ weight: SwiftUICore.Font.Weight = .medium) -> SwiftUICore.Font
+  public static func custom(_ size: CoreFoundation.CGFloat, _ weight: SwiftUICore.Font.Weight = .regular) -> SwiftUICore.Font
 }
 public enum IDSpacing {
   public static var xs: CoreFoundation.CGFloat {
@@ -5100,6 +5404,26 @@ public enum IDRadius {
   public static var circle: CoreFoundation.CGFloat {
     get
   }
+}
+public enum SDKLayout {
+  public static var bounds: CoreFoundation.CGRect {
+    get
+  }
+  public static var activeWindow: UIKit.UIWindow? {
+    get
+  }
+  public static var isPad: Swift.Bool {
+    get
+  }
+  public static var readableWidth: CoreFoundation.CGFloat
+  public static var maxGuideWidth: CoreFoundation.CGFloat
+  public static var maxCaptureGuideWidth: CoreFoundation.CGFloat
+  public static var maxFaceGuideWidth: CoreFoundation.CGFloat
+  public static func faceGuideWidth(in containerWidth: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func sdkReadableWidth(_ maxWidth: CoreFoundation.CGFloat? = nil) -> some SwiftUICore.View
+  
 }
 @_Concurrency.MainActor open class SDKBaseModuleViewModel : Foundation.ObservableObject {
   @Combine.Published<Swift.Bool> @_projectedValueProperty($isLoading) @_Concurrency.MainActor public var isLoading: Swift.Bool {
@@ -5192,6 +5516,12 @@ public enum IDRadius {
   @_Concurrency.MainActor final public var $isWaitingForRoom: Combine.Published<Swift.Bool>.Publisher {
     get
   }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($roomOccupiedMessage) @_Concurrency.MainActor final public var roomOccupiedMessage: Swift.String? {
+    get
+  }
+  @_Concurrency.MainActor final public var $roomOccupiedMessage: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
   @Combine.Published<Swift.Bool> @_projectedValueProperty($showLostConnection) @_Concurrency.MainActor final public var showLostConnection: Swift.Bool {
     get
   }
@@ -5210,6 +5540,12 @@ public enum IDRadius {
   @_Concurrency.MainActor final public var $pendingThankYouStatus: Combine.Published<IdentifySDK.ThankYouStatus?>.Publisher {
     get
   }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isDismissingFlow) @_Concurrency.MainActor final public var isDismissingFlow: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isDismissingFlow: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
   @_Concurrency.MainActor public init()
   @_Concurrency.MainActor final public func prepareForSetup()
   @_Concurrency.MainActor final public func start()
@@ -5225,6 +5561,7 @@ public enum IDRadius {
   @_Concurrency.MainActor final public func pushThankYouDirectly(status: IdentifySDK.ThankYouStatus)
   @_Concurrency.MainActor final public func restoreSocketListener()
   @_Concurrency.MainActor final public func restartCurrentModule()
+  @_Concurrency.MainActor final public func exitAfterRoomOccupied()
   @_Concurrency.MainActor final public func dismissLostConnection()
   @_Concurrency.MainActor final public func popBack()
   @_Concurrency.MainActor final public func resetFlow()
@@ -5237,6 +5574,8 @@ extension IdentifySDK.SDKFlowCoordinator : IdentifySDK.SDKSocketListener {
 @_hasMissingDesignatedInitializers final public class SDKHapticConfig {
   public static let shared: IdentifySDK.SDKHapticConfig
   final public var isEnabled: Swift.Bool
+  final public var stepFeedbackEnabled: Swift.Bool
+  final public var stepFeedbackIntensity: Swift.Float
   final public func setEnabled(_ enabled: Swift.Bool, for module: IdentifySDK.SdkModules)
   final public func setEnabled(_ enabled: Swift.Bool, for modules: [IdentifySDK.SdkModules])
   final public func setEnabledForAll(_ enabled: Swift.Bool)
@@ -5256,6 +5595,7 @@ extension IdentifySDK.SDKFlowCoordinator : IdentifySDK.SDKSocketListener {
   final public func update(progress: Swift.Double)
   final public func run(duration: Foundation.TimeInterval, module: IdentifySDK.SdkModules?, rampStart: Swift.Double = 0)
   final public func finish()
+  final public func stepPassed(module: IdentifySDK.SdkModules?)
   final public func cancel()
   @objc deinit
 }
@@ -5499,7 +5839,7 @@ public enum ThankYouStatus : Swift.Hashable {
 }
 
 
-public enum SDKButtonStyle {
+public enum SDKButtonStyle : Swift.Hashable {
   case primary
   case cancel
   case secondary
@@ -5509,6 +5849,54 @@ public enum SDKButtonStyle {
   public var hashValue: Swift.Int {
     get
   }
+}
+public enum SDKButtonCorner : Swift.Hashable {
+  case capsule
+  case radius(CoreFoundation.CGFloat)
+  public static func == (a: IdentifySDK.SDKButtonCorner, b: IdentifySDK.SDKButtonCorner) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SDKButtonShape : SwiftUICore.Shape, SwiftUICore.InsettableShape {
+  public var corner: IdentifySDK.SDKButtonCorner
+  public init(corner: IdentifySDK.SDKButtonCorner = .capsule)
+  public static func themed(_ style: IdentifySDK.SDKButtonStyle = .primary) -> IdentifySDK.SDKButtonShape
+  nonisolated public func path(in rect: CoreFoundation.CGRect) -> SwiftUICore.Path
+  nonisolated public func inset(by amount: CoreFoundation.CGFloat) -> IdentifySDK.SDKButtonShape
+  public typealias AnimatableData = SwiftUICore.EmptyAnimatableData
+  public typealias Body = SwiftUICore._ShapeView<IdentifySDK.SDKButtonShape, SwiftUICore.ForegroundStyle>
+  public typealias InsetShape = IdentifySDK.SDKButtonShape
+}
+public struct SDKButtonAppearance {
+  public var corner: IdentifySDK.SDKButtonCorner?
+  public var height: CoreFoundation.CGFloat?
+  public var verticalPadding: CoreFoundation.CGFloat?
+  public var horizontalPadding: CoreFoundation.CGFloat?
+  public var font: SwiftUICore.Font?
+  public var background: SwiftUICore.Color?
+  public var foreground: SwiftUICore.Color?
+  public var borderWidth: CoreFoundation.CGFloat?
+  public var borderColor: SwiftUICore.Color?
+  public var shadowColor: SwiftUICore.Color?
+  public var shadowRadius: CoreFoundation.CGFloat?
+  public var shadowOffsetY: CoreFoundation.CGFloat?
+  public var disabledOpacity: CoreFoundation.CGFloat?
+  public var pressedScale: CoreFoundation.CGFloat?
+  public var hapticsEnabled: Swift.Bool?
+  public var fullWidth: Swift.Bool?
+  public init(corner: IdentifySDK.SDKButtonCorner? = nil, height: CoreFoundation.CGFloat? = nil, verticalPadding: CoreFoundation.CGFloat? = nil, horizontalPadding: CoreFoundation.CGFloat? = nil, font: SwiftUICore.Font? = nil, background: SwiftUICore.Color? = nil, foreground: SwiftUICore.Color? = nil, borderWidth: CoreFoundation.CGFloat? = nil, borderColor: SwiftUICore.Color? = nil, shadowColor: SwiftUICore.Color? = nil, shadowRadius: CoreFoundation.CGFloat? = nil, shadowOffsetY: CoreFoundation.CGFloat? = nil, disabledOpacity: CoreFoundation.CGFloat? = nil, pressedScale: CoreFoundation.CGFloat? = nil, hapticsEnabled: Swift.Bool? = nil, fullWidth: Swift.Bool? = nil)
+}
+public struct SDKButtons {
+  public var base: IdentifySDK.SDKButtonAppearance
+  public init()
+  public subscript(style: IdentifySDK.SDKButtonStyle) -> IdentifySDK.SDKButtonAppearance {
+    get
+    set
+  }
+  public func resolved(_ style: IdentifySDK.SDKButtonStyle) -> IdentifySDK.SDKButtonAppearance
+  public mutating func reset()
 }
 @_Concurrency.MainActor @preconcurrency public struct SDKButton : SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public init(title: Swift.String, style: IdentifySDK.SDKButtonStyle = .primary, isLoading: Swift.Bool = false, isDisabled: Swift.Bool = false, action: @escaping () -> Swift.Void)
@@ -6031,6 +6419,7 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
   @_Concurrency.MainActor final public var allowLeft: Swift.Bool
   @_Concurrency.MainActor final public var allowRight: Swift.Bool
   @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public func reportFaceTrackingUnsupported()
   @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onRecordingReady: (() -> Swift.Void)?
@@ -6787,6 +7176,7 @@ public enum SDKKeyword : Swift.String {
   case scannerTooCloseId
   case scannerAlignId
   case scannerTooFarId
+  case scannerGlare
   case scannerCentreId
   case scannerManualCapture
   case scannerManualFailTitle
@@ -6838,6 +7228,9 @@ public enum SDKKeyword : Swift.String {
   case videoRecorderReadingTts
   case callScreenTts
   case thankYouTts
+  case roomOccupiedTitle
+  case roomOccupiedDesc
+  case coreExit
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -6920,6 +7313,31 @@ public enum OVDStep : Swift.Int, Swift.CaseIterable {
   }
 }
 @_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKIdCardOVDViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  public struct DebugLive : Swift.Equatable {
+    public var step: Swift.String
+    public var documentText: Swift.String
+    public var documentOK: Swift.Bool?
+    public var motionText: Swift.String
+    public var motionOK: Swift.Bool?
+    public var imuText: Swift.String
+    public var imuOK: Swift.Bool?
+    public var alignText: Swift.String
+    public var alignOK: Swift.Bool?
+    public var rainbowText: Swift.String
+    public var rainbowOK: Swift.Bool?
+    public var focusText: Swift.String
+    public var focusOK: Swift.Bool?
+    public var settleText: Swift.String
+    public var stillText: Swift.String
+    public var stillOK: Swift.Bool?
+    public static func == (a: IdentifySDK.SDKIdCardOVDViewModel.DebugLive, b: IdentifySDK.SDKIdCardOVDViewModel.DebugLive) -> Swift.Bool
+  }
+  @Combine.Published<IdentifySDK.SDKIdCardOVDViewModel.DebugLive?> @_projectedValueProperty($debugLive) @_Concurrency.MainActor final public var debugLive: IdentifySDK.SDKIdCardOVDViewModel.DebugLive? {
+    get
+  }
+  @_Concurrency.MainActor final public var $debugLive: Combine.Published<IdentifySDK.SDKIdCardOVDViewModel.DebugLive?>.Publisher {
+    get
+  }
   @Combine.Published<IdentifySDK.OVDStep> @_projectedValueProperty($step) @_Concurrency.MainActor final public var step: IdentifySDK.OVDStep {
     get
   }
@@ -6963,12 +7381,17 @@ public enum OVDStep : Swift.Int, Swift.CaseIterable {
   @_Concurrency.MainActor final public var requiresHologramStep: Swift.Bool
   @_Concurrency.MainActor final public func notifyDocumentSelectionShown()
   @_Concurrency.MainActor final public func notifyCaptureStarted()
+  @_Concurrency.MainActor final public var onRequestFocusNudge: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var focusProbe: (() -> (Swift.Bool, Swift.Float, Swift.Int?, Swift.Bool))?
   @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onRequestCapture: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onSetTorch: ((Swift.Bool) -> Swift.Void)?
   @_Concurrency.MainActor final public var onRequestLensSwitch: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var motionFeed: (CoreVideo.CVPixelBuffer) -> Swift.Void {
+    get
+  }
   @_Concurrency.MainActor final public func startMotion()
   @_Concurrency.MainActor final public func stopMotion()
   @_Concurrency.MainActor final public var totalSteps: Swift.Int {
@@ -7000,8 +7423,159 @@ public enum OVDStep : Swift.Int, Swift.CaseIterable {
   public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK16SDKIdCardOVDViewV4bodyQrvp", 0) __
 }
 
+public struct SDKSelfieWithLivenessConfig {
+  public var requiredHoldDuration: Swift.Double
+  public var smallOvalHoldDuration: Swift.Double
+  public var captureDelay: Swift.Double
+  public var okFrameThreshold: Swift.Int
+  public var badFrameThreshold: Swift.Int
+  public var warmupFrameCount: Swift.Int
+  public var smallOvalScale: CoreFoundation.CGFloat
+  public var largeOvalScale: CoreFoundation.CGFloat
+  public var brightnessAlpha: CoreFoundation.CGFloat
+  public var brightEnterThreshold: CoreFoundation.CGFloat
+  public var brightExitThreshold: CoreFoundation.CGFloat
+  public var tiltEnterThreshold: CoreFoundation.CGFloat
+  public var tiltExitThreshold: CoreFoundation.CGFloat
+  public var tooFarDepth: Swift.Float
+  public var tooFarExitDepth: Swift.Float
+  public var tooCloseDepth: Swift.Float
+  public var tooCloseExitDepth: Swift.Float
+  public var smallPhaseDepthScale: Swift.Float
+  public var positionEnterFraction: CoreFoundation.CGFloat
+  public var positionExitFraction: CoreFoundation.CGFloat
+  public var fitTolerance: CoreFoundation.CGFloat
+  public init()
+}
+public struct SDKFaceObservation {
+  public var center: CoreFoundation.CGPoint
+  public var depthMeters: Swift.Float
+  public var pitch: CoreFoundation.CGFloat
+  public var ambientIntensity: CoreFoundation.CGFloat?
+  public init(center: CoreFoundation.CGPoint, depthMeters: Swift.Float, pitch: CoreFoundation.CGFloat, ambientIntensity: CoreFoundation.CGFloat? = nil)
+}
+@_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKSelfieWithLivenessViewModel : IdentifySDK.SDKBaseModuleViewModel {
+  public enum Phase : Swift.Equatable {
+    case warmingUp
+    case searching
+    case faceDetected
+    case holding
+    case verified
+    public static func == (a: IdentifySDK.SDKSelfieWithLivenessViewModel.Phase, b: IdentifySDK.SDKSelfieWithLivenessViewModel.Phase) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum OvalPhase : Swift.Equatable {
+    case small, large
+    public static func == (a: IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase, b: IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor final public let path: IdentifySDK.SDKFaceCapturePath
+  @Combine.Published<IdentifySDK.SDKSelfieWithLivenessViewModel.Phase> @_projectedValueProperty($phase) @_Concurrency.MainActor final public var phase: IdentifySDK.SDKSelfieWithLivenessViewModel.Phase {
+    get
+  }
+  @_Concurrency.MainActor final public var $phase: Combine.Published<IdentifySDK.SDKSelfieWithLivenessViewModel.Phase>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase> @_projectedValueProperty($ovalPhase) @_Concurrency.MainActor final public var ovalPhase: IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase {
+    get
+  }
+  @_Concurrency.MainActor final public var $ovalPhase: Combine.Published<IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.String> @_projectedValueProperty($guidanceText) @_Concurrency.MainActor final public var guidanceText: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor final public var $guidanceText: Combine.Published<Swift.String>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isFaceAligned) @_Concurrency.MainActor final public var isFaceAligned: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isFaceAligned: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Double> @_projectedValueProperty($holdProgress) @_Concurrency.MainActor final public var holdProgress: Swift.Double {
+    get
+  }
+  @_Concurrency.MainActor final public var $holdProgress: Combine.Published<Swift.Double>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($shouldCapture) @_Concurrency.MainActor final public var shouldCapture: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $shouldCapture: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isSessionActive) @_Concurrency.MainActor final public var isSessionActive: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isSessionActive: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Int> @_projectedValueProperty($sessionGeneration) @_Concurrency.MainActor final public var sessionGeneration: Swift.Int {
+    get
+  }
+  @_Concurrency.MainActor final public var $sessionGeneration: Combine.Published<Swift.Int>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isFaceMeshHidden) @_Concurrency.MainActor final public var isFaceMeshHidden: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isFaceMeshHidden: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($canContinue) @_Concurrency.MainActor final public var canContinue: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $canContinue: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor final public var onCompleted: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onSkipRequested: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onFlowFailed: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var previewSize: CoreFoundation.CGSize {
+    get
+  }
+  @_Concurrency.MainActor final public var ovalScale: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor final public var ovalRect: CoreFoundation.CGRect {
+    get
+  }
+  @_Concurrency.MainActor public static func ovalRect(in size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor public init(trueDepthMode: IdentifySDK.SDKTrueDepthMode? = nil, config: IdentifySDK.SDKSelfieWithLivenessConfig = SDKSelfieWithLivenessConfig())
+  @_Concurrency.MainActor override convenience public init()
+  @_Concurrency.MainActor final public func updatePreviewSize(_ size: CoreFoundation.CGSize)
+  @_Concurrency.MainActor final public func beginSession()
+  @_Concurrency.MainActor final public func reportFaceTrackingUnsupported()
+  @_Concurrency.MainActor final public func noteWillResignActive()
+  @_Concurrency.MainActor final public func noteDidBecomeActive()
+  @_Concurrency.MainActor final public func endSession()
+  @_Concurrency.MainActor final public func analyzeFace(_ observation: IdentifySDK.SDKFaceObservation)
+  @_Concurrency.MainActor final public func analyzeNoFace()
+  nonisolated final public func analyzeFrame(_ pixelBuffer: CoreVideo.CVPixelBuffer, cameraPosition: AVFoundation.AVCaptureDevice.Position)
+  @_Concurrency.MainActor final public func presentCaptured(image: UIKit.UIImage?)
+  @objc deinit
+}
+public enum SDKFaceCapturePath : Swift.Equatable {
+  case arkit
+  case vision
+  case unsupported
+  public static func == (a: IdentifySDK.SDKFaceCapturePath, b: IdentifySDK.SDKFaceCapturePath) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_Concurrency.MainActor @preconcurrency public struct SDKSelfieWithLivenessView : SwiftUICore.View {
-  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public init(trueDepthMode: IdentifySDK.SDKTrueDepthMode? = nil)
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKSelfieWithLivenessViewModel)
   @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
     get
   }
@@ -7118,6 +7692,78 @@ extension IdentifySDK.TrackingEventType {
     get
   }
 }
+public enum SDKFlowResult : Swift.String {
+  case approved
+  case rejected
+  case neutral
+  case notCompleted
+  case cancelled
+  case error
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKFlowEndReason : Swift.String {
+  case allModulesCompleted
+  case agentDecision
+  case userEndedCall
+  case moduleFailed
+  case userExited
+  case hostQuit
+  case hostExit
+  case hostForceQuit
+  case appTerminated
+  case roomOccupied
+  case connectionLost
+  case setupFailed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SDKFlowOutcome {
+  public let result: IdentifySDK.SDKFlowResult
+  public let reason: IdentifySDK.SDKFlowEndReason
+  public let lastModule: IdentifySDK.SdkModules?
+  public let modules: [IdentifySDK.SdkModules]
+  public let skippedModules: [IdentifySDK.SdkModules]
+  public let stepIndex: Swift.Int
+  public let totalSteps: Swift.Int
+  public let terminateReason: Swift.String?
+  public let statusSummary: IdentifySDK.StatusSummary?
+  public let closeCode: IdentifySDK.SDKSocketCloseCode?
+  public let errorMessage: Swift.String?
+  public let sessionId: Swift.String
+  public let timestampMs: Swift.Int64
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public func toDictionary() -> [Swift.String : Any]
+}
+public protocol IdentifyFlowResultListener : AnyObject {
+  func identifyFlowDidFinish(_ outcome: IdentifySDK.SDKFlowOutcome)
+}
+public enum SDKTerminateDecision : Swift.Equatable {
+  case approved
+  case rejected
+  case neutral
+  case noDecision
+  public static func == (a: IdentifySDK.SDKTerminateDecision, b: IdentifySDK.SDKTerminateDecision) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKTerminateClassifier {
+  public static let agentClosedNormallyReasons: Swift.Set<Swift.String>
+  public static let agentClosedWithProblemReasons: Swift.Set<Swift.String>
+  public static let sdkGeneratedReasons: Swift.Set<Swift.String>
+  public static func isDecisionStatus(_ statusType: Swift.String?) -> Swift.Bool
+  public static func classify(reason: Swift.String?, statusSummary: IdentifySDK.StatusSummary?) -> IdentifySDK.SDKTerminateDecision
+}
 @_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class SDKSpeechService : Foundation.ObservableObject {
   @_Concurrency.MainActor public static let shared: IdentifySDK.SDKSpeechService
   @Combine.Published<Swift.Bool> @_projectedValueProperty($isSpeaking) @_Concurrency.MainActor final public var isSpeaking: Swift.Bool {
@@ -7230,6 +7876,9 @@ extension IdentifySDK.HostType : Swift.RawRepresentable {}
 extension IdentifySDK.SdkModules : Swift.Equatable {}
 extension IdentifySDK.SdkModules : Swift.Hashable {}
 extension IdentifySDK.SdkModules : Swift.RawRepresentable {}
+extension IdentifySDK.SDKFaceTrackingFallback : Swift.Hashable {}
+extension IdentifySDK.SDKTrueDepthMode : Swift.Hashable {}
+extension IdentifySDK.SDKTrueDepthMode : Swift.RawRepresentable {}
 extension IdentifySDK.SelfieTypes : Swift.Equatable {}
 extension IdentifySDK.SelfieTypes : Swift.Hashable {}
 extension IdentifySDK.SelfieTypes : Swift.RawRepresentable {}
@@ -7295,6 +7944,12 @@ extension IdentifySDK.URLEncodedFormEncoder.SpaceEncoding : Swift.Hashable {}
 extension IdentifySDK.ScanStrategy : Swift.Equatable {}
 extension IdentifySDK.ScanStrategy : Swift.Hashable {}
 extension IdentifySDK.ScanStrategy : Swift.RawRepresentable {}
+extension IdentifySDK.MRZRequirement.Format : Swift.Equatable {}
+extension IdentifySDK.MRZRequirement.Format : Swift.Hashable {}
+extension IdentifySDK.MRZRequirement.Format : Swift.RawRepresentable {}
+extension IdentifySDK.MRZRequirement.Level : Swift.Equatable {}
+extension IdentifySDK.MRZRequirement.Level : Swift.Hashable {}
+extension IdentifySDK.MRZRequirement.Level : Swift.RawRepresentable {}
 extension IdentifySDK.FieldValueType : Swift.Equatable {}
 extension IdentifySDK.FieldValueType : Swift.Hashable {}
 extension IdentifySDK.FieldValueType : Swift.RawRepresentable {}
@@ -7379,6 +8034,12 @@ extension IdentifySDK.CertificateItem : Swift.RawRepresentable {}
 extension IdentifySDK.SDKIconKey : Swift.Equatable {}
 extension IdentifySDK.SDKIconKey : Swift.Hashable {}
 extension IdentifySDK.SDKIconKey : Swift.RawRepresentable {}
+extension IdentifySDK.SDKNavBarPreset : Swift.Equatable {}
+extension IdentifySDK.SDKNavBarPreset : Swift.Hashable {}
+extension IdentifySDK.SDKNavBarPreset : Swift.RawRepresentable {}
+extension IdentifySDK.SDKNavBarTitleMode : Swift.Equatable {}
+extension IdentifySDK.SDKNavBarTitleMode : Swift.Hashable {}
+extension IdentifySDK.SDKNavBarTitleMode : Swift.RawRepresentable {}
 extension IdentifySDK.SDKBaseModuleViewModel : Swift.Sendable {}
 extension IdentifySDK.SDKFlowCoordinator : Swift.Sendable {}
 extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Equatable {}
@@ -7389,8 +8050,6 @@ extension IdentifySDK.SDKNavigationBar : Swift.Sendable {}
 extension IdentifySDK.SDKSelfieFaceCondition : Swift.Hashable {}
 extension IdentifySDK.SDKSelfieView : Swift.Sendable {}
 extension IdentifySDK.SDKThankYouView : Swift.Sendable {}
-extension IdentifySDK.SDKButtonStyle : Swift.Equatable {}
-extension IdentifySDK.SDKButtonStyle : Swift.Hashable {}
 extension IdentifySDK.SDKButton : Swift.Sendable {}
 extension IdentifySDK.SDKComparisonKind : Swift.Equatable {}
 extension IdentifySDK.SDKComparisonKind : Swift.Hashable {}
@@ -7423,6 +8082,9 @@ extension IdentifySDK.OVDStep : Swift.Equatable {}
 extension IdentifySDK.OVDStep : Swift.Hashable {}
 extension IdentifySDK.OVDStep : Swift.RawRepresentable {}
 extension IdentifySDK.SDKIdCardOVDView : Swift.Sendable {}
+extension IdentifySDK.SDKSelfieWithLivenessViewModel.Phase : Swift.Hashable {}
+extension IdentifySDK.SDKSelfieWithLivenessViewModel.OvalPhase : Swift.Hashable {}
+extension IdentifySDK.SDKFaceCapturePath : Swift.Hashable {}
 extension IdentifySDK.SDKSelfieWithLivenessView : Swift.Sendable {}
 extension IdentifySDK.IDAlertType : Swift.Equatable {}
 extension IdentifySDK.IDAlertType : Swift.Hashable {}
@@ -7434,6 +8096,13 @@ extension IdentifySDK.SDKEventCategory : Swift.RawRepresentable {}
 extension IdentifySDK.SDKEventStatus : Swift.Equatable {}
 extension IdentifySDK.SDKEventStatus : Swift.Hashable {}
 extension IdentifySDK.SDKEventStatus : Swift.RawRepresentable {}
+extension IdentifySDK.SDKFlowResult : Swift.Equatable {}
+extension IdentifySDK.SDKFlowResult : Swift.Hashable {}
+extension IdentifySDK.SDKFlowResult : Swift.RawRepresentable {}
+extension IdentifySDK.SDKFlowEndReason : Swift.Equatable {}
+extension IdentifySDK.SDKFlowEndReason : Swift.Hashable {}
+extension IdentifySDK.SDKFlowEndReason : Swift.RawRepresentable {}
+extension IdentifySDK.SDKTerminateDecision : Swift.Hashable {}
 extension IdentifySDK.SDKSpeechService : Swift.Sendable {}
 extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Equatable {}
 extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Hashable {}
