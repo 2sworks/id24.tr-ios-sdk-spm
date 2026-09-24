@@ -498,9 +498,9 @@ SWIFT_CLASS("_TtC11IdentifySDK12WebRTCClient")
 - (void)peerConnection:(RTCPeerConnection * _Nonnull)peerConnection didChangeSignalingState:(RTCSignalingState)stateChanged;
 /// Reports ICE connection state changes and drives the connected/disconnected transition.
 /// The load-bearing delegate callback: <code>.connected</code>/<code>.completed</code> mark media as
-/// established, while <code>.disconnected</code> and <code>.failed</code> end the call at once (close codes
-/// 4140/4141). There is deliberately no recovery window — the server counts a suspended
-/// session as live, so re-subscribing comes back as “room busy”.
+/// established, <code>.failed</code>/<code>.closed</code> tear the peer connection down at once. <code>.disconnected</code>
+/// is often transient, so the connection is kept open and <code>IdentifyManager</code> decides after
+/// its recovery window whether to end the call.
 /// \param peerConnection The connection reporting the change.
 ///
 /// \param newState The new ICE connection state.

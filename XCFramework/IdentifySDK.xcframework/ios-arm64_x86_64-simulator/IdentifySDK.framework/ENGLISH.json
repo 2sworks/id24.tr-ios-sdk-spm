@@ -419,6 +419,9 @@
   "LivenessEyesRightTts": "Without moving your head, look to the right.",
   "LivenessHeadBackTts": "Tilt your head back slightly.",
   "LivenessLookUpTts": "Without moving your head, look up.",
+  "RoomWaitRetryFmt": "Session busy, retrying (%d/%d)",
+  "RoomWaitFailedTitle": "Could not connect",
+  "RoomWaitFailedDesc": "The session may be busy or another user is in the room. Try reconnecting.",
   "RoomOccupiedTitle": "Session busy",
   "RoomOccupiedDesc": "This verification session is currently open on another device. Close the other session and try again.",
   "CoreExit": "Exit"

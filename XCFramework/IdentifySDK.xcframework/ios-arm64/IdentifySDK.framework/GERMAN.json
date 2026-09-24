@@ -419,6 +419,9 @@
   "LivenessEyesRightTts": "Schauen Sie nach rechts, ohne den Kopf zu bewegen.",
   "LivenessHeadBackTts": "Neigen Sie den Kopf leicht nach hinten.",
   "LivenessLookUpTts": "Schauen Sie nach oben, ohne den Kopf zu bewegen.",
+  "RoomWaitRetryFmt": "Sitzung belegt, neuer Versuch (%d/%d)",
+  "RoomWaitFailedTitle": "Verbindung fehlgeschlagen",
+  "RoomWaitFailedDesc": "Die Sitzung ist möglicherweise belegt oder ein anderer Nutzer ist im Raum. Versuchen Sie, sich erneut zu verbinden.",
   "RoomOccupiedTitle": "Sitzung belegt",
   "RoomOccupiedDesc": "Diese Verifizierungssitzung ist derzeit auf einem anderen Gerät geöffnet. Schließen Sie die andere Sitzung und versuchen Sie es erneut.",
   "CoreExit": "Beenden"

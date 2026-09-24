@@ -3456,12 +3456,24 @@ public struct ScannerTimingConfig {
   public static var idBack: IdentifySDK.ScannerTimingConfig
   public static var document: IdentifySDK.ScannerTimingConfig
 }
+public struct ScannerAutomation {
+  public var autoTorch: Swift.Bool
+  public var ultraWideLensSwitch: Swift.Bool
+  public var wideLensRecovery: Swift.Bool
+  public var manualCaptureFallback: Swift.Bool
+  public var glareGate: Swift.Bool
+  public init(autoTorch: Swift.Bool = false, ultraWideLensSwitch: Swift.Bool = true, wideLensRecovery: Swift.Bool = true, manualCaptureFallback: Swift.Bool = true, glareGate: Swift.Bool = true)
+  public static var `default`: IdentifySDK.ScannerAutomation
+}
 public struct ScannerConfiguration {
   public var texts: IdentifySDK.ScannerGuidanceTexts
   public var timing: IdentifySDK.ScannerTimingConfig
   public var frameMode: IdentifySDK.ScannerFrameMode
   public var hapticModule: IdentifySDK.SdkModules?
-  public init(texts: IdentifySDK.ScannerGuidanceTexts, timing: IdentifySDK.ScannerTimingConfig, frameMode: IdentifySDK.ScannerFrameMode = .dynamicQuad)
+  public var automation: IdentifySDK.ScannerAutomation
+  public var showsTorchButton: Swift.Bool
+  public static var showsTorchButtonDefault: Swift.Bool
+  public init(texts: IdentifySDK.ScannerGuidanceTexts, timing: IdentifySDK.ScannerTimingConfig, frameMode: IdentifySDK.ScannerFrameMode = .dynamicQuad, automation: IdentifySDK.ScannerAutomation = .default)
   public func withHapticModule(_ module: IdentifySDK.SdkModules?) -> IdentifySDK.ScannerConfiguration
   public static var overrideDefault: IdentifySDK.ScannerConfiguration?
   public static var overrideDocument: IdentifySDK.ScannerConfiguration?
@@ -3489,7 +3501,8 @@ public struct ScannerFixedFrame : Swift.Equatable {
   public var maxWidth: CoreFoundation.CGFloat
   public var captureFitTolerance: CoreFoundation.CGFloat
   public var overflowTolerance: CoreFoundation.CGFloat
-  public init(aspect: CoreFoundation.CGFloat, horizontalPadding: CoreFoundation.CGFloat = 15, verticalOffset: CoreFoundation.CGFloat = -24, cornerRadius: CoreFoundation.CGFloat = 16, maxHeightFraction: CoreFoundation.CGFloat = 0.72, maxWidth: CoreFoundation.CGFloat = 630, captureFitTolerance: CoreFoundation.CGFloat = 30, overflowTolerance: CoreFoundation.CGFloat = 4)
+  public var documentWidthMM: CoreFoundation.CGFloat
+  public init(aspect: CoreFoundation.CGFloat, horizontalPadding: CoreFoundation.CGFloat = 15, verticalOffset: CoreFoundation.CGFloat = -24, cornerRadius: CoreFoundation.CGFloat = 16, maxHeightFraction: CoreFoundation.CGFloat = 0.72, maxWidth: CoreFoundation.CGFloat = 630, captureFitTolerance: CoreFoundation.CGFloat = 30, overflowTolerance: CoreFoundation.CGFloat = 4, documentWidthMM: CoreFoundation.CGFloat = 0)
   public static let idCard: IdentifySDK.ScannerFixedFrame
   public static let passport: IdentifySDK.ScannerFixedFrame
   public static let document: IdentifySDK.ScannerFixedFrame
@@ -5374,6 +5387,15 @@ extension SwiftUICore.View {
   public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
   @objc deinit
 }
+public enum SDKRoomBlockKind {
+  case occupied
+  case waitTimeout
+  public static func == (a: IdentifySDK.SDKRoomBlockKind, b: IdentifySDK.SDKRoomBlockKind) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_Concurrency.MainActor final public class SDKFlowCoordinator : Combine.ObservableObject {
   public enum NavDirection {
     case forward, back
@@ -5431,10 +5453,22 @@ extension SwiftUICore.View {
   @_Concurrency.MainActor final public var $isWaitingForRoom: Combine.Published<Swift.Bool>.Publisher {
     get
   }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($roomWaitStatus) @_Concurrency.MainActor final public var roomWaitStatus: Swift.String? {
+    get
+  }
+  @_Concurrency.MainActor final public var $roomWaitStatus: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
   @Combine.Published<Swift.String?> @_projectedValueProperty($roomOccupiedMessage) @_Concurrency.MainActor final public var roomOccupiedMessage: Swift.String? {
     get
   }
   @_Concurrency.MainActor final public var $roomOccupiedMessage: Combine.Published<Swift.String?>.Publisher {
+    get
+  }
+  @Combine.Published<IdentifySDK.SDKRoomBlockKind> @_projectedValueProperty($roomBlockKind) @_Concurrency.MainActor final public var roomBlockKind: IdentifySDK.SDKRoomBlockKind {
+    get
+  }
+  @_Concurrency.MainActor final public var $roomBlockKind: Combine.Published<IdentifySDK.SDKRoomBlockKind>.Publisher {
     get
   }
   @Combine.Published<Swift.Bool> @_projectedValueProperty($showLostConnection) @_Concurrency.MainActor final public var showLostConnection: Swift.Bool {
@@ -5476,6 +5510,7 @@ extension SwiftUICore.View {
   @_Concurrency.MainActor final public func pushThankYouDirectly(status: IdentifySDK.ThankYouStatus)
   @_Concurrency.MainActor final public func restoreSocketListener()
   @_Concurrency.MainActor final public func restartCurrentModule()
+  @_Concurrency.MainActor final public func retryAfterRoomWaitTimeout()
   @_Concurrency.MainActor final public func exitAfterRoomOccupied()
   @_Concurrency.MainActor final public func dismissLostConnection()
   @_Concurrency.MainActor final public func popBack()
@@ -5923,6 +5958,15 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
   @_Concurrency.MainActor final public var allowedCardTypes: [IdentifySDK.CardType] {
     get
   }
+  @_Concurrency.MainActor final public var selectionOptions: [IdentifySDK.CardType] {
+    get
+  }
+  @_Concurrency.MainActor final public var initialCardType: IdentifySDK.CardType {
+    get
+  }
+  @_Concurrency.MainActor final public var skippedCardType: IdentifySDK.CardType? {
+    get
+  }
   @_Concurrency.MainActor final public var nfcRetryExceeded: Swift.Bool {
     get
   }
@@ -5935,6 +5979,19 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
   @_Concurrency.MainActor override public init()
   @objc deinit
 }
+@_hasMissingDesignatedInitializers final public class SDKDocumentSelectionConfig {
+  public static let shared: IdentifySDK.SDKDocumentSelectionConfig
+  public struct Screen {
+    public var showsScreen: Swift.Bool
+    public var options: [IdentifySDK.CardType]
+    public var defaultType: IdentifySDK.CardType?
+    public var speaksOnScreen: Swift.Bool
+    public var autoSkipSingleOption: Swift.Bool
+  }
+  final public var idCard: IdentifySDK.SDKDocumentSelectionConfig.Screen
+  final public var ovd: IdentifySDK.SDKDocumentSelectionConfig.Screen
+  @objc deinit
+}
 @_Concurrency.MainActor @preconcurrency public struct SDKIdCardView : SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public init()
   @_Concurrency.MainActor @preconcurrency public init(viewModel: IdentifySDK.SDKIdCardViewModel)
@@ -5942,6 +5999,14 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
     get
   }
   public typealias Body = @_opaqueReturnTypeOf("$s11IdentifySDK13SDKIdCardViewV4bodyQrvp", 0) __
+}
+extension IdentifySDK.CardType {
+  public var selectionIcon: IdentifySDK.SDKIconKey {
+    get
+  }
+  public var selectionTitle: Swift.String {
+    get
+  }
 }
 
 @_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKAddressConfirmViewModel : IdentifySDK.SDKBaseModuleViewModel {
@@ -7143,6 +7208,9 @@ public enum SDKKeyword : Swift.String {
   case videoRecorderReadingTts
   case callScreenTts
   case thankYouTts
+  case roomWaitRetryFmt
+  case roomWaitFailedTitle
+  case roomWaitFailedDesc
   case roomOccupiedTitle
   case roomOccupiedDesc
   case coreExit
@@ -7294,6 +7362,15 @@ public enum OVDStep : Swift.Int, Swift.CaseIterable {
     set
   }
   @_Concurrency.MainActor final public var requiresHologramStep: Swift.Bool
+  @_Concurrency.MainActor final public var selectionOptions: [IdentifySDK.OVDDocumentType] {
+    get
+  }
+  @_Concurrency.MainActor final public var initialDocumentType: IdentifySDK.OVDDocumentType {
+    get
+  }
+  @_Concurrency.MainActor final public var skippedDocumentType: IdentifySDK.OVDDocumentType? {
+    get
+  }
   @_Concurrency.MainActor final public func notifyDocumentSelectionShown()
   @_Concurrency.MainActor final public func notifyCaptureStarted()
   @_Concurrency.MainActor final public var onRequestFocusNudge: (() -> Swift.Void)?
@@ -7956,6 +8033,8 @@ extension IdentifySDK.SDKNavBarTitleMode : Swift.Equatable {}
 extension IdentifySDK.SDKNavBarTitleMode : Swift.Hashable {}
 extension IdentifySDK.SDKNavBarTitleMode : Swift.RawRepresentable {}
 extension IdentifySDK.SDKBaseModuleViewModel : Swift.Sendable {}
+extension IdentifySDK.SDKRoomBlockKind : Swift.Equatable {}
+extension IdentifySDK.SDKRoomBlockKind : Swift.Hashable {}
 extension IdentifySDK.SDKFlowCoordinator : Swift.Sendable {}
 extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Equatable {}
 extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Hashable {}

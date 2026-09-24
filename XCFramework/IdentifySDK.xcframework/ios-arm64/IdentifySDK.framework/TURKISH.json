@@ -419,6 +419,9 @@
   "LivenessEyesRightTts": "Başınızı oynatmadan gözlerinizi sağa kaydırın.",
   "LivenessHeadBackTts": "Başınızı hafifçe geriye eğin.",
   "LivenessLookUpTts": "Başınızı oynatmadan yukarı bakın.",
+  "RoomWaitRetryFmt": "Oturum meşgul, yeniden deneniyor (%d/%d)",
+  "RoomWaitFailedTitle": "Bağlantı kurulamadı",
+  "RoomWaitFailedDesc": "Oturum meşgul olabilir ya da odada başka bir kullanıcı var. Yeniden bağlanmayı deneyin.",
   "RoomOccupiedTitle": "Oturum meşgul",
   "RoomOccupiedDesc": "Bu doğrulama oturumu şu anda başka bir cihazda açık. Diğer oturumu kapatıp tekrar deneyin.",
   "CoreExit": "Çıkış"
