@@ -293775,21 +293775,21 @@
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk-v3\/IdentifySDK\/DefaultUI\/Modules\/SelfieWithLiveness\/SDKSelfieWithLivenessSupport.swift",
       "kind": "IntegerLiteral",
-      "offset": 5994,
+      "offset": 6014,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk-v3\/IdentifySDK\/DefaultUI\/Modules\/SelfieWithLiveness\/SDKSelfieWithLivenessSupport.swift",
       "kind": "BooleanLiteral",
-      "offset": 6028,
+      "offset": 6048,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ayhanhakantekin\/id24.tr-ios-sdk-v3\/IdentifySDK\/DefaultUI\/Modules\/SelfieWithLiveness\/SDKSelfieWithLivenessSupport.swift",
       "kind": "BooleanLiteral",
-      "offset": 6302,
+      "offset": 6322,
       "length": 5,
       "value": "false"
     },
