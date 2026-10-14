@@ -346,6 +346,7 @@ extern "C" {
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import ARKit;
 @import CoreFoundation;
 @import Foundation;
 @import ObjectiveC;
@@ -403,6 +404,28 @@ SWIFT_CLASS("_TtC11IdentifySDK14PassportReader") SWIFT_AVAILABILITY(ios,introduc
 @interface PassportReader : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// Görüşme sırasında ARKit yüz takibini yürütür.
+/// Yaşam döngüsünü <code>IdentifyManager</code> yönetir; host yalnızca <code>listener</code> atar ve
+/// <code>SDKCallLivenessConfig.default</code> üzerinden ayar verir.
+SWIFT_CLASS("_TtC11IdentifySDK23SDKCallLivenessAnalyzer")
+@interface SDKCallLivenessAnalyzer : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class ARSession;
+@class ARAnchor;
+@class ARFrame;
+@interface SDKCallLivenessAnalyzer (SWIFT_EXTENSION(IdentifySDK)) <ARSessionDelegate>
+- (void)session:(ARSession * _Nonnull)session didUpdateAnchors:(NSArray<ARAnchor *> * _Nonnull)anchors;
+/// Her ARKit karesini 24 fps sınırıyla WebRTC’ye aktarır.
+- (void)session:(ARSession * _Nonnull)session didUpdateFrame:(ARFrame * _Nonnull)frame;
+- (void)session:(ARSession * _Nonnull)session didFailWithError:(NSError * _Nonnull)error;
+- (void)sessionWasInterrupted:(ARSession * _Nonnull)session;
+/// Kesinti bitince ARKit kendiliğinden sürer; kesintisiz izleme sayacı baştan başlar.
+- (void)sessionInterruptionEnded:(ARSession * _Nonnull)session;
 @end
 
 /// Class which implements the various <code>URLSessionDelegate</code> methods to connect various Alamofire features.
@@ -920,6 +943,7 @@ extern "C" {
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import ARKit;
 @import CoreFoundation;
 @import Foundation;
 @import ObjectiveC;
@@ -977,6 +1001,28 @@ SWIFT_CLASS("_TtC11IdentifySDK14PassportReader") SWIFT_AVAILABILITY(ios,introduc
 @interface PassportReader : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// Görüşme sırasında ARKit yüz takibini yürütür.
+/// Yaşam döngüsünü <code>IdentifyManager</code> yönetir; host yalnızca <code>listener</code> atar ve
+/// <code>SDKCallLivenessConfig.default</code> üzerinden ayar verir.
+SWIFT_CLASS("_TtC11IdentifySDK23SDKCallLivenessAnalyzer")
+@interface SDKCallLivenessAnalyzer : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class ARSession;
+@class ARAnchor;
+@class ARFrame;
+@interface SDKCallLivenessAnalyzer (SWIFT_EXTENSION(IdentifySDK)) <ARSessionDelegate>
+- (void)session:(ARSession * _Nonnull)session didUpdateAnchors:(NSArray<ARAnchor *> * _Nonnull)anchors;
+/// Her ARKit karesini 24 fps sınırıyla WebRTC’ye aktarır.
+- (void)session:(ARSession * _Nonnull)session didUpdateFrame:(ARFrame * _Nonnull)frame;
+- (void)session:(ARSession * _Nonnull)session didFailWithError:(NSError * _Nonnull)error;
+- (void)sessionWasInterrupted:(ARSession * _Nonnull)session;
+/// Kesinti bitince ARKit kendiliğinden sürer; kesintisiz izleme sayacı baştan başlar.
+- (void)sessionInterruptionEnded:(ARSession * _Nonnull)session;
 @end
 
 /// Class which implements the various <code>URLSessionDelegate</code> methods to connect various Alamofire features.

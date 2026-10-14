@@ -47,6 +47,7 @@ import _CoreNFC_UIKit
 import _PhotosUI_SwiftUI
 import _StringProcessing
 import _SwiftConcurrencyShims
+import simd
 import zlib
 @_hasMissingDesignatedInitializers public class SDKNetworkOptions {
   public var timeoutIntervalForRequest: Swift.Int?
@@ -1029,6 +1030,27 @@ public enum SDKSocketCloseCode : Swift.UInt16 {
     get
   }
 }
+public enum SDKCallAudioOutput {
+  case speaker
+  case receiver
+  public static func == (a: IdentifySDK.SDKCallAudioOutput, b: IdentifySDK.SDKCallAudioOutput) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SDKAudioRoute {
+  case speaker
+  case receiver
+  case headphones
+  case bluetooth
+  case other
+  public static func == (a: IdentifySDK.SDKAudioRoute, b: IdentifySDK.SDKAudioRoute) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers open class NetworkReachabilityManager {
   public enum NetworkReachabilityStatus {
     case unknown
@@ -1606,11 +1628,12 @@ public struct MRZRequirement : Swift.Codable, Swift.Equatable {
   public let format: IdentifySDK.MRZRequirement.Format
   public let isRequired: Swift.Bool
   public let level: IdentifySDK.MRZRequirement.Level
-  public init(format: IdentifySDK.MRZRequirement.Format, isRequired: Swift.Bool, level: IdentifySDK.MRZRequirement.Level = .presence)
+  public let issuingState: Swift.String
+  public init(format: IdentifySDK.MRZRequirement.Format, isRequired: Swift.Bool, level: IdentifySDK.MRZRequirement.Level = .presence, issuingState: Swift.String = "TUR")
+  public init(from decoder: any Swift.Decoder) throws
   public static let legacyTurkishID: IdentifySDK.MRZRequirement
   public static func == (a: IdentifySDK.MRZRequirement, b: IdentifySDK.MRZRequirement) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
 }
 public struct DocumentProfile : Swift.Codable {
   public let id: Swift.String
@@ -1630,11 +1653,17 @@ extension IdentifySDK.DocumentProfile {
   public func settingMRZ(_ rule: IdentifySDK.MRZRequirement) -> IdentifySDK.DocumentProfile
   public func settingMRZRequired(_ isRequired: Swift.Bool) -> IdentifySDK.DocumentProfile
   public func settingField(_ field: IdentifySDK.FieldDescriptor) -> IdentifySDK.DocumentProfile
+  public func settingLabelAnchor(_ anchor: IdentifySDK.LabelAnchor?, for key: Swift.String) -> IdentifySDK.DocumentProfile
+  public func settingRegionOfInterest(_ region: IdentifySDK.FieldRegion?, for key: Swift.String) -> IdentifySDK.DocumentProfile
+  public func settingPattern(_ pattern: Swift.String?, for key: Swift.String) -> IdentifySDK.DocumentProfile
   public func removingFields(_ keys: Swift.String...) -> IdentifySDK.DocumentProfile
   public func settingKeywordSet(_ keywordSet: IdentifySDK.DocumentKeywordSet?) -> IdentifySDK.DocumentProfile
 }
 extension IdentifySDK.FieldDescriptor {
   public func settingRequired(_ isRequired: Swift.Bool) -> IdentifySDK.FieldDescriptor
+  public func settingLabelAnchor(_ anchor: IdentifySDK.LabelAnchor?) -> IdentifySDK.FieldDescriptor
+  public func settingRegionOfInterest(_ region: IdentifySDK.FieldRegion?) -> IdentifySDK.FieldDescriptor
+  public func settingPattern(_ pattern: Swift.String?) -> IdentifySDK.FieldDescriptor
 }
 extension IdentifySDK.Request {
   public typealias ValidationResult = Swift.Result<Swift.Void, any Swift.Error>
@@ -3422,7 +3451,13 @@ public struct ScannerGuidanceTexts {
   public var centreDocument: Swift.String
   public var orientation: Swift.String
   public var glare: Swift.String
-  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "", glare: Swift.String = "")
+  public var preparing: Swift.String
+  public var start: Swift.String
+  public var notDetected: Swift.String
+  public var upsideDown: Swift.String
+  public var tilted: Swift.String
+  public var unreadable: Swift.String
+  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "", glare: Swift.String = "", preparing: Swift.String = "", start: Swift.String = "", notDetected: Swift.String = "", upsideDown: Swift.String = "", tilted: Swift.String = "", unreadable: Swift.String = "")
   public static var overrideDefault: IdentifySDK.ScannerGuidanceTexts?
   public static var overrideDocument: IdentifySDK.ScannerGuidanceTexts?
   public static var `default`: IdentifySDK.ScannerGuidanceTexts {
@@ -3450,7 +3485,18 @@ public struct ScannerTimingConfig {
   public var lensSwitchStruggleDelay: Foundation.TimeInterval
   public var lensCommitHoldDuration: Foundation.TimeInterval
   public var captureSharpnessFloor: CoreFoundation.CGFloat
-  public init(lockThreshold: Swift.Int, focusRetriggerInterval: Foundation.TimeInterval, lensSwitchDebounce: Foundation.TimeInterval, focusSettleDelay: Foundation.TimeInterval, quadMissResetThreshold: Swift.Int, manualCaptureHintDelay: Foundation.TimeInterval, maxAutoCaptureFails: Swift.Int, minimumSharpnessScore: CoreFoundation.CGFloat, geometricStabilityThreshold: CoreFoundation.CGFloat, stabilityConfirmFrames: Swift.Int, lensSwitchStruggleDelay: Foundation.TimeInterval = 3.5, lensCommitHoldDuration: Foundation.TimeInterval = 4.0, captureSharpnessFloor: CoreFoundation.CGFloat = 90)
+  public var sweepPassDuration: Foundation.TimeInterval
+  public var capturesPhotoAtSweepStart: Swift.Bool
+  public var photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization
+  public var exposureBoostISO: Swift.Float
+  public var exposureBoostReleaseISO: Swift.Float
+  public var exposureBoostDelay: Foundation.TimeInterval
+  public var exposureBoostEV: Swift.Float
+  public var autoTorchISO: Swift.Float
+  public var autoTorchDelay: Foundation.TimeInterval
+  public var fieldLockDropMotion: CoreFoundation.CGFloat
+  public var notDetectedDelay: Foundation.TimeInterval
+  public init(lockThreshold: Swift.Int, focusRetriggerInterval: Foundation.TimeInterval, lensSwitchDebounce: Foundation.TimeInterval, focusSettleDelay: Foundation.TimeInterval, quadMissResetThreshold: Swift.Int, manualCaptureHintDelay: Foundation.TimeInterval, maxAutoCaptureFails: Swift.Int, minimumSharpnessScore: CoreFoundation.CGFloat, geometricStabilityThreshold: CoreFoundation.CGFloat, stabilityConfirmFrames: Swift.Int, lensSwitchStruggleDelay: Foundation.TimeInterval = 3.5, lensCommitHoldDuration: Foundation.TimeInterval = 4.0, captureSharpnessFloor: CoreFoundation.CGFloat = 90, sweepPassDuration: Foundation.TimeInterval = 1.0, capturesPhotoAtSweepStart: Swift.Bool = false, photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization = .quality, exposureBoostISO: Swift.Float = 700, exposureBoostReleaseISO: Swift.Float = 400, exposureBoostDelay: Foundation.TimeInterval = 1.5, exposureBoostEV: Swift.Float = 0.7, autoTorchISO: Swift.Float = 1400, autoTorchDelay: Foundation.TimeInterval = 4.0, fieldLockDropMotion: CoreFoundation.CGFloat = 15, notDetectedDelay: Foundation.TimeInterval = 4.0)
   public static var `default`: IdentifySDK.ScannerTimingConfig
   public static var passport: IdentifySDK.ScannerTimingConfig
   public static var idBack: IdentifySDK.ScannerTimingConfig
@@ -3462,7 +3508,11 @@ public struct ScannerAutomation {
   public var wideLensRecovery: Swift.Bool
   public var manualCaptureFallback: Swift.Bool
   public var glareGate: Swift.Bool
-  public init(autoTorch: Swift.Bool = false, ultraWideLensSwitch: Swift.Bool = true, wideLensRecovery: Swift.Bool = true, manualCaptureFallback: Swift.Bool = true, glareGate: Swift.Bool = true)
+  public var exposureBoost: Swift.Bool
+  public var fieldLocking: Swift.Bool
+  public var facePhotoCheck: Swift.Bool
+  public var guidanceSpeech: Swift.Bool
+  public init(autoTorch: Swift.Bool = false, ultraWideLensSwitch: Swift.Bool = true, wideLensRecovery: Swift.Bool = true, manualCaptureFallback: Swift.Bool = true, glareGate: Swift.Bool = true, exposureBoost: Swift.Bool = true, fieldLocking: Swift.Bool = true, facePhotoCheck: Swift.Bool = true, guidanceSpeech: Swift.Bool = true)
   public static var `default`: IdentifySDK.ScannerAutomation
 }
 public struct ScannerConfiguration {
@@ -3473,6 +3523,20 @@ public struct ScannerConfiguration {
   public var automation: IdentifySDK.ScannerAutomation
   public var showsTorchButton: Swift.Bool
   public static var showsTorchButtonDefault: Swift.Bool
+  public var showsGuidance: Swift.Bool
+  public var expectedMRZValues: [Swift.String : Swift.String]
+  public var alphabet: IdentifySDK.ScannerAlphabet
+  public static var showsGuidanceDefault: Swift.Bool
+  public var showsFieldBoxes: Swift.Bool
+  public static var showsFieldBoxesDefault: Swift.Bool
+  public var showsFaceBox: Swift.Bool
+  public static var showsFaceBoxDefault: Swift.Bool
+  public var showsSweepLine: Swift.Bool
+  public static var showsSweepLineDefault: Swift.Bool
+  public var tapToFocus: Swift.Bool
+  public static var tapToFocusDefault: Swift.Bool
+  public var showsFocusIndicator: Swift.Bool
+  public static var showsFocusIndicatorDefault: Swift.Bool
   public init(texts: IdentifySDK.ScannerGuidanceTexts, timing: IdentifySDK.ScannerTimingConfig, frameMode: IdentifySDK.ScannerFrameMode = .dynamicQuad, automation: IdentifySDK.ScannerAutomation = .default)
   public func withHapticModule(_ module: IdentifySDK.SdkModules?) -> IdentifySDK.ScannerConfiguration
   public static var overrideDefault: IdentifySDK.ScannerConfiguration?
@@ -3489,6 +3553,24 @@ public struct ScannerConfiguration {
     get
   }
   public static var document: IdentifySDK.ScannerConfiguration {
+    get
+  }
+}
+public struct ScannerAlphabet {
+  public var id: Swift.String
+  public var extraLetters: Swift.String
+  public var locale: Foundation.Locale
+  public var recognitionLanguages: [Swift.String]
+  public var substitutions: [Swift.Character : Swift.Character]
+  public var mrzTransliteration: [Swift.Character : Swift.String]
+  public init(id: Swift.String, extraLetters: Swift.String, localeIdentifier: Swift.String, recognitionLanguages: [Swift.String], substitutions: [Swift.Character : Swift.Character] = [:], mrzTransliteration: [Swift.Character : Swift.String] = [:])
+  public static var `default`: IdentifySDK.ScannerAlphabet
+  public static let turkish: IdentifySDK.ScannerAlphabet
+  public static let azerbaijani: IdentifySDK.ScannerAlphabet
+  public var letters: Swift.Set<Swift.Character> {
+    get
+  }
+  public var letterClass: Swift.String {
     get
   }
 }
@@ -3550,7 +3632,8 @@ public struct DocumentField : Swift.Equatable {
   @_Concurrency.MainActor @preconcurrency public let dismissesOnResult: Swift.Bool
   @_Concurrency.MainActor @preconcurrency public let keepsCameraRunning: Swift.Bool
   @_Concurrency.MainActor @preconcurrency public let scanSession: Swift.Int
-  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, frameMode: IdentifySDK.ScannerFrameMode? = nil, debugROI: Swift.Bool = false, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, speechKey: IdentifySDK.SDKKeyword? = nil, speechModule: IdentifySDK.SdkModules? = nil, dismissesOnResult: Swift.Bool = true, keepsCameraRunning: Swift.Bool = false, scanSession: Swift.Int = 0, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public let pausesDetection: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(profile: IdentifySDK.DocumentProfile, style: IdentifySDK.QuadrilateralStyle = .default, configuration: IdentifySDK.ScannerConfiguration = .default, frameMode: IdentifySDK.ScannerFrameMode? = nil, debugROI: Swift.Bool = false, externalTorchOn: SwiftUICore.Binding<Swift.Bool>? = nil, onTorchAvailability: ((Swift.Bool) -> Swift.Void)? = nil, speechKey: IdentifySDK.SDKKeyword? = nil, speechModule: IdentifySDK.SdkModules? = nil, dismissesOnResult: Swift.Bool = true, keepsCameraRunning: Swift.Bool = false, scanSession: Swift.Int = 0, pausesDetection: Swift.Bool = false, onResult: @escaping (Swift.Result<IdentifySDK.RecognizedDocument, any Swift.Error>) -> Swift.Void)
   @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
     get
   }
@@ -3967,6 +4050,323 @@ public enum SDKNetworkStatus : Swift.String {
     get
   }
 }
+public enum SDKSpeedTestOutcome : Swift.String {
+  case passed
+  case failed
+  case skipped
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKSpeedTestQualityBand : Swift.String {
+  case good
+  case fair
+  case poor
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class SDKSpeedTestResult {
+  public var outcome: IdentifySDK.SDKSpeedTestOutcome {
+    get
+  }
+  public var blockIdent: Swift.Bool {
+    get
+  }
+  public var gateEnabled: Swift.Bool {
+    get
+  }
+  public var failedChecks: [Swift.String] {
+    get
+  }
+  public var downloadKbps: Swift.Double? {
+    get
+  }
+  public var uploadKbps: Swift.Double? {
+    get
+  }
+  public var rttMs: Swift.Double? {
+    get
+  }
+  public var jitterMs: Swift.Double? {
+    get
+  }
+  public var qualityScore: Swift.Double? {
+    get
+  }
+  public var qualityBand: IdentifySDK.SDKSpeedTestQualityBand? {
+    get
+  }
+  public var rtcOutcome: Swift.String? {
+    get
+  }
+  public var rtcPacketsReceived: Swift.Int? {
+    get
+  }
+  public var rtcPacketsLost: Swift.Int? {
+    get
+  }
+  public var rtcJitterMs: Swift.Double? {
+    get
+  }
+  public var rtcRttMs: Swift.Double? {
+    get
+  }
+  public var rtcConnectionType: Swift.String? {
+    get
+  }
+  public var report: IdentifySDK.SDKSpeedTestReport? {
+    get
+  }
+  public var connectionType: Swift.String {
+    get
+  }
+  public var durationMs: Swift.Int {
+    get
+  }
+  public var skipReason: Swift.String? {
+    get
+  }
+  public var errorMessage: Swift.String? {
+    get
+  }
+  public var connectionStatus: IdentifySDK.SDKNetworkStatus {
+    get
+  }
+  public var summary: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public struct SDKSpeedTestStep : Swift.Codable {
+  public let name: Swift.String
+  public let status: Swift.String
+  public let startOffsetMs: Swift.Int
+  public let durationMs: Swift.Int
+  public let detail: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SDKSpeedTestMetricScore : Swift.Codable {
+  public let metric: Swift.String
+  public let value: Swift.Double?
+  public let source: Swift.String
+  public let points: Swift.Double?
+  public let weight: Swift.Double
+  public let effectiveWeight: Swift.Double?
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SDKSpeedTestLocalScore : Swift.Codable {
+  public let score: Swift.Double?
+  public let band: Swift.String?
+  public let floorHits: [Swift.String]
+  public let metrics: [IdentifySDK.SDKSpeedTestMetricScore]
+  public let usedMetrics: [Swift.String]
+  public let missingMetrics: [Swift.String]
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SDKSpeedTestConfigSummary : Swift.Codable {
+  public let enabled: Swift.Bool
+  public let gateEnabled: Swift.Bool
+  public let windowSeconds: Swift.Double?
+  public let pingSamples: Swift.Int?
+  public let ticketTtlSeconds: Swift.Double?
+  public let rtcEnabled: Swift.Bool
+  public let rtcIceTransportPolicy: Swift.String?
+  public let rtcWarmupSeconds: Swift.Double?
+  public let rtcMeasuredSeconds: Swift.Double?
+  public let scoringEnabled: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct SDKSpeedTestReport : Swift.Codable {
+  public let startedAt: Foundation.Date
+  public let durationMs: Swift.Int
+  public let connectionType: Swift.String
+  public let host: Swift.String
+  public let config: IdentifySDK.SDKSpeedTestConfigSummary?
+  public let steps: [IdentifySDK.SDKSpeedTestStep]
+  public let resultRequest: Swift.String?
+  public let resultResponse: Swift.String?
+  public let outcome: Swift.String
+  public let blockIdent: Swift.Bool
+  public let skipReason: Swift.String?
+  public let serverScore: Swift.Double?
+  public let serverBand: Swift.String?
+  public let serverFloorHits: [Swift.String]
+  public let serverUsedMetrics: [Swift.String]
+  public let serverMissingMetrics: [Swift.String]
+  public let serverInvalidMetrics: [Swift.String]
+  public let localScore: IdentifySDK.SDKSpeedTestLocalScore?
+  public let scoreMatchesServer: Swift.Bool?
+  public var text: Swift.String {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum SDKCallLivenessAction : Swift.String, Swift.CaseIterable {
+  case eyesOpen
+  case naturalBlink
+  case speaking
+  case squint
+  case browRaise
+  case browFurrow
+  case lookingAtScreen
+  case headTurnRight
+  case headTurnLeft
+  case headUp
+  case headDown
+  case headTilt
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKCallLivenessAction]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKCallLivenessAction] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SDKCallLivenessConfig {
+  public static var `default`: IdentifySDK.SDKCallLivenessConfig
+  public init()
+  public var isEnabled: Swift.Bool
+  public var requiredActionCount: Swift.Int
+  public var requiredContinuousSeconds: Swift.Double
+  public var processIntervalSeconds: Swift.Double
+  public var actionCooldownSeconds: Swift.Double
+  public var faceLostToleranceSeconds: Swift.Double
+  public var lookingAtScreenYawDeg: Swift.Float
+  public var lookingAtScreenPitchDeg: Swift.Float
+  public var eyeOpenMaxBlink: Swift.Float
+  public var naturalBlinkMinThreshold: Swift.Float
+  public var squintThreshold: Swift.Float
+  public var speakingJawThreshold: Swift.Float
+  public var headTurnYawDeg: Swift.Float
+  public var headNodPitchDeg: Swift.Float
+  public var headTiltRollDeg: Swift.Float
+  public var browRaiseThreshold: Swift.Float
+  public var browFurrowThreshold: Swift.Float
+}
+public struct SDKCallFaceMetrics {
+  public var isLookingAtScreen: Swift.Bool
+  public var eyeBlinkLeft: Swift.Float
+  public var eyeBlinkRight: Swift.Float
+  public var eyeWideLeft: Swift.Float
+  public var eyeWideRight: Swift.Float
+  public var squintLeft: Swift.Float
+  public var squintRight: Swift.Float
+  public var jawOpen: Swift.Float
+  public var mouthPucker: Swift.Float
+  public var mouthStretch: Swift.Float
+  public var smileLeft: Swift.Float
+  public var smileRight: Swift.Float
+  public var browInnerUp: Swift.Float
+  public var browOuterUpLeft: Swift.Float
+  public var browOuterUpRight: Swift.Float
+  public var browDownLeft: Swift.Float
+  public var browDownRight: Swift.Float
+  public var cheekPuff: Swift.Float
+  public var jawLeft: Swift.Float
+  public var jawRight: Swift.Float
+  public var yawDegrees: Swift.Float
+  public var pitchDegrees: Swift.Float
+  public var rollDegrees: Swift.Float
+}
+public protocol SDKCallLivenessListener : AnyObject {
+  func onActionDetected(action: IdentifySDK.SDKCallLivenessAction, metrics: IdentifySDK.SDKCallFaceMetrics, holdDuration: Foundation.TimeInterval, detectedCount: Swift.Int, requiredCount: Swift.Int, score: Swift.Int)
+  func onFacePresenceChanged(isPresent: Swift.Bool)
+  func onContinuousTrackingProgress(elapsedSeconds: Swift.Int, requiredSeconds: Swift.Int)
+  func onLivenessVerified(score: Swift.Int)
+}
+extension IdentifySDK.SDKCallLivenessListener {
+  public func onActionDetected(action: IdentifySDK.SDKCallLivenessAction, metrics: IdentifySDK.SDKCallFaceMetrics, holdDuration: Foundation.TimeInterval, detectedCount: Swift.Int, requiredCount: Swift.Int, score: Swift.Int)
+  public func onFacePresenceChanged(isPresent: Swift.Bool)
+  public func onContinuousTrackingProgress(elapsedSeconds: Swift.Int, requiredSeconds: Swift.Int)
+  public func onLivenessVerified(score: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class SDKCallLivenessAnalyzer : ObjectiveC.NSObject {
+  public static let shared: IdentifySDK.SDKCallLivenessAnalyzer
+  weak final public var listener: (any IdentifySDK.SDKCallLivenessListener)?
+  final public var isRunning: Swift.Bool {
+    get
+  }
+  public static var isSupported: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+extension IdentifySDK.SDKCallLivenessAnalyzer : ARKit.ARSessionDelegate {
+  @objc final public func session(_ session: ARKit.ARSession, didUpdate anchors: [ARKit.ARAnchor])
+  @objc final public func session(_ session: ARKit.ARSession, didUpdate frame: ARKit.ARFrame)
+  @objc final public func session(_ session: ARKit.ARSession, didFailWithError error: any Swift.Error)
+  @objc final public func sessionWasInterrupted(_ session: ARKit.ARSession)
+  @objc final public func sessionInterruptionEnded(_ session: ARKit.ARSession)
+}
+public enum SDKLimit : Swift.Equatable {
+  case server
+  case manual(Swift.Int)
+  public static func == (a: IdentifySDK.SDKLimit, b: IdentifySDK.SDKLimit) -> Swift.Bool
+}
+public enum SDKSkipPolicy {
+  case server
+  case skip
+  case fail
+  public static func == (a: IdentifySDK.SDKSkipPolicy, b: IdentifySDK.SDKSkipPolicy) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct SDKModuleLimits {
+  public var comparison: IdentifySDK.SDKLimit
+  public var onExhausted: IdentifySDK.SDKSkipPolicy
+  public init(comparison: IdentifySDK.SDKLimit = .server, onExhausted: IdentifySDK.SDKSkipPolicy = .server)
+}
+public struct SDKConnectionPolicy {
+  public enum Action {
+    case exit
+    case `continue`
+    public static func == (a: IdentifySDK.SDKConnectionPolicy.Action, b: IdentifySDK.SDKConnectionPolicy.Action) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var maxDrops: Swift.Int?
+  public var onExceeded: IdentifySDK.SDKConnectionPolicy.Action
+  public var autoReconnectAttempts: Swift.Int
+  public var autoReconnectInterval: Foundation.TimeInterval
+  public init(maxDrops: Swift.Int? = nil, onExceeded: IdentifySDK.SDKConnectionPolicy.Action = .continue, autoReconnectAttempts: Swift.Int = 0, autoReconnectInterval: Foundation.TimeInterval = 5)
+}
+@_hasMissingDesignatedInitializers final public class SDKAttemptLimits {
+  public static let shared: IdentifySDK.SDKAttemptLimits
+  final public func set(_ limits: IdentifySDK.SDKModuleLimits, for module: IdentifySDK.SdkModules)
+  final public func limits(for module: IdentifySDK.SdkModules) -> IdentifySDK.SDKModuleLimits
+  final public var nfcRead: IdentifySDK.SDKLimit
+  final public var nfcKeyEntry: IdentifySDK.SDKLimit
+  final public var livenessStepFailure: IdentifySDK.SDKLimit
+  final public var livenessRecordingFailure: IdentifySDK.SDKLimit
+  final public var multipleFacesFailure: IdentifySDK.SDKLimit
+  final public var livenessVideoUpload: IdentifySDK.SDKLimit
+  final public var roomSubscribeRetry: IdentifySDK.SDKLimit
+  final public var speedTestBusyRetry: IdentifySDK.SDKLimit
+  final public var connection: IdentifySDK.SDKConnectionPolicy
+  final public var connectionDropCount: Swift.Int {
+    get
+  }
+  final public var shouldExitOnConnectionDrop: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
 public class ActiveAuthenticationInfo : IdentifySDK.SecurityInfo {
   override public func getObjectIdentifier() -> Swift.String
@@ -4003,6 +4403,9 @@ public struct RecognizedDocument {
     get
   }
   public let profileID: Swift.String
+  public var isManualCapture: Swift.Bool {
+    get
+  }
   public init(croppedImage: UIKit.UIImage, fields: [Swift.String : IdentifySDK.DocumentField], rawText: Swift.String, validationResults: [IdentifySDK.ValidationResult], profileID: Swift.String)
 }
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
@@ -4071,16 +4474,37 @@ public enum QuadCorner : Swift.CaseIterable {
     get
   }
 }
+public enum FrameOutline {
+  case solid
+  case cornerMarks
+  case custom(@Sendable (_ frame: CoreFoundation.CGRect, _ isLocked: Swift.Bool) -> SwiftUICore.AnyView)
+}
+public struct SweepLineStyle {
+  public var color: SwiftUICore.Color
+  public var lineWidth: CoreFoundation.CGFloat
+  public var glowRadius: CoreFoundation.CGFloat
+  public var trailLength: CoreFoundation.CGFloat
+  public var trailOpacity: Swift.Double
+  public var dashPattern: [CoreFoundation.CGFloat]
+  public var custom: (@Sendable (_ left: CoreFoundation.CGPoint, _ right: CoreFoundation.CGPoint, _ goingDown: Swift.Bool) -> SwiftUICore.AnyView)?
+  public static var `default`: IdentifySDK.SweepLineStyle
+  public init(color: SwiftUICore.Color = .white, lineWidth: CoreFoundation.CGFloat = 2.5, glowRadius: CoreFoundation.CGFloat = 5, trailLength: CoreFoundation.CGFloat = 0.16, trailOpacity: Swift.Double = 0.38, dashPattern: [CoreFoundation.CGFloat] = [], custom: (@Sendable (_ left: CoreFoundation.CGPoint, _ right: CoreFoundation.CGPoint, _ goingDown: Swift.Bool) -> SwiftUICore.AnyView)? = nil)
+}
 public struct QuadrilateralStyle {
   public var strokeColor: SwiftUICore.Color
   public var lockedStrokeColor: SwiftUICore.Color
   public var lineWidth: CoreFoundation.CGFloat
   public var dashPattern: [CoreFoundation.CGFloat]
   public var cornerStyle: IdentifySDK.CornerStyle
+  public var frameOutline: IdentifySDK.FrameOutline
+  public var dimmingColor: SwiftUICore.Color
+  public var dimmingOpacity: Swift.Double
+  public var sweepLine: IdentifySDK.SweepLineStyle
+  public var focusIndicatorColor: SwiftUICore.Color
   public static var `default`: IdentifySDK.QuadrilateralStyle {
     get
   }
-  public init(strokeColor: SwiftUICore.Color = .white, lockedStrokeColor: SwiftUICore.Color = .green, lineWidth: CoreFoundation.CGFloat = 2.5, dashPattern: [CoreFoundation.CGFloat] = [], cornerStyle: IdentifySDK.CornerStyle = .square)
+  public init(strokeColor: SwiftUICore.Color = .white, lockedStrokeColor: SwiftUICore.Color = .green, lineWidth: CoreFoundation.CGFloat = 2.5, dashPattern: [CoreFoundation.CGFloat] = [], cornerStyle: IdentifySDK.CornerStyle = .square, frameOutline: IdentifySDK.FrameOutline = .solid, dimmingColor: SwiftUICore.Color = .black, dimmingOpacity: Swift.Double = 0.6, sweepLine: IdentifySDK.SweepLineStyle = .default, focusIndicatorColor: SwiftUICore.Color = .yellow)
 }
 extension SwiftUICore.EnvironmentValues {
   public var quadrilateralStyle: IdentifySDK.QuadrilateralStyle {
@@ -4149,6 +4573,7 @@ public class IdentifyManager {
   public var isRoomSubscribed: Swift.Bool {
     get
   }
+  public var callReconnectTimeoutSeconds: Swift.Int
   public var reconnectTimeoutSeconds: Swift.Int
   public var isCallActive: Swift.Bool {
     get
@@ -4181,18 +4606,40 @@ public class IdentifyManager {
   public var isSessionClosed: Swift.Bool {
     get
   }
+  public var isSocketAlive: Swift.Bool {
+    get
+  }
   public var backgroundTimeoutSeconds: Swift.Double
   public var isBackgroundTimeoutEnabled: Swift.Bool
   public var livenessInitialOrder: [Swift.Int]?
   public var livenessRandomOrder: [Swift.Int]?
   public var sdkFrontInfo: IdentifySDK.FrontIdInfo
   public var sdkBackInfo: IdentifySDK.BackIdInfo
+  public var idCardFormat: IdentifySDK.SDKIdCardFormat?
   public var sdkNfcInfo: IdentifySDK.IdentifyCard
   public var enableDebugPrint: Swift.Bool
+  public var onTorchChange: ((_ isOn: Swift.Bool) -> Swift.Void)?
+  public var onCameraChange: ((_ isFront: Swift.Bool) -> Swift.Void)?
+  public var callAudioOutput: IdentifySDK.SDKCallAudioOutput {
+    get
+    set
+  }
+  public var currentAudioRoute: IdentifySDK.SDKAudioRoute {
+    get
+  }
+  public var onAudioRouteChange: ((IdentifySDK.SDKAudioRoute) -> Swift.Void)? {
+    get
+    set
+  }
+  public var isMicMuted: Swift.Bool {
+    get
+    set
+  }
   public var webRTCClient: IdentifySDK.WebRTCClient!
   public var sdkSocketActions: IdentifySDK.SDKCallActions?
   public var faceTrackingFallback: IdentifySDK.SDKFaceTrackingFallback
   public var selfieWithLivenessTrueDepth: IdentifySDK.SDKTrueDepthMode
+  public var useConnectionSpeedTest: Swift.Bool
   public var socket: Starscream.WebSocket!
   public var wsSecretKey: Swift.String?
   weak public var delegate: (any IdentifySDK.IdentifyListenerDelegate)?
@@ -4221,6 +4668,7 @@ public class IdentifyManager {
   public var face1Maps: [Swift.Double]
   public var face2Maps: [Swift.Double]
   public var connectToSignLang: Swift.Bool
+  public var signLangPreference: Swift.Bool?
   public var allowedNfcMaxErrorCount: Swift.Int
   public var allowedComparisonErroCount: Swift.Int
   public var allowedCardType: [IdentifySDK.CardType]
@@ -4243,6 +4691,9 @@ public class IdentifyManager {
     get
   }
   public var lastKeyReport: IdentifySDK.SDKKeyReport? {
+    get
+  }
+  public var lastSpeedTestReport: IdentifySDK.SDKSpeedTestReport? {
     get
   }
   public var needSpeedTest: Swift.Bool?
@@ -4288,8 +4739,10 @@ public class IdentifyManager {
             .idCard,
             .passport,
             .oldSchool
-        ], signLangSupport: Swift.Bool, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = false, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = true, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, ttsEnabled: Swift.Bool? = false, onFinished: ((IdentifySDK.SDKFlowOutcome) -> Swift.Void)? = nil, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
+        ], signLangSupport: Swift.Bool, signLangPreference: Swift.Bool? = nil, nfcMaxErrorCount: Swift.Int, logLevel: IdentifySDK.SDKLogLevel? = .all, logOnlineSecretKey: Swift.String? = "", bigCustomerCam: Swift.Bool? = nil, selectedModules: [IdentifySDK.SdkModules] = [], idCardLang: IdentifySDK.IDLang? = .TR, needCertForNfc: Swift.Bool? = false, turnKey: Swift.String, wsSecretKey: Swift.String? = nil, showThankYouPage: Swift.Bool? = true, showNFCNotFoundPage: Swift.Bool? = false, supportU18: Swift.Bool? = false, AESKey: Swift.String? = "", enableAutoRotateOCR: Swift.Bool? = false, ttsEnabled: Swift.Bool? = false, onFinished: ((IdentifySDK.SDKFlowOutcome) -> Swift.Void)? = nil, callback: @escaping (Starscream.WebSocket?, IdentifySDK.RoomResponse, IdentifySDK.SDKWebError?) -> ())
   public func startSpeedTest(repeatCount: Swift.Int? = 1, callBack: @escaping (_ connectionStatus: IdentifySDK.SDKNetworkStatus, _ kbPerSec: CoreFoundation.CGFloat) -> Swift.Void)
+  public func startConnectionSpeedTest(identId: Swift.String? = nil, baseApiUrl: Swift.String? = nil, callBack: @escaping (_ result: IdentifySDK.SDKSpeedTestResult) -> Swift.Void)
+  public func cancelConnectionSpeedTest()
   public func resetLivenessTest()
   public func getNextLivenessTest(callBack: @escaping (_ nextStep: IdentifySDK.LivenessTestStep?, _ completed: Swift.Bool?) -> ())
   public func removeAllModules()
@@ -4365,6 +4818,13 @@ extension IdentifySDK.IdentifyManager : Starscream.WebSocketDelegate {
   public func websocketDidReceiveData(socket: any Starscream.WebSocketClient, data: Foundation.Data)
   public func smsVerification(tan: Swift.String, callback: @escaping (Swift.Bool) -> ())
   public func sendImOnline(socket: any Starscream.WebSocketClient)
+  public func switchCamera()
+  @discardableResult
+  public func toggleFlash() -> Swift.Bool
+  public var availableAudioInputs: [AVFAudio.AVAudioSessionPortDescription] {
+    get
+  }
+  public func setAudioInput(_ input: AVFAudio.AVAudioSessionPortDescription?)
 }
 public enum IDLang {
   case TR
@@ -4523,6 +4983,12 @@ extension IdentifySDK.DownloadResponse {
   }
   public var onSwitchedToBackCamera: (() -> Swift.Void)?
   public var onARKitRestartNeeded: (() -> Swift.Void)?
+  public var isFrontCamera: Swift.Bool {
+    get
+  }
+  public var isTorchOn: Swift.Bool {
+    get
+  }
   public func localVideoView() -> UIKit.UIView
   public func remoteVideoView() -> UIKit.UIView
   @objc deinit
@@ -4530,10 +4996,12 @@ extension IdentifySDK.DownloadResponse {
   public func setupRemoteViewFrame(frame: CoreFoundation.CGRect)
   public func switchCameraPosition()
   public func changeFlash(on: Swift.Bool)
+  @discardableResult
+  public func toggleFlash() -> Swift.Bool
   public func setLocalMediaEnabled(_ enabled: Swift.Bool)
   public func captureCurrentFrame(sampleBuffer: CoreMedia.CMSampleBuffer)
   public func captureCurrentFrame(sampleBuffer: CoreVideo.CVPixelBuffer)
-  public func switchToARKitCapture()
+  public func switchToARKitCapture(completion: (() -> Swift.Void)? = nil)
 }
 extension IdentifySDK.WebRTCClient {
   @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didChange stateChanged: WebRTC.RTCSignalingState)
@@ -4756,6 +5224,16 @@ public enum SDKLog {
     set
   }
   @_Concurrency.MainActor final public var $swlTrueDepthMode: Combine.Published<IdentifySDK.SDKTrueDepthMode>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($connectionSpeedTest) @_Concurrency.MainActor final public var connectionSpeedTest: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+  }
+  @_Concurrency.MainActor final public var $connectionSpeedTest: Combine.Published<Swift.Bool>.Publisher {
     get
     @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
     set
@@ -5072,6 +5550,22 @@ public enum SDKNavBarTitleMode : Swift.String, Swift.CaseIterable {
     get
   }
 }
+public struct SDKNavBarButton : Swift.Identifiable {
+  public let id: Swift.String
+  public var icon: SwiftUICore.Image
+  public var accessibilityLabel: Swift.String?
+  public var action: () -> Swift.Void
+  public init(id: Swift.String, icon: SwiftUICore.Image, accessibilityLabel: Swift.String? = nil, action: @escaping () -> Swift.Void)
+  public typealias ID = Swift.String
+}
+public struct SDKNavBarButtons {
+  public var showsBack: Swift.Bool
+  public var showsHelp: Swift.Bool
+  public var showsMenu: Swift.Bool
+  public var onHelp: ((IdentifySDK.SDKModuleRoute?) -> Swift.Void)?
+  public var trailing: [IdentifySDK.SDKNavBarButton]
+  public init(showsBack: Swift.Bool = true, showsHelp: Swift.Bool = true, showsMenu: Swift.Bool = true, onHelp: ((IdentifySDK.SDKModuleRoute?) -> Swift.Void)? = nil, trailing: [IdentifySDK.SDKNavBarButton] = [])
+}
 public struct SDKNavBarAppearance {
   public var preset: IdentifySDK.SDKNavBarPreset
   public var titleMode: IdentifySDK.SDKNavBarTitleMode
@@ -5089,6 +5583,8 @@ public struct SDKNavBarAppearance {
   public var progressCorner: IdentifySDK.SDKButtonCorner?
   public var overlayGradientOpacity: Swift.Double?
   public var showsDivider: Swift.Bool?
+  public var buttons: IdentifySDK.SDKNavBarButtons
+  public var routeButtons: [IdentifySDK.SDKModuleRoute : IdentifySDK.SDKNavBarButtons]
   public init()
 }
 public struct SDKSelectionAppearance {
@@ -5145,6 +5641,9 @@ public struct SDKCaptureAppearance {
   public var faceIdleColor: SwiftUICore.Color?
   public var overlayButtonFill: SwiftUICore.Color?
   public var overlayButtonBorder: SwiftUICore.Color?
+  public var maskColor: SwiftUICore.Color?
+  public var scanLineColor: SwiftUICore.Color?
+  public var focusIndicatorColor: SwiftUICore.Color?
   public init()
 }
 public struct SDKControlAppearance {
@@ -5376,6 +5875,16 @@ extension SwiftUICore.View {
     @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
     set
   }
+  @Combine.Published<IdentifySDK.SDKErrorInfo?> @_projectedValueProperty($lastError) @_Concurrency.MainActor public var lastError: IdentifySDK.SDKErrorInfo? {
+    get
+  }
+  @_Concurrency.MainActor public var $lastError: Combine.Published<IdentifySDK.SDKErrorInfo?>.Publisher {
+    get
+  }
+  @_Concurrency.MainActor open var errorModule: IdentifySDK.SdkModules? {
+    get
+  }
+  @_Concurrency.MainActor public func dismissError()
   @Combine.Published<(() -> Swift.Void)?> @_projectedValueProperty($pendingAlertAction) @_Concurrency.MainActor public var pendingAlertAction: (() -> Swift.Void)? {
     get
   }
@@ -5640,6 +6149,24 @@ public enum SDKSelfieFaceCondition : Swift.Equatable {
     get
   }
 }
+public enum SDKMultipleFacesMode {
+  case off
+  case warn
+  case fail
+  public static func == (a: IdentifySDK.SDKMultipleFacesMode, b: IdentifySDK.SDKMultipleFacesMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class SDKFaceConfig {
+  public static let shared: IdentifySDK.SDKFaceConfig
+  final public var minFaceAreaRatio: CoreFoundation.CGFloat
+  final public var failAfter: Swift.Double
+  final public func setMultipleFaces(_ mode: IdentifySDK.SDKMultipleFacesMode, for module: IdentifySDK.SdkModules)
+  final public func multipleFaces(for module: IdentifySDK.SdkModules) -> IdentifySDK.SDKMultipleFacesMode
+  @objc deinit
+}
 public struct SDKSelfieGuidanceConfig {
   public var requiredHoldDuration: Swift.Double
   public var okFrameThreshold: Swift.Int
@@ -5870,6 +6397,74 @@ public enum SDKComparisonOutcome {
   case retry(message: Swift.String)
   case exhausted(message: Swift.String, canSkip: Swift.Bool)
 }
+public struct SDKErrorCode : Swift.RawRepresentable, Swift.Hashable {
+  public let rawValue: Swift.String
+  public init(rawValue: Swift.String)
+  public init(_ key: IdentifySDK.SDKKeyword)
+  public static let generic: IdentifySDK.SDKErrorCode
+  public static let requestRejected: IdentifySDK.SDKErrorCode
+  public static let comparisonFailed: IdentifySDK.SDKErrorCode
+  public static let attemptsExhausted: IdentifySDK.SDKErrorCode
+  public static let livenessStepTimeout: IdentifySDK.SDKErrorCode
+  public static let livenessWrongAction: IdentifySDK.SDKErrorCode
+  public static let multipleFaces: IdentifySDK.SDKErrorCode
+  public static let cameraFailed: IdentifySDK.SDKErrorCode
+  public typealias RawValue = Swift.String
+}
+public struct SDKErrorInfo {
+  public enum Source : Swift.String {
+    case local
+    case server
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let module: IdentifySDK.SdkModules?
+  public let source: IdentifySDK.SDKErrorInfo.Source
+  public let code: IdentifySDK.SDKErrorCode
+  public let serverText: Swift.String?
+  public let message: Swift.String
+  public let attemptsLeft: Swift.Int?
+  public let captureMode: IdentifySDK.SDKCaptureMode?
+}
+public enum SDKCaptureMode : Swift.String {
+  case automatic
+  case manual
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SDKGuidanceInfo {
+  public let module: IdentifySDK.SdkModules?
+  public let state: Swift.String?
+  public let message: Swift.String
+}
+@_hasMissingDesignatedInitializers final public class SDKErrorConfig {
+  public static let shared: IdentifySDK.SDKErrorConfig
+  public enum Presentation {
+    case sdkPopup
+    case custom
+    case both
+    public static func == (a: IdentifySDK.SDKErrorConfig.Presentation, b: IdentifySDK.SDKErrorConfig.Presentation) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var presentation: IdentifySDK.SDKErrorConfig.Presentation
+  final public var onError: ((_ info: IdentifySDK.SDKErrorInfo, _ dismiss: @escaping () -> Swift.Void) -> Swift.Void)?
+  final public var onGuidance: ((IdentifySDK.SDKGuidanceInfo) -> Swift.Void)?
+  final public var showsSDKPopup: Swift.Bool {
+    get
+  }
+  final public func setMessage(_ text: Swift.String, for code: IdentifySDK.SDKErrorCode, module: IdentifySDK.SdkModules? = nil, language: IdentifySDK.SDKLang? = nil)
+  final public func setServerMessage(_ text: Swift.String, forServerText serverText: Swift.String, language: IdentifySDK.SDKLang? = nil)
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class SDKDeviceOrientationMonitor : Foundation.ObservableObject {
   @_Concurrency.MainActor public static let shared: IdentifySDK.SDKDeviceOrientationMonitor
   @Combine.Published<Swift.Bool> @_projectedValueProperty($isSideways) @_Concurrency.MainActor final public var isSideways: Swift.Bool {
@@ -5973,8 +6568,10 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
   @_Concurrency.MainActor final public func notifyDocumentSelectionShown()
   @_Concurrency.MainActor final public func selectCardType(_ type: IdentifySDK.CardType)
   @_Concurrency.MainActor final public func resetCapturedState()
-  @_Concurrency.MainActor final public func scanFront(image: UIKit.UIImage)
-  @_Concurrency.MainActor final public func scanBack(image: UIKit.UIImage)
+  @_Concurrency.MainActor final public func scanFront(image: UIKit.UIImage, captureMode: IdentifySDK.SDKCaptureMode? = nil)
+  @_Concurrency.MainActor final public func scanFront(document: IdentifySDK.RecognizedDocument)
+  @_Concurrency.MainActor final public func scanBack(document: IdentifySDK.RecognizedDocument)
+  @_Concurrency.MainActor final public func scanBack(image: UIKit.UIImage, captureMode: IdentifySDK.SDKCaptureMode? = nil)
   @_Concurrency.MainActor final public func scanPassport(image: UIKit.UIImage, comingData: IdentifySDK.FrontIdInfo)
   @_Concurrency.MainActor override public init()
   @objc deinit
@@ -5991,6 +6588,26 @@ public enum IdCardSide : Swift.String, Swift.Identifiable, Swift.Hashable {
   final public var idCard: IdentifySDK.SDKDocumentSelectionConfig.Screen
   final public var ovd: IdentifySDK.SDKDocumentSelectionConfig.Screen
   @objc deinit
+}
+public struct SDKIdCardFormat {
+  public var id: Swift.String
+  public var front: IdentifySDK.DocumentProfile
+  public var back: IdentifySDK.DocumentProfile
+  public var alphabet: IdentifySDK.ScannerAlphabet
+  public init(id: Swift.String, front: IdentifySDK.DocumentProfile, back: IdentifySDK.DocumentProfile, alphabet: IdentifySDK.ScannerAlphabet = .default)
+  public enum Key {
+    public static let personalNumber: Swift.String
+    public static let surname: Swift.String
+    public static let givenNames: Swift.String
+    public static let birthDate: Swift.String
+    public static let documentNumber: Swift.String
+    public static let expirationDate: Swift.String
+    public static let nationality: Swift.String
+    public static let sex: Swift.String
+    public static let motherName: Swift.String
+    public static let fatherName: Swift.String
+    public static let issuedBy: Swift.String
+  }
 }
 @_Concurrency.MainActor @preconcurrency public struct SDKIdCardView : SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public init()
@@ -6369,6 +6986,12 @@ extension IdentifySDK.CardType {
 }
 
 
+public struct SDKLivenessRules {
+  public var stepTimeout: Foundation.TimeInterval?
+  public var wrongActionCheck: Swift.Bool
+  public static var `default`: IdentifySDK.SDKLivenessRules
+  public init()
+}
 @_inheritsConvenienceInitializers @_Concurrency.MainActor final public class SDKLivenessViewModel : IdentifySDK.SDKBaseModuleViewModel {
   @Combine.Published<IdentifySDK.LivenessTestStep?> @_projectedValueProperty($currentStep) @_Concurrency.MainActor final public var currentStep: IdentifySDK.LivenessTestStep? {
     get
@@ -6386,6 +7009,18 @@ extension IdentifySDK.CardType {
     get
   }
   @_Concurrency.MainActor final public var $allStepsCompleted: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($hasMultipleFaces) @_Concurrency.MainActor final public var hasMultipleFaces: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $hasMultipleFaces: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isFaceVisible) @_Concurrency.MainActor final public var isFaceVisible: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isFaceVisible: Combine.Published<Swift.Bool>.Publisher {
     get
   }
   @_Concurrency.MainActor final public var isRecordingEnabled: Swift.Bool {
@@ -6410,6 +7045,11 @@ extension IdentifySDK.CardType {
   @_Concurrency.MainActor final public func noteDidBecomeActive()
   @_Concurrency.MainActor final public func abandonRecording()
   @_Concurrency.MainActor final public func fetchNextStep()
+  @_Concurrency.MainActor final public func trackingDidStart()
+  @_Concurrency.MainActor final public func trackingDidPause()
+  @_Concurrency.MainActor final public func faceVisibilityChanged(_ visible: Swift.Bool)
+  @_Concurrency.MainActor final public func multipleFacesChanged(_ present: Swift.Bool)
+  @_Concurrency.MainActor final public func reportWrongAction(_ detected: IdentifySDK.LivenessTestStep)
   @_Concurrency.MainActor final public func uploadFrame(image: UIKit.UIImage)
   @_Concurrency.MainActor final public func uploadVideo(videoData: Foundation.Data, attempt: Swift.Int = 0)
   @_Concurrency.MainActor final public func resetTest()
@@ -6496,6 +7136,24 @@ extension IdentifySDK.CardType {
   @_Concurrency.MainActor final public var $speechAuthorized: Combine.Published<Swift.Bool>.Publisher {
     get
   }
+  @Combine.Published<IdentifySDK.SDKSpeedTestResult?> @_projectedValueProperty($speedTestResult) @_Concurrency.MainActor final public var speedTestResult: IdentifySDK.SDKSpeedTestResult? {
+    get
+  }
+  @_Concurrency.MainActor final public var $speedTestResult: Combine.Published<IdentifySDK.SDKSpeedTestResult?>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($showSpeedBlockedAlert) @_Concurrency.MainActor final public var showSpeedBlockedAlert: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  @_Concurrency.MainActor final public var $showSpeedBlockedAlert: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
   @Combine.Published<Swift.Bool> @_projectedValueProperty($showSettingsAlert) @_Concurrency.MainActor final public var showSettingsAlert: Swift.Bool {
     get
     @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
@@ -6578,6 +7236,8 @@ extension IdentifySDK.CardType {
   @_Concurrency.MainActor final public var canReconnect: Swift.Bool {
     get
   }
+  @_Concurrency.MainActor final public func startAutoRetry()
+  @_Concurrency.MainActor final public func stopAutoRetry()
   @_Concurrency.MainActor final public func reconnect()
   @objc deinit
 }
@@ -6768,6 +7428,7 @@ public enum SDKCallNetworkQuality {
   @_Concurrency.MainActor final public var localVideoView: UIKit.UIView? {
     get
   }
+  @_Concurrency.MainActor override public init()
   @_Concurrency.MainActor final public func checkSignLangIfNeeded()
   @_Concurrency.MainActor final public func signLangCompleted()
   @_Concurrency.MainActor final public func acceptCall()
@@ -6779,7 +7440,6 @@ public enum SDKCallNetworkQuality {
   @_Concurrency.MainActor final public func handleReconnectCompletedWithStatus(isWaitingRoom: Swift.Bool, statusType: Swift.String?, coordinator: IdentifySDK.SDKFlowCoordinator)
   @_Concurrency.MainActor final public func finishSDKForDirectThankYou()
   @_Concurrency.MainActor final public func cleanup()
-  @_Concurrency.MainActor override public init()
   @objc deinit
 }
 extension IdentifySDK.SDKCallScreenViewModel : IdentifySDK.SDKSocketListener {
@@ -7087,6 +7747,9 @@ public enum SDKKeyword : Swift.String {
   case connectionErrorRetry
   case prepareEnvSubtitle
   case speedBannerOk
+  case speedBandGood
+  case speedBandFair
+  case speedBandPoor
   case permissionRequired
   case whichDocument
   case aloneForVerification
@@ -7115,6 +7778,9 @@ public enum SDKKeyword : Swift.String {
   case ovdCompletedCheck
   case ovdUploadFailed
   case livenessStepFailed
+  case livenessStepTimeout
+  case livenessWrongAction
+  case multipleFacesDetected
   case videoUploadError
   case preparing
   case faceTrackingUnsupported
@@ -7176,6 +7842,14 @@ public enum SDKKeyword : Swift.String {
   case scannerAlignPassport
   case scannerTooFarPassport
   case scannerCentrePassport
+  case scannerPreparing
+  case scannerAlignFront
+  case scannerAlignBack
+  case scannerNotDetectedId
+  case scannerRotateId
+  case scannerUpsideDownId
+  case scannerTiltedId
+  case scannerUnreadableId
   case prepareTts
   case selfieTts
   case selfieWithLivenessTts
@@ -7550,6 +8224,7 @@ public struct SDKFaceObservation {
   @_Concurrency.MainActor final public func noteDidBecomeActive()
   @_Concurrency.MainActor final public func endSession()
   @_Concurrency.MainActor final public func analyzeFace(_ observation: IdentifySDK.SDKFaceObservation)
+  @_Concurrency.MainActor final public func analyzeMultipleFaces()
   @_Concurrency.MainActor final public func analyzeNoFace()
   nonisolated final public func analyzeFrame(_ pixelBuffer: CoreVideo.CVPixelBuffer, cameraPosition: AVFoundation.AVCaptureDevice.Position)
   @_Concurrency.MainActor final public func presentCaptured(image: UIKit.UIImage?)
@@ -7618,7 +8293,7 @@ extension SwiftUICore.View {
   
   @_Concurrency.MainActor @preconcurrency public func idAlert(isPresented: SwiftUICore.Binding<Swift.Bool>, alert: IdentifySDK.IDAlertModel) -> some SwiftUICore.View
   
-  @_Concurrency.MainActor @preconcurrency public func idErrorAlert(_ message: SwiftUICore.Binding<Swift.String?>, title: Swift.String = String(.coreError), onDismiss: (() -> Swift.Void)? = nil) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func idErrorAlert(_ message: SwiftUICore.Binding<Swift.String?>, title: Swift.String = String(.coreError), isSilent: @escaping () -> Swift.Bool = { false }, onDismiss: (() -> Swift.Void)? = nil) -> some SwiftUICore.View
   
 }
 
@@ -7774,11 +8449,13 @@ public enum SDKTerminateClassifier {
   @_Concurrency.MainActor final public var isInteractionLocked: Swift.Bool {
     get
   }
-  @_Concurrency.MainActor final public func speak(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules, whenCameraReady: Swift.Bool = false)
+  @_Concurrency.MainActor final public func speak(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules, whenCameraReady: Swift.Bool = false, action: IdentifySDK.SDKSpeechAction = .intro)
+  @_Concurrency.MainActor final public func speak(text: Swift.String, in module: IdentifySDK.SdkModules?, action: IdentifySDK.SDKSpeechAction)
   @_Concurrency.MainActor final public func speak(_ key: IdentifySDK.SDKKeyword)
   @_Concurrency.MainActor final public func speak(text: Swift.String, whenCameraReady: Swift.Bool = false)
   @_Concurrency.MainActor final public func announce(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
   @_Concurrency.MainActor final public func speakAfterCurrent(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
+  @_Concurrency.MainActor final public func speakAfterCurrent(text: Swift.String, key: IdentifySDK.SDKKeyword? = nil, in module: IdentifySDK.SdkModules?)
   @_Concurrency.MainActor final public func stop()
   public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
   @objc deinit
@@ -7791,6 +8468,22 @@ extension IdentifySDK.SDKBaseModuleViewModel {
   @_Concurrency.MainActor public func speak(_ key: IdentifySDK.SDKKeyword, in module: IdentifySDK.SdkModules)
   @_Concurrency.MainActor public func speak(_ key: IdentifySDK.SDKKeyword)
   @_Concurrency.MainActor public func stopSpeech()
+}
+public enum SDKSpeechAction : Swift.CaseIterable {
+  case intro
+  case liveGuidance
+  case stepCommand
+  case error
+  case success
+  public static func == (a: IdentifySDK.SDKSpeechAction, b: IdentifySDK.SDKSpeechAction) -> Swift.Bool
+  public typealias AllCases = [IdentifySDK.SDKSpeechAction]
+  nonisolated public static var allCases: [IdentifySDK.SDKSpeechAction] {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 @_hasMissingDesignatedInitializers final public class SDKSpeechConfig {
   public static let shared: IdentifySDK.SDKSpeechConfig
@@ -7815,6 +8508,16 @@ extension IdentifySDK.SDKBaseModuleViewModel {
       get
     }
   }
+  public enum SilentSwitch {
+    case ignore
+    case respect
+    public static func == (a: IdentifySDK.SDKSpeechConfig.SilentSwitch, b: IdentifySDK.SDKSpeechConfig.SilentSwitch) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var silentSwitch: IdentifySDK.SDKSpeechConfig.SilentSwitch
   final public var defaultMode: IdentifySDK.SDKSpeechConfig.Mode
   final public var interruptPolicy: IdentifySDK.SDKSpeechConfig.InterruptPolicy
   final public var respectVoiceOver: Swift.Bool
@@ -7826,6 +8529,8 @@ extension IdentifySDK.SDKBaseModuleViewModel {
   final public var fallbackToNativeIfAudioMissing: Swift.Bool
   final public func setMode(_ mode: IdentifySDK.SDKSpeechConfig.Mode, for module: IdentifySDK.SdkModules)
   final public func setMode(_ mode: IdentifySDK.SDKSpeechConfig.Mode, for modules: [IdentifySDK.SdkModules])
+  final public func setMode(_ mode: IdentifySDK.SDKSpeechConfig.Mode, for module: IdentifySDK.SdkModules, actions: [IdentifySDK.SDKSpeechAction])
+  final public func setText(_ text: Swift.String, for module: IdentifySDK.SdkModules, action: IdentifySDK.SDKSpeechAction, language: IdentifySDK.SDKLang? = nil)
   final public func setModeForAll(_ mode: IdentifySDK.SDKSpeechConfig.Mode)
   @objc deinit
 }
@@ -7901,6 +8606,10 @@ extension IdentifySDK.SDKSocketCloseCategory : Swift.RawRepresentable {}
 extension IdentifySDK.SDKSocketCloseCode : Swift.Equatable {}
 extension IdentifySDK.SDKSocketCloseCode : Swift.Hashable {}
 extension IdentifySDK.SDKSocketCloseCode : Swift.RawRepresentable {}
+extension IdentifySDK.SDKCallAudioOutput : Swift.Equatable {}
+extension IdentifySDK.SDKCallAudioOutput : Swift.Hashable {}
+extension IdentifySDK.SDKAudioRoute : Swift.Equatable {}
+extension IdentifySDK.SDKAudioRoute : Swift.Hashable {}
 extension IdentifySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Equatable {}
 extension IdentifySDK.NetworkReachabilityManager.NetworkReachabilityStatus.ConnectionType : Swift.Hashable {}
 extension IdentifySDK.PassportAuthenticationStatus : Swift.Equatable {}
@@ -7984,6 +8693,19 @@ extension IdentifySDK.ScannerMode : Swift.Hashable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.Equatable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.Hashable {}
 extension IdentifySDK.SDKNetworkStatus : Swift.RawRepresentable {}
+extension IdentifySDK.SDKSpeedTestOutcome : Swift.Equatable {}
+extension IdentifySDK.SDKSpeedTestOutcome : Swift.Hashable {}
+extension IdentifySDK.SDKSpeedTestOutcome : Swift.RawRepresentable {}
+extension IdentifySDK.SDKSpeedTestQualityBand : Swift.Equatable {}
+extension IdentifySDK.SDKSpeedTestQualityBand : Swift.Hashable {}
+extension IdentifySDK.SDKSpeedTestQualityBand : Swift.RawRepresentable {}
+extension IdentifySDK.SDKCallLivenessAction : Swift.Equatable {}
+extension IdentifySDK.SDKCallLivenessAction : Swift.Hashable {}
+extension IdentifySDK.SDKCallLivenessAction : Swift.RawRepresentable {}
+extension IdentifySDK.SDKSkipPolicy : Swift.Equatable {}
+extension IdentifySDK.SDKSkipPolicy : Swift.Hashable {}
+extension IdentifySDK.SDKConnectionPolicy.Action : Swift.Equatable {}
+extension IdentifySDK.SDKConnectionPolicy.Action : Swift.Hashable {}
 extension IdentifySDK.HttpMethod : Swift.Equatable {}
 extension IdentifySDK.HttpMethod : Swift.Hashable {}
 extension IdentifySDK.HttpMethod : Swift.RawRepresentable {}
@@ -8042,11 +8764,21 @@ extension IdentifySDK.SDKModulePreviewHost : Swift.Sendable {}
 extension IdentifySDK.SDKPreviewGallery : Swift.Sendable {}
 extension IdentifySDK.SDKNavigationBar : Swift.Sendable {}
 extension IdentifySDK.SDKSelfieFaceCondition : Swift.Hashable {}
+extension IdentifySDK.SDKMultipleFacesMode : Swift.Equatable {}
+extension IdentifySDK.SDKMultipleFacesMode : Swift.Hashable {}
 extension IdentifySDK.SDKSelfieView : Swift.Sendable {}
 extension IdentifySDK.SDKThankYouView : Swift.Sendable {}
 extension IdentifySDK.SDKButton : Swift.Sendable {}
 extension IdentifySDK.SDKComparisonKind : Swift.Equatable {}
 extension IdentifySDK.SDKComparisonKind : Swift.Hashable {}
+extension IdentifySDK.SDKErrorInfo.Source : Swift.Equatable {}
+extension IdentifySDK.SDKErrorInfo.Source : Swift.Hashable {}
+extension IdentifySDK.SDKErrorInfo.Source : Swift.RawRepresentable {}
+extension IdentifySDK.SDKCaptureMode : Swift.Equatable {}
+extension IdentifySDK.SDKCaptureMode : Swift.Hashable {}
+extension IdentifySDK.SDKCaptureMode : Swift.RawRepresentable {}
+extension IdentifySDK.SDKErrorConfig.Presentation : Swift.Equatable {}
+extension IdentifySDK.SDKErrorConfig.Presentation : Swift.Hashable {}
 extension IdentifySDK.SDKDeviceOrientationMonitor : Swift.Sendable {}
 extension IdentifySDK.IdCardSide : Swift.RawRepresentable {}
 extension IdentifySDK.SDKIdCardView : Swift.Sendable {}
@@ -8098,9 +8830,13 @@ extension IdentifySDK.SDKFlowEndReason : Swift.Hashable {}
 extension IdentifySDK.SDKFlowEndReason : Swift.RawRepresentable {}
 extension IdentifySDK.SDKTerminateDecision : Swift.Hashable {}
 extension IdentifySDK.SDKSpeechService : Swift.Sendable {}
+extension IdentifySDK.SDKSpeechAction : Swift.Equatable {}
+extension IdentifySDK.SDKSpeechAction : Swift.Hashable {}
 extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Equatable {}
 extension IdentifySDK.SDKSpeechConfig.Mode : Swift.Hashable {}
 extension IdentifySDK.SDKSpeechConfig.InterruptPolicy : Swift.Equatable {}
 extension IdentifySDK.SDKSpeechConfig.InterruptPolicy : Swift.Hashable {}
+extension IdentifySDK.SDKSpeechConfig.SilentSwitch : Swift.Equatable {}
+extension IdentifySDK.SDKSpeechConfig.SilentSwitch : Swift.Hashable {}
 @available(iOS 15.0, *)
 extension IdentifySDK.RoiPreviewView : Swift.Sendable {}
