@@ -1,12 +1,11 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.3.3 effective-5.10 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+// swift-compiler-version: Apple Swift version 6.3 effective-5.10 (swiftlang-6.3.0.123.5 clang-2100.0.123.102)
 // swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-upcoming-feature ConciseMagicFile -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name IdentifySDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3
 import ARKit
 import AVFoundation
 import AudioToolbox
 import CoreImage.CIFilterBuiltins
-import CameraPermission
 import Combine
 import CommonCrypto
 import Compression
@@ -23,7 +22,7 @@ import CryptoTokenKit
 import DeveloperToolsSupport
 import Dispatch
 import Foundation
-import MicrophonePermission
+import ImageIO
 import MobileCoreServices
 import OpenSSL
 import PDFKit
@@ -32,10 +31,8 @@ import PhotosUI
 import ReplayKit
 import Security
 import Speech
-import SpeechRecognizerPermission
 import Starscream
 import Swift
-import SwiftSignatureView
 import SwiftUI
 import SystemConfiguration
 import UIKit
@@ -3395,6 +3392,7 @@ public class IdentifyCard : Swift.Codable {
   public var mrzInfo: Swift.String?
   public var activeAuth: Swift.Bool?
   public var passiveAuth: Swift.Bool?
+  public var passportCorrectlySigned: Swift.Bool?
   public var address: Swift.String?
   public var fullName: Swift.String?
   public init(ident_id: Swift.String?, name: Swift.String?, surname: Swift.String?, personalNumber: Swift.String?, birthdate: Swift.String?, expireDate: Swift.String?, serialNumber: Swift.String?, nationality: Swift.String?, docType: Swift.String?, authority: Swift.String?, gender: Swift.String?, image: Swift.String?, mrzInfo: Swift.String?, activeAuth: Swift.Bool?, passiveAuth: Swift.Bool?, address: Swift.String?, fullName: Swift.String?)
@@ -3519,7 +3517,9 @@ public struct ScannerGuidanceTexts {
   public var upsideDown: Swift.String
   public var tilted: Swift.String
   public var unreadable: Swift.String
-  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "", glare: Swift.String = "", preparing: Swift.String = "", start: Swift.String = "", notDetected: Swift.String = "", upsideDown: Swift.String = "", tilted: Swift.String = "", unreadable: Swift.String = "")
+  public var turnToFront: Swift.String
+  public var turnToBack: Swift.String
+  public init(idle: Swift.String, focusing: Swift.String, reading: Swift.String, locked: Swift.String, tooClose: Swift.String, align: Swift.String, manualCapture: Swift.String, cancel: Swift.String, manualCaptureTitle: Swift.String, orientation: Swift.String = "", tooFar: Swift.String = "", centreDocument: Swift.String = "", glare: Swift.String = "", preparing: Swift.String = "", start: Swift.String = "", notDetected: Swift.String = "", upsideDown: Swift.String = "", tilted: Swift.String = "", unreadable: Swift.String = "", turnToFront: Swift.String = "", turnToBack: Swift.String = "")
   public static var overrideDefault: IdentifySDK.ScannerGuidanceTexts?
   public static var overrideDocument: IdentifySDK.ScannerGuidanceTexts?
   public static var `default`: IdentifySDK.ScannerGuidanceTexts {
@@ -3558,7 +3558,7 @@ public struct ScannerTimingConfig {
   public var autoTorchDelay: Foundation.TimeInterval
   public var fieldLockDropMotion: CoreFoundation.CGFloat
   public var notDetectedDelay: Foundation.TimeInterval
-  public init(lockThreshold: Swift.Int, focusRetriggerInterval: Foundation.TimeInterval, lensSwitchDebounce: Foundation.TimeInterval, focusSettleDelay: Foundation.TimeInterval, quadMissResetThreshold: Swift.Int, manualCaptureHintDelay: Foundation.TimeInterval, maxAutoCaptureFails: Swift.Int, minimumSharpnessScore: CoreFoundation.CGFloat, geometricStabilityThreshold: CoreFoundation.CGFloat, stabilityConfirmFrames: Swift.Int, lensSwitchStruggleDelay: Foundation.TimeInterval = 3.5, lensCommitHoldDuration: Foundation.TimeInterval = 4.0, captureSharpnessFloor: CoreFoundation.CGFloat = 90, sweepPassDuration: Foundation.TimeInterval = 1.0, capturesPhotoAtSweepStart: Swift.Bool = false, photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization = .quality, exposureBoostISO: Swift.Float = 700, exposureBoostReleaseISO: Swift.Float = 400, exposureBoostDelay: Foundation.TimeInterval = 1.5, exposureBoostEV: Swift.Float = 0.7, autoTorchISO: Swift.Float = 1400, autoTorchDelay: Foundation.TimeInterval = 4.0, fieldLockDropMotion: CoreFoundation.CGFloat = 15, notDetectedDelay: Foundation.TimeInterval = 4.0)
+  public init(lockThreshold: Swift.Int, focusRetriggerInterval: Foundation.TimeInterval, lensSwitchDebounce: Foundation.TimeInterval, focusSettleDelay: Foundation.TimeInterval, quadMissResetThreshold: Swift.Int, manualCaptureHintDelay: Foundation.TimeInterval, maxAutoCaptureFails: Swift.Int, minimumSharpnessScore: CoreFoundation.CGFloat, geometricStabilityThreshold: CoreFoundation.CGFloat, stabilityConfirmFrames: Swift.Int, lensSwitchStruggleDelay: Foundation.TimeInterval = 3.5, lensCommitHoldDuration: Foundation.TimeInterval = 4.0, captureSharpnessFloor: CoreFoundation.CGFloat = 90, sweepPassDuration: Foundation.TimeInterval = 0.5, capturesPhotoAtSweepStart: Swift.Bool = false, photoQualityPrioritization: AVFoundation.AVCapturePhotoOutput.QualityPrioritization = .quality, exposureBoostISO: Swift.Float = 700, exposureBoostReleaseISO: Swift.Float = 400, exposureBoostDelay: Foundation.TimeInterval = 1.5, exposureBoostEV: Swift.Float = 0.7, autoTorchISO: Swift.Float = 1400, autoTorchDelay: Foundation.TimeInterval = 4.0, fieldLockDropMotion: CoreFoundation.CGFloat = 15, notDetectedDelay: Foundation.TimeInterval = 4.0)
   public static var `default`: IdentifySDK.ScannerTimingConfig
   public static var passport: IdentifySDK.ScannerTimingConfig
   public static var idBack: IdentifySDK.ScannerTimingConfig
@@ -4491,6 +4491,9 @@ public struct RecognizedDocument {
   public var isManualCapture: Swift.Bool {
     get
   }
+  public var frameTexts: [[Swift.String]] {
+    get
+  }
   public init(croppedImage: UIKit.UIImage, fields: [Swift.String : IdentifySDK.DocumentField], rawText: Swift.String, validationResults: [IdentifySDK.ValidationResult], profileID: Swift.String)
 }
 @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
@@ -4762,6 +4765,7 @@ public class IdentifyManager {
   public var lastStraightenedPassportImage: UIKit.UIImage?
   public var isSelfIdent: Swift.Bool
   public var useKpsData: Swift.Bool
+  public var supportFlow: Swift.Bool?
   public var isSelfieIdent: Swift.Bool
   public var jailBreakStatus: Swift.Bool
   final public let modulePublisher: Combine.PassthroughSubject<IdentifySDK.SdkModules, Swift.Never>
@@ -4864,6 +4868,7 @@ public class IdentifyManager {
   public func uploadIdPhoto(idPhoto: UIKit.UIImage, selfieType: IdentifySDK.OCRType = .frontId, withLiveness: Swift.Bool = false, callback: @escaping (IdentifySDK.NewBoolResponse) -> ())
   public func upload5SecVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
   public func transcribeSpeech(mediaData: Foundation.Data, expectedText: Swift.String, threshold: Swift.Double, callback: @escaping (IdentifySDK.SpeechTranscribeResponse?, IdentifySDK.SDKWebError?) -> ())
+  public func notifyLivenessCompleted(timeout: Foundation.TimeInterval = 5, completion: @escaping () -> Swift.Void)
   public func uploadLivenessVideo(videoData: Foundation.Data, callback: @escaping (IdentifySDK.NewBoolResponse?, IdentifySDK.SDKWebError?) -> ())
   public func acceptCall(callback: @escaping (_ connected: Swift.Bool?, _ errMsg: IdentifySDK.SDKError?, _ sdpOk: Swift.Bool?) -> ())
   public func killSDKByUser(callback: @escaping (Swift.Bool) -> ())
@@ -5573,6 +5578,7 @@ public enum SDKIconKey : Swift.String, Swift.CaseIterable {
   case idCardFront, idCardBack
   case successCircle, failCircle, play, pause, mic, stopRecord
   case torchOn, torchOff, wifiGood, wifiBad
+  case livenessStepDone
   case idTypeChip, idTypePassport, idTypeOther
   public var defaultImage: SwiftUICore.Image {
     get
@@ -5729,6 +5735,8 @@ public struct SDKCaptureAppearance {
   public var maskColor: SwiftUICore.Color?
   public var scanLineColor: SwiftUICore.Color?
   public var focusIndicatorColor: SwiftUICore.Color?
+  public var showsLivenessStepDoneIcon: Swift.Bool?
+  public var livenessStepDoneColor: SwiftUICore.Color?
   public init()
 }
 public struct SDKControlAppearance {
@@ -6141,6 +6149,58 @@ extension IdentifySDK.SDKFlowCoordinator : IdentifySDK.SDKSocketListener {
   final public func finish()
   final public func stepPassed(module: IdentifySDK.SdkModules?)
   final public func cancel()
+  @objc deinit
+}
+public enum SDKPermission : Swift.String, Swift.CaseIterable, Swift.Sendable {
+  case camera
+  case microphone
+  case speechRecognition
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [IdentifySDK.SDKPermission]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [IdentifySDK.SDKPermission] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum SDKPermissionStatus : Swift.String, Swift.Sendable {
+  case notDetermined
+  case authorized
+  case denied
+  case restricted
+  public var isAuthorized: Swift.Bool {
+    get
+  }
+  public var needsSettings: Swift.Bool {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol SDKPermissionProvider : AnyObject {
+  func status(for permission: IdentifySDK.SDKPermission) -> IdentifySDK.SDKPermissionStatus
+  func request(_ permission: IdentifySDK.SDKPermission, completion: @escaping (IdentifySDK.SDKPermissionStatus) -> Swift.Void)
+  func openSettings(for permission: IdentifySDK.SDKPermission)
+}
+extension IdentifySDK.SDKPermissionProvider {
+  public func openSettings(for permission: IdentifySDK.SDKPermission)
+  public func request(_ permission: IdentifySDK.SDKPermission) async -> IdentifySDK.SDKPermissionStatus
+}
+final public class SDKSystemPermissionProvider : IdentifySDK.SDKPermissionProvider {
+  public static let shared: IdentifySDK.SDKSystemPermissionProvider
+  public init()
+  final public func status(for permission: IdentifySDK.SDKPermission) -> IdentifySDK.SDKPermissionStatus
+  final public func request(_ permission: IdentifySDK.SDKPermission, completion: @escaping (IdentifySDK.SDKPermissionStatus) -> Swift.Void)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class SDKPermissionConfig {
+  public static let shared: IdentifySDK.SDKPermissionConfig
+  final public var provider: any IdentifySDK.SDKPermissionProvider
   @objc deinit
 }
 extension SwiftUICore.EnvironmentValues {
@@ -7074,6 +7134,8 @@ extension IdentifySDK.CardType {
 public struct SDKLivenessRules {
   public var stepTimeout: Foundation.TimeInterval?
   public var wrongActionCheck: Swift.Bool
+  public var nextStepDelay: Swift.Double
+  public var nextStepWait: Swift.Bool
   public static var `default`: IdentifySDK.SDKLivenessRules
   public init()
 }
@@ -7106,6 +7168,12 @@ public struct SDKLivenessRules {
     get
   }
   @_Concurrency.MainActor final public var $isFaceVisible: Combine.Published<Swift.Bool>.Publisher {
+    get
+  }
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isWaitingForNextStep) @_Concurrency.MainActor final public var isWaitingForNextStep: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor final public var $isWaitingForNextStep: Combine.Published<Swift.Bool>.Publisher {
     get
   }
   @_Concurrency.MainActor final public var isRecordingEnabled: Swift.Bool {
@@ -7174,6 +7242,26 @@ public struct SDKLivenessRules {
   @_Concurrency.MainActor final public func uploadSignature(image: UIKit.UIImage)
   @_Concurrency.MainActor override public init()
   @objc deinit
+}
+final public class SDKSignatureActions : Combine.ObservableObject {
+  public init()
+  final public func getCroppedSignature() -> UIKit.UIImage?
+  final public func getSignatureForServer(isDark: Swift.Bool) -> UIKit.UIImage?
+  final public func clear()
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKSignatureCanvas : SwiftUI.UIViewRepresentable {
+  @_Concurrency.MainActor @preconcurrency public init(actions: IdentifySDK.SDKSignatureActions, onDraw: @escaping () -> Swift.Void, colorScheme: SwiftUICore.ColorScheme)
+  @_Concurrency.MainActor @preconcurrency public func makeUIView(context: IdentifySDK.SDKSignatureCanvas.Context) -> PencilKit.PKCanvasView
+  @_Concurrency.MainActor @preconcurrency public func updateUIView(_ uiView: PencilKit.PKCanvasView, context: IdentifySDK.SDKSignatureCanvas.Context)
+  @_Concurrency.MainActor @preconcurrency public func makeCoordinator() -> IdentifySDK.SDKSignatureCanvas.Coordinator
+  @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency final public class Coordinator : ObjectiveC.NSObject, PencilKit.PKCanvasViewDelegate {
+    @_Concurrency.MainActor @preconcurrency @objc final public func canvasViewDidEndUsingTool(_ canvasView: PencilKit.PKCanvasView)
+    @objc deinit
+  }
+  public typealias Body = Swift.Never
+  public typealias UIViewType = PencilKit.PKCanvasView
 }
 @_Concurrency.MainActor @preconcurrency public struct SDKSignatureView : SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public init()
@@ -7783,6 +7871,7 @@ public enum SDKKeyword : Swift.String {
   case comparisonFailed
   case frontSideRead
   case livenessCompleted
+  case livenessNextStepWait
   case nfcStarting
   case cameraPermissionDenied
   case micPermissionDenied
@@ -7935,6 +8024,8 @@ public enum SDKKeyword : Swift.String {
   case scannerUpsideDownId
   case scannerTiltedId
   case scannerUnreadableId
+  case scannerTurnToFrontId
+  case scannerTurnToBackId
   case prepareTts
   case selfieTts
   case selfieWithLivenessTts
@@ -8378,7 +8469,7 @@ extension SwiftUICore.View {
   
   @_Concurrency.MainActor @preconcurrency public func idAlert(isPresented: SwiftUICore.Binding<Swift.Bool>, alert: IdentifySDK.IDAlertModel) -> some SwiftUICore.View
   
-  @_Concurrency.MainActor @preconcurrency public func idErrorAlert(_ message: SwiftUICore.Binding<Swift.String?>, title: Swift.String = String(.coreError), isSilent: @escaping () -> Swift.Bool = { false }, onDismiss: (() -> Swift.Void)? = nil) -> some SwiftUICore.View
+  @_Concurrency.MainActor @preconcurrency public func idErrorAlert(_ message: SwiftUICore.Binding<Swift.String?>, title: Swift.String = String(.coreError), onDismiss: (() -> Swift.Void)? = nil) -> some SwiftUICore.View
   
 }
 
@@ -8513,6 +8604,8 @@ public enum SDKTerminateClassifier {
   public static let agentClosedNormallyReasons: Swift.Set<Swift.String>
   public static let agentClosedWithProblemReasons: Swift.Set<Swift.String>
   public static let sdkGeneratedReasons: Swift.Set<Swift.String>
+  public static let noDecisionStatusIds: Swift.Set<Swift.Int>
+  public static func endsSessionAfterReconnect(_ statusSummary: IdentifySDK.StatusSummary?) -> Swift.Bool
   public static func isDecisionStatus(_ statusType: Swift.String?) -> Swift.Bool
   public static func classify(reason: Swift.String?, statusSummary: IdentifySDK.StatusSummary?) -> IdentifySDK.SDKTerminateDecision
 }
@@ -8845,6 +8938,12 @@ extension IdentifySDK.SDKRoomBlockKind : Swift.Hashable {}
 extension IdentifySDK.SDKFlowCoordinator : Swift.Sendable {}
 extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Equatable {}
 extension IdentifySDK.SDKFlowCoordinator.NavDirection : Swift.Hashable {}
+extension IdentifySDK.SDKPermission : Swift.Equatable {}
+extension IdentifySDK.SDKPermission : Swift.Hashable {}
+extension IdentifySDK.SDKPermission : Swift.RawRepresentable {}
+extension IdentifySDK.SDKPermissionStatus : Swift.Equatable {}
+extension IdentifySDK.SDKPermissionStatus : Swift.Hashable {}
+extension IdentifySDK.SDKPermissionStatus : Swift.RawRepresentable {}
 extension IdentifySDK.SDKModulePreviewHost : Swift.Sendable {}
 extension IdentifySDK.SDKPreviewGallery : Swift.Sendable {}
 extension IdentifySDK.SDKNavigationBar : Swift.Sendable {}
@@ -8872,6 +8971,8 @@ extension IdentifySDK.SDKSpeechRecView : Swift.Sendable {}
 extension IdentifySDK.SDKNfcView : Swift.Sendable {}
 extension IdentifySDK.SDKVideoRecorderView : Swift.Sendable {}
 extension IdentifySDK.SDKLivenessView : Swift.Sendable {}
+extension IdentifySDK.SDKSignatureCanvas : Swift.Sendable {}
+extension IdentifySDK.SDKSignatureCanvas.Coordinator : Swift.Sendable {}
 extension IdentifySDK.SDKSignatureView : Swift.Sendable {}
 extension IdentifySDK.SDKPrepareView : Swift.Sendable {}
 extension IdentifySDK.SDKSignLangView : Swift.Sendable {}
