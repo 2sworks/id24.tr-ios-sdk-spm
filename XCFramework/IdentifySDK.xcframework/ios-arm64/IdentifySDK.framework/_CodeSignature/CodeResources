@@ -6,7 +6,7 @@
 	<dict>
 		<key>AZERI.json</key>
 		<data>
-		05VvxjR4Sc00SuooXKar7lVOy84=
+		5GrHZIaY3dogPX0fJUOTcuZCJvg=
 		</data>
 		<key>AddressConfirmTts_tr.mp3</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		VnlLQQPfCoLXbwjUsdvhYMsnHDg=
+		ugZgnkVlJBwoB9Ss9thru2KHOEc=
 		</data>
 		<key>ENGLISH.json</key>
 		<data>
-		S/hGjMhQVBKVFlucuVsDRD8T0cA=
+		151lElf6cc8RbHsq4nU/RK8rBGU=
 		</data>
 		<key>GERMAN.json</key>
 		<data>
-		1MeRITs5Cz4kdM8NUJbcshqGRc4=
+		gi9WPPqMu0hOp06kda6FjQM4WpU=
 		</data>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<data>
-		sqWYBsx8P+3JpAJmayDajdaH1x4=
+		be5AygFTi9DavluAGc4OL+gmMbc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		A6By6pSPGRexbOtUBawzhnJ50b0=
+		serhUR5mTgHnY3GiCB8kpFZ3hyo=
 		</data>
 		<key>Inter-Italic.ttf</key>
 		<data>
@@ -40,21 +40,17 @@
 		<data>
 		7lwuIv/t3vxDPJqkx2d5u3OlxoI=
 		</data>
-		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
-		<data>
-		uHC0AWo3ata259KpRbCd2/vfyqo=
-		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		i/VUO17xMzmg8MtFJFNGFTtpUGg=
+		qU4/nV3YxFzfvgOn6lNx3sJX2es=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		w41EBkxbZ7FKRibp8tLc+2SAKns=
+		mjfjDnsJVnqPk/SkejuKVJ0mUG0=
 		</data>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		kJY0zqBkBVoocmpH6d+XLDPnOQo=
+		BHKAqfdD6Dq2zVgZMD3e9m6aMsg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -66,11 +62,11 @@
 		</data>
 		<key>RUSSIAN.json</key>
 		<data>
-		ThA/uwt8F9YlWX2WkNPXYgPycK0=
+		IxT9lp6rKk54uI5Z+Jy7HDLrdB8=
 		</data>
 		<key>TURKISH.json</key>
 		<data>
-		kmyphQ2Ti4wH6Y/TrjVHQXKoJ2s=
+		IfPUi4HC1mYr9fD4amDcGEXjtck=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -79,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yuycer9SJEDCoPuW2omFgDcBx+Y4vi93A100kGm0TlE=
+			wgqwWFaNleciraRGY9tRNKPv3vIJJFiunjbPn7N4zNw=
 			</data>
 		</dict>
 		<key>AddressConfirmTts_tr.mp3</key>
@@ -93,28 +89,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R+0FnwC7l7K7EBP+APVJMCunur0fJuwcrHgq+4GwEj8=
+			K1rtgo97sVhwS9gqGd4gHIBFzP5bPn2z5hpmUmPai7w=
 			</data>
 		</dict>
 		<key>ENGLISH.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			u9P0ucODGX7sKrRYYMRhsdiDWgWIT4adf5R1UxRLz+w=
+			DwRIiKIONXg+BJBiIbXlKSqZjW3X9OfdXvb3xIo3x2A=
 			</data>
 		</dict>
 		<key>GERMAN.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rcRFKoVdgeWmVsGEpGarr2PCuSuZMJFSutmRq305uwE=
+			vCbG5lXswwZQ/I8HE+iMb+xW6y2lEQTwiFaO7ygx5ms=
 			</data>
 		</dict>
 		<key>Headers/IdentifySDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9086SX9slqOofaq6sac+nAkneDIOYY4RvnnmVT+dKPQ=
+			fHw1qiwY45Wak+UcuR1AXthpEWCnLZHHbg7ey2XeZns=
 			</data>
 		</dict>
 		<key>Inter-Italic.ttf</key>
@@ -131,32 +127,25 @@
 			C+I5nqkl8fg/+XR2R2HamGDsUHQu0ppdTB/9DFx6w6g=
 			</data>
 		</dict>
-		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			4hHtfs61qQDSK+8/jWq+NuWW+ovsh76vDmLbeZSGLf8=
-			</data>
-		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			M0vbktJGNNHGS/n+l28AudrC96vH2JoO4RUDvx19chE=
+			diQDMV8ckPqRPAfsHygbpGEh6hh6jnCBZmftlSBbaGg=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			r09NxkLjfVud96Sq085/9a7iQ1P12ytJ1eau8U5iDLo=
+			1ZnfEFCDFWOvrehgDJvPX3QzM9e7ugEwFO3MDm+0aR8=
 			</data>
 		</dict>
 		<key>Modules/IdentifySDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iz08ngKWSpnbnrQqJgLhYdCBWc7Cc/DW4KBGbbDIq6g=
+			huxxbwwdSd8NTgwodbNMUKZPkpr+vNu4t9jbzoagikk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -177,14 +166,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hZPac6aj1hz09ofOhvkrgmL3HSUauw/LGbTQoVOpViM=
+			uHwtAux87E0nHQcICMQiEXaK1ETJC1uXbFOcClc/BjE=
 			</data>
 		</dict>
 		<key>TURKISH.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xVxRD7VTpFWIQVr5gykeM5RL54T7GV8Uis9+xcT9lnc=
+			8o6L4RyY+oWXKrMgCqHrPgdnMXygOlPVTw30D7Qo7nk=
 			</data>
 		</dict>
 	</dict>
